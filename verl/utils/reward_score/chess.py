@@ -4,10 +4,7 @@ import random
 
 def extract_solution(solution_str):
     # Remove everything before the first "Assistant:"
-    if "Assistant:" in solution_str:
-        solution_str = solution_str.split("Assistant:", 1)[1]
-    else:
-        return None
+ 
 
     answer_pattern = r'<answer>(.*?)</answer>'
     match = re.finditer(answer_pattern, solution_str)
