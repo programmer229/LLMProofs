@@ -30,7 +30,7 @@ def _select_rm_score_fn(data_source):
         return multiply.compute_score
     elif "countdown" in data_source:
         return countdown.compute_score
-    elif data_source == 'chess':
+    elif "chess" in data_source:
         return chess.compute_score
     else:
         raise NotImplementedError
