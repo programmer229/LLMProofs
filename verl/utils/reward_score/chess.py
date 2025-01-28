@@ -3,22 +3,17 @@ import random
 
 
 def extract_solution(solution_str):
-    # Remove everything before the first "Assistant:"
- 
-
-    answer_pattern = r'<answer>(.*?)</answer>'
+    # Look for a chess move format inside answer tags
+    # This will match standard chess notation like e2e4, e4, e2-e4
+    answer_pattern = r'<answer>\s*([a-h][1-8]-?[a-h][1-8]|[a-h][1-8])\s*</answer>'
     match = re.finditer(answer_pattern, solution_str)
     matches = list(match)
     if matches:
         final_answer = matches[-1].group(1).strip()
-    else:
-        final_answer = None
-    if final_answer is not None:
-        try:
-            int_final_answer = int(final_answer)
-        except ValueError:
-            final_answer = None
-    return final_answer
+        # Clean up the move format by removing hyphens
+        final_answer = final_answer.replace('-', '')
+        return final_answer
+    return None
 
 
 def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1.):
@@ -26,10 +21,10 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
 
     Args:
         solution_str: the solution text containing the chess move
-        ground_truth: comma-separated string of valid chess moves
+        ground_truth: comma-separated string of valid moves, first move is considered best
         method: unused parameter kept for consistency
         format_score: score given for wrong but valid format
-        score: score given for correct move
+        score: score given for correct move, with bonus for best move
     """
     answer = extract_solution(solution_str=solution_str)
     do_print = random.randint(1, 64) == 1
@@ -46,9 +41,12 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
         # Split ground truth into list of valid moves and strip whitespace
         valid_moves = [move.strip() for move in ground_truth.split(',')]
         if answer in valid_moves:
+            # Add bonus reward based on move position (first move gets highest bonus)
+            move_index = valid_moves.index(answer)
+            bonus = 1 * (len(valid_moves) - move_index) / len(valid_moves)
             if do_print:
-                print(f"Correct move: {answer}")
-            return score
+                print(f"Correct move: {answer} with bonus {bonus}")
+            return score + bonus
         else:
             if do_print:
                 print(f"Incorrect move {answer} | Valid moves: {ground_truth}")
