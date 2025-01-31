@@ -14,20 +14,40 @@
 # Adapted from https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/hendrycks_math/utils.py
 
 import re
+import random
 
-def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1.) -> float:
+def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None) -> float:
+    alpha = 8
     beta = float(re.findall(r'(?<=beta=)[^&\s]+', ground_truth)[0])
     output_length = len(solution_str)
+    num_words = len(solution_str.split())
+
+    clean_ground_truth = ground_truth.split('beta=')[0]
+
+    do_print = random.randint(1, 16) == 1
+    if do_print:
+        print(f"solution_str: {solution_str}")
+        print(f"ground_truth: {ground_truth}")
+        print(f"clean_ground_truth: {clean_ground_truth}")
     
-    retval = 0
+    is_equiv = 0.0
     try:
         string_in_last_boxed = last_boxed_only_string(solution_str)
         if string_in_last_boxed is not None:
             answer = remove_boxed(string_in_last_boxed)
-            if is_equiv(answer, ground_truth):
-                retval = 1.
+            if is_equiv(answer, clean_ground_truth):
+                is_equiv = 1.0
     except Exception as e:
         print(e)
+        is_equiv = 0.0
+    
+    if do_print:
+        print(f"is_equiv: {is_equiv}")
+    
+    if is_equiv == 1.0:
+        retval = (is_equiv * score) - (beta * num_words * 1.3) / (max_response_length * 8)
+    else:
+        retval = 0.0
 
     return retval
 

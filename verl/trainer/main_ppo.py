@@ -19,9 +19,9 @@ from verl import DataProto
 import torch
 from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess, arc, dial_length
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
+import sys
 
-
-def _select_rm_score_fn(data_source, model_max_length):
+def _select_rm_score_fn(data_source):
     if data_source == 'openai/gsm8k':
         return gsm8k.compute_score
     elif data_source == 'lighteval/MATH':
@@ -50,9 +50,10 @@ class RewardManager():
     """The reward manager.
     """
 
-    def __init__(self, tokenizer, num_examine) -> None:
+    def __init__(self, tokenizer, num_examine, max_response_length) -> None:
         self.tokenizer = tokenizer
         self.num_examine = num_examine  # the number of batches of decoded responses to print to the console
+        self.max_response_length = max_response_length
 
     def __call__(self, data: DataProto):
         """We will expand this function gradually based on the available datasets"""
@@ -87,10 +88,9 @@ class RewardManager():
 
             # select rm_score
             data_source = data_item.non_tensor_batch['data_source']
-            print(self.tokenizer.model_max_length)
-            compute_score_fn = _select_rm_score_fn(data_source, self.tokenizer.model_max_length)
+            compute_score_fn = _select_rm_score_fn(data_source)
 
-            score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth)
+            score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth, max_response_length=self.max_response_length)
             reward_tensor[i, valid_response_length - 1] = score
 
             if data_source not in already_print_data_sources:
@@ -184,10 +184,10 @@ def main_task(config):
         role_worker_mapping[Role.RewardModel] = ray.remote(RewardModelWorker)
         mapping[Role.RewardModel] = global_pool_id
 
-    reward_fn = RewardManager(tokenizer=tokenizer, num_examine=0)
+    reward_fn = RewardManager(tokenizer=tokenizer, num_examine=0, max_response_length=config.data.max_response_length)
 
     # Note that we always use function-based RM for validation
-    val_reward_fn = RewardManager(tokenizer=tokenizer, num_examine=1)
+    val_reward_fn = RewardManager(tokenizer=tokenizer, num_examine=1, max_response_length=config.data.max_response_length)
 
     resource_pool_manager = ResourcePoolManager(resource_pool_spec=resource_pool_spec, mapping=mapping)
 

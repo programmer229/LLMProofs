@@ -24,7 +24,7 @@ def extract_solution(solution_str):
     except Exception:
         return None
 
-def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1.):
+def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None):
     """
     Scoring function for ARC grid transformation.
     
