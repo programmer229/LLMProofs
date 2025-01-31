@@ -17,7 +17,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess
+from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess, arc
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 
 
@@ -32,6 +32,14 @@ def _select_rm_score_fn(data_source):
         return countdown.compute_score
     elif "chess" in data_source:
         return chess.compute_score
+    elif "grid_transform" in data_source:
+        return arc.compute_score
+    elif "AI-MO/NuminaMath-CoT" in data_source:
+        return math.compute_score
+    elif "combined_math" in data_source:
+        return math.compute_score
+    elif "di-zhang-fdu/AIME_1983_2024" in data_source:
+        return math.compute_score
     else:
         raise NotImplementedError
 
