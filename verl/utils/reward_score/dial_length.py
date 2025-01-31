@@ -30,22 +30,22 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
         print(f"ground_truth: {ground_truth}")
         print(f"clean_ground_truth: {clean_ground_truth}")
     
-    is_equiv = 0.0
+    is_equiv_result = 0.0
     try:
         string_in_last_boxed = last_boxed_only_string(solution_str)
         if string_in_last_boxed is not None:
             answer = remove_boxed(string_in_last_boxed)
-            if is_equiv(answer, clean_ground_truth):
-                is_equiv = 1.0
+            if is_equiv(answer, str(clean_ground_truth)):
+                is_equiv_result = 1.0
     except Exception as e:
-        print(e)
-        is_equiv = 0.0
+        print(f"fuck error: {e}")
+        is_equiv_result = 0.0
     
     if do_print:
-        print(f"is_equiv: {is_equiv}")
+        print(f"is_equiv: {is_equiv_result}")
     
-    if is_equiv == 1.0:
-        retval = (is_equiv * score) - (beta * num_words * 1.3) / (max_response_length * 8)
+    if is_equiv_result == 1.0:
+        retval = (is_equiv_result * score) - (beta * num_words * 1.3) / (max_response_length * 8)
     else:
         retval = 0.0
 
