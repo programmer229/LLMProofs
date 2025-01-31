@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """
-Preprocess the Numina dataset to parquet format
+Preprocess the Numina dataset to parquet format for dialength project
 """
 
 import os
@@ -22,6 +22,7 @@ from verl.utils.hdfs_io import copy, makedirs
 import argparse
 
 from verl.utils.reward_score.math import remove_boxed, last_boxed_only_string
+import random
 
 
 def extract_solution(solution_str):
@@ -29,12 +30,6 @@ def extract_solution(solution_str):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--local_dir', default='~/data/math')
-    parser.add_argument('--hdfs_dir', default=None)
-
-    args = parser.parse_args()
-
     data_source = 'AI-MO/NuminaMath-CoT'
 
     dataset = datasets.load_dataset(data_source, trust_remote_code=True)
@@ -42,14 +37,14 @@ if __name__ == '__main__':
     train_dataset = dataset['train']
     test_dataset = dataset['test']
 
-    instruction_following = "Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}."
-
     # add a row to each data item that represents a unique id
     def make_map_fn(split):
 
         def process_fn(example, idx):
+            beta = round(random.random(), 2)  # Generate random number between 0 and 1, rounded to 2 decimal places
+            
             question = example.pop('problem')
-
+            instruction_following = "The length penalty is " + str(beta) + ". Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}."
             question = question + ' ' + instruction_following
 
             answer = example.pop('solution')
@@ -67,7 +62,7 @@ if __name__ == '__main__':
                 "ability": "math",
                 "reward_model": {
                     "style": "rule",
-                    "ground_truth": solution
+                    "ground_truth": solution + f"beta={beta}"
                 },
                 "extra_info": {
                     'split': split,
@@ -81,9 +76,9 @@ if __name__ == '__main__':
     train_dataset = train_dataset.map(function=make_map_fn('train'), with_indices=True)
     test_dataset = test_dataset.map(function=make_map_fn('test'), with_indices=True)
 
-    local_dir = '/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/numina'
+    local_dir = '/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/dialength'
 
-    train_dataset.to_parquet(os.path.join(local_dir, 'train_numina.parquet'))
-    test_dataset.to_parquet(os.path.join(local_dir, 'test_numina.parquet'))
+    train_dataset.to_parquet(os.path.join(local_dir, 'train_dialength.parquet'))
+    test_dataset.to_parquet(os.path.join(local_dir, 'test_dialength.parquet'))
 
     print(f"Numina dataset created successfully")
