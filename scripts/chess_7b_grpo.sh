@@ -1,12 +1,19 @@
+export VLLM_ATTENTION_BACKEND=XFORMERS
+
+DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/chess
+BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/SFT_chess_1.0 # 7B model
+EXPERIMENT_NAME=qwen2.5_7b_chess_rl1
+PROJECT_NAME=verl_grpo_chess
+
 set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/train.parquet \
-    data.val_files=$DATA_DIR/test.parquet \
+    data.train_files=$DATA_DIR/puzzles_train.parquet \
+    data.val_files=$DATA_DIR/puzzles_test.parquet \
     data.train_batch_size=256 \
     data.val_batch_size=1312 \
-    data.max_prompt_length=1024 \
+    data.max_prompt_length=512 \
     data.max_response_length=2048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.actor.optim.lr=1e-6 \
@@ -30,9 +37,11 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name='verl_grpo_example_gsm8k' \
-    trainer.experiment_name='deepseek_llm_7b_function_rm_seq_packing' \
+    trainer.experiment_name='qwen2.5_7b_chess_rl' \
     trainer.n_gpus_per_node=8 \
     trainer.nnodes=1 \
-    trainer.save_freq=100 \
-    trainer.test_freq=100 \
+    trainer.save_freq=10 \
+    trainer.test_freq=10 \
+    trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.total_epochs=15 $@
