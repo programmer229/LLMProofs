@@ -54,7 +54,7 @@ if __name__ == '__main__':
                 solution = answer # These are the proofs questions
 
             data = {
-                "data_source": data_source,
+                "data_source": "dial_length",
                 "prompt": [{
                     "role": "user",
                     "content": question
