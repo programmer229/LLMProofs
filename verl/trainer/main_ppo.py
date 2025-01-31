@@ -17,11 +17,11 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess, arc
+from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess, arc, dial_length
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 
 
-def _select_rm_score_fn(data_source):
+def _select_rm_score_fn(data_source, model_max_length):
     if data_source == 'openai/gsm8k':
         return gsm8k.compute_score
     elif data_source == 'lighteval/MATH':
@@ -40,6 +40,8 @@ def _select_rm_score_fn(data_source):
         return math.compute_score
     elif "di-zhang-fdu/AIME_1983_2024" in data_source:
         return math.compute_score
+    elif "dial_length" in data_source:
+        return dial_length.compute_score
     else:
         raise NotImplementedError
 
@@ -85,7 +87,8 @@ class RewardManager():
 
             # select rm_score
             data_source = data_item.non_tensor_batch['data_source']
-            compute_score_fn = _select_rm_score_fn(data_source)
+            print(self.tokenizer.model_max_length)
+            compute_score_fn = _select_rm_score_fn(data_source, self.tokenizer.model_max_length)
 
             score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth)
             reward_tensor[i, valid_response_length - 1] = score
