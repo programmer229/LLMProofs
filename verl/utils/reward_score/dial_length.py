@@ -18,11 +18,12 @@ import random
 
 def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None) -> float:
     alpha = 8
-    beta = float(re.findall(r'(?<=beta=)[^&\s]+', ground_truth)[0])
-    output_length = len(solution_str)
+    #beta = float(re.findall(r'(?<=beta=)[^&\s]+', ground_truth)[0]) # Was not working because multiple betas were being found
+    beta = float(ground_truth[-4:]) # Much easier solution. I know the beta is always the last 4 chars since that's where I put them
     num_words = len(solution_str.split())
 
-    clean_ground_truth = ground_truth.split('beta=')[0]
+    #clean_ground_truth = ground_truth.split('beta=')[0] # Was not working because multiple betas were being found
+    clean_ground_truth = ground_truth[:-9] # Much easier solution. I know the beta is always the last 4 chars since that's where I put them
 
     do_print = random.randint(1, 16) == 1
     if do_print:
@@ -35,6 +36,9 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
         string_in_last_boxed = last_boxed_only_string(solution_str)
         if string_in_last_boxed is not None:
             answer = remove_boxed(string_in_last_boxed)
+            if do_print:
+                print(f"cleaned answer: {answer}")
+                print(f"cleaned ground_truth: {clean_ground_truth}")
             if is_equiv(answer, str(clean_ground_truth)):
                 is_equiv_result = 1.0
     except Exception as e:
@@ -44,10 +48,10 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
     if do_print:
         print(f"is_equiv: {is_equiv_result}")
     
-    if is_equiv_result == 1.0:
-        retval = (is_equiv_result * score) - (beta * num_words * 1.3) / (max_response_length * 8)
-    else:
-        retval = 0.0
+    #if is_equiv_result == 1.0:
+    retval = (is_equiv_result * score) - (beta * num_words * 1.3) / (max_response_length * 8)
+    #else:
+    #    retval = 0.0
 
     return retval
 
