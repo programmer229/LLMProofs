@@ -41,7 +41,7 @@ if __name__ == '__main__':
     def make_map_fn(split):
 
         def process_fn(example, idx):
-            beta = round(random.random(), 2)  # Generate random number between 0 and 1, rounded to 2 decimal places
+            beta = f"{random.random():.2f}"  # Generate random number between 0 and 1 as string with exactly 2 decimal places
             
             question = example.pop('problem')
             instruction_following = "The length penalty is " + str(beta) + ". Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}."
