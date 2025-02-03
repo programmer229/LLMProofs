@@ -5,7 +5,7 @@ import random
 def extract_solution(solution_str):
     # Look for a chess move format inside answer tags
     # This will match standard chess notation like e2e4, e4, e2-e4
-    answer_pattern = r'<answer>\s*([a-h][1-8]-?[a-h][1-8]|[a-h][1-8])\s*</answer>'
+    answer_pattern = r'<answer>\s*(.*?)\s*</answer>'    
     match = re.finditer(answer_pattern, solution_str)
     matches = list(match)
     if matches:
@@ -46,7 +46,7 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
             bonus = 1 * (len(valid_moves) - move_index) / len(valid_moves)
             if do_print:
                 print(f"Correct move: {answer} with bonus {bonus}")
-            return score + bonus
+            return score 
         else:
             if do_print:
                 print(f"Incorrect move {answer} | Valid moves: {ground_truth}")
