@@ -48,10 +48,10 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
     if do_print:
         print(f"is_equiv: {is_equiv_result}")
     
-    #if is_equiv_result == 1.0:
-    retval = (is_equiv_result * score) - (beta * num_words * 1.3) / (max_response_length * 8)
-    #else:
-    #    retval = 0.0
+    if is_equiv_result == 1.0:
+        retval = (is_equiv_result * score) - (beta * num_words * 1.3) / (max_response_length * 8)
+    else:
+        retval = 0.0
 
     return retval
 
