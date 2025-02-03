@@ -1,8 +1,8 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/chess
-BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/SFT_chess_1.0 # 7B model
-EXPERIMENT_NAME=qwen2.5_7b_chess_rl1
+BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
+EXPERIMENT_NAME=qwen2.5_7b_chess_rl2
 PROJECT_NAME=verl_grpo_chess
 
 set -x
@@ -13,8 +13,8 @@ python3 -m verl.trainer.main_ppo \
     data.val_files=$DATA_DIR/puzzles_test.parquet \
     data.train_batch_size=256 \
     data.val_batch_size=1312 \
-    data.max_prompt_length=512 \
-    data.max_response_length=2048 \
+    data.max_prompt_length=2048 \
+    data.max_response_length=4096 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
@@ -36,7 +36,7 @@ python3 -m verl.trainer.main_ppo \
     algorithm.kl_ctrl.kl_coef=0.001 \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
-    trainer.project_name='verl_grpo_example_gsm8k' \
+    trainer.project_name='verl_grpo_example_chess' \
     trainer.experiment_name='qwen2.5_7b_chess_rl' \
     trainer.n_gpus_per_node=8 \
     trainer.nnodes=1 \

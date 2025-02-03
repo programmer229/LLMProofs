@@ -17,7 +17,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math, multiply, countdown, chess, arc, dial_length
+from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
 
@@ -25,7 +25,7 @@ def _select_rm_score_fn(data_source):
     if data_source == 'openai/gsm8k':
         return gsm8k.compute_score
     elif data_source == 'lighteval/MATH':
-        return math.compute_score
+        return math_utils.compute_score
     elif "multiply" in data_source or "arithmetic" in data_source:
         return multiply.compute_score
     elif "countdown" in data_source:
@@ -35,13 +35,15 @@ def _select_rm_score_fn(data_source):
     elif "grid_transform" in data_source:
         return arc.compute_score
     elif "AI-MO/NuminaMath-CoT" in data_source:
-        return math.compute_score
+        return math_utils.compute_score
     elif "combined_math" in data_source:
-        return math.compute_score
+        return math_utils.compute_score
     elif "di-zhang-fdu/AIME_1983_2024" in data_source:
-        return math.compute_score
+        return math_utils.compute_score
     elif "dial_length" in data_source:
         return dial_length.compute_score
+    elif "integration" in data_source:
+        return integration.compute_score
     else:
         raise NotImplementedError
 

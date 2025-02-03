@@ -2,9 +2,9 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/numina
 #BASE_MODEL=Qwen/Qwen2.5-7B-Instruct # 7B model
-BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_base1/actor/global_step_100
+BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_base1/actor/global_step_80
 PROJECT_NAME=verl_grpo_numina
-EXPERIMENT_NAME=qwen2.5_7b_numina_base_from_base1_step100
+EXPERIMENT_NAME=qwen2.5_7b_numina_base_from_base1_step80
 
 #####################################################
 
