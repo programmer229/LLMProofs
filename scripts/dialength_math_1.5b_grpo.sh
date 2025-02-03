@@ -1,10 +1,9 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/dialength
-BASE_MODEL=/home/ubuntu/o1-replication-usmid/o_series/model_saves/qwen2.5_7B_1.0SFT # 7B model
-#BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
+BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
 PROJECT_NAME=verl_dialength_grpo
-EXPERIMENT_NAME=qwen2.5_7b_dialength_numina2
+EXPERIMENT_NAME=qwen2.5_1.5b_dialength_math
 
 #####################################################
 
@@ -29,8 +28,8 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/train_dialength.parquet \
-    data.val_files=$DATA_DIR/test_dialength.parquet \
+    data.train_files=$DATA_DIR/train_dialength_math.parquet \
+    data.val_files=$DATA_DIR/test_dialength_math.parquet \
     data.train_batch_size=256 \
     data.val_batch_size=1312 \
     data.max_prompt_length=4048 \
