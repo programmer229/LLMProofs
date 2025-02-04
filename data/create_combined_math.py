@@ -8,7 +8,7 @@ import datasets
 from verl.utils.hdfs_io import copy, makedirs
 import argparse
 
-from verl.utils.reward_score.math import remove_boxed, last_boxed_only_string
+from verl.utils.reward_score.math_utils import remove_boxed, last_boxed_only_string
 
 
 def extract_solution(solution_str):
