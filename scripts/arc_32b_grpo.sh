@@ -5,7 +5,7 @@ DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/arc
 #BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/deepseek_qwen_7b_sft_arc # 7B model
 BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/QWEN_DS_32B_ARC_v1/full/original # 7B model before collapse in previous run
 PROJECT_NAME=verl_grpo_arc
-EXPERIMENT_NAME=deepseek_llm_32b_arc
+EXPERIMENT_NAME=deepseek__32b_arc_megatron
 OVERRIDE_CONFIG='{tokenizer_config:{eos_token:"<｜end▁of▁sentence｜>",additional_special_tokens:["<｜end▁of▁sentence｜>"]},generation_config:{eos_token_id:151643}}'
 
 #####################################################
@@ -31,6 +31,9 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
+    actor_rollout_ref.actor.strategy=megatron \
+    critic.strategy=megatron \
+    actor_rollout_ref.rollout.load_format=auto \
     data.train_files=$DATA_DIR/train_arc.parquet \
     data.val_files=$DATA_DIR/test_arc.parquet \
     data.train_batch_size=8 \
