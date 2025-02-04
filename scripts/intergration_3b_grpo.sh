@@ -1,9 +1,9 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/intergration
-BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
+BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=llama3.2_3b_integration
+EXPERIMENT_NAME=llama3.2_1b_integration
 PROJECT_NAME=verl_intergration
 
 set -x
@@ -12,7 +12,7 @@ python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
     data.train_files=$DATA_DIR/integration_train.parquet \
     data.val_files=$DATA_DIR/integration_test.parquet \
-    data.train_batch_size=256 \
+    data.train_batch_size=128 \
     data.val_batch_size=1312 \
     data.max_prompt_length=512 \
     data.max_response_length=1024 \
@@ -45,4 +45,4 @@ python3 -m verl.trainer.main_ppo \
     trainer.test_freq=10 \
     trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.total_epochs=15 $@
+    trainer.total_epochs=100 $@

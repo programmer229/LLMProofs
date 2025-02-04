@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """
-Preprocess the MATH dataset to parquet format for dialength project
+Preprocess the MATH dataset to parquet format for dialength project with fixed beta
 """
 
 import os
@@ -21,7 +21,7 @@ import datasets
 from verl.utils.hdfs_io import copy, makedirs
 import argparse
 
-from verl.utils.reward_score.math import remove_boxed, last_boxed_only_string
+from verl.utils.reward_score.math_utils import remove_boxed, last_boxed_only_string
 import random
 
 
@@ -41,7 +41,8 @@ if __name__ == '__main__':
     def make_map_fn(split):
 
         def process_fn(example, idx):
-            beta = f"{random.random():.2f}"  # Generate random number between 0 and 1 as string with exactly 2 decimal places
+            #beta = f"{random.random():.2f}"  # Generate random number between 0 and 1 as string with exactly 2 decimal places
+            beta = 0.34
             
             question = example.pop('problem')
             instruction_following = "The response length penalty is " + str(beta) + ". Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}."
@@ -76,9 +77,9 @@ if __name__ == '__main__':
     train_dataset = train_dataset.map(function=make_map_fn('train'), with_indices=True)
     test_dataset = test_dataset.map(function=make_map_fn('test'), with_indices=True)
 
-    local_dir = '/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/dialength'
+    local_dir = '/home/ubuntu/o1-replication/CustomTinyZero/data/dialength'
 
-    train_dataset.to_parquet(os.path.join(local_dir, 'train_dialength_math.parquet'))
-    test_dataset.to_parquet(os.path.join(local_dir, 'test_dialength_math.parquet'))
+    train_dataset.to_parquet(os.path.join(local_dir, 'train_dialength_math_fixed.parquet'))
+    test_dataset.to_parquet(os.path.join(local_dir, 'test_dialength_math_fixed.parquet'))
 
     print(f"MATH dataset with betas appended created successfully")
