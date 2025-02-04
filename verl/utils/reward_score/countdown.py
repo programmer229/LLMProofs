@@ -56,7 +56,7 @@ def evaluate_equation(equation_str):
         return None
 
 
-def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None):
+def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None, tokenizer=None):
     """The scoring function for countdown task.
     
     Args:

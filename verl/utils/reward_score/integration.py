@@ -67,7 +67,8 @@ def compute_score(solution_str: str,
                   score: float = 1.0,
                   format_score: float = 0.05,
                   evaluation_points: list = None,
-                  max_response_length: int = None) -> float:
+                  max_response_length: int = None,
+                  tokenizer = None) -> float:
     """
     Computes the reward for a candidate integration solution.
     """
