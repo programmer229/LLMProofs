@@ -1,10 +1,10 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/dialength
-BASE_MODEL=/home/ubuntu/o1-replication-usmid/o_series/model_saves/qwen2.5_7B_1.0SFT # 7B model
+BASE_MODEL=/home/ubuntu/o1-replication-usmid/o_series_/model_saves/qwen2.5_7B_1.0SFT # 7B model
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
 PROJECT_NAME=verl_dialength_grpo
-EXPERIMENT_NAME=qwen2.5_7b_dialength_numina3
+EXPERIMENT_NAME=qwen2.5_7b_dialength_numina3_proper
 
 #####################################################
 
