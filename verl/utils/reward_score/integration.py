@@ -29,19 +29,27 @@ import sympy as sp
 def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str:
     """
     Extracts the candidate integration solution from the provided solution string.
+    Also filters out any candidate that directly contains an integration command.
     """
     if not solution_str or not isinstance(solution_str, str):
         return None
         
     assert method in ['strict', 'flexible'], "Method must be 'strict' or 'flexible'"
+    candidate = None
     if method == 'strict':
         try:
             matches = re.findall(r"<answer>(.*?)</answer>", solution_str, re.IGNORECASE | re.DOTALL)
-            return matches[-1].strip() if matches else None
+            candidate = matches[-1].strip() if matches else None
         except Exception:
             return None
     else:
-        return solution_str.strip()
+        candidate = solution_str.strip()
+
+    # Filter out candidates that contain the word 'integrate' (in any case)
+    if candidate and re.search(r'\bintegrate\b', candidate, re.IGNORECASE):
+        return None
+
+    return candidate
 
 def preprocess_candidate_solution(solution: str) -> str:
     """
@@ -114,7 +122,13 @@ def compute_score(solution_str: str,
                 continue
 
         # 6. Return score
-        return score if correct_points == total_points else 0.0
+        if correct_points == total_points:
+            return score + format_score
+        elif candidate:
+            return format_score
+        else:
+            return 0.0
+        
 
     except Exception:
         return 0.0
@@ -124,10 +138,10 @@ if __name__ == "__main__":
     # For example, consider the antiderivative problem:
     #    ∫1/x dx = log(x) + C
     # A candidate solution (possibly coming from a model) might be:
-    candidate_solution = "Random text before <answer>cos(x**2)+ ln(x)+0.333333*x^3 </answer> Extra text after"
+    candidate_solution = "Random text before <answer>integrate(x, x) </answer> Extra text after"
     
     # The ground truth solution is provided as:
-    ground_truth_solution = "cos(x**2)+ ln(x)+0.333333*x^3 + c"
+    ground_truth_solution = "x^2/2"
     
     # Compute the reward (using three random evaluation points)
     reward = compute_score(candidate_solution, ground_truth_solution, method='strict', tol=1e-2)
