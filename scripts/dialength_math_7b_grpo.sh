@@ -1,9 +1,9 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication-japan/CustomTinyZero/data/dialength
-BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 PROJECT_NAME=verl_dialength_grpo
-EXPERIMENT_NAME=deepseek_1.5b_dialength_math_relu
+EXPERIMENT_NAME=deepseek_7b_dialength_math_relu
 
 #####################################################
 
