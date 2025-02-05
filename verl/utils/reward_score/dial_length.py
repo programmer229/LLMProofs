@@ -16,6 +16,9 @@
 import re
 import random
 
+def shifted_relu(x, beta):
+    return max(0, x - (1 - beta))
+
 def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None, tokenizer=None) -> float:
     alpha = 8
     #beta = float(re.findall(r'(?<=beta=)[^&\s]+', ground_truth)[0]) # Was not working because multiple betas were being found
@@ -49,7 +52,8 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
         print(f"is_equiv: {is_equiv_result}")
     
     if is_equiv_result == 1.0:
-        retval = (is_equiv_result * score) - (beta * response_length) / (max_response_length * 8)
+        #retval = (is_equiv_result * score) - (beta * response_length) / (max_response_length * 8) # Previous formula
+        retval = (is_equiv_result * score) - shifted_relu(x=response_length/max_response_length, beta=beta)
     else:
         retval = 0.0
 
