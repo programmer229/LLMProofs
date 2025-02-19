@@ -15,10 +15,12 @@
 
 import re
 import random
+import math
 
-def compute_score(solution_str, ground_truth, method='strict', format_score=0.1, score=1., max_response_length=None, tokenizer=None) -> float:
-    beta = 0.1
+def compute_score(solution_str, ground_truth, method='strict', format_score=0.05, score=1., max_response_length=None, tokenizer=None) -> float:
+    beta = 0.25
     confidence = extract_confidence(solution_str=solution_str)
+    
 
     do_print = random.randint(1, 16) == 1
     if do_print:
@@ -36,6 +38,8 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
                 print(f"cleaned ground_truth: {ground_truth}")
             if is_equiv(answer, str(ground_truth)):
                 is_equiv_result = 1.0
+        else:
+            is_equiv_result = 0.0
     except Exception as e:
         print(f"fuck error: {e}")
         is_equiv_result = 0.0
@@ -43,14 +47,57 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
     if do_print:
         print(f"is_equiv: {is_equiv_result}")
     
-    retval = (is_equiv_result*score) - beta * ((is_equiv_result - confidence)**2)
+    # Formatting penalty
+    # 
 
+    
+    
+    # if confidence is None:
+    #     formatting_penalty = 0.1
+    # else:
+    #     formatting_penalty = 0.0
+        # ... existing code ...
+    
+    if confidence is not None:
+        # Convert confidence percentage to probability in [0..1]
+        p = confidence / 100.0
+        
+        # (A) Base correctness reward
+        correctness_reward = is_equiv_result * score
+        
+        # (B) Cross-entropy–based calibration reward
+        #
+        # cross_entropy_loss  = - [y log(p) + (1-y) log(1-p)]
+        # cross_entropy_reward = -cross_entropy_loss = y log(p) + (1-y) log(1-p)
+        #
+        # We'll call it "xent_reward" for clarity:
+        eps = 1e-10
+        
+        xent_reward = (is_equiv_result) * math.log(p + eps) \
+                      + (1.0 - is_equiv_result) * math.log(1.0 - p + eps)
+        
+        # (C) Combine them:
+        # We add a small format bonus to encourage including \confidence{...}
+        retval = correctness_reward + beta * xent_reward + format_score
+    
+    else:
+        # If no confidence was provided, no calibration reward or format bonus
+        retval = is_equiv_result * score
+
+    
+    return min(retval, 32)
+    
+
+    print(f"confidence: {confidence}")
+    print(f"is_equiv_result: {is_equiv_result}")
+    print(f"score: {retval}")
+    print("--------------------------------")
     return retval
 
 def extract_confidence(solution_str):
     confidence = re.findall(r"\\confidence{(\d+(?:\.\d+)?)}",  solution_str)
     if len(confidence) == 0:
-        return 0.0
+        return None
     else:
         return float(confidence[-1])
 
@@ -251,3 +298,7 @@ def strip_string(string):
     string = fix_a_slash_b(string)
 
     return string
+
+
+if __name__ == "__main__":
+    compute_score("\\frac{1}{2} \\confidence{}")

@@ -30,6 +30,7 @@ def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str
     """
     Extracts the candidate integration solution from the provided solution string.
     Also filters out any candidate that directly contains an integration command.
+    Accepts both <answer>...</answer> and \boxed{...} formats.
     """
     if not solution_str or not isinstance(solution_str, str):
         return None
@@ -38,7 +39,12 @@ def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str
     candidate = None
     if method == 'strict':
         try:
-            matches = re.findall(r"<answer>(.*?)</answer>", solution_str, re.IGNORECASE | re.DOTALL)
+            # Check for <answer> tags first
+            answer_matches = re.findall(r"<answer>(.*?)</answer>", solution_str, re.IGNORECASE | re.DOTALL)
+            # Check for \boxed{} format
+            boxed_matches = re.findall(r"\\boxed{(.*?)}", solution_str, re.DOTALL)
+            # Combine matches and take the last one
+            matches = answer_matches + boxed_matches
             candidate = matches[-1].strip() if matches else None
         except Exception:
             return None
@@ -62,6 +68,11 @@ def preprocess_candidate_solution(solution: str) -> str:
         solution = solution.replace(r"\(", "").replace(r"\)", "")
         solution = solution.replace("$", "")
         solution = solution.replace("\\arctan", "atan")
+        solution = solution.replace("\\arcsin", "asin")
+        solution = solution.replace("\\arccos", "acos")
+        solution = solution.replace("^", "**")
+        solution = solution.replace("dx", "")
+        
         solution = solution.replace("\\ln", "log")
         solution = re.sub(r"\+?\s*C\b", "", solution)
         return solution.strip() or "0"  # Return "0" if empty after processing
@@ -80,6 +91,8 @@ def compute_score(solution_str: str,
     """
     Computes the reward for a candidate integration solution.
     """
+    
+
     # Early returns for invalid inputs
     if not solution_str or not ground_truth:
         return 0.0

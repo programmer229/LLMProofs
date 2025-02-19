@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """
-Preprocess the MATH dataset to parquet format for confidence interval project
+Preprocess the Numina dataset to parquet format
 """
 
 import os
@@ -21,9 +21,7 @@ import datasets
 from verl.utils.hdfs_io import copy, makedirs
 import argparse
 
-from verl.utils.reward_score.math_utils import remove_boxed, last_boxed_only_string
-import random
-
+from verl.utils.reward_score.math import remove_boxed, last_boxed_only_string
 
 
 def extract_solution(solution_str):
@@ -31,21 +29,29 @@ def extract_solution(solution_str):
 
 
 if __name__ == '__main__':
-    data_source = 'qwedsacf/competition_math'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--local_dir', default='~/data/math')
+    parser.add_argument('--hdfs_dir', default=None)
 
-    dataset = datasets.load_dataset(data_source, trust_remote_code=True)["train"]
-    split_datasets = dataset.train_test_split(test_size=0.1)
-    train_dataset = split_datasets['train']
-    test_dataset = split_datasets['test']
+    args = parser.parse_args()
 
+    data_source = 'AI-MO/NuminaMath-CoT'
+
+    dataset = datasets.load_dataset(data_source, trust_remote_code=True)
+
+    train_dataset = dataset['train']
+    test_dataset = dataset['test']
+
+    instruction_following = """Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}. 
+            After answering you should reflec deeply on your confidence in your answer and state your confidence from 0 to 100 for your answer clearly within \\confidence{}. 
+            Don't just output 0 or 100 confidence but really reflect and hedge your confidence."""
+    
     # add a row to each data item that represents a unique id
     def make_map_fn(split):
 
-        def process_fn(example, idx):            
+        def process_fn(example, idx):
             question = example.pop('problem')
-            instruction_following = """Show your full working out. You should explore and relfect often solving the problem like an expert mathmatician. Checking and reflecting after each step. State your final answer clearly within \\boxed{}. 
-            After answering you should reflec deeply on your confidence in your answer and state your confidence from 0 to 100 for your answer clearly within \\confidence{}. 
-            Don't just output 0 or 100 confidence but really reflect and hedge your confidence."""
+
             question = question + ' ' + instruction_following
 
             answer = example.pop('solution')
@@ -55,7 +61,7 @@ if __name__ == '__main__':
                 solution = answer # These are the proofs questions
 
             data = {
-                "data_source": "conf",
+                "data_source": data_source,
                 "prompt": [{
                     "role": "user",
                     "content": question
@@ -79,7 +85,7 @@ if __name__ == '__main__':
 
     local_dir = '/home/ubuntu/o1-replication/CustomTinyZero/data/conf'
 
-    train_dataset.to_parquet(os.path.join(local_dir, 'train_conf_math.parquet'))
-    test_dataset.to_parquet(os.path.join(local_dir, 'test_conf_math.parquet'))
+    train_dataset.to_parquet(os.path.join(local_dir, 'train_numina.parquet'))
+    test_dataset.to_parquet(os.path.join(local_dir, 'test_numina.parquet'))
 
-    print(f"MATH dataset with confidence prompt appended created successfully")
+    print(f"Numina dataset created successfully")

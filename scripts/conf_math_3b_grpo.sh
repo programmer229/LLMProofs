@@ -1,10 +1,10 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/conf
-BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B # 7B model
+BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct # 1.5B model
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
 PROJECT_NAME=verl_conf_grpo
-EXPERIMENT_NAME=qwen2.5_7b_cross_entropy_conf_numina_math
+EXPERIMENT_NAME=llama_3.2_1_3b_conf_math
 
 #####################################################
 
@@ -29,12 +29,12 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/test_conf_math.parquet \
-    data.val_files=$DATA_DIR/train_conf_math.parquet \
+    data.train_files=$DATA_DIR/train_conf_math.parquet \
+    data.val_files=$DATA_DIR/test_conf_math.parquet \
     data.train_batch_size=256 \
     data.val_batch_size=256 \
-    data.max_prompt_length=4048 \
-    data.max_response_length=4048 \
+    data.max_prompt_length=2048 \
+    data.max_response_length=2048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
