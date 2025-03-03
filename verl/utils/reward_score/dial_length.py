@@ -29,19 +29,19 @@ def compute_score(solution_str, ground_truth, method='strict', format_score=0.1,
     clean_ground_truth = ground_truth[:-9] # Much easier solution. I know the beta is always the last 4 chars since that's where I put them
 
     do_print = random.randint(1, 16) == 1
-    if do_print:
-        print(f"solution_str: {solution_str}")
-        print(f"ground_truth: {ground_truth}")
-        print(f"clean_ground_truth: {clean_ground_truth}")
+    # if do_print:
+    #     print(f"solution_str: {solution_str}")
+    #     print(f"ground_truth: {ground_truth}")
+    #     print(f"clean_ground_truth: {clean_ground_truth}")
     
     is_equiv_result = 0.0
     try:
         string_in_last_boxed = last_boxed_only_string(solution_str)
         if string_in_last_boxed is not None:
             answer = remove_boxed(string_in_last_boxed)
-            if do_print:
-                print(f"cleaned answer: {answer}")
-                print(f"cleaned ground_truth: {clean_ground_truth}")
+            # if do_print:
+            #     print(f"cleaned answer: {answer}")
+            #     print(f"cleaned ground_truth: {clean_ground_truth}")
             if is_equiv(answer, str(clean_ground_truth)):
                 is_equiv_result = 1.0
     except Exception as e:
