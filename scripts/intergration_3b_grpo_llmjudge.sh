@@ -3,7 +3,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/integration_3b_llmjudge
 BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo
+EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo_numericval
 PROJECT_NAME=verl_intergration
 
 #####################################################

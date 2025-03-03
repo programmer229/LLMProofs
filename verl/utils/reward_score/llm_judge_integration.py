@@ -6,6 +6,7 @@ the standard compute_score functions verl provies which take in a single solutio
 
 from verl.utils.reward_score.llm_judge_base import judge
 import re, torch
+import random
 
 def compute_score(solutions_batch, 
                   ground_truth_batch, 
@@ -46,6 +47,19 @@ def compute_score(solutions_batch,
                             async_reward=async_reward)
             
     # Step 3: Parse the judge response and gather a score for each solution (including formatting score)
+
+    # Print 10 random responses for debugging
+    num_samples = min(10, len(judge_responses))
+    sample_indices = random.sample(range(len(judge_responses)), num_samples)
+    print("\nSample of judge responses:")
+    for idx in sample_indices:
+        print(f"\nSolution {idx}:")
+        print(solutions_batch[idx])
+        print(f"\nGround Truth {idx}:")
+        print(ground_truth_batch[idx])
+        print(f"\nJudge Response {idx}:")
+        print(judge_responses[idx])
+        print("-" * 80)
 
     correct_scores = [extract_judge_score(response) for response in judge_responses]
     format_scores = [0.05 if sol is not None else 0 for sol in processed_solutions]
