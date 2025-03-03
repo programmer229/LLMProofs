@@ -79,7 +79,7 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
     # Perform the inference on the returned client object:
 
     # OpenAI or DeepInfra
-    if client_service == "openai" or client_service == "together":
+    if client_service == "openai":
         # If the client object has been setup
         response = await client.chat.completions.create(
                 model=model,
@@ -89,6 +89,18 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
             )
         
         content = response.choices[0].message.content.strip()
+        return content
+
+    if client_service == "together":
+        # If the client object has been setup
+        response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+                max_tokens=max_tokens,
+                temperature=temperature
+            )
+        
+        content = response.choices[0].message.content
         return content
 
     # Anthropic
