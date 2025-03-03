@@ -148,14 +148,14 @@ def compute_score(solution_str: str,
 
 # Example usage:
 if __name__ == "__main__":
-    # For example, consider the antiderivative problem:
-    #    ∫1/x dx = log(x) + C
+    # For example, consider the definite integral problem:
+    #    ∫[0 to 1] x dx = 1/2
     # A candidate solution (possibly coming from a model) might be:
-    candidate_solution = "Random text before <answer>integrate(x, x) </answer> Extra text after"
+    candidate_solution = "Random text before <answer>1/2</answer> Extra text after"
     
-    # The ground truth solution is provided as:
-    ground_truth_solution = "x^2/2"
+    # The ground truth solution is:
+    ground_truth_solution = "1/2"
     
-    # Compute the reward (using three random evaluation points)
+    # Compute the reward (this will work for definite integrals since we're just comparing values)
     reward = compute_score(candidate_solution, ground_truth_solution, method='strict', tol=1e-2)
     print("Reward:", reward)
