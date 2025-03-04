@@ -6,7 +6,8 @@ the standard compute_score functions verl provies which take in a single solutio
 
 from verl.utils.reward_score.llm_judge_base import judge
 import re, torch
-import random
+import random, sys
+from verl.utils.reward_score.integration_numeric import compute_score as compute_score_numeric
 
 def compute_score(solutions_batch, 
                   ground_truth_batch, 
@@ -18,13 +19,13 @@ def compute_score(solutions_batch,
     # Step 1: Create your prompts
     
     system_prompt = "You are an expert at mathematical differentiation."
-    prompt_template = "Please differentiate the following function, {} and determine if it is functionally equal to {}. Output <JUDGE_SCORE>1</JUDGE_SCORE> if they are equal, and <JUDGE_SCORE>0</JUDGE_SCORE> if they are not equal."
+    prompt_template = "Please check if the following is a valid function: {}. If it is, differentiate it and determine if it is functionally equal to {}. Output <JUDGE_SCORE>1</JUDGE_SCORE> if they are equal. Output <JUDGE_SCORE>0</JUDGE_SCORE> if they are not equal or if it is not a valid function. Ignore constants of integration."
 
     processed_solutions = [extract_candidate_solution(sol) for sol in solutions_batch]
     processed_ground_truth = [extract_integral(gt) for gt in ground_truth_batch]
 
     prompts = []
-    for sol, gt in zip(processed_solutions, processed_ground_truth):
+    for sol, gt in zip(processed_solutions, ground_truth_batch):
         prompt = prompt_template.format(sol, gt)
         prompts.append(prompt)
 
@@ -34,7 +35,7 @@ def compute_score(solutions_batch,
     async_reward = False # We want to use the synchronous reward
     api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
     client_service = "together"
-    max_tokens = 1000
+    max_tokens = 700
     temperature = 0.7
 
     judge_responses = judge(model=api_model,  # Either model name or path to model 
@@ -61,9 +62,13 @@ def compute_score(solutions_batch,
         print(judge_responses[idx])
         print("-" * 80)
 
-    correct_scores = [extract_judge_score(response) for response in judge_responses]
-    format_scores = [0.05 if sol is not None else 0 for sol in processed_solutions]
-    total_scores = [correct + format for correct, format in zip(correct_scores, format_scores)]
+    total_scores = []
+    format_scores = [0.05 if (sol is not None) and (sol is not "") else 0 for sol in processed_solutions]
+    correct_scores = [extract_judge_score(response) if format_score > 0 else 0 for response, format_score in zip(judge_responses, format_scores)]
+    
+    # Only add the correct_score from the LLM judge if the output response is formatted correctly.
+    # This way, we don't reward the model for outputting the wrong format.
+    total_scores = [format_score + correct_score for format_score, correct_score in zip(format_scores, correct_scores)]
 
     # Step 4: Convert the scores to a reward tensor
 
@@ -84,6 +89,8 @@ def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str
     Extracts the candidate integration solution from the provided solution string.
     Also filters out any candidate that directly contains an integration command.
     """
+
+    solution_str = solution_str.split("</instruction>")[-1] if "</instruction>" in solution_str else solution_str
     if not solution_str or not isinstance(solution_str, str):
         return None
         
