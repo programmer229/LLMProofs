@@ -3,7 +3,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/integration_3b_llmjudge
 BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo_numericval
+EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo_numericval2
 PROJECT_NAME=verl_intergration
 
 #####################################################
@@ -29,8 +29,8 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/integration_train.parquet \
-    data.val_files=$DATA_DIR/integration_test.parquet \
+    data.train_files=$DATA_DIR/train.parquet \
+    data.val_files=$DATA_DIR/test.parquet \
     +judge.model=$BASE_MODEL \
     +judge.location=local \
     +judge.gpus=4 \

@@ -6,7 +6,7 @@ from typing import Optional, List
 Assumptions:
 - All data in the dataset have the same data_source (being an LLM as a judge). This is necessary.
 - The reward function name must have "llm_judge" in it for it to be considered an LLM as a judge.
-- The test parquet file has a data_source which is not the LLM judge (for a proper evaluation).
+- The test parquet file has a data_source which is not the LLM judge (for a proper evaluation). For example, for integration val parquets the data_source is "numeric_integration"
 """
 
 
