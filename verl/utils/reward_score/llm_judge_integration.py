@@ -25,7 +25,7 @@ def compute_score(solutions_batch,
     processed_ground_truth = [extract_integral(gt) for gt in ground_truth_batch]
 
     prompts = []
-    for sol, gt in zip(processed_solutions, ground_truth_batch):
+    for sol, gt in zip(processed_solutions, processed_ground_truth):
         prompt = prompt_template.format(sol, gt)
         prompts.append(prompt)
 
@@ -33,7 +33,7 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
+    api_model = "Qwen/Qwen2.5-7B-Instruct-Turbo"
     client_service = "together"
     max_tokens = 700
     temperature = 0.7
