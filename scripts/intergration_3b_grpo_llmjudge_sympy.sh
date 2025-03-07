@@ -1,10 +1,10 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/probability
-BASE_MODEL=Qwen/Qwen2.5-7B-Instruct # 1.5B model
-#BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
-PROJECT_NAME=verl_prob_math_grpo
-EXPERIMENT_NAME=llama_3.2_1_3b_prob_math
+DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/integration_3b_llmjudge_sympy
+BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
+#BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
+EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo_sympy
+PROJECT_NAME=verl_intergration
 
 #####################################################
 
@@ -19,11 +19,11 @@ if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$E
     # fi
 fi
 
-mkdir -p /home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
-LOG_FILE=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+mkdir -p /home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+LOG_FILE=/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
@@ -31,12 +31,15 @@ python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
     data.train_files=$DATA_DIR/train.parquet \
     data.val_files=$DATA_DIR/test.parquet \
-    data.train_batch_size=256 \
-    data.val_batch_size=128 \
-    data.max_prompt_length=1024 \
+    +judge.model=$BASE_MODEL \
+    +judge.location=local \
+    +judge.gpus=4 \
+    data.train_batch_size=16 \
+    data.val_batch_size=100 \
+    data.max_prompt_length=512 \
     data.max_response_length=1024 \
     actor_rollout_ref.model.path=$BASE_MODEL \
-    actor_rollout_ref.actor.optim.lr=3e-7 \
+    actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=256 \
     actor_rollout_ref.actor.use_dynamic_bsz=True \
@@ -53,7 +56,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.6 \
     actor_rollout_ref.rollout.n=5 \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
-    algorithm.kl_ctrl.kl_coef=0.002 \
+    algorithm.kl_ctrl.kl_coef=0.001 \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name=$PROJECT_NAME \
@@ -64,5 +67,4 @@ python3 -m verl.trainer.main_ppo \
     trainer.test_freq=10 \
     trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.total_epochs=15 $@ 2>&1 | tee -a $LOG_FILE
-    
+    trainer.total_epochs=200 $@ 2>&1 | tee -a $LOG_FILE
