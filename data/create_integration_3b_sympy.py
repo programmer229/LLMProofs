@@ -119,7 +119,7 @@ def variants_to_parquet(train_questions, test_questions, output_path: str) -> No
         
         # Build a sample dictionary
         sample = {
-            "data_source": "llm_judge_integration",
+            "data_source": "llm_judge_integration_sympy",
             "prompt": [{
                 "role": "user",
                 "content": prompt_content
@@ -199,4 +199,4 @@ if __name__ == '__main__':
                     if 'variant' in variant_dict:
                         TRAIN_QUESTIONS.append(variant_dict['variant'])
 
-    variants_to_parquet(TRAIN_QUESTIONS,TEST_QUESTIONS, '/home/ubuntu/o1-replication/CustomTinyZero/data/integration_3b_llmjudge')
+    variants_to_parquet(TRAIN_QUESTIONS,TEST_QUESTIONS, '/home/ubuntu/o1-replication/CustomTinyZero/data/integration_3b_llmjudge_sympy')
