@@ -1,22 +1,41 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/intergration
-BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct
+DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/integration_3b_llmjudge
+BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=llama3.2_1b_integration
+EXPERIMENT_NAME=llama3.2_3b_integration_llmjudge_grpo_numericval6
 PROJECT_NAME=verl_intergration
+
+#####################################################
+
+if [ -d "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
+    echo "Directory already exists. You might overwrite existing saved models and logs!!!"
+    echo "It is recommended to use a different experiment name, unless you are sure this experiment can be overwritten."
+    echo "Are you sure you want to run with the current experiment name? (Y/n)"
+    read answer
+    # if [ "$answer" != "Y" ]; then
+    #     echo "Exiting..."
+    #     exit 1
+    # fi
+fi
+
+mkdir -p /home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+LOG_FILE=/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+
+# Save a copy of this script to the experiment directory
+cp "$0" "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
-
-
-
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/integration_train.parquet \
-    data.val_files=$DATA_DIR/integration_test.parquet \
-    data.train_batch_size=8 \
-    data.val_batch_size=1312 \
+    data.train_files=$DATA_DIR/train.parquet \
+    data.val_files=$DATA_DIR/test.parquet \
+    +judge.model=$BASE_MODEL \
+    +judge.location=local \
+    +judge.gpus=4 \
+    data.train_batch_size=16 \
+    data.val_batch_size=100 \
     data.max_prompt_length=512 \
     data.max_response_length=1024 \
     actor_rollout_ref.model.path=$BASE_MODEL \
@@ -40,8 +59,8 @@ python3 -m verl.trainer.main_ppo \
     algorithm.kl_ctrl.kl_coef=0.001 \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
-    trainer.project_name='verl_intergration' \
-    trainer.experiment_name='llama3.2_3b_intergration_rl' \
+    trainer.project_name=$PROJECT_NAME \
+    trainer.experiment_name=$EXPERIMENT_NAME \
     trainer.n_gpus_per_node=8 \
     trainer.nnodes=1 \
     trainer.save_freq=10 \
