@@ -15,6 +15,7 @@ def timeout_handler(signum, frame):
 signal.signal(signal.SIGALRM, timeout_handler)
 
 def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str:
+    solution_str = solution_str.split("</instruction>")[-1] if "</instruction>" in solution_str else solution_str
     if not solution_str or not isinstance(solution_str, str):
         return None
         

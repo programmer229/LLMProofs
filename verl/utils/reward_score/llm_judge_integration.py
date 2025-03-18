@@ -38,8 +38,8 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "Qwen/Qwen2.5-7B-Instruct-Turbo"
-    client_service = "together"
+    api_model = "gpt-4o-2024-11-20"
+    client_service = "openai"
     max_tokens = 2000
     temperature = 0.7
 
