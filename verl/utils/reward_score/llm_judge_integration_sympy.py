@@ -56,7 +56,7 @@ def compute_score(solutions_batch,
     ################### STEP 3: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration_llmjudge_grpo_sympy"
+    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration_llmjudge_grpo_sympy2"
 
     # Logging proportion of correctly formatted solutions for this step
     correctly_formatted = [correct_formatting(sol) for sol in processed_solutions]
