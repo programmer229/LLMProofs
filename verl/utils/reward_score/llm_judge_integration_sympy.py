@@ -38,7 +38,7 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
+    api_model = "Qwen/Qwen2.5-7B-Instruct"
     client_service = "together"
     max_tokens = 1000
     temperature = 0.7
@@ -56,7 +56,7 @@ def compute_score(solutions_batch,
     ################### STEP 3: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration_llmjudge_grpo_sympy2"
+    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration_llmjudge_grpo_sympy"
 
     # Logging proportion of correctly formatted solutions for this step
     correctly_formatted = [correct_formatting(sol) for sol in processed_solutions]
