@@ -52,25 +52,53 @@ def compute_score(solutions_batch,
                             temperature=temperature,
                             local_model=local_model,
                             async_reward=async_reward)
-    
+            
     ############################################################################
-    ################### STEP 3: LOGGING EXTRA METRICS #######################
+    ################### STEP 3: PARSE JUDGE RESPONSE #########################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/qwen2.5_7b_integration_llmjudge_grpo_sympy"
+    # Print 10 random responses for debugging
+    num_samples = min(10, len(judge_responses))
+    sample_indices = random.sample(range(len(judge_responses)), num_samples)
+    print("\nSample of judge responses:")
+    for idx in sample_indices:
+        print(f"\nSolution {idx}:")
+        print(solutions_batch[idx])
+        print(f"\nGround Truth {idx}:")
+        print(ground_truth_batch[idx])
+        print(f"\nJudge Response {idx}:")
+        print(judge_responses[idx])
+        print("-" * 80)
 
     # Logging proportion of correctly formatted solutions for this step
     correctly_formatted = [correct_formatting(sol) for sol in processed_solutions]
     num_correctly_formatted = sum(correctly_formatted)
 
+
+    total_scores = []
+
+    # Uses the gold standard format score instead of the LLM judge's format score.
+    correct_scores = [extract_judge_score(response) if format_score else 0 for response, format_score in zip(judge_responses, correctly_formatted)]
+    
+    # Only add the correct_score from the LLM judge if the output response is formatted correctly.
+    # This way, we don't reward the model for outputting the wrong format.
+    total_scores = [0.05*float(format_score) + correct_score for format_score, correct_score in zip(correctly_formatted, correct_scores)]
+
+    # Step 4: Convert the scores to a reward tensor
+    for i, score in enumerate(total_scores):
+        reward_tensor[i, valid_response_lengths[i] - 1] = score
+    
+    ############################################################################
+    ################### STEP 4: LOGGING EXTRA METRICS #######################
+    ############################################################################
+
+    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore"
+
     # Integration numeric scores (golden scoring metric)
     gold_scores = [compute_score_numeric(solution_str=sol, ground_truth=gt) for sol, gt in zip(solutions_batch, ground_truth_batch)]
     
     # Calculate misclassification error by comparing total_scores and gold_scores
-    num_correctly_scored = sum(1 for ts, gs in zip(total_scores, gold_scores) 
-                                 if (ts == 0 and gs == 0) or 
-                                    (ts == 0.05 and gs == 0.05) or 
-                                    (ts == 1.05 and gs == 1.05))
+    num_correctly_scored = sum(1 for ts, gs in zip(total_scores, gold_scores) if ts == gs)
     
     custom_metrics = {
         "batch_size": len(solutions_batch),
@@ -98,8 +126,7 @@ def compute_score(solutions_batch,
             "processed_ground_truth": extract_integral(ground_truth_batch[idx]),
             "judge_response": judge_responses[idx],
             "extracted_judge_score": correct_scores[idx],
-            "format_score": format_scores[idx], 
-            "total_score": total_scores[idx],
+            "total_reward_score": total_scores[idx],
             "gold_score": gold_scores[idx]
         }
         question_details[question_id] = question_dict
@@ -145,8 +172,8 @@ def compute_score(solutions_batch,
     total_scores = [0.05*float(format_score) + correct_score for format_score, correct_score in zip(correctly_formatted, correct_scores)]
 
     # Step 4: Convert the scores to a reward tensor
-    # for i, score in enumerate(total_scores):
-    #     reward_tensor[i, valid_response_lengths[i] - 1] = score
+    for i, score in enumerate(total_scores):
+        reward_tensor[i, valid_response_lengths[i] - 1] = score
 
     # return reward_tensor
     return gold_scores
