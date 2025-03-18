@@ -35,10 +35,10 @@ def compute_rates(question_logs_file):
         
         # Calculate false negative rate for this batch
         if batch_size > 0:
-            fn_rate = false_negatives / batch_size
-            fp_rate = false_positives / batch_size
-            tp_rate = true_positives / batch_size
-            tn_rate = true_negatives / batch_size
+            fn_rate = false_negatives #/ batch_size
+            fp_rate = false_positives #/ batch_size
+            tp_rate = true_positives #/ batch_size
+            tn_rate = true_negatives #/ batch_size
             
             correctness_rates.append({
                 'batch_size': batch_size,
@@ -60,12 +60,14 @@ def compute_rates(question_logs_file):
     
 def plot_correctness_metrics(correctness_rates, file_path):
     steps = list(range(1, len(correctness_rates) + 1))
+    batch_sizes = [item['batch_size'] for item in correctness_rates]
     false_negatives = [item['false_negative_rate'] for item in correctness_rates]
     false_positives = [item['false_positive_rate'] for item in correctness_rates]
     true_positives = [item['true_positive_rate'] for item in correctness_rates]
     true_negatives = [item['true_negative_rate'] for item in correctness_rates]
 
     plt.figure(figsize=(10, 5))
+    plt.plot(steps, batch_sizes, label='Batch Size')
     plt.plot(steps, false_negatives, label='False Negatives')
     plt.plot(steps, false_positives, label='False Positives')
     plt.plot(steps, true_positives, label='True Positives')
