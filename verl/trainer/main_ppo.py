@@ -17,14 +17,14 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, sympy_parsable
+from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
 
 def _select_rm_score_fn(data_source):
     if data_source == 'openai/gsm8k':
         return gsm8k.compute_score
-    elif data_source == 'lighteval/MATH':
+    elif data_source == 'lighteval/MATH' or data_source == 'math' or data_source == 'probability':
         return math_utils.compute_score
     elif "multiply" in data_source or "arithmetic" in data_source:
         return multiply.compute_score
@@ -44,6 +44,10 @@ def _select_rm_score_fn(data_source):
         return dial_length.compute_score
     elif "integration_numeric" in data_source:
         return integration_numeric.compute_score
+    elif "llm_judge_integration" in data_source: # Formatting score comes from just being between <ANSWER> tags
+        return llm_judge_integration.compute_score
+    elif "llm_judge_integration_sympy" in data_source: # Formatting score comes from sympy parser
+        return llm_judge_integration_sympy.compute_score
     elif "integration" in data_source:
         return integration.compute_score
     elif "conf" in data_source:
@@ -74,41 +78,87 @@ class RewardManager():
 
         already_print_data_sources = {}
 
-        for i in range(len(data)):
-            data_item = data[i]  # DataProtoItem
+        data_source = data[0].non_tensor_batch['data_source']
 
-            prompt_ids = data_item.batch['prompts']
+        if "llm_judge" not in data_source:
 
-            prompt_length = prompt_ids.shape[-1]
+            for i in range(len(data)):
+                data_item = data[i]  # DataProtoItem
 
-            valid_prompt_length = data_item.batch['attention_mask'][:prompt_length].sum()
-            valid_prompt_ids = prompt_ids[-valid_prompt_length:]
+                prompt_ids = data_item.batch['prompts']
 
-            response_ids = data_item.batch['responses']
-            valid_response_length = data_item.batch['attention_mask'][prompt_length:].sum()
-            valid_response_ids = response_ids[:valid_response_length]
+                prompt_length = prompt_ids.shape[-1]
 
-            # decode
-            sequences = torch.cat((valid_prompt_ids, valid_response_ids))
-            sequences_str = self.tokenizer.decode(sequences)
+                valid_prompt_length = data_item.batch['attention_mask'][:prompt_length].sum()
+                valid_prompt_ids = prompt_ids[-valid_prompt_length:]
 
-            ground_truth = data_item.non_tensor_batch['reward_model']['ground_truth']
+                response_ids = data_item.batch['responses']
+                valid_response_length = data_item.batch['attention_mask'][prompt_length:].sum()
+                valid_response_ids = response_ids[:valid_response_length]
 
-            # select rm_score
-            data_source = data_item.non_tensor_batch['data_source']
+                # decode
+                sequences = torch.cat((valid_prompt_ids, valid_response_ids))
+                sequences_str = self.tokenizer.decode(sequences)
+
+                ground_truth = data_item.non_tensor_batch['reward_model']['ground_truth']
+
+                # select rm_score
+                data_source = data_item.non_tensor_batch['data_source']
+                compute_score_fn = _select_rm_score_fn(data_source)
+
+                score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth, max_response_length=self.max_response_length, tokenizer=self.tokenizer)
+                reward_tensor[i, valid_response_length - 1] = score
+
+                if data_source not in already_print_data_sources:
+                    already_print_data_sources[data_source] = 0
+
+                if already_print_data_sources[data_source] < self.num_examine:
+                    already_print_data_sources[data_source] += 1
+                    print(sequences_str)
+
+            return reward_tensor
+    
+        if "llm_judge" in data_source:
+
+            solutions_batch = []
+            ground_truth_batch = []
+            valid_response_lengths = []
+
+            for i in range(len(data)):
+                data_item = data[i]  # DataProtoItem
+
+                prompt_ids = data_item.batch['prompts']
+
+                prompt_length = prompt_ids.shape[-1]
+
+                valid_prompt_length = data_item.batch['attention_mask'][:prompt_length].sum()
+                valid_prompt_ids = prompt_ids[-valid_prompt_length:]
+
+                response_ids = data_item.batch['responses']
+                valid_response_length = data_item.batch['attention_mask'][prompt_length:].sum()
+                valid_response_ids = response_ids[:valid_response_length]
+
+                # decode
+                sequences = torch.cat((valid_prompt_ids, valid_response_ids))
+                sequences_str = self.tokenizer.decode(sequences)
+                ground_truth = data_item.non_tensor_batch['reward_model']['ground_truth']
+
+                solutions_batch.append(sequences_str)
+                ground_truth_batch.append(ground_truth)
+                valid_response_lengths.append(valid_response_length)
+
+                if data_source not in already_print_data_sources:
+                    already_print_data_sources[data_source] = 0
+
+                if already_print_data_sources[data_source] < self.num_examine:
+                    already_print_data_sources[data_source] += 1
+                    print(sequences_str)
+                
             compute_score_fn = _select_rm_score_fn(data_source)
 
-            score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth, max_response_length=self.max_response_length, tokenizer=self.tokenizer)
-            reward_tensor[i, valid_response_length - 1] = score
+            reward_tensor = compute_score_fn(solutions_batch=solutions_batch, ground_truth_batch=ground_truth_batch, valid_response_lengths=valid_response_lengths, max_response_length=self.max_response_length, tokenizer=self.tokenizer, reward_tensor=reward_tensor)
 
-            if data_source not in already_print_data_sources:
-                already_print_data_sources[data_source] = 0
-
-            if already_print_data_sources[data_source] < self.num_examine:
-                already_print_data_sources[data_source] += 1
-                print(sequences_str)
-
-        return reward_tensor
+            return reward_tensor
 
 
 import ray
@@ -191,6 +241,10 @@ def main_task(config):
             raise NotImplementedError
         role_worker_mapping[Role.RewardModel] = ray.remote(RewardModelWorker)
         mapping[Role.RewardModel] = global_pool_id
+    
+    # if config.judge.location == "local":
+    #     model = AutoModelForCausalLM.from_pretrained(config.judge.model)
+    #     tokenizer = AutoTokenizer.from_pretrained(config.judge.model)
 
     reward_fn = RewardManager(tokenizer=tokenizer, num_examine=0, max_response_length=config.data.max_response_length)
 

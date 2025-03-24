@@ -3,8 +3,8 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/intergration
 # BASE_MODEL=meta-llama/Llama-3.2-3B-Instruct
 # BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
-BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration_mit1.0/Qwen2.5Math_7b_intergration_mit1.1_rl_continued/actor/global_step_30
-EXPERIMENT_NAME=Qwen2.5Math_7b_intergration_mit1.2_rl_continued
+BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration_mit1.0/Qwen2.5Math_7b_intergration_mit1.2_rl_continued/actor/global_step_60
+EXPERIMENT_NAME=Qwen2.5Math_7b_intergration_mit1.3_rl_continued
 PROJECT_NAME=verl_intergration_mit1.0
 
 
