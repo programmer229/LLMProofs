@@ -1,14 +1,14 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/conf
+DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/conf
 BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B # 7B model
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
-PROJECT_NAME=verl_conf_grpo
+PROJECT_NAME=verl_conf_grpo_test
 EXPERIMENT_NAME=qwen2.5_7b_cross_entropy_conf_numina_math
 
 #####################################################
 
-if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
+if [ -d "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
     echo "Directory already exists. You might overwrite existing saved models and logs!!!"
     echo "It is recommended to use a different experiment name, unless you are sure this experiment can be overwritten."
     echo "Are you sure you want to run with the current experiment name? (Y/n)"
@@ -19,11 +19,11 @@ if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$E
     # fi
 fi
 
-mkdir -p /home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
-LOG_FILE=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+mkdir -p /home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+LOG_FILE=/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
@@ -62,7 +62,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.nnodes=1 \
     trainer.save_freq=10 \
     trainer.test_freq=10 \
-    trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_hdfs_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_local_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.total_epochs=15 $@ 2>&1 | tee -a $LOG_FILE
     
