@@ -17,7 +17,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric
+from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, sympy_parsable
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
 
@@ -48,6 +48,8 @@ def _select_rm_score_fn(data_source):
         return integration.compute_score
     elif "conf" in data_source:
         return conf.compute_score
+    elif "sympy_parsable" == data_source:
+        return sympy_parsable.compute_score
     else:
         raise NotImplementedError
 
