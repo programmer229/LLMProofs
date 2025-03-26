@@ -38,8 +38,8 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "gpt-4o-2024-11-20"
-    client_service = "openai"
+    api_model = "deepseek-ai/DeepSeek-R1"
+    client_service = "together"
     max_tokens = 1000
     temperature = 0.7
 
@@ -126,7 +126,8 @@ def compute_score(solutions_batch,
             "judge_response": judge_responses[idx],
             "extracted_judge_score": correct_scores[idx],
             "total_reward_score": total_scores[idx],
-            "gold_score": gold_scores[idx]
+            "gold_score": gold_scores[idx],
+            "format_score": correctly_formatted[idx]
         }
         question_details[question_id] = question_dict
 
