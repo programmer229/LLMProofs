@@ -82,12 +82,18 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
     if client_service == "openai":
      
         # If the client object has been setup
-        response = await client.chat.completions.create(
-            model=model,
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
-            max_tokens=max_tokens,
-            temperature=temperature
-        )
+        if "o3" in model or "o1" in model:
+            response = await client.chat.completions.create(
+                model=model,
+                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+            )
+        else:
+            response = await client.chat.completions.create(
+                model=model,
+                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+                max_tokens=max_tokens,
+                temperature=temperature
+            )
         
         content = response.choices[0].message.content
         return content
