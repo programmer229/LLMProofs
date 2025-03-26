@@ -46,7 +46,6 @@ def _select_rm_score_fn(data_source):
     elif "dial_length" in data_source:
         return dial_length.compute_score
     elif "integration_numeric" == data_source:
-    elif "integration_numeric" == data_source:
         return integration_numeric.compute_score
     elif "llm_judge_integration" == data_source: # Formatting score comes from just being between <ANSWER> tags
         return llm_judge_integration.compute_score
