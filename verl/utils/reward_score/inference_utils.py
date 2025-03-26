@@ -93,12 +93,14 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
 
     if client_service == "together":
         # If the client object has been setup
+        print(f"Generating text with Together model {model}")
         response = client.chat.completions.create(
                 model=model,
                 messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
                 max_tokens=max_tokens,
                 temperature=temperature
             )
+        print(f"Received response")
         
         content = response.choices[0].message.content
         return content

@@ -38,7 +38,7 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "Qwen/Qwen2.5-7B-Instruct"
+    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
     client_service = "together"
     max_tokens = 1000
     temperature = 0.7
@@ -91,7 +91,7 @@ def compute_score(solutions_batch,
     ################### STEP 4: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore"
+    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore"
 
     # Integration numeric scores (golden scoring metric)
     gold_scores = [compute_score_numeric(solution_str=sol, ground_truth=gt) for sol, gt in zip(solutions_batch, ground_truth_batch)]
