@@ -21,8 +21,8 @@ def compute_rates(question_logs_file):
         for q_num in batch:
             if q_num.startswith('q'):  # Only process question entries
                 question = batch[q_num]
-                if question["format_score"] == 0.0:
-                    continue
+                # if question["gold_score"] == 0.0:
+                #     continue
                 batch_size += 1
                 if (question['extracted_judge_score'] == 0) and (question['gold_score'] > 0.5):
                     false_negatives += 1
@@ -78,9 +78,29 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(file_path)
     plt.close()
 
+    # Plot FP / (FP + TN)
+    fp_rates = [item['false_positive_rate'] / (item['false_positive_rate'] + item['true_negative_rate'] + 1e-10) for item in correctness_rates]
+    plt.figure(figsize=(10, 5))
+    plt.plot(steps, fp_rates, label='FP / (FP + TN)')
+    plt.xlabel('Steps')
+    plt.ylabel('Rate')
+    plt.title('False Positives / (False Positives + True Negatives)')
+    plt.legend()
+    plt.savefig(os.path.join(os.path.dirname(file_path), 'fp_rates.png'))
+
+    # Plot FN / (FN + TP)
+    fn_rates = [item['false_negative_rate'] / (item['false_negative_rate'] + item['true_positive_rate'] + 1e-10) for item in correctness_rates]
+    plt.figure(figsize=(10, 5))
+    plt.plot(steps, fn_rates, label='FN / (FN + TP)')
+    plt.xlabel('Steps')
+    plt.ylabel('Rate')
+    plt.title('False Negatives / (False Negatives + True Positives)')
+    plt.legend()
+    plt.savefig(os.path.join(os.path.dirname(file_path), 'fn_rates.png'))
+
 if __name__ == "__main__":
-    question_logs_file = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/qwen2.5_7b_integration_llmjudge_grpo_sympy2/question_logs.json"
-    plot_file_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/qwen2.5_7b_integration_llmjudge_grpo_sympy2/correctness_metrics.png"
+    question_logs_file = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/question_logs.json"
+    plot_file_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/correctness_metrics.png"
     
     correctness_rates = compute_rates(question_logs_file)
     plot_correctness_metrics(correctness_rates, plot_file_path)

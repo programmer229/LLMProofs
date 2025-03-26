@@ -23,6 +23,6 @@ def plot_failure_metrics(file_path):
     plt.close()
 
 if __name__ == "__main__":
-    failure_metrics_file = '/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/qwen2.5_7b_integration_llmjudge_grpo_sympy2/failure_metrics.json'
+    failure_metrics_file = '/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore/failure_metrics.json'
 
     plot_failure_metrics(failure_metrics_file)

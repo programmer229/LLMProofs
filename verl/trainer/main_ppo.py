@@ -42,13 +42,13 @@ def _select_rm_score_fn(data_source):
         return math_utils.compute_score
     elif "dial_length" in data_source:
         return dial_length.compute_score
-    elif "integration_numeric" in data_source:
+    elif "integration_numeric" == data_source:
         return integration_numeric.compute_score
-    elif "llm_judge_integration" in data_source: # Formatting score comes from just being between <ANSWER> tags
-        return llm_judge_integration.compute_score
-    elif "llm_judge_integration_sympy" in data_source: # Formatting score comes from sympy parser
+    elif "llm_judge_integration_sympy" == data_source: # Formatting score comes from sympy parser
         return llm_judge_integration_sympy.compute_score
-    elif "integration" in data_source:
+    elif "llm_judge_integration" == data_source: # Formatting score comes from just being between <ANSWER> tags
+        return llm_judge_integration.compute_score
+    elif "integration" == data_source:
         return integration.compute_score
     elif "conf" in data_source:
         return conf.compute_score
