@@ -127,7 +127,7 @@ def compute_score(solutions_batch,
             "extracted_judge_score": correct_scores[idx],
             "total_reward_score": total_scores[idx],
             "gold_score": gold_scores[idx],
-            "correct_formatting": correctly_formatted[idx]
+            "format_score": correctly_formatted[idx]
         }
         question_details[question_id] = question_dict
 
