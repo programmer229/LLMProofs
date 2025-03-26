@@ -17,7 +17,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy
+from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy, llm_judge_creative
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
 import datetime
@@ -37,12 +37,15 @@ def _select_rm_score_fn(data_source):
         return arc.compute_score
     elif "AI-MO/NuminaMath-CoT" in data_source:
         return math_utils.compute_score
+    elif "llm_judge_creative" in data_source:
+        return llm_judge_creative.compute_score
     elif "combined_math" in data_source:
         return math_utils.compute_score
     elif "di-zhang-fdu/AIME_1983_2024" in data_source:
         return math_utils.compute_score
     elif "dial_length" in data_source:
         return dial_length.compute_score
+    elif "integration_numeric" == data_source:
     elif "integration_numeric" == data_source:
         return integration_numeric.compute_score
     elif "llm_judge_integration" == data_source: # Formatting score comes from just being between <ANSWER> tags
