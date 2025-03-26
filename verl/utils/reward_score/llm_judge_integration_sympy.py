@@ -38,7 +38,7 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
+    api_model = "deepseek-ai/DeepSeek-R1"
     client_service = "together"
     max_tokens = 1000
     temperature = 0.7
@@ -91,7 +91,7 @@ def compute_score(solutions_batch,
     ################### STEP 4: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore"
+    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore_gpt4o"
 
     # Integration numeric scores (golden scoring metric)
     gold_scores = [compute_score_numeric(solution_str=sol, ground_truth=gt) for sol, gt in zip(solutions_batch, ground_truth_batch)]
@@ -126,7 +126,8 @@ def compute_score(solutions_batch,
             "judge_response": judge_responses[idx],
             "extracted_judge_score": correct_scores[idx],
             "total_reward_score": total_scores[idx],
-            "gold_score": gold_scores[idx]
+            "gold_score": gold_scores[idx],
+            "format_score": correctly_formatted[idx]
         }
         question_details[question_id] = question_dict
 

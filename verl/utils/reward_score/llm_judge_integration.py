@@ -20,6 +20,8 @@ def compute_score(solutions_batch,
     ############################################################################
     ################### STEP 1: CREATE YOUR PROMPTS ############################
     ############################################################################
+
+    print("Using the right compute score function.")
     
     system_prompt = "You are an expert at mathematical differentiation."
     prompt_template = "Please check if the following is a valid function: {}. If it is, differentiate it and determine if it is functionally equal to {}. Output <JUDGE_SCORE>1</JUDGE_SCORE> if they are equal. Output <JUDGE_SCORE>0</JUDGE_SCORE> if they are not equal or if it is not a valid function. Ignore constants of integration."
@@ -38,9 +40,9 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "gpt-4o-2024-11-20"
-    client_service = "openai"
-    max_tokens = 2000
+    api_model = "deepseek-ai/DeepSeek-R1"
+    client_service = "together"
+    max_tokens = 1000
     temperature = 0.7
 
     judge_responses = judge(model=api_model,  # Either model name or path to model 
@@ -85,7 +87,7 @@ def compute_score(solutions_batch,
     ################### STEP 5: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/qwen2.5_7b_integration_llmjudge_grpo_sympy2"
+    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_nosympy_r1"
 
     # Logging proportion of correctly formatted solutions for this step
     correctly_formatted = [correct_formatting(sol) for sol in processed_solutions]
@@ -95,10 +97,7 @@ def compute_score(solutions_batch,
     gold_scores = [compute_score_numeric(solution_str=sol, ground_truth=gt) for sol, gt in zip(solutions_batch, ground_truth_batch)]
     
     # Calculate misclassification error by comparing total_scores and gold_scores
-    num_correctly_scored = sum(1 for ts, gs in zip(total_scores, gold_scores) 
-                                 if (ts == 0 and gs == 0) or 
-                                    (ts == 0.05 and gs == 0.05) or 
-                                    (ts == 1.05 and gs == 1.05))
+    num_correctly_scored = sum(1 for ts, gs in zip(total_scores, gold_scores) if ts == gs)
     
     custom_metrics = {
         "batch_size": len(solutions_batch),

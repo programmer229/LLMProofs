@@ -80,16 +80,18 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
 
     # OpenAI or DeepInfra
     if client_service == "openai":
+     
         # If the client object has been setup
         response = await client.chat.completions.create(
-                model=model,
-                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
-                max_tokens=max_tokens,
-                temperature=temperature
-            )
+            model=model,
+            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+            max_tokens=max_tokens,
+            temperature=temperature
+        )
         
-        content = response.choices[0].message.content.strip()
+        content = response.choices[0].message.content
         return content
+       
 
     if client_service == "together":
         # If the client object has been setup
@@ -143,9 +145,11 @@ async def run_prompts(client_service, model, system_prompt, prompts, max_tokens,
 
 if __name__ == "__main__":
     client_service = "openai"
-    model = "gpt-3.5-turbo"
+    model = "gpt-4o-2024-11-20"
     system_prompt = "You are a helpful assistant."
-    prompts = ["Hello, how are you?", "What is your name?"]
+    base_prompt = "Please write me a short story"
+    base_prompt_8k = base_prompt*1000
+    prompts = [base_prompt_8k]*200
     
-    return_texts = asyncio.run(run_prompts(client_service=client_service, model=model, system_prompt=system_prompt, prompts=prompts, max_tokens=30, temperature=0.5))
+    return_texts = asyncio.run(run_prompts(client_service=client_service, model=model, system_prompt=system_prompt, prompts=prompts, max_tokens=4000, temperature=0.5))
     print(return_texts)
