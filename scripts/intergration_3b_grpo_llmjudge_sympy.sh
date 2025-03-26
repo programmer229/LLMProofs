@@ -35,7 +35,7 @@ python3 -m verl.trainer.main_ppo \
     +judge.location=local \
     +judge.gpus=4 \
     data.train_batch_size=32 \
-    data.val_batch_size=100 \
+    data.val_batch_size=32 \
     data.max_prompt_length=512 \
     data.max_response_length=2048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
