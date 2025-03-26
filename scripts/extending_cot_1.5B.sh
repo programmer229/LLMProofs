@@ -1,15 +1,15 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/combined_math
+DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/combined_math
 #BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/qwen2.5_7B_1.0SFT # 7B model
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
-BASE_MODEL=meta-llama/Llama-3.2-3B
+BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct
 PROJECT_NAME=verl_grpo_extending_CoT
-EXPERIMENT_NAME=llama3B_2k_1
+EXPERIMENT_NAME=llama3B_2k_1_test2
 
 #####################################################
 
-if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
+if [ -d "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
     echo "Directory already exists. You might overwrite existing saved models and logs!!!"
     echo "It is recommended to use a different experiment name, unless you are sure this experiment can be overwritten."
     echo "Are you sure you want to run with the current experiment name? (Y/n)"
@@ -17,11 +17,11 @@ if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$E
   
 fi
 
-mkdir -p /home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
-LOG_FILE=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+mkdir -p /home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+LOG_FILE=/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
@@ -34,6 +34,7 @@ python3 -m verl.trainer.main_ppo \
     data.max_prompt_length=2048 \
     data.max_response_length=2048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
+    actor_rollout_ref.rollout.ignore_eos=False \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=16 \
@@ -65,7 +66,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.nnodes=1 \
     trainer.save_freq=10 \
     trainer.test_freq=30 \
-    trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_hdfs_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_local_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.total_epochs=15 $@ 2>&1 | tee -a $LOG_FILE
     

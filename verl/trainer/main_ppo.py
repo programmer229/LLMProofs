@@ -54,8 +54,6 @@ def _select_rm_score_fn(data_source):
         return integration.compute_score
     elif "conf" in data_source:
         return conf.compute_score
-    elif "sympy_parsable" == data_source:
-        return sympy_parsable.compute_score
     else:
         raise NotImplementedError
 
