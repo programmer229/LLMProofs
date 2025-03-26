@@ -17,7 +17,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 
 from verl import DataProto
 import torch
-from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy, length_test
+from verl.utils.reward_score import gsm8k, math_utils, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
 import datetime
