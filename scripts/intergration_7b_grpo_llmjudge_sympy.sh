@@ -7,7 +7,7 @@ PROJECT_NAME=llmjudge_experiments
 
 #####################################################
 
-if [ -d "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
+if [ -d "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
     echo "Directory already exists. You might overwrite existing saved models and logs!!!"
     echo "It is recommended to use a different experiment name, unless you are sure this experiment can be overwritten."
     echo "Are you sure you want to run with the current experiment name? (Y/n)"
@@ -18,11 +18,11 @@ if [ -d "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_N
     # fi
 fi
 
-mkdir -p /home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
-LOG_FILE=/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+mkdir -p /home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+LOG_FILE=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
@@ -64,6 +64,6 @@ python3 -m verl.trainer.main_ppo \
     trainer.nnodes=1 \
     trainer.save_freq=10 \
     trainer.test_freq=10 \
-    trainer.default_hdfs_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.default_local_dir="/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_hdfs_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_local_dir="/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.total_epochs=200 $@ 2>&1 | tee -a $LOG_FILE

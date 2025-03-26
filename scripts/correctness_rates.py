@@ -21,8 +21,8 @@ def compute_rates(question_logs_file):
         for q_num in batch:
             if q_num.startswith('q'):  # Only process question entries
                 question = batch[q_num]
-                # if question["gold_score"] == 0.0:
-                #     continue
+                if question["gold_score"] == 0.0:
+                    continue
                 batch_size += 1
                 if (question['extracted_judge_score'] == 0) and (question['gold_score'] > 0.5):
                     false_negatives += 1
@@ -60,12 +60,14 @@ def compute_rates(question_logs_file):
     
 def plot_correctness_metrics(correctness_rates, file_path):
     steps = list(range(1, len(correctness_rates) + 1))
+    batch_sizes = [item['batch_size'] for item in correctness_rates]
     false_negatives = [item['false_negative_rate'] for item in correctness_rates]
     false_positives = [item['false_positive_rate'] for item in correctness_rates]
     true_positives = [item['true_positive_rate'] for item in correctness_rates]
     true_negatives = [item['true_negative_rate'] for item in correctness_rates]
 
     plt.figure(figsize=(10, 5))
+    #plt.plot(steps, batch_sizes, label='Batch Size')
     plt.plot(steps, false_negatives, label='False Negatives')
     plt.plot(steps, false_positives, label='False Positives')
     plt.plot(steps, true_positives, label='True Positives')
