@@ -2,7 +2,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/integration_3b_llmjudge_sympy
 BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
-EXPERIMENT_NAME=qwen2.5_7b_integration_sympyscore_gpt4o
+EXPERIMENT_NAME=qwen2.5_7b_integration_sympyscore_r1
 PROJECT_NAME=llmjudge_experiments
 
 #####################################################
