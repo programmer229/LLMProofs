@@ -1,4 +1,4 @@
-from verl.utils.reward_score.inference_utils import run_prompts
+from verl.utils.reward_score.utils.inference_utils import run_prompts
 import asyncio
 from typing import Optional, List
 
@@ -17,6 +17,7 @@ def judge(model: str,  # Either model name or path to model
           max_tokens: int,
           temperature: float,
           local_model: bool = False,
+          png_base64_images: List[str] = None,
           async_reward: bool = False) -> List[str]:
     
     # Perform judging using a locally run model
@@ -30,7 +31,8 @@ def judge(model: str,  # Either model name or path to model
                                                   system_prompt=system_prompt, 
                                                   prompts=prompts, 
                                                   max_tokens=max_tokens, 
-                                                  temperature=temperature))
+                                                  temperature=temperature,
+                                                  png_base64_images=png_base64_images))
     
     assert len(judge_responses) == len(prompts), "Judge responses not the same length as list of prompts."
     return judge_responses
