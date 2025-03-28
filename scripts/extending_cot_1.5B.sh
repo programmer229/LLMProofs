@@ -1,11 +1,11 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/combined_math
+DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/numina
 #BASE_MODEL=/home/ubuntu/o1-replication/o_series/model_saves/qwen2.5_7B_1.0SFT # 7B model
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_grpo_numina/qwen2.5_7b_numina_rl6/actor/global_step_1200 # 7B model from rl6 (which is from 1.0SFT model)
-BASE_MODEL=Qwen/Qwen2.5-1.5B-Instruct
+BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
 PROJECT_NAME=verl_grpo_extending_CoT
-EXPERIMENT_NAME=llama3B_2k_1_test2
+EXPERIMENT_NAME=qwen7B_grpo_long_numina_4k_1
 
 #####################################################
 
@@ -27,12 +27,12 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo_long \
-    data.train_files=$DATA_DIR/train_combined_math.parquet \
-    data.val_files=$DATA_DIR/test_combined_math.parquet \
-    data.train_batch_size=512 \
-    data.val_batch_size=512 \
+    data.train_files=$DATA_DIR/train_numina.parquet \
+    data.val_files=$DATA_DIR/test_numina.parquet \
+    data.train_batch_size=128 \
+    data.val_batch_size=128 \
     data.max_prompt_length=2048 \
-    data.max_response_length=2048 \
+    data.max_response_length=4048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.rollout.ignore_eos=False \
     actor_rollout_ref.actor.optim.lr=1e-6 \
@@ -45,7 +45,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.actor.ulysses_sequence_parallel_size=2 \
     actor_rollout_ref.ref.ulysses_sequence_parallel_size=2 \
     critic.ulysses_sequence_parallel_size=2 \
-    actor_rollout_ref.actor.use_kl_loss=True \
+    actor_rollout_ref.actor.use_kl_loss=False \
     actor_rollout_ref.actor.kl_loss_coef=0.001 \
     actor_rollout_ref.actor.kl_loss_type=low_var_kl \
     actor_rollout_ref.model.enable_gradient_checkpointing=True \
