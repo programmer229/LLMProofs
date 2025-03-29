@@ -151,6 +151,7 @@ class ActorRolloutRefWorker(Worker):
             'eos_token_id': self.tokenizer.eos_token_id,
             'pad_token_id': self.tokenizer.pad_token_id,
         }
+        print("override_model_config: ", override_model_config)
         override_config_kwargs.update(override_model_config)
         update_model_config(actor_model_config, override_config_kwargs=override_config_kwargs)
         if self.rank == 0:
@@ -553,12 +554,14 @@ class CriticWorker(Worker):
 
         from omegaconf import OmegaConf
         override_config = OmegaConf.to_container(self.config.model.get('override_config', OmegaConf.create()))
+        print("override_config critic: ", override_config)
         override_config_kwargs = {
             'bos_token_id': self.tokenizer.bos_token_id,
             'eos_token_id': self.tokenizer.eos_token_id,
             'pad_token_id': self.tokenizer.pad_token_id,
         }
         override_config_kwargs.update(override_config)
+        print("override_config_kwargs critic: ", override_config_kwargs)
         if self.rank == 0:
             print(f'Critic overriding config {override_config_kwargs}')
 

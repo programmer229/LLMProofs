@@ -22,6 +22,7 @@ def compute_rates(question_logs_file):
             if q_num.startswith('q'):  # Only process question entries
                 question = batch[q_num]
                 if question["gold_score"] == 0.0:
+                if question["gold_score"] == 0.0:
                     continue
                 batch_size += 1
                 if (question['extracted_judge_score'] == 0) and (question['gold_score'] > 0.5):
@@ -35,6 +36,10 @@ def compute_rates(question_logs_file):
         
         # Calculate false negative rate for this batch
         if batch_size > 0:
+            fn_rate = false_negatives / batch_size
+            fp_rate = false_positives / batch_size
+            tp_rate = true_positives / batch_size
+            tn_rate = true_negatives / batch_size
             fn_rate = false_negatives / batch_size
             fp_rate = false_positives / batch_size
             tp_rate = true_positives / batch_size
@@ -68,6 +73,7 @@ def plot_correctness_metrics(correctness_rates, file_path):
 
     plt.figure(figsize=(10, 5))
     #plt.plot(steps, batch_sizes, label='Batch Size')
+    #plt.plot(steps, batch_sizes, label='Batch Size')
     plt.plot(steps, false_negatives, label='False Negatives')
     plt.plot(steps, false_positives, label='False Positives')
     plt.plot(steps, true_positives, label='True Positives')
@@ -81,7 +87,7 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.close()
 
     # Plot FP / (FP + TN)
-    fp_rates = [item['false_positive_rate'] / (item['false_positive_rate'] + item['true_negative_rate']) for item in correctness_rates]
+    fp_rates = [item['false_positive_rate'] / (item['false_positive_rate'] + item['true_negative_rate'] + 1e-10) for item in correctness_rates]
     plt.figure(figsize=(10, 5))
     plt.plot(steps, fp_rates, label='FP / (FP + TN)')
     plt.xlabel('Steps')
@@ -91,7 +97,7 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(os.path.join(os.path.dirname(file_path), 'fp_rates.png'))
 
     # Plot FN / (FN + TP)
-    fn_rates = [item['false_negative_rate'] / (item['false_negative_rate'] + item['true_positive_rate']) for item in correctness_rates]
+    fn_rates = [item['false_negative_rate'] / (item['false_negative_rate'] + item['true_positive_rate'] + 1e-10) for item in correctness_rates]
     plt.figure(figsize=(10, 5))
     plt.plot(steps, fn_rates, label='FN / (FN + TP)')
     plt.xlabel('Steps')

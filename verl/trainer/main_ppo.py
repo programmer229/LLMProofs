@@ -21,6 +21,7 @@ from verl.utils.reward_score import gsm8k, multiply, countdown, chess, arc, dial
 from verl.utils.reward_score.utils import math_utils
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer
 import sys
+import datetime
 
 def _select_rm_score_fn(data_source):
     if data_source == 'openai/gsm8k':
@@ -37,21 +38,23 @@ def _select_rm_score_fn(data_source):
         return arc.compute_score
     elif "AI-MO/NuminaMath-CoT" in data_source:
         return math_utils.compute_score
+    elif "llm_judge_creative" in data_source:
+        return llm_judge_creative.compute_score
     elif "combined_math" in data_source:
         return math_utils.compute_score
     elif "di-zhang-fdu/AIME_1983_2024" in data_source:
         return math_utils.compute_score
     elif "dial_length" in data_source:
         return dial_length.compute_score
-    elif "integration_numeric" in data_source:
+    elif "integration_numeric" == data_source:
         return integration_numeric.compute_score
-    elif "llm_judge_integration" in data_source: # Formatting score comes from just being between <ANSWER> tags
+    elif "llm_judge_integration" == data_source: # Formatting score comes from just being between <ANSWER> tags
         return llm_judge_integration.compute_score
-    elif "llm_judge_integration_sympy" in data_source: # Formatting score comes from sympy parser
+    elif "llm_judge_integration_sympy" == data_source: # Formatting score comes from sympy parser
         return llm_judge_integration_sympy.compute_score
-    elif "integration" in data_source:
+    elif "integration" == data_source:
         return integration.compute_score
-    elif "conf" in data_source:
+    elif "conf" == data_source:
         return conf.compute_score
     elif "llm_judge_svg" in data_source:
         return llm_judge_svg.compute_score
@@ -119,6 +122,7 @@ class RewardManager():
 
             return reward_tensor
     
+        # This enables batch processing of the solutions by the LLM judge
         if "llm_judge" in data_source:
 
             solutions_batch = []

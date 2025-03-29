@@ -108,6 +108,71 @@ def compute_gae_advantage_return(token_level_rewards: torch.Tensor, values: torc
 
 
 # NOTE(sgm): this implementation only consider outcome supervision, where the reward is a scalar.
+def compute_grpo_outcome_advantage_long(token_level_rewards: torch.Tensor,
+                                   eos_mask: torch.Tensor,
+                                   index: torch.Tensor,
+                                   max_tokens: int = 8096,
+                                   epsilon: float = 1e-6):
+    """
+    Compute advantage for GRPO, operating only on Outcome reward 
+    (with only one scalar reward for each response).
+    Args:
+        token_level_rewards: `(torch.Tensor)`
+            shape: (bs, response_length)
+        eos_mask: `(torch.Tensor)`
+            shape: (bs, response_length)
+        index: `(torch.Tensor)`
+            shape: (bs,)
+        max_tokens: `(int)`
+            Maximum number of tokens in the model's context
+        epsilon: `(float)`
+            Small value to avoid division by zero
+    
+    Returns:
+        advantages: `(torch.Tensor)`
+            shape: (bs, response_length)
+        Returns: `(torch.Tensor)`
+            shape: (bs, response_length)
+    """
+    response_length = token_level_rewards.shape[-1]
+    non_zero_mask = (token_level_rewards != 0)
+    
+    # Extract the raw rewards without normalization by sequence length
+    raw_scores = (token_level_rewards * non_zero_mask).sum(dim=-1)
+    
+    # Calculate sequence lengths for each sample
+    seq_lengths = eos_mask.sum(dim=-1)
+    
+    # Adjust scores to account for sequence length bias
+    # Multiply by (max_tokens / actual_length) to normalize everyone to max_tokens
+    length_adjusted_scores = raw_scores * (max_tokens / seq_lengths.clamp(min=1))
+    
+    id2score = defaultdict(list)
+    id2mean = {}
+    id2std = {}
+
+    with torch.no_grad():
+        bsz = length_adjusted_scores.shape[0]
+        for i in range(bsz):
+            id2score[index[i]].append(length_adjusted_scores[i])
+        for idx in id2score:
+            if len(id2score[idx]) == 1:
+                id2mean[idx] = torch.tensor(0.0)
+                id2std[idx] = torch.tensor(1.0)
+            elif len(id2score[idx]) > 1:
+                id2mean[idx] = torch.mean(torch.tensor(id2score[idx]))
+                id2std[idx] = torch.std(torch.tensor([id2score[idx]]))
+            else:
+                raise ValueError(f"no score in prompt index: {idx}")
+        for i in range(bsz):
+            length_adjusted_scores[i] = (length_adjusted_scores[i] - id2mean[index[i]]) / (id2std[index[i]] + epsilon)
+        
+        # Distribute the adjusted score across all tokens
+        scores = length_adjusted_scores.unsqueeze(-1).tile([1, response_length]) * eos_mask
+
+    return scores, scores
+
+# NOTE(sgm): this implementation only consider outcome supervision, where the reward is a scalar.
 def compute_grpo_outcome_advantage(token_level_rewards: torch.Tensor,
                                    eos_mask: torch.Tensor,
                                    index: torch.Tensor,
@@ -158,6 +223,40 @@ def compute_grpo_outcome_advantage(token_level_rewards: torch.Tensor,
 def compute_rewards(token_level_scores, old_log_prob, ref_log_prob, kl_ratio):
     kl = old_log_prob - ref_log_prob
     return token_level_scores - kl * kl_ratio
+
+
+def compute_policy_loss_without_length_penalty(old_log_prob, log_prob, advantages, eos_mask, cliprange):
+    """Adapted from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py#L1122
+
+    Args:
+        old_log_prob: `(torch.Tensor)`
+            shape: (bs, response_length)
+        log_prob: `(torch.Tensor)`
+            shape: (bs, response_length)
+        advantages: `(torch.Tensor)`
+            shape: (bs, response_length)
+        eos_mask: `(torch.Tensor)`
+            shape: (bs, response_length)
+        cliprange: (float)
+            The clip range used in PPO. See https://arxiv.org/abs/1707.06347
+
+    Returns:
+        pg_loss: `a scalar torch.Tensor`
+            policy gradient loss computed via PPO
+        pg_clipfrac: (float)
+            a float number indicating the fraction of policy gradient loss being clipped
+
+    """
+    negative_approx_kl = log_prob - old_log_prob
+    ratio = torch.exp(negative_approx_kl)
+    ppo_kl = verl_F.masked_mean(-negative_approx_kl, eos_mask)
+
+    pg_losses = -advantages * ratio
+    pg_losses2 = -advantages * torch.clamp(ratio, 1.0 - cliprange, 1.0 + cliprange)
+
+    pg_loss = verl_F.masked_mean(torch.max(pg_losses, pg_losses2), eos_mask)
+    pg_clipfrac = verl_F.masked_mean(torch.gt(pg_losses2, pg_losses).float(), eos_mask)
+    return pg_loss, pg_clipfrac, ppo_kl
 
 
 def compute_policy_loss(old_log_prob, log_prob, advantages, eos_mask, cliprange):
