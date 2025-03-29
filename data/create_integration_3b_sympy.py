@@ -180,7 +180,7 @@ def variants_to_parquet(train_questions, test_questions, output_path: str) -> No
 
 if __name__ == '__main__':
     # Directory containing the variant result JSON files
-    variants_dir = '/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/LlamaVariants/variant_results_10Q'
+    variants_dir = '/home/ubuntu/o1-replication-sydney/CustomTinyZero/data/LlamaVariants/variant_results_10Q'
 
     # List to store all variants
     TRAIN_QUESTIONS = []
@@ -199,4 +199,4 @@ if __name__ == '__main__':
                     if 'variant' in variant_dict:
                         TRAIN_QUESTIONS.append(variant_dict['variant'])
 
-    variants_to_parquet(TRAIN_QUESTIONS,TEST_QUESTIONS, '/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/integration_3b_llmjudge_sympy')
+    variants_to_parquet(TRAIN_QUESTIONS,TEST_QUESTIONS, '/home/ubuntu/o1-replication-sydney/CustomTinyZero/data/integration_3b_llmjudge_sympy')

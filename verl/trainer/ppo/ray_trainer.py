@@ -142,6 +142,18 @@ def compute_advantage(data: DataProto, adv_estimator, gamma=1.0, lam=1.0, num_re
                                                                         index=index)
         data.batch['advantages'] = advantages
         data.batch['returns'] = returns
+    elif adv_estimator == 'grpo_long':
+        token_level_rewards = data.batch['token_level_rewards']
+        index = data.non_tensor_batch['uid']
+        responses = data.batch['responses']
+        response_length = responses.size(-1)
+        attention_mask = data.batch['attention_mask']
+        response_mask = attention_mask[:, -response_length:]
+        advantages, returns = core_algos.compute_grpo_outcome_advantage_long(token_level_rewards=token_level_rewards,
+                                                                        eos_mask=response_mask,
+                                                                        index=index)
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
     else:
         raise NotImplementedError
     return data
@@ -168,9 +180,8 @@ def _compute_response_info(batch):
         response_length=response_length,
     )
 
-
 def compute_data_metrics(batch, use_critic=True):
-    # TODO: add response length
+    # Compute sequence-level metrics based on token-level scores and rewards
     sequence_score = batch.batch['token_level_scores'].sum(-1)
     sequence_reward = batch.batch['token_level_rewards'].sum(-1)
 
@@ -178,10 +189,8 @@ def compute_data_metrics(batch, use_critic=True):
     returns = batch.batch['returns']
 
     max_response_length = batch.batch['responses'].shape[-1]
-
     prompt_mask = batch.batch['attention_mask'][:, :-max_response_length].bool()
     response_mask = batch.batch['attention_mask'][:, -max_response_length:].bool()
-
     max_prompt_length = prompt_mask.size(-1)
 
     response_info = _compute_response_info(batch)
@@ -197,64 +206,62 @@ def compute_data_metrics(batch, use_critic=True):
         return_diff_var = torch.var(valid_returns - valid_values)
         return_var = torch.var(valid_returns)
 
+    # We'll use the sequence_score for determining correctness.
+    # (Note: sequence_score and sequence_reward could be different;
+    # choose the one that best reflects correctness for your use-case.)
+    correctness_threshold = 0.5  # Adjust threshold as needed
+    sequence_rewards = sequence_score  # Use sequence-level token score
+
     metrics = {
-        # score
-        'critic/score/mean':
-            torch.mean(sequence_score).detach().item(),
-        'critic/score/max':
-            torch.max(sequence_score).detach().item(),
-        'critic/score/min':
-            torch.min(sequence_score).detach().item(),
-        # reward
-        'critic/rewards/mean':
-            torch.mean(sequence_reward).detach().item(),
-        'critic/rewards/max':
-            torch.max(sequence_reward).detach().item(),
-        'critic/rewards/min':
-            torch.min(sequence_reward).detach().item(),
-        # adv
-        'critic/advantages/mean':
-            torch.mean(valid_adv).detach().item(),
-        'critic/advantages/max':
-            torch.max(valid_adv).detach().item(),
-        'critic/advantages/min':
-            torch.min(valid_adv).detach().item(),
-        # returns
-        'critic/returns/mean':
-            torch.mean(valid_returns).detach().item(),
-        'critic/returns/max':
-            torch.max(valid_returns).detach().item(),
-        'critic/returns/min':
-            torch.min(valid_returns).detach().item(),
+        # Score metrics
+        'critic/score/mean': torch.mean(sequence_score).detach().item(),
+        'critic/score/max': torch.max(sequence_score).detach().item(),
+        'critic/score/min': torch.min(sequence_score).detach().item(),
+        # Reward metrics
+        'critic/rewards/mean': torch.mean(sequence_reward).detach().item(),
+        'critic/rewards/max': torch.max(sequence_reward).detach().item(),
+        'critic/rewards/min': torch.min(sequence_reward).detach().item(),
+        # Advantages metrics
+        'critic/advantages/mean': torch.mean(valid_adv).detach().item(),
+        'critic/advantages/max': torch.max(valid_adv).detach().item(),
+        'critic/advantages/min': torch.min(valid_adv).detach().item(),
+        # Returns metrics
+        'critic/returns/mean': torch.mean(valid_returns).detach().item(),
+        'critic/returns/max': torch.max(valid_returns).detach().item(),
+        'critic/returns/min': torch.min(valid_returns).detach().item(),
         **({
-            # values
+            # Value metrics and explained variance
             'critic/values/mean': torch.mean(valid_values).detach().item(),
             'critic/values/max': torch.max(valid_values).detach().item(),
             'critic/values/min': torch.min(valid_values).detach().item(),
-            # vf explained var
             'critic/vf_explained_var': (1.0 - return_diff_var / (return_var + 1e-5)).detach().item(),
         } if use_critic else {}),
 
-        # response length
-        'response_length/mean':
-            torch.mean(response_length).detach().item(),
-        'response_length/max':
-            torch.max(response_length).detach().item(),
-        'response_length/min':
-            torch.min(response_length).detach().item(),
-        'response_length/clip_ratio':
-            torch.mean(torch.eq(response_length, max_response_length).float()).detach().item(),
-        # prompt length
-        'prompt_length/mean':
-            torch.mean(prompt_length).detach().item(),
-        'prompt_length/max':
-            torch.max(prompt_length).detach().item(),
-        'prompt_length/min':
-            torch.min(prompt_length).detach().item(),
-        'prompt_length/clip_ratio':
-            torch.mean(torch.eq(prompt_length, max_prompt_length).float()).detach().item(),
+        # Response length metrics
+        'response_length/mean': torch.mean(response_length).detach().item(),
+        'response_length/max': torch.max(response_length).detach().item(),
+        'response_length/min': torch.min(response_length).detach().item(),
+        'response_length/clip_ratio': torch.mean(torch.eq(response_length, max_response_length).float()).detach().item(),
+        # Prompt length metrics
+        'prompt_length/mean': torch.mean(prompt_length).detach().item(),
+        'prompt_length/max': torch.max(prompt_length).detach().item(),
+        'prompt_length/min': torch.min(prompt_length).detach().item(),
+        'prompt_length/clip_ratio': torch.mean(torch.eq(prompt_length, max_prompt_length).float()).detach().item(),
+
+        # Correct vs Incorrect response lengths based on sequence_score
+        'response_length/mean_correct': (
+            torch.mean(response_length[sequence_rewards > correctness_threshold]).detach().item()
+            if (sequence_rewards > correctness_threshold).sum() > 0 else 0.0
+        ),
+        'response_length/count_correct': (sequence_rewards > correctness_threshold).sum().item(),
+        'response_length/mean_incorrect': (
+            torch.mean(response_length[sequence_rewards <= correctness_threshold]).detach().item()
+            if (sequence_rewards <= correctness_threshold).sum() > 0 else 0.0
+        ),
+        'response_length/count_incorrect': (sequence_rewards <= correctness_threshold).sum().item(),
     }
     return metrics
+
 
 
 def compute_timing_metrics(batch, timing_raw):
@@ -463,7 +470,7 @@ class RayPPOTrainer(object):
             critic_cls = RayClassWithInitArgs(cls=self.role_worker_mapping[Role.Critic], config=self.config.critic)
             self.resource_pool_to_cls[resource_pool]['critic'] = critic_cls
             self.use_critic = True
-        elif self.config.algorithm.adv_estimator == 'grpo':
+        elif self.config.algorithm.adv_estimator == 'grpo' or self.config.algorithm.adv_estimator == 'grpo_long':
             self.use_critic = False
         else:
             raise NotImplementedError

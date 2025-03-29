@@ -22,6 +22,8 @@ def compute_score(solutions_batch,
     ############################################################################
     ################### STEP 1: CREATE YOUR PROMPTS ############################
     ############################################################################
+
+    print("Using the right compute score function.")
     
     system_prompt = "You are an expert at mathematical differentiation."
     prompt_template = "Please check if the following is a valid function: {}. If it is, differentiate it and determine if it is functionally equal to {}. Output <JUDGE_SCORE>1</JUDGE_SCORE> if they are equal. Output <JUDGE_SCORE>0</JUDGE_SCORE> if they are not equal or if it is not a valid function. Ignore constants of integration."

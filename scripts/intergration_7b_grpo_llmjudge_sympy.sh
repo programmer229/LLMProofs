@@ -1,8 +1,8 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication/CustomTinyZero/data/integration_3b_llmjudge_sympy
-BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
-EXPERIMENT_NAME=qwen2.5_7b_integration_sympyscore_gpt4o
+DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/integration_3b_llmjudge_sympy
+BASE_MODEL=meta-llama/Llama-3.2-3B
+EXPERIMENT_NAME=llama3.2_3b_integration_sympyscore
 PROJECT_NAME=llmjudge_experiments
 
 #####################################################
@@ -36,7 +36,7 @@ python3 -m verl.trainer.main_ppo \
     data.train_batch_size=32 \
     data.val_batch_size=100 \
     data.max_prompt_length=512 \
-    data.max_response_length=2048 \
+    data.max_response_length=1024 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
