@@ -1,0 +1,1200 @@
+{
+  "base_question": "integrate(Abs(sin(2018*x)), (x, 0, 2018*pi))",
+  "tree": [
+    {
+      "level": 0,
+      "variants": [
+        "integrate(Abs(sin(2018*x)), (x, 0, 2018*pi))",
+        "integrate(Abs(sin(2018*(-x))), (x, -2018*pi, 0))",
+        "integrate((2/pi) * (1 - cos(2*2018*x))/(2), (x, 0, 2018*pi))",
+        "integrate(sqrt(sin(2018*x)**2), (x, 0, 2018*pi))",
+        "integrate(sin(2018*x)**2, (x, 0, 2018*pi))**(1/2)",
+        "integrate(Abs(sin(t)), (t, 0, 2018^2 * pi))",
+        "integrate(Abs(sin(2018*x)), (x, 0, 2018*pi - pi)) + integrate(Abs(sin(2018*x)), (x, 2018*pi - pi, 2018*pi))",
+        "integrate(Abs(sin(2018*(x + pi/2018))), (x, 0, 2018*pi))",
+        "integrate(Abs(sin(2018*x)), (x, 0, 3*pi)) * (2018/3)"
+      ],
+      "children": [
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sin(2018*x), (x, 0, 2018*pi)) + integrate(-sin(2018*x), (x, 0, 2018*pi))",
+            "integrate(exp(I * 2018 * x) / (2 * I) + exp(-I * 2018 * x) / (2 * I), (x, 0, 2018*pi)) + integrate(- exp(I * 2018 * x) / (2 * I) - exp(-I * 2018 * x) / (2 * I), (x, 0, 2018*pi))",
+            "integrate(sin(2018*(u * (2018/pi))), (u, 0, 1)) + integrate(-sin(2018*(u * (2018/pi))), (u, 0, 1))",
+            "integrate(sin(2018*(2018 - x)), (x, 0, 2018*pi)) + integrate(-sin(2018*(2018 - x)), (x, 0, 2018*pi))",
+            "integrate(x * cos(2018 * x), (x, 0, 2018*pi)) - integrate(x * cos(2018 * x), (x, 0, 2018*pi))",
+            "integrate(sin(2018*x + pi/2), (x, 0, 2018*pi)) + integrate(-sin(2018*x + pi/2), (x, 0, 2018*pi))",
+            "integrate((sin(2018*x) + sin(2018*x)) / 2, (x, 0, 2018*pi)) + integrate((-sin(2018*x) - sin(2018*x)) / 2, (x, 0, 2018*pi))",
+            "integrate(sin(4036*(x/2)), (x, 0, 4036*pi)) + integrate(-sin(4036*(x/2)), (x, 0, 4036*pi))",
+            "integrate(sum(((-1)**n * (2018 ** (2*n + 1))) / (factorial(2*n + 1)) * x**(2*n + 1), (n, 0, 20)), (x, 0, 2018*pi)) + integrate(-sum(((-1)**n * (2018 ** (2*n + 1))) / (factorial(2*n + 1)) * x**(2*n + 1), (n, 0, 20)), (x, 0, 2018*pi))",
+            "integrate(sin(1009 * (2*x)), (x, 0, 1009*pi)) + integrate(-sin(1009 * (2*x)), (x, 0, 1009*pi))",
+            "integrate(sin(2018*x) * (1 - cos(0)), (x, 0, 2018*pi)) + integrate(-sin(2018*x) * (1 - cos(0)), (x, 0, 2018*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x), (x, 0, 2018*pi/2))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x), (x, 0, 2*pi)) * (2018 / 2)",
+                "integrate(sin(2018*x), (x, 0, 0)) * (2018 / 2)",
+                "integrate(sin(2018*x), (x, -2*pi, 0)) * (2018 / 2)",
+                "integrate(sin(2018*x), (x, -pi, pi)) * (2018)",
+                "integrate(cos(2018*x), (x, -pi/2, pi/2)) * (2018 / 2)",
+                "integrate(sin(2018*x), (x, 0, 2*pi)) * (0.5 * 2018)",
+                "integrate(sin(2018*x + pi), (x, 0, 2*pi)) * (2018 / 2)",
+                "integrate(sin(2018*x + pi/2), (x, 0, 2*pi)) * (2018 / 2)",
+                "integrate(sum((-1)**n * (sin(2018*x) / (2*pi)) for n in range(0, 1)), (x, 0, 2*pi)) * (2018 / 2)",
+                "integrate((e**(1j * 2018*x) - e**(-1j * 2018*x)) / (2j), (x, 0, 2*pi)) * (2018 / 2)",
+                "integrate(sin(2018*(x + 1)), (x, -1, 2 + 1)) * (2018 / 2)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-sin(2018*x), (x, 0, 2018*pi/2)) + integrate(sin(2018*x), (x, 2018*pi/2, 2018*pi))",
+                "integrate(-sin(2018*x + 1009*pi), (x, 0, 2018*pi/2)) + integrate(sin(2018*x - 1009*pi), (x, 2018*pi/2, 2018*pi))",
+                "integrate(sin(-2018*x), (x, 0, 2018*pi/2)) + integrate(sin(2018*x), (x, 2018*pi/2, 2018*pi))",
+                "integrate((-e^(2018*I*x) + e^(-2018*I*x))/(2i), (x, 0, 2018*pi/2)) + integrate((e^(2018*I*x) - e^(-2018*I*x))/(2i), (x, 2018*pi/2, 2018*pi))",
+                "integrate(-sin(2018*x), (x, 0, (2018/2)*pi)) + integrate(sin(2018*x), (x, (2018/2)*pi, 2018*pi))",
+                "integrate(-sin(u), (u, 0, 2018*pi)) + integrate(sin(u), (u, 2018*pi/2, 2018*pi))",
+                "-2018 + integrate(sin(2018*x), (x, 2018*pi/2, 2018*pi))",
+                "integrate(-sin(2018*x), (x, 0, 1009*pi)) + integrate(sin(2018*x), (x, 1009*pi, 2018*pi))",
+                "integrate(sin(2018*(3*pi/2 - x)), (x, 0, 2018*pi/2)) + integrate(sin(2018*(x - pi)), (x, 2018*pi/2, 2018*pi))",
+                "integrate((-1)^(n+1)*(2018^(2*n-1)/(2*n-1)!)*x**(2*n-1), (x, 0, 2018*pi/2)) + integrate(((2018^n/(n!)) * (sin(2018*x))), (x, 2018*pi/2, 2018*pi))",
+                "integrate(cos(2018*x), (x, 0, 2018*pi/2)) - integrate(cos(2018*x), (x, 2018*pi/2, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x + pi), (x, 0, 2018*pi))",
+                "integrate(-sin(2018*x), (x, 0, 2018*pi))",
+                "integrate(-sin(2018*(x + pi/2018)), (x, 0, 2018*pi))",
+                "integrate(sin(2018*(x + pi/2018) + pi), (x, 0, 2018*pi))",
+                "integrate((-1/2018) * sin(2018*(x + 2*pi/2018)), (x, 0, 2018*pi))",
+                "integrate(sin(2018*(pi + x)), (x, -2018*pi, 0))",
+                "integrate(-sin(2018*x) - sin(pi), (x, 0, 2018*pi))",
+                "integrate(-sin(2018*(-x + pi)), (x, -2018*pi, 0))",
+                "integrate(Imaginary(exp(1j*(2018*x + pi))), (x, 0, 2018*pi))",
+                "integrate(-sin(2018*(x + pi)), (x, 0, 2018*pi))",
+                "`integrate(-sin(u + pi) / 2018, (u, 0, 2018*2018))` where \\( u = 2018*x \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2018*x), (x, 0, 2018*pi)) - integrate(cos(2018*x), (x, 0, 2018*pi))",
+                "integrate(exp(1j * 2018 * x), (x, 0, 2018 * pi)) - integrate(exp(1j * 2018 * x), (x, 0, 2018 * pi))",
+                "integrate(cos(2018 * x), (x, 0, 2018 * pi + 2 * pi)) - integrate(cos(2018 * x), (x, 0, 2018 * pi + 2 * pi))",
+                "integrate(cos(y), (y, 0, 2018 * 2018 * pi)) - integrate(cos(y), (y, 0, 2018 * 2018 * pi))",
+                "integrate(cos(2018 * x + pi/2), (x, 0, 2018 * pi)) - integrate(cos(2018 * x + pi/2), (x, 0, 2018 * pi))",
+                "integrate(sin(2018 * x) * 0, (x, 0, 2018 * pi)) - integrate(sin(2018 * x) * 0, (x, 0, 2018 * pi))",
+                "integrate(0 * cos(2018 * x), (x, 0, 2018 * pi)) - integrate(0 * cos(2018 * x), (x, 0, 2018 * pi))",
+                "integrate(cos(2018 * x)^2 - cos(2018 * x)^2, (x, 0, 2018 * pi))",
+                "integrate((1 + cos(2 * 2018 * x))/2, (x, 0, 2018 * pi)) - integrate((1 + cos(2 * 2018 * x))/2, (x, 0, 2018 * pi))",
+                "integrate(cos(2018 * x) * 1, (x, 0, 2018 * pi)) - integrate(cos(2018 * x) * 1, (x, 0, 2018 * pi))",
+                "integrate((3 * cos(2018 * x) - 3 * cos(2018 * x)), (x, 0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0, (x, 0, 2018*pi))",
+                "integrate(2018*(x/2018), (x, 0, 2018*pi))",
+                "integrate(x, (x, 0, 2018*pi)) + integrate(0, (x, 0, 2018*pi))",
+                "integrate(2018*pi - x, (x, 0, 2018*pi))",
+                "integrate(2018*pi - (2018*pi - x), (x, 0, 2018*pi))",
+                "integrate(2018*pi - u, (u, 0, 2018*pi))",
+                "integrate(x/2018, (x, 0, 2*2018*pi))",
+                "integrate(2*x, (x, 0, 1009*pi))",
+                "integrate(sum(i*(2018*pi/2018), (i, 0, 2018)), (x, 0, 2018*pi))",
+                "integrate(x, (x, 0, 1009*pi)) + integrate(x, (x, 1009*pi, 2018*pi))",
+                "integrate(x, (x, 0, 2018*pi)) - integrate(0, (x, 0, 2018*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sin(2018*x)**2, (x, 0, 2018*pi)) + integrate(sin(2018*x)**2, (x, 0, 2018*pi))",
+            "integrate((1 - cos(4036*x))/2, (x, 0, 2018*pi))",
+            "integrate(sin(u)**2 / 2018, (u, 0, 2018*2018*pi))",
+            "integrate(sin(2018*(x - pi/4036))**2, (x, 0, 2018*pi))",
+            "integrate(sin(2018*x)**2 + sin(2018*x)**2, (x, 0, 2018*pi))",
+            "integrate(sin(z)**2 / 2018, (z, 0, 2018*2018*pi))",
+            "integrate(1/2 - 1/2 * cos(4036*x), (x, 0, 2018*pi))",
+            "integrate((sin(2018*x))**2, (x, 0, 2018*pi)) + integrate((sin(2018*x))**2, (x, 0, 2018*pi))",
+            "integrate(sin(2018*x)**2, (x, 0, 1009*pi)) + integrate(sin(2018*x)**2, (x, 1009*pi, 2018*pi))",
+            "integrate(cos(2018*x - pi/2)**2, (x, 0, 2018*pi))",
+            "integrate(1/(1 + cot(2018*x)**2), (x, 0, 2018*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((1 - cos(2 * 2018 * x)) / 2, (x, 0, pi))",
+                "integrate(sin(2018 * x)**2, (x, 0, pi))",
+                "integrate(1/2, (x, 0, pi)) - integrate(cos(2 * 2018 * x) / 2, (x, 0, pi))",
+                "integrate((1 - (e**(2j * 2018 * x) + e**(-2j * 2018 * x)) / 2), (x, 0, pi))",
+                "integrate((1 - 2 * sin(2018 * x / 2)**2) / 2, (x, 0, pi))",
+                "integrate((cos(0) + sin(0)**2 - cos(2 * 2018 * x) / 2), (x, 0, pi))",
+                "integrate((1/2 + 1/2 - cos(2 * 2018 * x) / 2), (x, 0, pi))",
+                "integrate((1 - cos(2 * (2018 + 1) * x)) / 2, (x, 0, pi))",
+                "integrate((1 - (exp(2j * 2018 * x) + exp(-2j * 2018 * x)) / 2) / 2, (x, 0, pi))",
+                "integrate(sin(2018 * x) * sin(2018 * x), (x, 0, pi))",
+                "integrate((1 - cos(2 * u)) / (2 * 2018), (u, 0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(1009 * x)**2, (x, 0, 4036 * pi))",
+                "integrate((1 - cos(2018 * x)) / 2, (x, 0, 4036 * pi))",
+                "integrate((1 - (exp(2018 * I * x) + exp(-2018 * I * x)) / 2) / 2, (x, 0, 4036 * pi))",
+                "integrate(sin(1009 * x)**2, (x, 0, 2 * 2018 * pi))",
+                "integrate((1/2 * (1 - cos(2018 * x))), (x, 0, 2 * 2018 * pi))",
+                "integrate(sin(y)**2 * (1/1009), (y, 0, 1009 * 4036 * pi))",
+                "integrate((1/2 - (1/4) * (cos(2018 * x))), (x, 0, 4036 * pi))",
+                "integrate(sin(1009 * (x + pi))**2, (x, 0, 4036 * pi))",
+                "integrate(sin(1009 * (x - pi))**2, (x, 0, 4036 * pi))",
+                "integrate(sin(2 * 504.5 * x) * sin(1009 * x), (x, 0, 4036 * pi))",
+                "integrate(sin(1009 * x + pi/2)**2, (x, 0, 4036 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018 * x)**2, (x, -2018 * pi, 2018 * pi))",
+                "integrate((1 - cos(4036*x)) / 2, (x, -2018 * pi, 2018 * pi))",
+                "integrate((e^(1j * 2018 * x) - e^(-1j * 2018 * x))**2 / 4, (x, -2018 * pi, 2018 * pi))",
+                "integrate(1/2, (x, -2018 * pi, 2018 * pi))",
+                "integrate(sin(2018*(x % pi))**2, (x, -2018 * pi, 2018 * pi))",
+                "integrate((1/2) * (1 - exp(-4036 * 1j * x)), (x, -2018 * pi, 2018 * pi))",
+                "integrate(sin(2018 * (x + pi/2))**2, (x, -2018 * pi, 2018 * pi))",
+                "integrate((1 - cos(2 * 2018 * x)) / 2, (x, -2018 * pi, 2018 * pi))",
+                "integrate(((e**(2018 * I * x) - e**(-2018 * I * x)) / (2 * I))**2, (x, -2018 * pi, 2018 * pi))",
+                "integrate(sin(2018 * (x + pi))**2, (x, -2018 * pi, 2018 * pi))",
+                "2 * integrate(sin(2018 * x)**2, (x, 0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(4026 * x)**2, (x, 0, 2018 * pi))",
+                "integrate((1 - cos(2 * 4026 * x)) / 2, (x, 0, 2018 * pi))",
+                "integrate((1 - cos(2 * 4026 * x)) / 2, (x, 0, 0) + (0, 2018 * pi))",
+                "integrate(sin(4026 * x)**2, (x, 0, 1009 * 2 * pi))",
+                "integrate(sin(4026 * x)**2, (x, 0, 4036 * pi - 2018 * pi))",
+                "integrate(sin(4026 * (x + pi/4026))**2, (x, 0, 2018 * pi))",
+                "integrate((sin(4026 * (x + 0)))**2, (x, 0, 2018 * pi))",
+                "integrate(sin(4026 * x)**2, (x, 0, 2 * 1009 * pi))",
+                "integrate((sin(4026 * (x)) * sin(4026 * (x))) / 1, (x, 0, 2018 * pi))",
+                "integrate((sin(4030 * x) * sin(4022 * x)) + sin(4026 * x)**2, (x, 0, 2018 * pi))",
+                "integrate((1/2) * (1 - cos(2 * pi * 2018) + cos(2 * 4026 * x)), (x, 0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018 * x)**2, (x, 0, 2 * pi))",
+                "integrate(1 - cos(2 * 2018 * x) / 2, (x, 0, 2 * pi))",
+                "integrate(0.5 - 0.5 * cos((2 * 2018) * x), (x, 0, 2 * pi))",
+                "integrate(sin(4036 * x)**2, (x, 0, 2 * pi))",
+                "integrate(1, (x, 0, 2 * pi)) - integrate(cos(4036 * x), (x, 0, 2 * pi))",
+                "integrate((exp(I * 2018 * x) - exp(-I * 2018 * x))**2 / 4, (x, 0, 2 * pi))",
+                "integrate(sin(2018 * (x + pi))**2, (x, -pi, pi))",
+                "integrate(sin(u)**2 * (1/2018), (u, 0, 4036 * pi))",
+                "integrate(2/(1 + tan(2018 * x)**2), (x, 0, 2 * pi))",
+                "integrate(sin(2018 * (x + pi))**2, (x, 0, 2 * pi))",
+                "integrate((sin(2018 * x) + sin(2018 * (x + pi)))**2 / 2, (x, 0, 2 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*sin(1009 * x)**2, (x, 0, 2018 * pi))",
+                "integrate((1 - cos(2018 * x)), (x, 0, 2018 * pi))",
+                "integrate(1 - cos(2018 * x), (x, 0, 2018 * pi))",
+                "integrate(2*sin(1008 * x)**2, (x, 0, 2018 * pi))",
+                "integrate(2*sin(1009*(2018*pi - x))**2, (x, 0, 2018 * pi))",
+                "integrate(2/2018*sin(1009 * x)**2 * 2018, (x, 0, 2018 * pi))",
+                "integrate(2*sin(1009 * (2018 - x))**2, (x, 0, 2018 * pi))",
+                "integrate(sin(1009 * x) * sin(1009 * x), (x, 0, 2018 * pi))",
+                "integrate(1 - (1/2)*cos(2018 * x), (x, 0, 2018 * pi))",
+                "integrate(2*sin(2018 * x / 2)**2, (x, 0, 2018 * pi))",
+                "integrate(2*sin(1009*(x + pi))**2, (x, 0, 2018 * pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(Abs(sin(u)), (u, 0, 2*pi))",
+            "integrate(2 * sin(x), (x, 0, pi))",
+            "integrate((sin(x)**2) ** (1/2), (x, 0, 2*pi))",
+            "integrate(sin(x) ** 2, (x, 0, 2*pi)) + integrate(1, (x, pi, 2*pi))",
+            "integrate(1 / (1 + cos(x)), (x, 0, 2 * pi))",
+            "integrate(cos(x - pi/2), (x, 0, 2 * pi))",
+            "integrate((sin(x))**2 + (cos(x))**2, (x, 0, 2 * pi))",
+            "integrate(2 * (1 - (cos(x)/2)), (x, 0, pi))",
+            "integrate(2 * sqrt(1 - (sin(x))**2), (x, 0, 2 * pi))",
+            "integrate(abs(cos(x - pi/2)), (x, 0, 2 * pi))",
+            "integrate(0.5 * (exp(1j * x) - exp(-1j * x)), (x, 0, 2 * pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*sqrt(1 - x**2), (x, 0, 1))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(-sin(x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(sin(pi - x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(cos(x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/4)) + integrate(sin(x), (x, pi/4, pi/2)) + integrate(-sin(x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(-1 * sin(x), (x, pi/2, pi))",
+                "integrate(cos(pi/2 - x), (x, 0, pi/2)) + integrate(-cos(pi/2 - x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(-sin(pi/2 - x), (x, pi/2, pi))",
+                "integrate(sqrt(1 - cos(x)**2), (x, 0, pi/2)) + integrate(-sqrt(1 - cos(x)**2), (x, pi/2, pi))",
+                "integrate((exp(I*x) - exp(-I*x)) / 2, (x, 0, pi/2)) + integrate(-(exp(I*x) - exp(-I*x)) / 2, (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(sin(x), (x, pi/2, pi)) - integrate(2 * sin(x), (x, pi/2, pi))",
+                "integrate(sin(x), (x, 0, pi)) - integrate(sin(x), (x, pi/2, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4/pi * (sum((-1)**n * cos((2*n + 1) * x) for n in range(0, 10))), (x, 0, pi))",
+                "integrate(4/pi * cos(x), x)",
+                "integrate((4/pi) * sum((-1)**n * (exp(I*(2*n + 1)*x) + exp(-I*(2*n + 1)*x))/2 for n in range(0, 10)), x)",
+                "integrate((4/pi) * sum((-1)**(n+1) * sin((2*n)*(x + pi/2)) for n in range(0, 10)), x)",
+                "integrate(4/pi * (cos(1 * x) * sum((-1)**n for n in range(0, 10))), x)",
+                "integrate(4/pi * (sum((-1)**n * cos((2*(10-n) - 1) * x) for n in range(0, 10))), x)",
+                "integrate(4/pi * sum((-1)**n * (1 - cos((2*n + 1) * x)) for n in range(0, 10)), x)",
+                "integrate(4/pi * (sum((-1)**n * (sin((2*n)x) + 0.5) for n in range(0, 10))), x)",
+                "integrate(4/pi * (sum((-1)**(n+2) * cos((2*n - 1) * x) for n in range(2, 12))), x)",
+                "integrate(-4/pi * (sum((-1)**n * d(sin((2*n + 1) * x))/dx for n in range(0, 10))), x)",
+                "integrate(4/pi * sum((-1)**n * cos((2*(10-n) + 1)*x) for n in range(0, 10)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(x) + sin(2*pi - x), (x, 0, pi))",
+                "integrate(2 * sin(x), (x, 0, pi))",
+                "integrate(sin(x) + sin(x), (x, 0, pi))",
+                "integrate(e^(ix) / (2i) + e^(-ix) / (2i), (x, 0, pi))",
+                "integrate(sin(x) + sin(-x), (x, 0, pi))",
+                "integrate(-sin(-x) + sin(x), (x, 0, pi))",
+                "integrate(sin(2pi - x) + sin(x), (x, 0, pi))",
+                "integrate(-(-sin(x)) + sin(2pi - x), (x, 0, pi))",
+                "integrate(cos(-x + pi/2), (x, 0, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(x), (x, -pi, 0)) + integrate(sin(x), (x, 0, pi))",
+                "\\( \\text{integrate}(\\sin(x), (x, -\\pi, 0)) + \\text{integrate}(\\sin(-x), (x, 0, \\pi)) \\)",
+                "\\( \\text{integrate}(\\sin(x), (x, -3.14, -1.57)) + \\text{integrate}(\\sin(x), (x, 1.57, 3.14)) \\)",
+                "\\( \\text{integrate}(\\sin(x), (x, -\\pi, \\pi)) \\)",
+                "\\( \\text{integrate}(\\sin(x), (x, -\\pi/2, \\pi/2)) + \\text{integrate}(\\sin(x), (x, \\pi/2, \\pi)) \\)",
+                "\\( \\text{integrate}(|\\sin(x)|, (x, -\\pi, \\pi)) \\)",
+                "\\( \\text{integrate}(\\sin(-u - \\pi/2), (u, \\pi/2, 3\\pi/2)) \\)",
+                "\\( \\text{integrate}(\\sin(x), (x, -\\pi, 0)) + \\text{integrate}(\\sum_{n=1}^{\\infty} \\frac{(-1)^{n-1}(x-\\pi/2)^{2n-1}}{(2n-1)!}, (x, 0, \\pi)) \\)",
+                "\\( \\text{integrate}(0.5 \\cdot \\sin(x) + 0.5 \\cdot \\sin(-x), (x, -\\pi, \\pi)) \\)",
+                "\\( \\text{integrate}(2 \\cdot \\sin(x) \\cdot \\cos(x), (x, -\\pi, 0)) + \\text{integrate}(2 \\cdot \\sin(x) \\cdot \\cos(x), (x, 0, \\pi)) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(16/((3*x**2)**2), (x, 0, pi))",
+                "integrate(16/((3**2)*(x**2)**2), (x, 0, pi))",
+                "integrate(16/(9*x**4), (x, 0, pi))",
+                "integrate(16/(u**4), (u, 0, 3*pi))",
+                "integrate(16*9**-1/x**4, (x, 0, pi))",
+                "integrate(16*exp(-4*log(3*x**2)), (x, 0, pi))",
+                "integrate(16*(3**-2)/(x**4), (x, 0, pi))",
+                "integrate(16/(9*sin(x)**2), (x, 0, pi))",
+                "integrate(16/x**4/(3**2), (x, 0, pi))",
+                "integrate(16/(sqrt(9)*x**4), (x, 0, pi))",
+                "integrate(16/(9*(3*sin(t)**2))**2 * sqrt(3)*cos(t), (t, 0, pi/2))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(Abs(sin(2018*(x + pi/(2*2018)))), (x, 0, 2018*pi))",
+            "integrate(Abs(cos(2018*x)), (x, 0, 2018*pi))",
+            "integrate(Abs(1 - 2*sin(2018*(x)/2)**2), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(2018*(x + pi/2))), (x, -pi/2, 2018*pi - pi/2))",
+            "integrate(sin(2018*x), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(2018*y)), (y, pi/2, 2018*pi + pi/2))",
+            "integrate(Abs(sin(2018*(x + pi/(2*2018)))), (x, -pi/(2*2018), 2018*pi - pi/(2*2018)))",
+            "integrate(Abs(sin(2018*x + 2018*pi/2)), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(2018*x)), (x, 0, pi)) * (2018)",
+            "integrate(2/pi * integrate(sin(2018*x*u), (u, 0, pi)), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(2018*x) * cos(1) + cos(2018*x) * sin(1)), (x, 0, 2018*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(Abs(sin(2018*x)), (x, 0, 2*pi)) * (2018 / (2*pi))",
+                "integrate(2 * sin(2018 * x), (x, 0, pi)) + integrate(2 * -sin(2018 * x), (x, pi, 2*pi))",
+                "2018 * integrate(sin(2018 * x), (x, 0, 2 * pi))",
+                "integrate(2 * (exp(I * 2018 * x) - exp(-I * 2018 * x))/(2 * I), (x, 0, 2 * pi))",
+                "integrate(sin(2018 * x) + sin(2018 * (2 * pi - x)), (x, 0, 2 * pi))",
+                "integrate(cos(2018 * x) - cos(2018 * (x - pi)), (x, 0, 2 * pi))",
+                "integrate((1 - cos(2 * 2018 * x)), (x, 0, 2 * pi))",
+                "integrate(2 * (1 - cos(2018 * x)), (x, 0, pi))",
+                "integrate(Abs(sin(x)), (x, 0, 2*pi)) * (2018)",
+                "integrate((1 - cos(2*2018*x))/2, (x, 0, 2*pi)) * (2018 / (2*pi))",
+                "integrate(Abs(sin(u)), (u, 0, 2018*2*pi)) * (1 / 2018)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(Abs(cos(2018*x)), (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(Abs(sin(x)), (x, 0, 2018*pi))",
+                "integrate(2 * (2018 // 2), (x, 0, 2))",
+                "integrate(2 * 1009, (x, 0, 3))",
+                "integrate(2 * (1 - cos(2*x)/2), (x, 0, 2pi))",
+                "integrate(2 - 2 * (sin(x))) , (x, 0, pi)",
+                "integrate(integrate(|sin(x)|, (x,0,pi)), (0, 1009))",
+                "integrate(4 / (pi), (x, 0, 2))",
+                "integrate(-1 * (sin(u)), (x, -pi, pi))",
+                "integrate(Abs(sin(x + pi)), (x, 0, 2018 * pi))",
+                "integrate(2018 * (2/pi), (x, 0, 2*pi))",
+                "integrate(integrate(abs(sin(x)), (x, 0, 1)), (0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(Abs((exp(1j * 2018 * (x + pi/(2 * 2018))) - exp(-1j * 2018 * (x + pi/(2 * 2018)))) / (2j)), (x, 0, 2018*pi))",
+                "integrate(sin(2018 * x + pi/2), (x, 0, 2018*pi))",
+                "integrate(Abs((exp(1j * 2018 * x') - exp(-1j * 2018 * x')) / (2j)), (x', pi/(2 * 2018), 2018*pi + pi/(2 * 2018)))",
+                "integrate(sin(2018 * (x + pi/(2 * 2018))), (x, 0, 2018*pi))",
+                "integrate(-sin(-2018 * (x + pi/(2 * 2018))), (x, 0, 2018*pi))",
+                "integrate(cos(2018 * x + pi), (x, 0, 2018*pi))",
+                "integrate(Abs((exp(1j * 2018 * x) - exp(-1j * 2018 * x)) / (2j)) + Abs(exp(1j * 2018 * x)), (x, 0, 2018*pi))",
+                "integrate(2 * sin(1009 * (x + pi/(4 * 2018))), (x, 0, 2018*pi))",
+                "integrate(integrate(1 * (t >= 0) * (t <= 2018), (t, 0, 2018)) * sin(2018 * (x + pi/(2 * 2018))), (x, 0, 2018*pi))",
+                "integrate(1/(2j)*(exp(j * 2018 * x)-exp(-j * 2018 * x)), (x, 0, 2018*pi))",
+                "integrate(sum((-1)**n/(factorial(2*n+1)) * (2018*(x + pi/(2 * 2018)))**(2*n + 1), (n, 0, 50)), (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2018*(x + pi / (2 * 2018))) - (2018**3 * (x + pi / (2 * 2018))**3) / 6, (x, 0, 1))",
+                "integrate(2018 * (x + pi/(2 * 2018)) - (2018**3 * (x**3 + 3*x**2 * pi/(2 * 2018) + 3*x * (pi/(2 * 2018))**2 + (pi/(2 * 2018))**3) / 6), (x, 0, 1))",
+                "integrate(2018 * ((1-x) + pi/(2 * 2018)) - (2018**3 * ((1-x) + pi/(2 * 2018))**3) / 6, (x, 0, 1))",
+                "integrate(2018 * (x + pi/(2 * 2018)) + (2018**3 * (-x + pi/(2 * 2018))**3) / 6, (x, 0, 1))",
+                "integrate((2018 * (sin(pi/2 * x) + pi/(2 * 2018))) - (2018**3 * (sin(pi/2 * x) + pi/(2 * 2018))**3) / 6, (x, 0, 1))",
+                "integrate((2018 * (x + log(1 + pi/(2 * 2018)))) - (2018**3 * (x + log(1 + pi/(2 * 2018)))**3) / 6, (x, 0, 1))",
+                "integrate(2018*(x + pi/(2*2018)) - (2018**3 * (x**3 + (pi/(2 * 2018))**3)/6) - (3*2018**3 * x**2 * (pi/(2*2018))) / 6, (x, 0, 1))",
+                "integrate(2018 * (0.5 + u + pi/(2 * 2018)) - (2018**3 * (0.5 + u + pi/(2 * 2018))**3) / 6, (u, -0.5, 0.5))",
+                "integrate(2018 * (t) - (2018**3 * t**3) / 6, (t, pi/(2 * 2018), 1 + pi/(2 * 2018)))",
+                "integrate((2018 * (x + pi/(2*2018))) - (2018**3 * (x + pi/(2 * 2018))**2) * (x + pi/(2 * 2018)) / 6, (x, 0, 1))",
+                "integrate(2018 * (x + pi/(2 * 2018)) - (2018**3 * (x**3 + (3 * pi/(2 * 2018) * x**2) + (3*(pi/(2 * 2018))**2 * x)) / 6), (x, 0, 1))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((-1)**floor(2018*x/pi)/(2), (x, 0, 2018*pi))",
+                "integrate((-1)**floor((2018/\u03c0)*x)/2, (x, 0, 2018*\u03c0))",
+                "integrate((-1)**floor(2*2018*x/(2*pi))/2, (x, 0, 2018*pi))",
+                "integrate((-1)**floor((2018/2)*x/(\u03c0/2))/2, (x, 0, 2018*pi))",
+                "integrate(sin(floor(2018 * x / pi) * pi) / 2, (x, 0, 2018*pi))",
+                "integrate((-1)**floor(2018*((x+pi)/(pi))) / 2, (x, 0, 2018*pi))",
+                "integrate((-1)**floor(2018*x/pi) / 4, (x, 0, 2018*pi)) + integrate((-1)**(2 + floor(2018*x/pi)) / 4, (x, 0, 2018*pi))",
+                "integrate(sum[((-1)**k/2) for k in range(floor(2018*x/pi) + 1)], (x, 0, 2018*pi))",
+                "integrate(((-1)**j / (2 * (j + (2018/pi)**2))) * (integrate(1, (x, 0, 2018*pi))) for j in range(0, 2018)), (x, 0, 2018*pi))",
+                "integrate(((-1)**floor((x * 2018)/\u03c0))/2 + 0.5 - 0.5, (x, 0, 2018*pi))",
+                "integrate((-1)**floor(2018*((2 * x) / (2 * pi))) / 2, (x, 0, 2018*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(exp(I*2018*x) - exp(-I*2018*x), (x, 0, 2018*pi))",
+            "integrate(2*I*sin(2018*x), (x, 0, 2018*pi))",
+            "integrate(2*I*sin(2018*(x - 2*pi)), (x, 0, 2018*pi))",
+            "integrate(2*I*sin(u), (u, 0, 2018^2*pi))",
+            "integrate(2*I*(sin(2018*x) + cos(2018*x) - cos(2018*x)), (x, 0, 2018*pi))",
+            "integrate(2*I*(2018*x - (2018**3*x**3)/6), (x, 0, 2018*pi))",
+            "integrate(I*(e^(I*2018*x) + e^(-I*2018*x)), (x, 0, 2018*pi))",
+            "integrate(2*I*sin(2018*(pi - x)), (x, 0, 2018*pi))",
+            "integrate((e^(i*2018*x) + e^(-i*2018*x)), (x, 0, 2018*pi))",
+            "integrate(2*pi*I*delta(x - 2018*pi), (x, 0, 2018*pi))",
+            "integrate(2*I*sin(2018*x), (x, 0, 2018/2*pi)) + integrate(2*I*sin(2018*x), (x, 2018/2*pi, 2018*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*sin(2018*x), (x, 0, 2018*pi))",
+                "integrate(2*sin(2018*(x + pi/2018)), (x, 0, 2018*pi))",
+                "integrate(2*sin(2018*x), (x, 0, 1009*pi)) + integrate(2*sin(2018*x), (x, 1009*pi, 2018*pi))",
+                "integrate(2*sin(2018*(2018*x)), (x, 0, 1))",
+                "integrate(2*cos(2018*pi - 2018*x), (x, 0, 2018*pi))",
+                "integrate(-2*sin(-2018*x), (x, 0, 2018*pi))",
+                "integrate(-d/dx(cos(2018*x)), (x, 0, 2018*pi))",
+                "integrate(2*(e**(1j * 2018 * x) - e**(-1j * 2018 * x)) / (2j), (x, 0, 2018*pi))",
+                "integrate(sin(2018*x) + sin(2018*x), (x, 0, 2018*pi))",
+                "integrate(2*sin(2018*x)/2, (x, 0, 2018*pi))",
+                "integrate(2*sin(2018*(-x)), (x, -2018*pi, 0))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*sin(2018*x), (x, 0, 2*pi))",
+                "integrate(2*(sin(2018*x) + 0*sin(0)), (x, 0, 2*pi))",
+                "integrate(2*(exp(I*2018*x) - exp(-I*2018*x)) / (2*I), (x, 0, 2*pi))",
+                "integrate(0*sin(2018*x) + 2*sin(2018*x), (x, 0, 2*pi))",
+                "integrate(2*(sin(2018*x) + sin(2018*x + pi - pi)), (x, 0, 2*pi))",
+                "integrate(2*sin(2018*(x - pi)), (x, 0, 2*pi))",
+                "integrate(2*sin(u)/2018, (u, 0, 4036*pi))",
+                "integrate(-2*sin(-2018*x), (x, 0, 2*pi))",
+                "integrate(2*sin(2018*(x/2)), (x, 0, 2*pi))",
+                "integrate(2*sin(2018*x), (x, 0, pi)) + integrate(2*sin(2018*x), (x, pi, 2*pi))",
+                "integrate(2 * (e**(2018*I*x) - e**(-2018*I*x)) / (2 * I), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(e^(i*3*x) - e^(-i*3*x), (x, 0, 2*pi))",
+                "integrate(e^{i3*x} * (1 - e^{-i*6*x}), (x, 0, 2*pi))",
+                "integrate(sum((i*3*x)**n / factorial(n), (n, 0, 10)) - sum((-i*3*x)**n / factorial(n), (n, 0, 10)), (x, 0, 2*pi))",
+                "integrate(e^{i3*(x + pi/6)} - e^{-i3*(x + pi/6)}, (x, 0, 2*pi))",
+                "integrate(e^(i*3*x) - e^(-3*x), (x, 0, 2*pi))",
+                "integrate(e^{i3*x}, (x, 0, 2*pi)) - integrate(e^{-i3*x}, (x, 0, 2*pi))",
+                "integrate(2 * sin(3*x), (x, 0, 2*pi))",
+                "integrate(e^{i*3*(2*pi - x)} - e^{-i*3*(2*pi - x)}, (x, 0, 2*pi))",
+                "integrate(2*i*(cos(3*x) - i*sin(3*x)), (x, 0, 2*pi))",
+                "integrate(integrate(e^{i*3*x}, x, (u, x, 0)) - integrate(e^{-i*3*x}, x, (u, x, 0)), (x, 0, 2*pi))",
+                "integrate(e^{i*3*(x + pi)} - e^{-i*3*(x + pi)}, (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(exp(i*x) - exp(-i*x), (x, 0, 2*pi))",
+                "integrate(2*i*sin(x), (x, 0, 2*pi))",
+                "integrate(exp(i*(x + 2*pi)) - exp(-i*(x + 2*pi)), (x, 0, 2*pi))",
+                "integrate(exp(ix) - exp(-ix), (x, 0, 2*pi))",
+                "integrate(0 * (e^(ix) - e^(-ix)), (x, 0, 2*pi))",
+                "integrate(exp(-i*x) - exp(i*x), (x, 0, 2*pi))",
+                "integrate(sum((-1)**n/(2*n+1) * (exp(ix*(2*n + 1)) - exp(-ix*(2*n + 1))), (n, 0, 100)), (x, 0, 2*pi))",
+                "integrate(-2*i*sin(x), (x, 0, 2*pi))",
+                "integrate(exp(i*(x + pi/2)) - exp(-i*(x + pi/2)), (x, 0, 2*pi))",
+                "integrate(exp(1j*x) - exp(-1j*x), (x, 0, 2*pi))",
+                "integrate(sum((-1)**n * (sin(x)/((n+1)**2)), (n, 0, oo)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2018*x), (x, 0, 2018*pi))",
+                "integrate(((exp(I*2018*x) + exp(-I*2018*x)) / 2), (x, 0, 2018*pi))",
+                "integrate(cos(2018*x), (x, 0, 2018*pi))",
+                "integrate(cos(2017*x) * cos(x) - sin(2017*x) * sin(x), (x, 0, 2018*pi))",
+                "integrate((1/2 * exp(2018*I*x) + 1/2 * exp(-2018*I*x)), (x, 0, 2018*pi))",
+                "integrate(cos(2018*x), (x, -2018*pi, 2018*pi))",
+                "integrate(1 - 2*sin(1009*x)**2, (x, 0, 2018*pi))",
+                "integrate(sin(2018*x), (x, 0, 2018*pi))",
+                "integrate(sum((-1)**n * (sin((2018 + 1)x)/(n + 1)), (n, 0, inf)), (x, 0, 2018*pi))",
+                "integrate(cos(u), (u, 0, 2018**2))",
+                "integrate((sin(2018*(x+pi/2)) + sin(2018*(x-pi/2))) / 2, (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(exp(i*2018*x) - exp(-i*2018*x), (x, 0, 4*pi))",
+                "integrate(exp(i*2018*x), (x, 0, 4*pi)) - integrate(exp(-i*2018*x), (x, 0, 4*pi))",
+                "integrate(2*i*sin(2018*x), (x, 0, 4*pi))",
+                "integrate(2*i*sin(2*2018*(x/2)), (x, 0, 4*pi))",
+                "integrate(exp(i*2018*(2*pi - x)) - exp(-i*2018*(2*pi - x)), (x, 0, 4*pi))",
+                "integrate(x * (i * 2018 * exp(i * 2018 * x) - (-i * 2018) * exp(-i * 2018 * x)), (x, 0, 4*pi)) / (i * 2018)",
+                "integrate(2*i*sin(2018*x + \u03c0), (x, 0, 4*pi))",
+                "integrate((2 * i * sin(2018*x))/(sin(2018*x)), (x, 0, 4*pi))",
+                "integrate(exp(i*2018*x) - exp(-i*2018*x), (x, 4*pi, 0))",
+                "integrate(2*i*sinh(2018*x), (x, 0, 4*pi))",
+                "integrate(2*I*sin(2018*x), (x, 0, 4*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sin((2018-1)*x), (x, 0, 2018*pi)) + integrate(-sin((2018-1)*x), (x, 0, 2018*pi))",
+            "integrate(-sin((2018-1)*x), (x, 2018*pi, 0))",
+            "integrate(sin((2018-1)*x), (x, 0, 0))",
+            "integrate(exp(1j*(2018-1)*x), (x, 0, 2018*pi)) - integrate(exp(-1j*(2018-1)*x), (x, 0, 2018*pi))",
+            "integrate(cos((2018-1)*x - pi/2), (x, 0, 2018*pi))",
+            "integrate(sin(2*(2018-1)*x), (x, 0, 2018*pi))",
+            "integrate(sin(u), (u, 0, (2018-1)*2018*pi))",
+            "integrate(sin((2018-1)*x + pi), (x, 0, 2018*pi))",
+            "integrate(sum((-1)**n * (2018-1)**(2*n+1) * x**(2*n+1) / factorial(2*n+1), (n, 0, inf)), (x, 0, 2018*pi))",
+            "integrate(d(sin((2018-1)*x), x), (x, 0, 2018*pi))",
+            "integrate(sin((a*(2018-1))*x), (x, 0, 2018*pi)).subs(a, 0)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin((2018-1)*x), (x, 0, 2018*pi)) + integrate(-sin((2018-1)*x), (x, 0, 2018*pi))",
+                "integrate(2*sin((2018-1)/2*x)*cos((2018-1)/2*x), (x, 0, 2018*pi)) - integrate(2*sin((2018-1)/2*x)*cos((2018-1)/2*x), (x, 0, 2018*pi))",
+                "integrate(sin((2018-1)*x + pi), (x, 0, 2018*pi)) + integrate(-sin((2018-1)*x + pi), (x, 0, 2018*pi))",
+                "integrate(sin((2018-1)*x), (x, 0, 2018*pi)) + integrate(sin(-1 * (2018-1)*x), (x, 0, 2018*pi))",
+                "integrate(1/sin((2018-1)*x), (x, 0, 2018*pi)) + integrate(-1/sin((2018-1)*x), (x, 0, 2018*pi))",
+                "integrate(sin((2018 - 1)x) + sin((2018 - 2)x), (x, 0, 2018 * pi)) - integrate(sin((2018 - 1)x) + sin((2018 - 2)x), (x, 0, 2018 * pi))",
+                "integrate(sin(2018x - x), (x, 0, 2018*pi)) + integrate(-sin(2018x - x), (x, 0, 2018*pi))",
+                "integrate(2*sin((2018-1)/2*x)*cos((2018-1)/2*x), (x, 0, 2018*pi)) + integrate(-2*sin((2018-1)/2*x)*cos((2018-1)/2*x), (x, 0, 2018*pi))",
+                "integrate(imag(exp(i*(2018-1)*x)), (x, 0, 2018*pi)) + integrate(-imag(exp(i*(2018-1)*x)), (x, 0, 2018*pi))",
+                "integrate(sin((2018-1)*x), (x, 0, 2018*pi)) + integrate(sin((2018-1)*x)*(-1), (x, 0, 2018*pi))",
+                "integrate(sin((2018-1)*x), (x, 0, 2 * 2018 * pi)) + integrate(-sin((2018-1)*x), (x, 0, 2 * 2018 * pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sum(cos(n * 2018*x), (n, 1, 2018)), (x, 0, 2018*pi))",
+            "integrate(sum(cos(n * 2018*x) for n in range(1, 2019)), x)",
+            "integrate(sum(cos(n * 2019*x) for n in range(1, 2019)), x)",
+            "integrate(sum(0.5 * (exp(I * n * 2018 * x) + exp(-I * n * 2018 * x)), (n, 1, 2018)), x)",
+            "integrate(sum(sin(n * 2018 * x) / (n * 2018) for n in range(1, 2019)), (x, 0, 2018 * pi))",
+            "integrate(sum(sin(n * 2018*x)/(n * 2018) for n in range(1, 2019)), x)",
+            "integrate(sum(cos(n * 2018 * (x + 1)) for n in range(1, 2019)), x)",
+            "integrate(sum((-1)**n * cos(n * 2018 * x) for n in range(1, 2019)), x)",
+            "integrate(sum(2 * sin((n * 2018 * x)/2)**2 for n in range(1, 2019)), x)",
+            "integrate(sum((-1)**(n+1)*exp(0.5 * I * n * 2018 * x) for n in range(1, 2019)), x)",
+            "integrate(sum((1/n) * cos(n * 2018 * x) for n in range(1, 2019)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int_0^{2018\\pi} ( \\frac{\\sin(2018 \\cdot 2018x)}{\\sin(2018x)} ) \\, dx \\)",
+                "integrate(sum(cos((2018 - 1 - 2k) * x) for k in range(2018)), x)",
+                "integrate(sin(2018*2018*x)/cos(pi/2 - 2018*x), x)",
+                "integrate(exp(1j*(2018*2018*x)) - exp(-1j*(2018*2018*x)), 2j*sin(2018*x), x)",
+                "integrate(sin(2018*2018*(x + pi))/sin(2018*(x + pi)), x)",
+                "integrate(sin(2018*2018*x)/(sin(2018*x)/2018), x)",
+                "integrate((e^(1j * 2018 * 2018 * x) - e^(-1j * 2018 * 2018 * x))/(2i*sin(2018*x)), x)",
+                "integrate(sin(2018*2018*x)/sin(2018*(2018 - x)), x)",
+                "integrate(sin(2018*2018*((2018 + v)/2018))/sin(2018*((2018 + v)/2018)), v)",
+                "integrate(sin(2018*2018*x)/sin((2018x % pi) + pi), x)",
+                "integrate(sin(2018*2018*x)/sin(2018*(x % (2*pi))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x/2) * cos(2019*x/2) / sin(x/2), x)",
+                "integrate((1/2) * (sin((2018 + 2019)x/2) + sin((2018 - 2019)x/2)) / sin(x/2), x)",
+                "integrate(sin(2018*x/2) * (exp(I * 2019*x/2) + exp(-I * 2019*x/2)) / (2 * sin(x/2)), x)",
+                "integrate(sin(2018*x/2) * cos(2018.5*x/2) / sin(x/2), x)",
+                "integrate(sin(2018*x/2) * cos(2019*x/2 + \u03c0/4) / sin(x/2), x)",
+                "integrate(sin(1009*x) * cos(1009.5*x) / sin(x/2), 2*x)",
+                "integrate(sin(2018*x/2) * (-cos(2019*x/2)) / (-sin(x/2)), x)",
+                "integrate(sin(2018*x/2) * cos(2019.5*x/2) / sin(x/2), x)",
+                "integrate((sin(2018.5*x/2) - sin(2017.5*x/2)) / sin(x/2), x)",
+                "integrate((sin(2018*x/2) * cos(2019*x/2) / (sin(x/2))) + (0 / 1), x)",
+                "integrate((1/2) * (sin(2018x/2) + sin(2018x/2 + \u03c0)) / sin(x/2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(Re(exp(I * 2018 * x) * (e^{I * 2018 * x} - e^{I * 0 * x}) / (e^{I * x} - 1)), x)",
+                "integrate(Re((e^{i * 2018 * x} / (e^{i * x} - 1)) * (e^{i * 2018 * x} - 1)), x)",
+                "integrate(Re(e^{i * 2018 * x} * (e^{i * 2018 * x} - 1) / (1 - e^{i * x})), x)",
+                "integrate(Re(((cos(2018*x) + I*sin(2018*x)) * (cos(2018*x) + I*sin(20118*x) - 1) / (cos(x) + I*sin(x) - 1))), x)",
+                "integrate(Re((e^{i * 2018 * x} / (e^{i * x} - 1)) * e^{i * 2018 * x}), x) + integrate(Re((1 / (e^{i * x} - 1))), x)",
+                "integrate(Re((e^{i * 2018 * x} * (e^{i * 2018 * x} + 1) * (e^{i * 2018 * x} - 1) / (e^{i * x} - 1))), x)",
+                "integrate(Re(((e^{i * x} - 1)/(e^{i * 2018 * x} - 1)) * e^{i * 2018 * x}), x)",
+                "integrate(Re((e^{i * 2018 * x} \\cdot (1 - e^{-i * 2018 * x}) / (e^{i * x} - 1))), x)",
+                "integrate(Re((e^{i * 2018 * x} - e^{i * 0 * x}) / (e^{i * 2018 * x} - (e^{i * x} - 1))), x)",
+                "integrate(Re(e^{i * (2018 - 1) * x} * (e^{i * x} - 1)), x)",
+                "integrate(Re(e^{i * 2018 * x} * (e^{i * 2018 * x} - 1)), x) + integrate(Re((1 - e^{i * 0 * x})/ (e^{i * x} - 1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(n * 2018 * x) * (2018/pi), x)",
+                "integrate((1 + cos(2 * n * 2018 * x)) * (2018 / (2 * pi)), x)",
+                "integrate(cos(n * (2018 + 1 - 1) * x) * (2018 / pi), x)",
+                "integrate((1/2) * (exp(I * n * 2018 * x) + exp(-I * n * 2018 * x)) * (2018/pi), x)",
+                "integrate(sin(n * 2018 * x + pi/2) * (2018 / pi), x)",
+                "integrate(-cos(n * 2018 * x + pi) * (2018 / pi), x)",
+                "integrate(cos((n * 2018 + 0.001) * x) * (2018 / pi), x)",
+                "integrate(cos(n * 2018 * x) * (2018 / pi) + cos((n + 1) * 2018 * x) * (2018 / pi), x)",
+                "integrate((4/3) * cos(n * 2018 * x) * (2018 / pi) - (4/3) * cos(n * 2018 * x - (2 * pi / 3) * (2018 / (3 * 2))), x)",
+                "integrate(-cos(-n * 2018 * x) * (2018 / pi), x)",
+                "integrate(sqrt(1 - sin(n * 2018 * x)**2) * (2018 / pi), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*sin(2018*pi/2), x)",
+                "integrate(0, x)",
+                "integrate(2 * -sin(-2018 * pi / 2), x)",
+                "integrate(2 * (sin(2018 * pi / 2) - sin(2018 * pi / 2)), x)",
+                "integrate(2 * cos(2018 * pi / 2 - pi/2), x)",
+                "integrate(2 * sin(1009 * 2 * pi), x)",
+                "integrate(1 * 2 * sin(2018 * pi / 2), x)",
+                "integrate(2 * sin(2018 * pi / 2) + 0, x)",
+                "integrate(2 * 0, x)",
+                "integrate(10 * 0, x)",
+                "integrate(x**2 - x**2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * sum(cos(n * 2018 * x)), (n, 1, 1009), x)",
+                "integrate(2 * sum(exp(1j * n * 2018 * x) + exp(-1j * n * 2018 * x), (n, 1, 1009)), x)",
+                "integrate(sum(2 * cos(n * 2018 * x), (n, 1, 1009)), x)",
+                "integrate(2 * sum(sin(n * 2018 * x + 2018 / 2), (n, 1, 1009)), x)",
+                "integrate(sum(2 * (sin((n + 1) * 2018 * x/2) * sin(n * 2018 * x/2)), (n, 1, 1009)), x)",
+                "integrate(sum(sin(2018 * x / 2) * cos(n * 2018 * x / 2), (n, 1, 1009)), x)",
+                "integrate(sum(cos(2 * n * 2018 * x), (n, 1, 1009)), x)",
+                "integrate(2 * sum(0.5 * (exp(1j * n * 2018 * x) + exp(-1j * n * 2018 * x)), (n, 1, 1009)), x)",
+                "integrate(sum(2 * cos(n * (2018 * x + 0.001)), (n, 1, 1009)), x)",
+                "integrate(sum(2 * e^(1j * n * 2018 * x), (n, 1, 1009)), x)",
+                "integrate(sum(1/2 * ((2 * sin((n + 1) * 2018 * x / 2) * cos(n * 2018 * x / 2) )), (n, 1, 1009)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2 * integrate(sin(2018*x), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sin(2018*(x)), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sin(2018*(pi/2018 - x)), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sin(2018 * (x/2018)), (x, 0, pi)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sin(a * x) * (2018/a), (x, 0, pi/2018)), (a, 2018, 2018), (x, 0, 2018*pi))",
+            "integrate(2 * integrate((e**(2018 * I * x) - e**(-2018 * I * x)) / (2I), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(1 - cos(2018*x), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sum((-1)**n * (2018*x)**(2*n+1) / factorial(2*n+1), (n, 0, 10)), (x, 0, pi/2018)), (x, 0, 2018*pi))",
+            "integrate(2 * integrate(sin(2018*(x)), (x, 0, 2*(pi/2018))), (x, 0, (2018/2)*pi))",
+            "integrate(integrate(2 * sin(2018*x), (x, 0, 2018*pi)), (x, 0, pi/2018))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0, (x, 0, 2018*pi))",
+                "integrate(2018*pi * (1 - cos(x - 2018*pi)), (x, 0, 2018*pi))",
+                "integrate(2018*pi - x, (x, 0, 2018*pi))",
+                "integrate((1/2)(differentiation_of(x**2)), (x, 0, 2018*pi))",
+                "integrate(1 * 2018*pi + x - 2018*pi, (x, 0, 2018*pi))",
+                "integrate((2018*pi * x/(2018*pi)), (x, 0, 2018*pi))",
+                "integrate(2018 * pi * (x/2018)/pi, (x, 0, 2018*pi))",
+                "integrate((2018*pi * sin^2(x / 2018)), (x, 0, 2018*pi))",
+                "integrate(x - (2018*pi / 2) + (2018*pi / 2), (x, 0, 2018*pi))",
+                "integrate(2018*pi * u, (u, 0, 1)) * (2018*pi)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * integrate(sin(2*x), (x, 0, pi/2)), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(2 * sin(x) * cos(x), (x, 0, pi/2)), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(sin(2*x), (x, 0, pi)), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(-sin(2*x), (x, pi/2, 0)), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(-cos(2*x) / 2, (x, 0, pi/2)), (x, 0, 2018*pi))",
+                "integrate(integrate(sin(2*x), (x, 0, pi/2)), (x, 0, 4036*pi))",
+                "integrate(2 * integrate((exp(2j*x) - exp(-2j*x)) / (2j), (x, 0, pi/2)), (x, 0, 2018*pi))",
+                "integrate(integrate(sin(2*x), (x, 0, pi)), (x, 0, 1009*pi))",
+                "integrate(2 * integrate(sin(u), (u, 0, pi)), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(1/2 - cos(4*x)/2, (x, 0, pi/2)), (x, 0, 2018*pi))",
+                "integrate(integrate(sin(2*x), (x, 0, 2*pi)), (x, 0, 1009*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * integrate(sin(3*x), (x, 0, pi/3)), (x, 0, 2018*pi))",
+                "integrate(4/3, (x, 0, 2018*pi))",
+                "integrate(2 * (-cos(3*x) / 3 + 1/3), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(sin(3*x), (x, 0, pi/3)), (x, 0, 2018 * pi))",
+                "integrate(2 * integrate(sin(3*x + 2*pi), (x, 0, pi/3)), (x, 0, 2018*pi))",
+                "integrate(2 * (2/3) * (-cos(3*x) + 1), (x, 0, 2018*pi))",
+                "integrate(2 * integrate(sin(3*x), (x, -pi/3, pi/3)), (x, 0, 2018*pi))",
+                "integrate(2 * 1/3*(1 - cos(3*pi/3)), (x, 0, 2018*pi))",
+                "integrate(2 * sum(1/6 * (sin(3*(x + n*pi))), (n, -inf, inf)), (x, 0, 2018*pi))",
+                "integrate(2 * (2/pi) * integrate(sin(3*x), (x, 0, pi)), (x, 0, 2018*pi))",
+                "integrate(integrate(2 * sin(3*(x + n*pi)), (x, 0, pi/3)), (n, 0, 2018))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * sin(2018 * (pi/2018)), (x, 0, 2018*pi))",
+                "integrate(2 * sin(x), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(x), (x, 0, 2 * 2018 * pi))",
+                "integrate(2 * (e**(i * x) - e**(-i * x))/(2 * i), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(2018 * (pi/2018 + x)), (x, 0, 2018 * pi))",
+                "integrate(0, (x, 0, 2018 * pi))",
+                "integrate(2 * sin(0), (x, 0, 2018 * pi))",
+                "integrate(2 * sin((2018 - x) * (pi / 2018)) , (x, 0, 2018 * pi))",
+                "integrate(0 * cos(x), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(2018 * (pi/2018) * (1 + x/2018)), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(k * pi) , (x, 0, 2018 * pi), k=2018)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * (1 - cos(2018*(pi/2018))), (x, 0, 2018*pi))",
+                "integrate(4, (x, 0, 2018*pi))",
+                "integrate(8*sin(x/2)**2, (x, 0, 2018*pi))",
+                "integrate(2*(1 + cos(2018*(pi/2018))), (x, 0, 0)) + integrate(2*(1 + cos(2018*(pi/2018))), (x, 0, 2018*pi))",
+                "integrate(8*(1 - cos(2018*(pi/2018)*(2018*pi*u))), (u, 0, 1)) * (2018*pi)",
+                "integrate(-4, (x, 2018*pi, 0))",
+                "integrate(2*(1 - cos(-2018*(pi/2018))), (x, 0, 2018*pi))",
+                "integrate(2*(1 - cos(2018*(pi/2018))) + 2*(1 - cos(2018*(pi/2018))), (x, 0, 2018*pi))",
+                "integrate(2, (x, 0, 1009*pi)) + integrate(2, (x, 1009*pi, 2018*pi))",
+                "integrate(4*2018/(2018*pi), (x, 0, 2018*pi))",
+                "integrate(8*sin(0), (x, 0, 2018*pi)) + integrate(4, (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * integrate(sin(100*x), (x, 0, pi/100)), (x, 0, 100*pi))",
+                "integrate(2 * ((1 - cos(100 * (pi/100))) / 100), (x, 0, 100 * pi))",
+                "integrate(2 * (100 * pi / (100 * pi / pi)), (x, 0, 100 * pi))",
+                "integrate(2 * \\sum_{n=0}^{\\infty} \\frac{(-1)^n (100x)^{2n+1}}{(2n+1)!}, (x, 0, 100 * pi))",
+                "integrate(2 * (-cos(100*(pi/100)) + cos(0)), (x, 0, 100 * pi))",
+                "integrate(2 * (100 * (1 - cos(100 * pi))), (x, 0, 100 * pi))",
+                "integrate(2 * (1/100) * integrate(sin(u), (u, 0, 100 * pi)), (x, 0, 100 * pi))",
+                "integrate(2 * integrate(cos(100*x - pi/2), (x, 0, pi/100)), (x, 0, 100*pi))",
+                "integrate(2 * integrate((exp(100jx) - exp(-100jx))/2j, (x, 0, pi/100)), (x, 0, 100*pi))",
+                "integrate(integrate(2 * (sin(100 * r * cos(theta))), (r, 0, 1)), (theta, 0, 2 * pi))",
+                "integrate(4 * integrate(sin(100 * x/2), (x, 0, pi/50)), (x, 0, 100 * pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2 * integrate(sin(x), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate((e**(ix) - e**(-ix))/(2*1j), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(sin(x), (x, 0, 3*pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * ([-cos(x)](0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(sin(x), (x, -pi, 0)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(2 * sin(x/2) * cos(x/2), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(-sin(x), (x, pi, 0)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate((x - (x^3)/6 + (x^5)/120), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(sin(pi - x), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(2 * integrate(lim(n -> x), (x, 0, pi)), (x, 0, 2018*pi/(2*pi)))",
+            "integrate(integrate(2*sin(x), (x, 0, pi)), (x, 0, 1009))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "`integrate(4 * sin(0), (x, 0, 2018))`  (Noting sin(0) = 0)",
+                "integrate(0, (x, 0, 2018))",
+                "integrate(0 * (4 * x), (x, 0, 2018))",
+                "integrate(4 * sin(pi * (0)), (x, 0, 2018))",
+                "integrate(4 * sin(2 * pi * 0), (x, 0, 2018))",
+                "integrate(4 * (sin(0) + 0), (x, 0, 2018))",
+                "integrate(4 * limit(sin(x), x, 0), (x, 0, 2018))",
+                "integrate(4 * sin(0), (x, 0, 0))",
+                "integrate((4 * (sin(0) + sin(0))) / 2, (x, 0, 2018))",
+                "integrate(4 * (0) / (1 + 0), (x, 0, 2018))",
+                "integrate(4 * (0 / 1), (x, 0, 2018))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4 * 1009, (x, 0, 1009))",
+                "integrate(4 * 1009 * 1, (x, 0, 1009))",
+                "integrate(1009 + 1009 + 1009 + 1009, (x, 0, 1009))",
+                "integrate((8 * 1009) / 2, (x, 0, 1009))",
+                "integrate((2**2) * 1009, (x, 0, 1009))",
+                "integrate(4 * 1009 * (x >= 0) * (x <= 1009), (x, 0, 1009))",
+                "integrate(diff(4 * 1009 * x, x), (x, 0, 1009))",
+                "integrate(2 * 2 * 1009, (x, 0, 1009))",
+                "integrate(2 * 1009 * 2, (x, 0, 1009))",
+                "integrate(4 * (1000 + 9), (x, 0, 1009))",
+                "integrate((8/2) * 1009, (x, 0, 1009))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * (1 - e^{-i\\pi})/(2i), (x, 0, 1009))",
+                "integrate(2 * (1 - (cos(pi) - I*sin(pi)))/(2*I), (x, 0, 1009))",
+                "integrate(4/(2i), (x, 0, 1009))",
+                "integrate((2 * (1 - (-1)))/(2*I), (x, 0, 1009))",
+                "integrate((2 * (1 - e^{-i\\pi}))/(2i), (x, 1009, 0))",
+                "integrate(2 * (1 - (-1))/(2*I), (x, 0, 1009))",
+                "integrate(2 * (1 + cos(pi))/(2*I), (x, 0, 1009))",
+                "integrate(2 * (1 - cos(pi) + I*sin(pi))/(2*I), (x, 0, 1009))",
+                "integrate(2 * (1 - 1 + 0)/2, (x, 0, 1009))",
+                "integrate((2 * (1 - e**(i*pi)))/(2*I), (x, 0, 1009))",
+                "integrate(2 * (1 - sqrt(-1))/2i, (x, 0, 1009))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(integrate(2*sin(x), (x, 0, pi)), (x, 0, 1009))",
+                "integrate(2*cos(x), (x, 0, pi))",
+                "integrate(2 - 2*cos(x)**2, (x, 0, pi))",
+                "integrate(2*sin(x), (x, 0, pi)) + integrate(0, (x, 0, 1009))",
+                "integrate(1*sin(x), (x, 0, pi)) + integrate(1*sin(x), (x, 0, pi))",
+                "integrate(integrate(2*sin(y), (y, 0, pi)), (x, 0, 1009))",
+                "integrate(-2*sin(-x), (x, -pi, 0)) + integrate(2*sin(x), (x, 0, pi))",
+                "integrate(2*(exp(I*x) - exp(-I*x))/(2*I), (x, 0, pi))",
+                "integrate(2*(1 - cos(x)), (x, 0, pi))",
+                "integrate(2*sin((pi/1009) * x), (x, 0, 1009))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u, (x, 0, 1009))",
+                "integrate(u, (x, 0, 1009))",
+                "integrate(x * 1.0, (x, 0, 1009))",
+                "integrate(1009 * (x / 1009), (x, 0, 1009))",
+                "integrate(x + 1, (x, 0, 1009))",
+                "integrate(1009 - x, (x, 0, 1009))",
+                "integrate(x + (1009 / 2), (x, 0, 1009))",
+                "integrate(1009 * sin(x / 1009), (x, 0, 1009))",
+                "integrate(1 * (x + 1009), (x, 0, 1009))",
+                "integrate(0.5 * (2 * x), (x, 0, 1009))",
+                "integrate(1009 * exp(0), (x, 0, 1009))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2 * sum((-1)**n * x**(2*n+1)/(factorial(2*n+1)), (n, 0, 10)), (x, 0, 1009))",
+                "integrate(2 * sin(x), x)",
+                "integrate(x * (2 * sum((-1)**n * x**(2*n)/(factorial(2*n)), (n, 0, 10))), x)",
+                "integrate(sum(2 * (-1)**n * x**(2*n+1)/(factorial(2*n+1)), (n, 0, 10)), x)",
+                "integrate(2 * sum((-1)**n * (x**(2*n+1)/((2*n+1)!)), (n, 0, 10)), x)",
+                "integrate(sum(2 * ((-1)**n / (2*n+1)!) * ((x**(2*n+1))), (n, 0, 10)), x)",
+                "integrate(2 * sum((-1)**n * x**(2*n+1) / gamma(2*n+2), (n, 0, 10)), x)",
+                "integrate(x * sum(2 * (-1)**n * x^(2*n)/(factorial(2*n)), (n, 0, 10)), x)",
+                "integrate((-1)**(n+1) * 2*x**(2*n)/(factorial(2*n)), (x, 0, 1009))",
+                "integrate(2 * piecewise((x < 1009, sum((-1)**n * x**(2*n+1)/(factorial(2*n+1)), (n, 0, 10))), (True, 0)), (x, 0, 1009))",
+                "integrate(2 * sum((-1)**n * sin(x)*(x**(2*n))/(factorial(2*n)), (n, 0, 10)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(0.5 * (e^(2018*ix) - e^(-2018*ix)), (x, 0, 2018*pi))",
+            "`integrate(0.5 * (-i * e^(2018 * ivar) + i * e^(-2018 * ivar)), (x, 0, 2018 * pi))` where \\(ivar = 2018 * (x - pi/2)\\)",
+            "`integrate(0.5 * (e^(2018 * i * (x + y)) - e^(-2018 * i * (x + y))) - e^(2018 * i * (x)), (x, 0, 2018 * pi))` where \\(y = 0\\)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(e^(2018*ix), (x, 0, 2018*pi)) - integrate(e^(-2018*ix), (x, 0, 2018*pi))",
+                "integrate(2 * sin(2018 * x) * e^(2018ix), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(2018 * x), (x, 0, 2018 * pi))",
+                "integrate((e^(2018 * ix) - e^(-2018 * ix)) / (e^(2018 * ix) + e^(-2018 * ix)), (x, 0, 2018 * pi))",
+                "integrate((1 - cos(2018 * x)), (x, 0, 2018 * pi))",
+                "integrate(e^(2018 * ix), (x, 0, 2018 * pi)) - integrate(1, (x, 0, 2018 * pi))",
+                "integrate((e^(i * x * 2018) - 1) / (ix), (x, 0, 2018 * pi))",
+                "integrate(2 * sin(2018 * x) * cos(2018x), (x, 0, 2018 * pi))",
+                "integrate(2018 * cos(2018 * x) * e^(2018 * ix), (x, 0, 2018 * pi))",
+                "integrate(e^(2018 * ix), (x, 0, 2 * 1009 * pi)) - integrate(e^(-2018 * ix), (x, 0, 2 * 1009 * pi))",
+                "integrate(Im(e^(2018 * ix)), (x, 0, 2018 * pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2018 * (x - floor(x/(2*pi)) * 2*pi), (x, 0, 2018*pi))",
+                "integrate(2018 * (x - (x % (2*pi))), (x, 0, 2018*pi))",
+                "integrate(2018 * (x - (x - (2*pi) * int(x / (2*pi)))), (x, 0, 2018*pi))",
+                "integrate(x*2018 - 2018 * (x//(2*pi))*2*pi, (x, 0, 2018*pi))",
+                "integrate((2016 + 2) * (x - floor(x/(2*pi))*2*pi), (x, 0, 2018*pi))",
+                "integrate(2018 * (x - ((x/2*pi) // 1 * 2*pi)), (x, 0, 2018*pi))",
+                "integrate(2018 * (u + (2*pi) * (-1)**(floor(u/(2*pi)))), (u, 0, 2018*pi))",
+                "integrate(2018 * (x - 2*pi*math.floor(x/(2*pi))), (x, 0, 2018*pi))",
+                "integrate(2018 * (floor(x/(2*pi))*2*pi - x), (x, 0, 2018*pi))",
+                "integrate(2018 * (x - (2*pi * floor(x/2*pi))), (x, 0, 2018*pi))",
+                "integrate(2018 * (x % (2*pi)), (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x) + 0*sin(0), (x, 0, 2018*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2018*x), (x, 0, 2018*pi/2))",
+                "integrate(cos(2018*x - pi/2), (x, 0, 2018*pi/2))",
+                "integrate(sin(2018*x + pi/2), (x, 0, 2018*pi/2))",
+                "integrate(2*sin(1009*x)*cos(1009*x), (x, 0, 2018*pi/2))",
+                "integrate(sin(2018*x), (x, 0, 2*pi))",
+                "integrate(sin(2018*x), (x, 0, pi)) + integrate(sin(2018*x), (x, pi, 2018*pi/2))",
+                "integrate(sin(u), (u, 0, 2018^2*pi/2))",
+                "integrate(-sin(2018*x), (x, 0, -2018*pi/2))",
+                "integrate(sin(2018*(x + pi/2)), (x, -pi/2, 2018*pi/2 - pi/2))",
+                "integrate(sin(2018*x), (x, -2018*pi/2, 0))",
+                "integrate((e**(2018*I*x) - e**(-2018*I*x))/(2*I), (x, 0, 2018*pi/2))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2*pi*(2018/2018)*x), (x, 0, 2018*pi))",
+                "integrate(cos(2*pi*(2018/2018)*x - pi/2), (x, 0, 2018*pi))",
+                "integrate(-sin(2*pi*(2018/2018)*x), (x, 0, 2018*pi))",
+                "integrate(sin(u), (u, 0, 2*2018*pi))",
+                "integrate(sin(2*pi*(2018/2018)*x), (x, 0, 1009*pi)) + integrate(sin(2*pi*(2018/2018)*x), (x, 1009*pi, 2018*pi))",
+                "integrate(imaginary(exp(2*pi*(2018/2018)*x * (1j))), (x, 0, 2018*pi))",
+                "integrate(sin(2*pi*(2018/2018)*x) * cos(0), (x, 0, 2018*pi))",
+                "integrate(sin(2*pi*(2018/2018)*x) + sin(2*pi*(2018/2018)*x + pi), (x, 0, 2018*pi))",
+                "integrate(sin(-2*pi*(2018/2018)*x), (x, 0, 2018*pi))",
+                "integrate(0 * sin(2*pi*(2018/2018)*x), (x, 0, 2018*pi))",
+                "integrate(sin(2*pi*x), (x, 0, 2*pi*2018))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sum(sin(2018*x), (x, 0, 2018*pi)), 1)",
+                "integrate(sum(cos(2018*x), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(sin(2017.5*x), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(2*sin(1009*x)*cos(1009*x), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(2*sin(1009*x), (x, 0, 1009*pi)), (x, 0, 1))",
+                "integrate(sum(-sin(2018*x), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(sin(2018*(1/2)*x), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(sin(2018*x) + sin(2018*(x + pi)), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(\u03a3((-1)**n * (2018**(2*n) * x**(2*n))/(math.factorial(2*n)), (n, 0, \u221e)), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(sin(2018*(x + \u03c0)), (x, 0, 2018*pi)), (x, 0, 1))",
+                "integrate(sum(sin(2018*x)*(1-2*((x//(pi))%2)), (x, 0, 2018*pi)), (x, 0, 1))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(Abs(sin(2018*x)), (x, 0, 2018*pi))",
+            "integrate(Abs(sin((2017 + 1)*x)), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(-2018*x)), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(2018*(x - pi))), (x, 0, 2018*pi))",
+            "integrate(Abs(sin(y)), (y, 0, 2018*2018*pi))",
+            "integrate(Abs(sin((2014 + 4)*x)), (x, 0, 2018*pi))",
+            "integrate(Abs(cos(2018*x - pi/2)), (x, 0, 2018*pi))",
+            "integrate(2*Abs(sin((2018/2)*x)*cos((2018/2)*x)), (x, 0, 2018*pi/2))",
+            "integrate(cos(2018*x)*(x >= 0), (x, 0, 2018*pi))",
+            "integrate(2 * 2018, (x, 0, 1))",
+            "integrate(2 * Abs(sin(2018*x)), (x, 0, 2018*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(x)), (x, 0, 2*pi))",
+                "integrate(2 * sin(x), (x, 0, pi))",
+                "integrate(2 * sqrt(sin(x)**2), (x, 0, pi))",
+                "integrate(abs(cos(x - pi/2)), (x, 0, 2*pi))",
+                "integrate(2 - sin(x) - 0, (x, pi, 2*pi)) + integrate(sin(x), (x, 0, pi))",
+                "integrate(abs(sin(pi/2 * x)), (x, 0, 4))",
+                "integrate(2 * abs(sin(x/2)), (x, 0, 4*pi))",
+                "integrate((e**(i*x)-e**(-i*x))/(2*I), (x, 0, 2*pi))",
+                "integrate(sin(x), (x, 0, pi/2)) + integrate(sin(x), (x, pi/2, pi))",
+                "integrate(1 + sin(x)**2 - 1, (x,0, 2*pi))",
+                "integrate(2 * arcsin(x/sqrt(x**2 + 1)), (x, 0, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(2*x)), (x, 0, pi))",
+                "integrate(sin(2*x), (x, 0, pi)) + integrate(-sin(2*x), (x, pi/2, pi))",
+                "integrate(abs(exp(2j*x) - exp(-2j*x)) / (2j), (x, 0, pi))",
+                "integrate(abs(sin(2*(pi - x))), (x, 0, pi))",
+                "integrate(abs(sin(2*(x - pi/2))), (x, pi/2, pi))",
+                "integrate(abs(cos(2*x - pi/2)), (x, 0, pi))",
+                "integrate(abs(2*sin(x)*cos(x)), (x, 0, pi))",
+                "integrate(abs(sin(2*x)), (x, -pi, pi))",
+                "integrate(abs(sin(u)), (u, 0, 2*pi)) * (1/2)",
+                "integrate(2*sin(2*x), (x, 0, pi/2))",
+                "integrate(sin(2*x), (x, 0, pi/2)) + integrate(-sin(2*x), (x, pi/2, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(3*x)), (x, 0, 2*pi/3))",
+                "integrate(sin(3*x), (x, 0, pi/3)) + integrate(-sin(3*x), (x, pi/3, 2*pi/3))",
+                "integrate(sin(3*x), (x, 0, pi/3)) - integrate(sin(3*x), (x, pi/3, 2*pi/3))",
+                "integrate(cos(3*x - pi/2), (x, 0, 2*pi/3))",
+                "integrate(-sin(3*x), (x, pi/3, 2*pi/3)) + integrate(sin(3*x), (x, 0, pi/3))",
+                "(1/3) * integrate(abs(sin(3*x)), (x, 0, 2*pi/3))",
+                "integrate(sin(3*(x - pi/6)), (x, pi/6, 2*pi/3))",
+                "integrate(abs(sin(3*(x + pi/3))), (x, -pi/3, pi/3))",
+                "integrate(abs(cos(3*x + pi/2)), (x, 0, 2*pi/3))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(x)), (x, 0, pi))",
+                "integrate(sin(x), (x, 0, pi))",
+                "integrate(sin(pi - x), (x, 0, pi))",
+                "integrate(sqrt(sin(x)**2), (x, 0, pi))",
+                "integrate(sin(x) * (x/pi), (x, 0, pi)) + integrate(sin(x) * ((pi - x)/pi), (x, 0, pi))",
+                "integrate((e^{ix} - e^{-ix})/2i, (x, 0, pi))",
+                "integrate(sin(pi/2 - x), (x, 0, pi))",
+                "integrate(sin(x) + sin(pi - x), (x, 0, pi))",
+                "integrate(sum((((-1)**n)/factorial(2*n + 1)) * x**(2*n + 1) for n in range(0, 100)), (x, 0, pi))",
+                "integrate(elliptic_jacobi(sn, x/pi), (x, 0, pi))",
+                "integrate(log((1 + exp(ix))/(1 + exp(-ix))), (x, 0, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(4*x)), (x, 0, pi/2))",
+                "integrate(2*sin(2*x)*cos(2*x), (x, 0, pi/2))",
+                "integrate(sin(4*x), (x, 0, pi/2))",
+                "integrate(cos(pi/2 - 4*x), (x, 0, pi/2))",
+                "integrate((1/2j)*(exp(4*I*x) - exp(-4*I*x)), (x, 0, pi/2))",
+                "integrate(sin(4*x), (x, 0, pi))",
+                "integrate(sin(4*(pi/2 - x)), (x, 0, pi/2))",
+                "integrate(4*x - (4**3 * x**3)/6, (x, 0, pi/2))",
+                "integrate(sin(t), (t, 0, 2*pi)) * (1/4)",
+                "integrate(4*cos(4*x), (x, 0, pi/2))",
+                "\\(\\int_0^{\\frac{\\pi}{2}} \\sin(4x) \\, dx\\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(abs(sin(5*x)), (x, 0, 2*pi/5))",
+                "integrate(abs(sin(x)), (x, 0, 2*pi))",
+                "integrate(sin(5*x), (x, 0, pi/10)) + integrate(-sin(5*x), (x, pi/10, 2*pi/10))",
+                "integrate(1 - 4*cos(5*x)**2, (x, 0, 2*pi/5))",
+                "(1/(2*pi/5)) * integrate(abs(sin(5*x)), (x, 0, 2*pi))",
+                "integrate(abs(cos(5*x - pi/2)), (x, 0, 2*pi/5))",
+                "integrate(abs(sin(u)), (u, 0, 2*pi))",
+                "integrate((e^(5*x*I) - e^(-5*x*I)) / (2 * I) , (x, 0, 2*pi/5))",
+                "integrate(sqrt( (1 - cos(10*x))/2 ), (x, 0, 2*pi/5))",
+                "integrate(abs(sin(5*x + pi)), (x, 0, 2*pi/5))",
+                "integrate(abs(sin(5*x) + 0), (x, 0, 2*pi/5))"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

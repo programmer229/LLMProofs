@@ -1,0 +1,1459 @@
+{
+  "base_question": "integrate(sinh(x)/(cosh(x) - sinh(x)), x)",
+  "tree": [
+    {
+      "level": 0,
+      "variants": [
+        "integrate(sinh(x)/(cosh(x) - sinh(x)), x)",
+        "integrate((u - 1)/(u - (u/2 + 1)), log(u), exp(x))",
+        "integrate((1 - coth(x))/(1 - 1/2*coth(x)), x)",
+        "integrate(tanh(x)/(coth(x) - 1), x)",
+        "integrate((y^2 - 1)/(y^2 - y), log(y), exp(x))",
+        "integrate(log(cosh(x)/(sinh(x))), x)",
+        "integrate((e^x - e^{-x})/((e^x + e^{-x}) - (e^x - e^{-x})), x)",
+        "integrate(tanh(x)/(1 - tanh(x)), x)",
+        "integrate(sinh(x)/(1/2 * (cosh(x) + sinh(x))), x)",
+        "integrate(u/(u - 1), x)",
+        "integrate((cosh(x) - 1)/((cosh(x) - sinh(x))), x)"
+      ],
+      "children": [
+        {
+          "level": 1,
+          "variants": [
+            "integrate((2*(e**x - e**(-x)))/(e**x + e**(-x) - (e**x - e**(-x))), x)",
+            "integrate(2*sinh(x)/(2*cosh(x) - 2*sinh(x)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((u - 1/u)/(u + 1/u - (u - 1/u)) * (1/u), u)",
+                "integrate((e^x - e^(-x))/(e^x + e^(-x) - (e^x - e^(-x))) * e^(-x), x)",
+                "integrate((tan(theta) - cot(theta))/(tan(theta) + cot(theta) - (tan(theta) - cot(theta))) * cot(theta), theta)",
+                "integrate((t - 2)/(t) * (1/(sqrt(t^2-4))), t)",
+                "integrate((A/(u) + B/(u^2) + ...), u)",
+                "integrate((-v - 1)/(1 + v + (-v - 1)) * v, v)",
+                "integrate((sin(x) - cos(x))/(sin(x) + cos(x) - (sin(x) - cos(x))) * cos(x), x)",
+                "integrate((sinh(x) - cosh(x))/(sinh(x) + cosh(x) - (sinh(x) - cosh(x))) * cosh(x), x)",
+                "integrate((e^(2x) - e^(-2x))/(e^(2x) + e^(-2x) - (e^(2x) - e^(-2x))) * e^(-2x), x)",
+                "integrate((1 - (1/u)^2)/(1 + (1/u)^2 - (1 - (1/u)^2)) * (1/u), u)",
+                "integrate((cos(x) - sin(x))/(cos(x) + sin(x) - (cos(x) - sin(x))) * sin(x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sinh(2*x)/2*e^x, x)",
+                "integrate((e**(2*x) - e**(-2*x))/(4*e**x), x)",
+                "integrate(e**(x) * (1/4)*(e**(x) - e**(-3*x)), x)",
+                "integrate((1/2)*(sinh(2*x)/e**x), x)",
+                "integrate((1/4)*(e**(2*x) - e**(-2*x))*e**(-x), x)",
+                "integrate(sinh(2*(x + 1))/2*e**(x + 1), x)",
+                "integrate(cosh(2*x)/2*e**(x), x)",
+                "integrate(-1*(sinh(2*x))/(2*e**(x)), x)",
+                "integrate(2*(sinh(2*x)/e**(x))/4, x)",
+                "integrate(sinh(2*x)/(2*e**(x + 1)), x)",
+                "integrate((e^(2*x) - e^(-2*x)) * (1/2) * e^x, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(e^x*(e^x - e^{-x})/2, x)",
+                "integrate(e**x * (e**x - e**(-x)) / 2, x)",
+                "integrate(e**x * sinh(x), x)",
+                "integrate(e**(2*x) * (1/2 - (1/(2 * exp(-1j * x)))), x)",
+                "integrate(e**(2*x) - e**x, x)",
+                "integrate((1/2) * e**(u/2) * (e**(u/2) - e**(-u/2)), (u/2))",
+                "integrate(log(1 + e**x) * e**x, x)",
+                "integrate(e**x * (e**x/2 - e**(-x)/2), x)",
+                "integrate(e**(2*x)/(2(e**(-x) + 1)), x)",
+                "integrate((1/2) * sum([(x**n) / factorial(n) for n in range(10)]) * sum([(x**n) / factorial(n) for n in range(10)]), x)",
+                "integrate((sinh(x) + cosh(x)) * e**x, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((sqrt(y) - 1/sqrt(y))/(y + 1/sqrt(y) - (sqrt(y) - 1/sqrt(y))) * (1/(2*sqrt(y))), y)",
+                "integrate((x - 1/x) / ((x^2 + 1/x - (x - 1/x))) * (1 / (2 * x)), x)",
+                "integrate((x - 1/x)/(x**2 + 1/x - (x - 1/x)) * (1/(2*x)), x)",
+                "integrate((x**2 - 1)/(x**3 + 1 - (x**2 - 1)), x)",
+                "integrate((x**4 - 1)/(x**3 + 1 - (x**4 - 1)), x)",
+                "integrate((A/(x - 1) + B/(x + 1)) * (1/(2*x)), x)",
+                "integrate((1/sqrt(u) - u/sqrt(u))/(1/u + sqrt(u) - (1/sqrt(u) - u/sqrt(u))) * (1/(2*sqrt(u))), x)",
+                "integrate(x/(x**2 + 1) * (1/(2*x)), x)",
+                "integrate((sin(a) - cos(a))/(sin^2(a) + cos(a) - (sin(a) - cos(a))), x)",
+                "integrate(((x - 1)*(x + 1))/(x**2 + 1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1 - (e**x - e**(-x))/(e**x + e**(-x) - (e**x - e**(-x))), x)",
+                "integrate(1 - (2 * sinh(x)) / (2 * cosh(x) - 2 * sinh(x)), x)",
+                "integrate(1 - (sinh(x))/(cosh(x) - sinh(x)), x)",
+                "integrate(-1 * (sinh(x))/(sinh(x) - cosh(x)), x)",
+                "integrate(1 - log((e^x + e^{-x})/(e^x - e^{-x})), x)",
+                "integrate(1 - (2 * sinh(x))/(2 * sinh(x) + 2 * cosh(x)), x)",
+                "integrate(1 - tanh(x), x)",
+                "integrate(1 - (e^x)/(e^x + e^{-x} - e^x + e^{-x}), x)",
+                "integrate(1 - (u - 1/u)/(u + 1/u - (u - 1/u)), x)",
+                "integrate(1 - (e^x/(e^x - e^{-x})), x)",
+                "integrate(1 - (sinh(-x))/(sinh(x) - cosh(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((e**(2*x) - 1)/(e**(2*x) + 1), x)",
+                "integrate(tanh(x), x)",
+                "integrate((e**x - 1)/(e**x + 1), x)",
+                "integrate((u-2)/(u), (u-1)/2)",
+                "integrate((1 - v)/(1 + v), -1/(2*v**2) * dv)",
+                "integrate(1 - (2/(e**(2*x) + 1)), x)",
+                "integrate((cosh(2*x)/sinh(2*x)), x)",
+                "integrate((t - 1)/(t + 1), 1/(2*t) * dt)",
+                "integrate(log((e**(2*x) + 1)/(e**(2*x) - 1)), x)",
+                "integrate(sqrt((e**(2*x) - 1)/(e**(2*x) + 1)), x)",
+                "integrate(tanh(x)*cosh(x), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sinh(x) / exp(-x), x)",
+            "integrate((exp(x) - exp(-x))/2 * exp(x), x)",
+            "integrate(exp(x) * (exp(x) - exp(-x))/2, x)",
+            "integrate((1/2)*(e^(2*x) - e^(-x)) * 2/2, x)",
+            "integrate(1/2 * sinh(x) * e^{x+1} / e, x)",
+            "integrate((sinh(x) + sinh(x)/100 - sinh(x)/100) * e^x, x)",
+            "integrate(2 * sinh(x)/2 * e^x, x)",
+            "integrate(sinh(2*x) * exp(-x) * 1/2, x)",
+            "integrate(sinh(ln(exp(2*x))) * exp(-x), x)",
+            "integrate((0.5 * sinh(x) + 0.5 * sinh(x)) * e^x, x)",
+            "integrate((sinh(x) * exp(x)) + (sinh(x) * exp(-x)) * 0, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int \\frac{e^x - e^{-x}}{2} e^{x} \\, dx = \\int \\frac{(e^{2x} - 1)}{2} \\, dx \\)",
+                "integrate(sinh(x) * exp(x), x)",
+                "integrate(0.5 * exp(x) * (exp(x) - exp(-x)), x)",
+                "integrate(0.5 * (exp(2*x) + exp(x) - 1), x)",
+                "integrate(0.5 * (u**2 - 1) * (1/u), u)",
+                "integrate((1/2) * ((1 + x^2/2 + x^4/24) - 1), x)",
+                "integrate(exp(x) * ((e^x - e**(-x)) / 2), x)",
+                "integrate(0.5 * (cosh(x) + sinh(x)) * sinh(x), x)",
+                "integrate(0.5 * integrate(e^(2*x), x) - 0.5*x, x)",
+                "integrate(0.5 * (e^(2*x)/2 - 1/2), x)",
+                "integrate(0.5 * (exp(2*log(x)) - 1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int \\left( \\frac{e^{2x} - 1}{2} \\right) \\, dx \\)",
+                "integrate((cosh(2 * x) - 1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int (e^{2x} - e^{-2x}) \\cdot \\frac{1}{2} \\, dx \\)",
+                "integrate((cosh(2*x) - sinh(2*x)) * (1/2), x)",
+                "integrate(2*sinh(2*x)/2, x)",
+                "integrate(1/2 * e**(2*x) * (1 - e**(-4*x)), x)",
+                "integrate(1/2 * e**(-2*x) * (e**(4*x) - 1), x)",
+                "integrate(1/2 * e**(2*x), x) - integrate(1/2 * e**(-2*x), x)",
+                "integrate(1/2 * (e**(2*x) - e**(-2*x)), x)",
+                "integrate(u * (1/2), x) where u = e**(2*x) - e**(-2*x)",
+                "integrate(sinh(2*x), x)",
+                "integrate(1/2 * (e**(2*x) + e**(-2*x) - 2*cosh(2*x)), x)",
+                "integrate(1/2 * ((e**(2*x) - e**(-2*x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int e^{x} \\sinh(x) \\, dx = \\int e^{x} \\cdot \\left( \\frac{e^x - e^{-x}}{2} \\right) \\, dx \\)",
+                "integrate((sum((x**n)/factorial(n), (n, 0, 10)) - (sum((-x)**n/factorial(n), (n, 0, 10)))/2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int \\left( \\frac{u - \\frac{1}{u}}{2} \\right) \\, \\frac{du}{u} \\)",
+                "integrate((1/2 - 1/(2*e**(2*x))), x)",
+                "integrate((1/2)*x - (1/2)*x**(-2), x)",
+                "integrate((1/2)*(x - x**-1), x)",
+                "integrate((e**(t)/2 - 1/(2*e**(t))), x)",
+                "integrate((1/2)*((u - 1/u)/u), x)",
+                "integrate((1/2)*log(abs(u)) + (1/2)*log(abs(u**-2)), x)",
+                "integrate((1/2)*(x**3 - x)/x, x)",
+                "integrate((-1/2)*(-x + 1/x), x)",
+                "integrate((1/2)*(5/2 - (3/u)), x)",
+                "integrate((1/2)*tan(u) - (1/2)*(cot(u)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "\\( \\int e^{2x}/2 \\, dx - \\int e^{0} \\, dx \\)",
+                "integrate(2 * exp(2*x) / 4, x) - integrate(exp(0), x)",
+                "integrate(exp(x)**2 / 2, x) - integrate(exp(0), x)",
+                "integrate(exp(2*x) + 0, x) / 2 - integrate(exp(0), x)",
+                "integrate((1 + 2*x + (2*x)**2 / 2) / 2, x) - integrate(exp(0), x)",
+                "integrate(exp(2*x) / 2, x) - integrate(exp(-(-1)), x)",
+                "integrate(exp(2*x)/(2*1), x) - integrate(exp(0), x)",
+                "integrate(exp(2*x) / 2, x) - integrate(sum([1]), x)",
+                "integrate(0.5 * exp(2*x), x) - integrate(exp(0), x)",
+                "integrate(exp(2 * x)/2 + 0*x, x) - integrate(exp(0), x)",
+                "integrate((exp(2*x) - e*(e-1))/(2*e-e), x) - integrate(1, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(tanh(x) / (1 - tanh(x)), x)",
+            "integrate((e**x - e**(-x)) / (e**x + e**(-x) - 1), x)",
+            "integrate(-\\tanh(-x) / (1 + \\tanh(-x)), x)",
+            "integrate((u - 1)/(u + 1 - (u - 1)), log(u), u)",
+            "integrate((tanh(x)**2) / (1 - tanh(x)), x)",
+            "integrate(tanh(x) * (2/(cosh(2*x) + 1)), x)",
+            "integrate(sin(x) / (cos(x) - sin(x)), x)",
+            "integrate(tanh(x + 1) / (1 - tanh(x + 1)), x)",
+            "integrate(log(cosh(x)) / (1 - tanh(x)), x)",
+            "integrate(sum((-1)**n * x**(2*n+1) / ((2*n+1) * factorial(n)), (n, 0, oo)) / (1 - tanh(x)), x)",
+            "integrate(differentiate(log(1 - tanh(x))), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-1 + 1/(1 - tanh(x)), x)",
+                "integrate(-1 + (cosh(x)/(cosh(x) - sinh(x))), x)",
+                "integrate((1 - (1 - tanh(x))) / (1 - tanh(x)), x)",
+                "integrate(-1 + (e^(2*x)/(e^(2*x) - 1)), x)",
+                "integrate(-1 + (sech(x)), x)",
+                "integrate(-1 + (1/(1 - i*tan(i*x))), x)",
+                "integrate(-1 + (1/(1 - (u - 1)/(u + 1))), u)",
+                "integrate(-1 + (sec^2(x)/(sec^2(x) - 1)), x)",
+                "integrate(-1 + csch(x), x)",
+                "integrate(-1 + sum((-1)^n * x^(2*n)/(2*n)!, (n, 0, oo)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(tanh(x), x) + integrate(1/(1 - tanh(x)), x)",
+                "`integrate((u - 1)/(u + 1), x) + integrate(1/(1 - (u - 1)/(u + 1)), x)`  where \\( u = exp(x) \\)",
+                "integrate(sinh(x)/cosh(x), x) + integrate(1/(1 - sinh(x)/cosh(x)), x)",
+                "integrate(tanh(x), x) + integrate(cosh(x)/(cosh(x) - sinh(x)), x)",
+                "integrate((2/(exp(2*x) + 1) - 1), x) + integrate(1/(1 - (2/(exp(2*x) + 1) - 1)), x)",
+                "integrate(log(cosh(x)), x) + integrate(1/(1 - tanh(x)), x)",
+                "integrate(tanh(x), x) + integrate(1/(1 - tanh(x)), x) + integrate(tanh(x)/(1 - tanh(x)), x)",
+                "integrate(2*u/(u^2 - 1), x)",
+                "integrate(tanh(-x), x) + integrate(1/(1 - tanh(-x)), x)",
+                "integrate(tanh(x), x) + integrate(sum((tanh(x))**n, (n, 0, oo)), x)",
+                "integrate((1 - sinh(x)/cosh(x)), x) + integrate(1/(1 - (1 - sinh(x)/cosh(x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((tanh(x) + 1)/(1 - tanh(x)), x) - integrate(1/(1 - tanh(x)), x)",
+                "integrate((exp(x) - exp(-x) + exp(x) + exp(-x))/(e^x + e^{-x} - (e^x - e^{-x})), x)",
+                "integrate((exp(2*x) - 1)/(exp(2*x) + 1), x)",
+                "integrate(log(cosh(x)), x)",
+                "integrate((2*tanh(x) + 2)/(2 - 2*tanh(x)), x)",
+                "integrate(2/(2*cosh(x) - 2), x)",
+                "integrate((sin(x)**2)/(1 - sin(x)**2), x)",
+                "integrate((sin(x)/(cos(x)**2)), x)",
+                "integrate(tanh(x)/(1 - tanh(x)) * (1 + tanh(x)), x)",
+                "integrate((1 - tanh(x)) * (1 + tanh(x))/(1 - tanh(x)), x)",
+                "integrate((x - (x**3)/3 + (x**5)/5)/(1 - (x - (x**3)/3 + (x**5)/5)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1 - sech(x)**2, x) + integrate(sech(x)**2/(1 - tanh(x)), x)",
+                "integrate(tanh(x)**2, x) + integrate(sech(x)**2/(1 - tanh(x)), x)",
+                "integrate(1 - sech(x)**2, x) + integrate(sech(x)**2 * (1 + tanh(x) + tanh(x)**2 + tanh(x)**3 + tanh(x)**4), x)",
+                "integrate(1 - (2/(exp(x) + exp(-x)))**2, x) + integrate((2/(exp(x) + exp(-x)))**2/(1 - (2/(exp(x) + exp(-x)))**2), x)",
+                "integrate(1 - sech(x)**2, x) + integrate(sech(x)**2/(1 + tanh(x)), x)",
+                "integrate(1 - sech(x)**2, x) + integrate(sech(x)**2 * (1 - tanh(x))/(1 + tanh(x)), x)",
+                "integrate(1 - tanh(x)**2, x) + integrate(sech(x)**2/(1 - tanh(x)), x)",
+                "integrate(1 - (sinh(x)/cosh(x))**2, x) + integrate(1/(cosh(x)(1 - (sinh(x)/cosh(x)))), x)",
+                "integrate(1 - sech(x)**2, x) + integrate(-sech(x)**2/(tanh(x) - 1), x)",
+                "integrate(1 - (cos(x)/sin(x))**2, x) + integrate((cos(x)/sin(x))**2/(1 - (cos(x)/sin(x))), x)",
+                "integrate(1 - sech(x + 2)**2, x) + integrate(sech(x + 2)**2/(1 - tanh(x + 2)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sinh(x)/(cosh(x) - sinh(x)), x)",
+                "integrate((e**x - e**(-x)) / ((e**x + e**(-x)) - (e**x - e**(-x))), x)",
+                "integrate(sinh(x) / sqrt(1 - sinh(x)**2), x)",
+                "integrate((sqrt(u**2 - 1)) / (u - sqrt(u**2 - 1)), u)",
+                "integrate(sinh(-x)/(cosh(-x) - sinh(-x)), x)",
+                "integrate(A / (cosh(x) - C) + B / (cosh(x) - D), x)",
+                "integrate(2*sqrt(a*b)/(b - a), x)",
+                "integrate(t / (t**2 - t), log(t), 0, oo)",
+                "integrate(sinh(x)/(sec(x) - sinh(x)), x)",
+                "integrate(sum((x**n)/factorial(n) for n in range(0, 10)) / (cosh(x) - sinh(x)), x)",
+                "integrate((e**x - e**(-x))/(e**x + e**(-x) - (e**x - e**(-x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - x**3/3 + x**5/5)/(1 - (x - x**3/3 + x**5/5)), x)",
+                "integrate(x/(1 - x), x)",
+                "integrate(x*(1 + x**2/3)/(1 - (x - x**3/3 + x**5/5)), x)",
+                "integrate(x/(1 - (x - (x**3/3) + (x**5/5))), x)",
+                "integrate((x - (x**3/3))/(1 - (x - (x**3/3))), x) + integrate((x**5/5)/(1 - (x - (x**3/3))), x)",
+                "integrate((y + (y**3/5))/(1 - y), y)",
+                "integrate(log(1 - (x - (x**3/3) + (x**5/5))), x)",
+                "integrate((x + x**3/3)/(1 - (x - (x**3/3) + (x**5/5))), x)",
+                "integrate((1/3)*(d/dx(x**3) - d/dx(x**5)/(1 - (x - (x**3/3)))), x)",
+                "integrate(1/(1 + (x - (x**3/3) + (x**5/5))**2), x)",
+                "integrate((x*(1 + x**2/3)/(1 + (x - (x**3/3)))**3), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cosh(2*x) / (cosh(x) - sinh(x)), x)",
+            "integrate((2*cosh(x)**2 - 1) / (cosh(x) - (e**x - e**(-x))/2), x)",
+            "integrate((2*cosh(x)**2 - 1) / (cosh(x) - sinh(x)), x)",
+            "integrate(cosh(2*x) / (cosh(x) - (e**x - e**(-x))/2), x)",
+            "integrate(2*cosh(2*x) / (2*cosh(x) - sinh(x)), x)",
+            "integrate(cosh(2*x) / (cosh(x) - cosh(x - pi/2)), x)",
+            "integrate(cosh(2*x) / (1 - sinh(x) * cosh(x)), x)",
+            "integrate((e**(2*x) + e**(-2*x)) / (cosh(x) - sinh(x)), x)",
+            "integrate((cosh(x)**2 + sinh(x)**2) / (cosh(x) - sinh(x)), x)",
+            "integrate(cosh(2*log(u)) / (cosh(log(u)) - sinh(log(u))), log(u))",
+            "integrate((e**(2*x) + e**(-2*x)) / ((e**x + e**(-x))/2 - (e**x - e**(-x))/2), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2*cosh(x)**2 - 1) / (cosh(x) - sinh(x)), x)",
+                "integrate((2 * ( (e**x + e**(-x)) / 2 )**2 - 1) / (( (e**x + e**(-x)) / 2 ) - ( (e**x - e**(-x)) / 2 )), x)",
+                "integrate((2 * cosh(x)**2 - 1) / e**(-x), x)",
+                "integrate((cosh(x) + sinh(x)), x)",
+                "integrate((2*(u**2 + 1)/2 - 1) / ( (u + 1)/2 - (u - 1)/2 ), log(u))",
+                "integrate((2 * sec(theta)**4 - 1) / (sec(theta) - tan(theta)), theta)",
+                "integrate((2 * (1 + sinh(x)**2) - 1) / (sqrt(1 + sinh(x)**2) - sinh(x)), x)",
+                "integrate((2 * cosh(2 * x)**2 - 1) / (cosh(2 * x) - sinh(2 * x)), x)",
+                "integrate((2 * (1 + t**2)/2 - 1) / (t + 1)/2 - (t - 1)/2, log(t))",
+                "integrate(((4*(SUM(t**(2*n) / factorial(2*n) for n in range(0, 10))) -1) / ((1 + t - t**2)/2)), x)",
+                "integrate((2 * sinh(x) * cosh(x) - sinh(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cosh(2*x) / (1/2 * (e**x - e**(-x)) + 1/2 * (e**x + e**(-x))), x)",
+                "\\(\\int \\frac{\\frac{e^{2x} + e^{-2x}}{2}}{e^x} \\, dx\\)",
+                "\\(\\int \\cosh(2x) e^{-x} \\, dx\\)",
+                "\\(\\int \\frac{2\\cosh^2(x) - 1}{e^x} \\, dx\\)",
+                "\\(\\int \\left( e^{x} + e^{-3x} \\right) \\, dx\\)",
+                "\\(\\int \\frac{1}{2}(e^{2x + x} + e^{-2x - x}) \\, dx\\)",
+                "\\(\\int \\frac{e^{x} + e^{-x}}{e^x} \\cosh(2x) \\, dx\\)",
+                "\\(\\int \\left( \\frac{1}{2} + \\frac{\\cosh(2x)}{e^{x}} \\right) \\, dx\\)",
+                "\\(\\int \\frac{\\sinh(x) + \\sinh(3x)}{e^{x}} \\, dx\\)",
+                "\\(\\int \\frac{e^{2x}}{e^{x}} \\, dx + \\int \\frac{1}{e^{x}} \\, dx\\)",
+                "\\(\\int \\left( e^{2x} + e^{-2x} \\right)e^{-x} \\, dx\\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cosh(2*x) * e**x, x)",
+                "integrate((e**(2*x) + e**(-2*x)) / 2 * e**x, x)",
+                "integrate((e**(3*x) + e**(-x)) / 2, x)",
+                "integrate(e**x * integrate(cosh(2*x), x), x)",
+                "integrate(e**(x + 2*x) / 2 + e**(x - 2*x) / 2, x)",
+                "integrate(sum(((2**n) / factorial(n)) * x**n for n in range(10)) * e**x, x)",
+                "integrate((2*cosh(x)**2 - 1) * e**x, x)",
+                "integrate((e**(x + 2*x) + e**(x - 2*x)) / 2, x)",
+                "integrate(cosh(2*log(t)) * t, t)",
+                "integrate((e**x * (sinh(2*x) + e**x)) / 2, x)",
+                "integrate(cosh(2*x) * e**(x + 0), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2*sinh(x)*cosh(x)) / (cosh(x) - sinh(x)), x)",
+                "integrate((e**(2*x) - e**(-2*x)) / (e**x), x)",
+                "integrate((e**(2*x) - e**(-2*x)) / (2*e**(-x)), x)",
+                "integrate((2*sinh(x)*cosh(x)*e**(x)) / (1 - e**(-x)), x)",
+                "integrate((2 * sum([(e**n * x**n) / math.factorial(n) for n in range(0, 10)])) * (e**(2*x) - e**(-2*x)) / (e**x), x)",
+                "integrate((2*sin(2*x)) / (cos(x) - sin(x)), x)",
+                "integrate((8*sinh(x)*cosh(x)) / (4*cosh(x) - 4*sinh(x)), x)",
+                "integrate((e**(x) - e**(-x)) / (1 - e**(-x)), x)",
+                "integrate((2*(e**(3*x) - e**(-3*x))) / (cosh(x)^3 - sinh(x)^3), x)",
+                "integrate((sum([((-1)**n)/(math.factorial(n))*(x**n)) for n in range(20)])) / (cosh(x) - sinh(x)), x)",
+                "integrate((2*sinh(x)*cosh(x)) / (cosh(x) - (1 - sinh(x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cosh(x + x) / (cosh(x) - sinh(x)), x)",
+                "integrate((2*cosh(x)**2 - 1) / (cosh(x) - sinh(x)), x)",
+                "integrate(cosh(2*x) / exp(-x), x)",
+                "integrate(cosh(2*log(u)) / (u - 1/u), log(u))",
+                "integrate((cosh(x)**2 + sinh(x)**2) / (cosh(x) - sinh(x)), x)",
+                "integrate((cosh(2*x) + sinh(2*x)) / (cosh(x) - sinh(x)), x)",
+                "integrate(cosh(2*x) / ((e**x - e**(-x))/2), x)",
+                "integrate((e**(2*x) + e**(-2*x)) / ((e**x + e**(-x)) - (e**x - e**(-x))/2), x)",
+                "integrate((e**(2*x) + 1) / (cosh(x) - sinh(x)), x)",
+                "integrate(cosh(2*atanh(t)) / (cosh(atanh(t)) - sinh(atanh(t))), atanh(t))",
+                "integrate((2*cosh(x)^2 - 1) / (e**(-x) * (cosh(x) + sinh(x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cosh(2*x) / (x + 1), x)",
+                "integrate((1/2) * (exp(2*x) + exp(-2*x)) / (x + 1), x)",
+                "integrate((2 * sinh(2*x) + 2) / (x + 1), x)",
+                "integrate(cosh(2*x) * (1 - (1/(x + 1))), x)",
+                "integrate(cosh(2*(u - 1)) / u, u)",
+                "integrate(exp(2*x)/(2*(x + 1)) + exp(-2*x)/(2*(x + 1)), x)",
+                "integrate((1/2) * (cosh(2*x) - sinh(2*x)) * (1/(x + 1)), x)",
+                "integrate((1/(x + 1) + cosh(2*x)/(x + 1) - 1/(x + 1^2)), x)",
+                "integrate(sum([(2**n) * x**(2*n) / factorial(2*n) for n in range(10)]) / (x + 1), x)",
+                "integrate(log(x + 1) * sinh(2*x), x)",
+                "integrate((1/2) * cosh(v) / (v/2 + 1), v)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((1/(u)), x)  # where u = cosh(x) - sinh(x)",
+            "integrate(exp(x), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(exp(x), x)",
+                "integrate(1 + x + x**2/2 + x**3/6 + x**4/24 + x**5/120, x)",
+                "integrate(10**(log(10) * x), x)",
+                "integrate(1/u, log(u)/log(e))",
+                "integrate(3 * e**(3 * (x / 3)), x)",
+                "integrate((1/(1 + x**2)) * e**(tan(theta)), x)",
+                "integrate(x * e**x - integrate(x, x), x)",
+                "integrate(differentiate(e**x), x)",
+                "integrate(e**(-(-x)), x)",
+                "integrate(e**2 * e**x, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(e**(x), x)",
+                "integrate(2 * e**(2*x), x)",
+                "integrate(1 + x + (x**2)/2 + (x**3)/6, x)",
+                "integrate(e**(2*x) / e**x, x)",
+                "integrate(e**(1*x), x)",
+                "integrate(e**(2*x/2), x)",
+                "integrate(e**(x + 1) / e, x)",
+                "integrate(e**(2*x - x), x)",
+                "integrate(e**(-(-x)), x)",
+                "integrate(ln(e**x), x)",
+                "integrate(e**(x + 0j), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x), x)",
+                "integrate(Re(e**(I*x)), x)",
+                "integrate(sin(x + 3.14 / 2), x)",
+                "integrate(Re(e**(I * x)), x)",
+                "integrate(cos(2 * x), x)",
+                "integrate(sqrt(1 - sin(x)**2), x)",
+                "integrate(3 * cos(x), x)",
+                "integrate(sum((-1)**n * x**(2*n) / factorial(2*n), (n, 0, oo)), x)",
+                "integrate(cos(-x), x)",
+                "integrate(cos(0.5 * x) - 1, x)",
+                "integrate(cosh(x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 / 2, x)",
+                "`integrate(u**2 / 2, u)` with \\( u = x \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**3 / 3, x)",
+                "integrate(2 * (x**3 / 6), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2*x)/2, x)",
+                "integrate(sin(x)*cos(x), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sum((x**n)/(factorial(n)), (n, 1, oo)) / (sum((x**m)/(factorial(m)), (m, 0, oo)) - sum((x**k)/(factorial(k)), (k, 1, oo))), x)",
+            "integrate((sum((x**n)/(factorial(n)), (n, 0, oo)))/((sum((x**m)/(factorial(m)), (m, 0, oo))), x)",
+            "integrate((e**x) - 1, x)",
+            "integrate((x/(1 - e**(-x))), x)",
+            "integrate((1/(1 - e**(-x))), x)",
+            "integrate((1/(1/(x**(1/2))))*((e**x)-1), x)",
+            "integrate((x**2)/(factorial(2)), (x, 0, oo))",
+            "integrate(sum(((2*y)**n)/(factorial(n)), (n, 0, oo)) / (sum(((2*y)**m)/(factorial(m)), (m, 0, oo))), y)",
+            "integrate(1/(1 - (e**(-2*x))), x)",
+            "integrate(log(e**x), x)",
+            "integrate(sum((x**(m+1))/(factorial(m+1)), (m, 0, oo)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2) / (exp(x) - (exp(x) - 1)), x)",
+                "integrate(x**2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x / (exp(x) - 1), x)",
+                "integrate(x / sum(factorial(n) * x**n / exp(1)**n for n in range(1, 10)), x)",
+                "integrate(x * sum((-1)**n * x**n / factorial(n + 1) for n in range(1, 10)), x)",
+                "integrate(x^2 / (x * (e^x - 1)), x)",
+                "integrate((log(u) - 1) / (u - 1), u)",
+                "integrate(1 / (e^x - 1), x) + integrate((1/x), x)",
+                "integrate(x / (e**(2) * (e**(ax) - 1)), x)",
+                "integrate(x / (cos(x/2) - 1), x)",
+                "integrate((exp(x) - 1) / (e^x - 1), x)",
+                "integrate(x * (zeta(2) / (e**x - 1)), x)",
+                "integrate((2*x) / (2*e^x - 2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x / (1 - exp(-x)), x)",
+                "integrate(x * sum(exp(-n*x) for n in range(1, 11)), x)",
+                "integrate(x / (exp(x) - 1), x)",
+                "integrate(-log(u) / (1 - u), u).subs(u, exp(-x))",
+                "integrate(1 / (1 - exp(-x)/x), x)",
+                "integrate(x * exp(x) / (exp(x) - 1), x)",
+                "integrate(x * (1 + (1/2) * exp(-x) + (1/6) * exp(-2*x)), x)",
+                "integrate(x / (1 + e^{-x}), x)",
+                "integrate(integrate(1, (1 - exp(-x))), x)",
+                "integrate((x - exp(-x)) / (1 - e^{-x}), x)",
+                "integrate(x * (1 + 1/2 * exp(-x) + 1/3 * exp(-2*x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**3)/(6*(1 - exp(-x))), x)",
+                "integrate(x**3/(6*x), x)",
+                "integrate(x**3/(6*(x + x**2/2)), x)",
+                "integrate((u - 1)**3/(6*(1 - exp(-(u - 1)))), u)",
+                "integrate(x**3/(6*(1 - cos(I * x))), x)",
+                "integrate(x**3/(6*(sum(x**n/factorial(n) for n in range(1, 5)))), x)",
+                "integrate(((-log(t))**3)/(6*(1 - t)), -log(t))",
+                "integrate(x**3/(6*(Gamma(1+x))), x)",
+                "integrate(x**2/(6*(1 - e^{-x})), x) - integrate((x - 1)**2/(6*(1 - e^{-x})), x)",
+                "integrate((x**5)/(30(1 - e^{-x})), x)",
+                "integrate((sin(x**2))**2/6(x**3), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) / (1 - sum((x**k)/(factorial(k)), (k, 1, 3))), x)",
+                "integrate(1 / (1 - sum((x**k)/factorial(k), (k, 1, 3))) * sum((x**n)/factorial(n), (n, 0, 3)), x)",
+                "integrate(x**3 * (1 + x/6 + x**2/36) / (1 - (x + x**2/2 + x**3/6)), x)",
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) * (1/(1 - sum((x**k)/(factorial(k)), (k, 0, 3)))), x)",
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) / ((1 - x/1) - (x**2/2)), x)",
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) / (1 - sum((u/(u+1))**k/(factorial(k)), (k, 1, 3))), x)",
+                "integrate( sum((x**n)/(factorial(n)), (n, 0, 3)) * (1/(e^x - 1 - x - x**2/2)), x)",
+                "integrate(sum((x**n)/factorial(n), (n, 0, 3)) / (1 - sum(((1 + \u03b5)*x**k)/factorial(k), (k, 1, 3))), x)",
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) * (e^(-sum((x**k)/factorial(k), (k, 1, 3)))), x)",
+                "integrate((sum((x**n)/factorial(n), (n, 0, 3)) * (1 - sum((1 + x**k/k**2)/factorial(k), (k, 1, 3)))), x)",
+                "integrate(sum((x**n)/(factorial(n)), (n, 0, 3)) / ((1-x) * sum((x**k)/(factorial(k)), (k, 1, 3))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2) / (1 - (exp(-2*x))), x)",
+                "integrate((x**2 * exp(2 * x)) / (e**(2 * x) - 1), x)",
+                "integrate(x**2 / (1 - (sum((-2*x)**n / factorial(n) for n in range(100))), x)",
+                "integrate((u/2)^2 / (1 - exp(-u)), u) * (1/2)",
+                "integrate(x**2 * sum(e**(-2*n*x) for n in range(100)), x)",
+                "integrate((x**2 * exp(2*x)) / (1 - exp(2*x)), x)",
+                "integrate(sum(x**2 * e**(-2*n*x) for n in range(0, 100)), x)",
+                "integrate((x**2) / (1 - cosh(-2 * x)), x)",
+                "integrate((x**2) / (1 - exp(-(2*exp(I*x)))), x)",
+                "integrate(sum(x**2 * e**(2*n*x) for n in range(100)), x)",
+                "integrate((x**2) / (1 - (sin(2*x) / (1 + sin(2*x)))), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((e**(ix) - e**(-ix))/(e**(ix) + e**(-ix) - (e**(ix) - e**(-ix))), x)",
+            "integrate((2*1j*sin(x))/(2*cos(x) - 2*1j*sin(x)), x)",
+            "integrate((sin(x))/(cos(x) - sin(x)), x)",
+            "integrate(log(e**(ix)/(e**(ix)+e**(-ix)-e**(ix)+e**(-ix))), x)",
+            "integrate((2*sin(x))/(2*cos(x)), x)",
+            "integrate(1/((e**(ix) + e**(-ix) - (e**(ix) - e**(-ix))), x)",
+            "integrate((2*tan(x/2))/(tan(x/2) - 1), x)",
+            "integrate((cos(x) + i*sin(x) - (cos(x) - i*sin(x))) / (cos(x) + i*sin(x) + (cos(x) - i*sin(x))), x)",
+            "integrate((2*sin(x))/(2*cos(x) - 2), x)",
+            "integrate((e**(ix))/(e**(ix)*e**(-ix) - e**(-ix)), x)",
+            "integrate(2*sin(x)/sin(x - pi/4), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(i * (sin(x) / (cos(x) - i * sin(x))), x)",
+                "integrate(i * (sin(x) / (cos(x) - i*sin(x))), x)",
+                "integrate(i * (1/(e^(ix) - 2*i*sin(x))), x)",
+                "integrate(i * (sin(x) * (cos(x) + i * sin(x))) / ((cos(x))^2 + (sin(x))^2), x)",
+                "integrate(i * ((2 * i * (e**(i*x) - e**(-i*x))) / (cos(x) - i * sin(x))), x)",
+                "integrate(i * ((1/(2i * (cos(x) - i * (1/2i)*(e**(i*x) - e**(-i*x))))), x)",
+                "integrate(i * (sin(z) / (cos(z) - i * sin(z))), z)",
+                "integrate(i * (u / (1 - u)), x)",
+                "integrate(i * (sin(t * x) / (cos(t * x) - i * sin(t * x))), x)",
+                "integrate(i * (tan(x) / (1 - i * tan(x))), x)",
+                "integrate(-i * (sin(x)/(-cos(x) + i * sin(x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(i * tan(x) / (1 - i * tan(x)), x)",
+                "integrate(i * sin(x) / (cos(x) - i * sin(x)), x)",
+                "integrate(i * sin(x) * cos(x) / (cos^2(x) - i * sin(x) * cos(x)), x)",
+                "integrate(i * u / (1 - i * u) * (1 / (1 + u**2)), u)",
+                "integrate(i * (sin(x) / (cos(x) - i * sin(x))), x)",
+                "integrate(i * (1 / (1 - i * tan(x))) * tan(x), x)",
+                "integrate(i * tan(x) * cos(x) / (cos^2(x) - i * sin(x)), x)",
+                "integrate(i * (e^(ix) - e^(-ix)) / (e^(ix) - e^(-ix) - i), x)",
+                "integrate( (i * tan(x)) * (1/(1 - i * tan(x))), x)",
+                "integrate(i * sum(tan(x), (n, 0, 10)) / (1 - i * sum(tan(x), (n, 0, 10))), x)",
+                "integrate(i * tan(x + \u03c0/2) / (1 - i * tan(x + \u03c0/2)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((sin(x) - (-sin(x)))/(cos(x) - (sin(x) - (-sin(x)))), x)",
+                "integrate(2*sin(x)/(sqrt(1 - sin(x)**2) - 2*sin(x)), x)",
+                "integrate(2*sqrt(1 - u**2)/(u - 2*sqrt(1 - u**2)), u)",
+                "integrate((2*(e^(ix) - e^(-ix))/(2i))/(cos(x) - (e^(ix) - e^(-ix))/i), x)",
+                "integrate(2*cos(x - pi/2)/(cos(x) - 2*cos(x - pi/2)), x)",
+                "integrate(2*((1 - cos(2*x))/2)/(cos(x) - 2*((1 - cos(2*x))/2)), x)",
+                "integrate(4*sin(x)/(2*cos(x) - 4*sin(x)), dx)",
+                "integrate(2*sin(pi - x)/(cos(pi - x) - 2*sin(pi - x)), dx)",
+                "integrate(2*tan(x), x)",
+                "integrate(2*frac(sin(x), cos(x)), x)",
+                "integrate(2*(exp(I*x) - exp(-I*x))/(exp(I*x) + exp(-I*x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/(cos(x) - i * sin(x)), x) + integrate(1/(cos(x) + i * sin(x)), x)",
+                "integrate(2/(cos(x) - i * sin(x)), x) + integrate(2/(cos(x) + i * sin(x)), x)",
+                "integrate(-i/(i * (cos(x) - i * sin(x))), x) + integrate(-i/(i * (cos(x) + i * sin(x))), x)",
+                "integrate((-sin(x) + cos(x))/(cos^2(x) + sin^2(x)), x)",
+                "integrate(1/(sin(x) + i * cos(x)), x) + integrate(1/(sin(x) - i * cos(x)), x)",
+                "integrate(1/(i * (sin(x) - i * cos(x))), x) + integrate(1/(i * (sin(x) + i * cos(x))), x)",
+                "integrate(1/(e^{ix}), x) + integrate(1/(e^{-ix}), x)",
+                "integrate(4/(2 * (cos(x) - i * sin(x))), x) + integrate(4/(2 * (cos(x) + i * sin(x))), x)",
+                "integrate(1/(1 + (sin(x)/cos(x))^2), x)",
+                "integrate(2/(e^{ix} + e^{-ix}), x)",
+                "integrate(1/(cos(x) - i * cos(\u03c0/2-x)), x) + integrate(1/(cos(x) + i * cos(\u03c0/2-x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(i * tan(x) / (1 + tan^2(x)), x)",
+                "integrate(i * (sin(x) / cos(x)) * (cos(x)**2), x)",
+                "integrate(i * sin(x) / cos(x) * (cos(x)**2), x)",
+                "integrate(i * (sec(x) - 1) * (1 - (sec(x)**2 - 1)), x)",
+                "integrate(i * u / (1 + u**2), u)",
+                "integrate(i * cot(x) / (1 + 1/cos(x)**2), x)",
+                "integrate(i * (tan(x)) / (sec(x)**2), x)",
+                "integrate(i * ((exp(ix) - exp(-ix))/(i*(exp(ix) + exp(-ix)))) / (1 + ((exp(ix) - exp(-ix))/(i*(exp(ix) + exp(-ix))))**2), x)",
+                "integrate(i * (sin(x)**2)/(cos(x)**3), x)",
+                "integrate(i * (d/dx(tan(x))), x)",
+                "integrate(i * (sum(k * sin(k * x) / cos(k * x) for k in range(1, 11))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(i * sin(2x) / (cos(2x)), x)",
+                "integrate(i * (e^(2 * i * x) - e^(-2 * i * x)) / (2 * cos(2 * x)), x)",
+                "integrate(i * cos(pi/2 - 2 * x) / (cos(2 * x)), x)",
+                "integrate(i * (sin(2*x)*cos(2*x) + sin(2*x)*sin(2*x)) / cos(2*x), x)",
+                "integrate(i / (2*tan(2*x)), x)",
+                "integrate((1/(2i*tan(2*x))), x)",
+                "integrate(i * ln((1 + sin(2 * x))/(1 - sin(2 * x))), x)",
+                "integrate(i * tan(2*x), x)",
+                "integrate(0.5 * i * (e**(2*i*x) - e**(-2*i*x)) / (cos(2*x)), x)",
+                "integrate(0.5 * i * (e**(2*i*x) - e**(-2*i*x)) * sec(2*x), x)",
+                "integrate(i * (e**(2*i*x) - e**(-2*i*x)) / (2 * cos(2*x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(tan(x) / (1 - sin(x)), x)",
+            "integrate(sin(x) / ((1 - sin(x)) * cos(x)), x)",
+            "integrate(tan(arcsin(1 - t)) / t, t)",
+            "integrate(cos(x) / (1 - cos(x)), x)",
+            "integrate(tan(x) / (1 - sin(x) + 1 - cos(x)), x)",
+            "integrate(2 * tan(x) / (2 - 2 * sin(x)), x)",
+            "integrate((e^(ix) - e^(-ix)) / (2i(1 - (e^(ix) + e^(-ix))/2)), x)",
+            "integrate(2 * sin(x) / (1 - cos(2x) - sin(x)), x)",
+            "integrate((x + x^3/3 + x^5/5) / (1 - (1 - x^2)/2), x)",
+            "integrate(sum(((x^(2*n - 1)) / (2*n - 1)), (n, 1, oo)) / (1 - sin(x)), x)",
+            "integrate(sin(2*x) / (2 * (1 - sin(x))), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(x) / (cos(x) * (1 - sin(x))), x)",
+                "integrate(-1 / (u*(1 - u)), u)",
+                "integrate(-tan(x) / (1 - sin(x)**2), x)",
+                "integrate(tan(x)/(cos(x) - sin(x)), x)",
+                "integrate(sin(x) / (sin(\\pi/2 - x)(1 - sin(x))), x)",
+                "integrate(sin(x)*(1 + sin(x)) / ((1 - sin(x))*(1 + sin(x))), x)",
+                "integrate(sin(x)/(cos(x)*cos^2(x/2)), x)",
+                "integrate(sin(x) * (1 + sin(x) + sin(x)**2 + sin(x)**3 + ...), x)",
+                "integrate(sec(x) * (1 - sin(x))**(-1), x)",
+                "integrate(imaginary(1/(e^(ix)*(1 - imaginary(sin(x)))), x)",
+                "integrate(1/(cos(x)*(1-sin(x))) - sin(x)/(cos^2(x)*(1-sin(x))), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(1 / (1 - e^{-x}), x)",
+            "integrate(sum(exp(-n*x), (n, 0, oo)), x)",
+            "integrate((1 / (1 - u)) * (-1 / u), u)",
+            "integrate(sum(((-1)**n) * (e**(-n*x)), (n, 1, oo)), x)",
+            "integrate(-log(1 - exp(-x)), x)",
+            "integrate((1/(1 - exp(-x))) * (exp(x) / exp(x)), x)",
+            "integrate(1/(exp(x)-1), x)",
+            "integrate(sech(x/2), x)",
+            "integrate(1 + (e^{-x})/(1 - e^{-x}), x)",
+            "integrate(log(exp(x)), x)",
+            "integrate((exp(x)/(exp(x) - 1)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1 / (1 - e^{-x}), x)",
+                "integrate(sum(exp(-n*x) for n in range(0, oo)), x)",
+                "integrate(1 / (1 - 1 / exp(x)), x)",
+                "integrate(1 / ((1 - (1 - x + x^2 / 2 - x^3 / 6 + x^4 / 24))), x)",
+                "integrate(log(exp(x) / (exp(x) - 1)), x)",
+                "integrate(1 / (1 - u), -log(u))",
+                "integrate(1 / (1 - exp(-(-x))), x)",
+                "integrate(1/(1 - t), -log(t))",
+                "integrate(1 / (1 - (1/(1 + e^{-x}))), x)",
+                "integrate(1 / (1 - tanh(x/2)), x)",
+                "integrate(1 / (1 - sin(t)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sinh(x) * exp(x), x)",
+            "integrate(1/3 * sinh(x) * exp(x) * 3, x)",
+            "integrate(sinh(x) * (exp(x) * sin(0)), x)",
+            "integrate(cosh(x) * exp(x) - exp(x), x)",
+            "integrate(exp(x)^2 / 2 - exp(x)/2, x)",
+            "integrate(4 * sinh(x/2) * exp(2*x), x)",
+            "integrate(sinh(z/2) * exp(z/2), z / 2)",
+            "integrate(2 * (exp(x) - exp(-x)) * exp(x), x)",
+            "integrate(sinh(x) * exp(x + 1), x) - integrate(sinh(x) * exp(1), x)",
+            "integrate(-sinh(x) * e^{-x} * -1, x)",
+            "integrate(sinh(2*x) * exp(x), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((exp(x) - exp(-x))/2 * exp(x), x)",
+                "integrate(sinh(x) * exp(x), x)",
+                "integrate((exp(x) - 1/exp(x)) / 2 * exp(x), x)",
+                "integrate(exp(x) * (1/2 * (e^x - e^{-x})), x)",
+                "integrate((3 * (e^x - e^{-x})) / 6 * exp(x), x)",
+                "integrate((e^(x) - e^(-x)) / (2) * e^(x), x).subs(e^(ix), cos(x) + i*sin(x))",
+                "integrate((cosh(x) - sinh(x)) * exp(x), x)",
+                "integrate(((e^x - e^{-x}) / 2 + 0) * exp(x), x)",
+                "integrate((1/2 * (2*e^x - 2*e^{-x})) * e^x, x)",
+                "integrate(((e^(3/2*x) - e^(-3/2*x)) / 2) * e^(3/2*x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(exp(2*x) * (1 - exp(-2*x))/2, x)",
+                "integrate(exp(2*x) / 2 - exp(0) * exp(-2*x) / 2, x)",
+                "integrate(e^(2*x) * (1/2) - e^0 * (1/2), x)",
+                "integrate(exp(2*x) * (exp(2*x) - 1) / 2, x)",
+                "integrate((1/2) * (u - 1) * (1/u) * (1/(2)) * du, x), where u = exp(2*x)",
+                "integrate((1/4)e^(2*x) + (1/4)e^(2x), x)",
+                "integrate(exp(2*x)/2 - exp(0-2*x)/2, x)",
+                "integrate(x * exp(2*x), x) - integrate(x * exp(0-2*x), x)",
+                "integrate(exp(2*x) * (1 - 1/(e^(2*x))), x)",
+                "integrate((1/2)(x - exp(-2*x)), x)",
+                "integrate((exp(2*x) - exp(0))/2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sinh(x) * (exp(x) + exp(-x))/2, x)",
+                "integrate(sinh(2*x)/2, x)",
+                "integrate(sum((1/(2*n)!)*(2*x)**(2*n+1) - (1/(2*n+1)!)*(2*x)**(2*n+2), (n, 0, 10)), x)",
+                "integrate((exp(x) - exp(-x)) * ((exp(x) + exp(-x))/2), x)",
+                "integrate((sin(2*x)/2), x)",
+                "integrate((3/6)*sinh(x) * ((3/3)(e**x + e**-x)/2), x)",
+                "integrate((exp(x) - exp(-x))/(2) * (exp(x) + exp(-x))/2, x)",
+                "integrate(sinh(x + 1) * (exp(x) + exp(-x)) / 2, x)",
+                "integrate(sinh(x) * (exp(x) + exp(-x) + 1)/3, x)",
+                "integrate(sinh(x) * (cosh(x)), x)",
+                "integrate(1/2 * sinh(2 * x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/2 * (sinh(x) * e^x + sinh(x) * e^{-x}), x)",
+                "integrate((1/2) * ((sinh(x) * e**x) + (sinh(x) * e**(-x))), x)",
+                "integrate(1/2 * ((e**x - e**(-x)) * e**x + (e**x - e**(-x)) * e**(-x))/2, x)",
+                "integrate((1/4) * (e**(2*x) - e**(-2*x)), x)",
+                "integrate((1/4) * (e**(x) - e**(-x)) * (e**(x) + e**(-x)), x)",
+                "integrate((1/2) * (cosh(x) + 1/2) * sinh(x), x)",
+                "integrate(1/2 * (sinh(1) * e**x + sinh(1) * e**(-x)), x)",
+                "integrate(1/2 * (d/dx[sinh(x) * e**x]), x)",
+                "integrate((1/4) * (1j * (e**(1j*x) - e**(-1j*x))) * (e**(1j*x) + e**(-1j*x)), x)",
+                "integrate(1/4 * (2 * cosh(x) - 1) * (e**(x) + e**(-x)), x)",
+                "integrate((1/2) * (sin(x) * exp(I*x) + sin(x) * exp(-I*x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sum(((-1)**n * x**(2*n+1))/(factorial(2*n+1)), (n, 0, 10)), x)",
+                "integrate(sin(x), x)",
+                "integrate(x * sum((-1)**n * x**(2*n)/(factorial(2*n)), (n, 0, 10)), x)",
+                "integrate((-1)**(n) * x**(2*n + 1) / (factorial(2*n + 1)), (n, 0, 10), x)",
+                "integrate(sum((-1)**n * (x**(2*n + 2) - x)/(factorial(2*n + 1)), (n, 0, 10)), x)",
+                "integrate(sum((e**(I * pi * n) * x**(2*n + 1))/(factorial(2*n + 1)), (n, 0, 10)), x)",
+                "integrate(sum((-1)**n * (choose(2*n + 1, n) * x**(2*n + 1) / 2**(2*n + 1)), (n, 0, 10)), x)",
+                "integrate(sum((-1)**n * x**(2*n + 1) / gamma(2*n + 2), (n, 0, 10)), x)",
+                "integrate(sum((-1)**n * (u)**(n + 1))/(factorial(2*n + 1)), (n, 0, 5), x**2)",
+                "integrate(x * sum((-1)**n * (binomial(2*n + 1, n) / (2**(2*n + 1))), (n, 0, 10)), x)",
+                "integrate(sum(tan((pi/4) + n*pi/5) * x**(2*n + 1) / factorial(2*n + 1), (n, 0, 10)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(exp(x) * (sinh(x)), x)",
+                "integrate(exp(x) * (0.5 * (exp(x) - exp(-x))), x)",
+                "integrate(sinh(x) * exp(x), x)",
+                "integrate(0.5 * exp(2*x) - 0.5, x)",
+                "integrate(cosh(x) * sinh(x), x)",
+                "integrate(exp(x) * (0.5 * (exp(x) - exp(-x) + 1 - 1)), x)",
+                "integrate(0.5 * (exp(2*x) + exp(x) - 1), x)",
+                "integrate(0.5 * (exp(2*I*x) + exp(-2*I*x)), x)",
+                "integrate(-exp(-x) * (0.5 * (exp(-x) - exp(x))), x)",
+                "integrate(sum(n**2 * x**n / factorial(n) for n in range(10)), x)",
+                "integrate(exp(x) * (cosh(x) - 2 * sinh(x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(u/(sqrt(u**2 + 1) - u), u)",
+            "integrate((u * (sqrt(u**2 + 1) + u)), x) / (u**2 + 1)",
+            "integrate((tan(x) * sec(x)), x)",
+            "integrate(sinh(x) / (cosh(x) - sinh(x)), x)",
+            "integrate(sqrt(u**2 + 1) + 1, x)",
+            "integrate((1/v) / (sqrt(1/v**2 + 1) - (1/v)), x)",
+            "integrate(1/(sqrt(1/u**2 + 1) - u), x)",
+            "integrate(log(sqrt(u**2 + 1) - u), x)",
+            "integrate(-u/(sqrt(u**2 + 1) + u), x)",
+            "integrate(e**x / (sqrt(e**(2*x) + 1) - e**x), x)",
+            "integrate((u^2 + 1) / u, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u * (sqrt(u**2 + 1) + u) / (u**2), x)",
+                "integrate((sqrt(u**2 + 1) + 1) / u, x)",
+                "integrate((u/2) * (sqrt(u**2 + 1) + u) / (u**2), x)",
+                "integrate(u * (sqrt(u**2 + 1) + u) / (2 * u**2), x)",
+                "integrate(u * (sqrt(u**2 + 2) + u) / (u**2), x)",
+                "integrate(u * (sqrt(u**2 + 0.25) + u) / (u**2), x)",
+                "integrate((u**2 + 1) * (sqrt(u**2 + 1) + u) / (u**2), x)",
+                "integrate((3 * u) * (sqrt(u**2 + 1) + u) / (u**2), x)",
+                "integrate((1 / (sqrt(u**2 + 1) + u)) / u, x)",
+                "integrate(u * (sqrt(u**2 + 3) + u) / (u**2), x)",
+                "integrate(u * (log(sqrt(u**2 + 1) + u)) / (u**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u * (sqrt(u**2 + 1) + u), u) / (u**2 + 1), x)",
+                "integrate((tan(t) * (sqrt(tan(t)**2 + 1) + tan(t))), x)",
+                "integrate((u * (sqrt((u + 1) * (u - 1)) + u)), x)",
+                "integrate((u * (exp((1/2) * log(u**2 + 1)) + u)), x)",
+                "integrate((sqrt(v - 1) * (sqrt(v) + sqrt(v - 1))), x)",
+                "integrate(((u * (sqrt(u**2 + 1) - u)) + 2u^2)/ (u**2 + 1), x)",
+                "integrate((u * (u + sqrt(u**2 + 1))), x)",
+                "integrate((u^2 + u*sqrt(u**2 + 1))/(u**2 + 1), x)",
+                "integrate((d(log(u + sqrt(u**2 + 1)))/dx), x)",
+                "integrate((sqrt(w-1)/(w), x)",
+                "integrate((u/(1 + u^2)* (sqrt(u**2 + 1) + u)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(tan(x) * (sec(x) - tan(x)), x)",
+                "integrate(tan(x) / (sec(x) + tan(x)), x)",
+                "integrate(-sin(x) * (1 - sin(x)) / (cos(x)**2), x)",
+                "integrate(tan(x), x) - integrate(tan(x)**2, x)",
+                "integrate(sec(x) * (1 - cos(x)), x)",
+                "integrate(sec(x)**2 - tan(x)**2, x)",
+                "integrate((u/(sqrt(1-u**2) * (1-u))), x)  # here u = sin(x)",
+                "integrate(tan(x) - tan(x)**2, x)",
+                "integrate((e^(ix) - e^(-ix)) / (i * (e^(ix) + e^(-ix))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sinh(x) / (cosh(x) - sinh(x)), x)",
+                "integrate(e**x - e**(-x), x)",
+                "integrate(-sinh(-x)/(cosh(-x) - sinh(-x)), x)",
+                "integrate(-sinh(x)/(sinh(x) - cosh(x)), x)",
+                "integrate(1/(cosh(x) - sinh(x)), x)",
+                "integrate(sinh(x)/(cosh(x) - sinh(x))**2, x)",
+                "integrate(sinh(x) * e**x, x)",
+                "integrate(sinh(x)/(1/2*(e**x + e**(-x)) - sinh(x)), x)",
+                "integrate(x - (x**3)/6 + (x**5)/120, x, n=5)",
+                "integrate(cosh(x) - 1 / (1 - cosh^2(x)), x)",
+                "integrate(e**x - e**(-x)/2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(tan(x) / (sec(x) - tan(x)), x)",
+                "integrate(tan(x) * cos(x) / (1 - sin(x)), x)",
+                "integrate(-1 * du / u, x, domain='Reals')",
+                "integrate((sin(x) / cos(x)) / (1/cos(x) - (sin(x)/cos(x))), x)",
+                "integrate(sin(x) / (1 - sin(x)), x)",
+                "integrate((e^(ix) - e^(-ix)) / (e^(ix) + e^(-ix) - (e^(ix) - e^(-ix))), x)",
+                "integrate(-log(abs(sec(x) + tan(x))), x)",
+                "integrate(-d(log(sec(x))), x)",
+                "integrate(sin(x) * (-cos(x)) / (1 - sin(x)^2), x)",
+                "integrate(csc^2(x) / (csc(x) - cot(x)), x)",
+                "integrate(1 / (cot(x) - 1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 / (sqrt(x**4 + 1) - x**2), x)",
+                "integrate(x**2 * (sqrt(x**4 + 1) + x**2) / ((x**4 + 1) - x**4), x)",
+                "integrate(tan(x**2) / cos(x**2), x)",
+                "integrate(x**2 * (sqrt(x**4) + 1) / (sqrt(x**4) - (x**2 + 1)), x)",
+                "integrate(u / sqrt(u**2 + 1) - u, x**2)",
+                "integrate(x * (1 - x**2/(sqrt(x**4 + 1) + x**2)), x)",
+                "integrate(sinh(t) / cosh(t), t)",
+                "integrate((x**2 * (1 + 1/(x**4 + 1))) / (1 - x**2/(sqrt(x**4 + 1))), x)",
+                "integrate((1/2) * (2*x**2)/(1 + x**4), x)",
+                "integrate(x / ((1/(x**2) * sqrt(x**4 + 1)) - x), x)",
+                "integrate(sqrt(x**4 + 1)/x**2 - 1, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sinh(x)/(1 + sinh(x)), x)",
+            "integrate(e**x/(e**x + 2), x)",
+            "integrate((1/2 * (e**x - e**(-x))) / (1 + (1/2 * (e**x - e**(-x)))), x)",
+            "integrate(cosh(x)/(cosh(x) + sinh(x)), x)",
+            "integrate(sinh(log(u - 1))/u, u) where u = 1 + sinh(x)",
+            "integrate(-1/(1 + 1/sinh(x)), x)",
+            "integrate(coth(x)/(coth(x) + 1), x)",
+            "integrate(diff(log(cosh(x))), x)",
+            "integrate((sinh(x) * e**-x)/(e**-x + 1), x)",
+            "integrate((sinh(x) + cosh(x))/(sinh(x)), x)",
+            "integrate(cosh(x)/(sinh(x) + 1), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((exp(x) - exp(-x))/(2 + exp(x) - exp(-x)), x)",
+                "\\( \\text{integrate}\\left(\\frac{2 \\sinh(x)}{2 + 2 \\cosh(x) - 2}{2}, x\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{e^x - e^{-x}}{1 + e^x - e^{-x}} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{e^{i x} - e^{-i x}}{2 + (e^{ix} - e^{-ix})} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{\\frac{1}{2}(e^x - e^{-x})}{1 + \\frac{1}{2}(e^x - e^{-x})} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{(e^x - e^{-x})}{(e^{x/2}-e^{-x/2})^2} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{e^{x + \\ln(2)} - e^{-(x + \\ln(2))}}{2 + e^{x + \\ln(2)} - e^{-(x + \\ln(2))}} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{(e^x - e^{-x}) + 1 - 1}{2 + (e^x - e^{-x})} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{\\sinh(x)}{1 + \\cosh(x)} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{e^x - e^{-x}}{3 + e^x - e^{-x}} \\, dx\\right) \\)",
+                "\\( \\text{integrate}\\left(\\frac{(\\sqrt{e^x} - \\sqrt{e^{-x}})}{2 + (\\sqrt{e^x} - \\sqrt{e^{-x}})} \\, dx\\right) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - x**3 / 6 + x**5 / 120)/(1 + x - x**3 / 6 + x**5 / 120), x)",
+                "integrate((x - x**3 / 6 + x**5 / 120) / (1 + x - x**3 / 6 + x**5 / 120), x)",
+                "integrate(1 / ((1 + x - x**3 / 6 + x**5 / 120)/(x - x**3 / 6 + x**5 / 120)), x)",
+                "integrate(sum([x**n / factorial(n) for n in range(1, 6)]), x)",
+                "integrate((x/(1 + x) - (1/6) * (x**3/(1 + x)) + (1/120) * (x**5/(1 + x))), x)",
+                "integrate(-1 / ((1 + x - x**3 / 6 + x**5 / 120)/(x - x**3 / 6 + x**5 / 120)), x)",
+                "integrate(diff(1/(1 - x - x**3 / 6 + x**5 / 120), x), x)",
+                "integrate(1/(cos(x) + sin(x) - x**2/3), x)",
+                "integrate(LaplaceTransform(x - x**3 / 6 + x**5 / 120, x), x)",
+                "integrate(exp(-x**2/2) * (x + x**3/6 + x**5/120), x)",
+                "integrate((x + x**3/6 - x**5/120) / (1 + x + x**3/6 - x**5/120), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u/(1 + u), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sinh(x)/cosh(x)/cosh(x), x)",
+                "integrate(1/cosh(x), x)",
+                "integrate((e**x - e**(-x))/(2*(e**x + e**(-x)))**2, x)",
+                "integrate(diff(tanh(x), x), x)",
+                "integrate(sinh(acos(u)), u)",
+                "integrate(tanh(x)*sech(x), x)",
+                "integrate(sinh(x)*sech(x)**2, x)",
+                "integrate(2*asinh(tanh(x)), x)",
+                "integrate(coth(x)*csch(x), x)",
+                "integrate(log(cosh(x)), x)",
+                "integrate(sinh(x)/sqrt(1 + sinh(x)**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/(1 + sinh(x)) - 1, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1, x) - integrate(1/(1 + sinh(x)), x)",
+                "integrate(log(2 + exp(x)) - log(2 - exp(-x)), x)",
+                "integrate(x - log(exp(x) + 2) + log(2), x)",
+                "integrate(x - integrate(exp(-x)/(1 + exp(-x)), x), x)",
+                "integrate(x - sec(x)^2/exp(x), x)",
+                "integrate(log(t + 2) - log(t), x)",
+                "integrate(x - 1/2 * log(2) + 1/2 * log(1 + sinh(x)), x)",
+                "integrate(x - atan(sinh(x)), x)",
+                "integrate(x - exp(-x)/(1 + exp(-x)), x)",
+                "integrate(x - (1/2 * log(2 + sinh(x))), x)",
+                "integrate(1/2 * log(1 + sinh(x)) + x, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(1/(1 - cosh(x)), x)",
+            "integrate(2/(e**x + e**(-x) - 2), x)",
+            "integrate(2/(2 - (e**x + e**(-x))), x)",
+            "integrate(1/(1 - (e**(x/2) + e**(-x/2))**2), x)",
+            "integrate(-2/(sinh(x/2)**2), x)",
+            "integrate(1/(-2sinh^2(x/2)), x)",
+            "integrate(1/(1 - 1/(cos(x))) * (sin(x)**2), x)",
+            "integrate(3/(3 - 3*cosh(x)), x)",
+            "integrate(1/(-(cosh(x) - 1) + 1), x)",
+            "integrate(-cosh(x)/(cosh(x)-1)**2, x)",
+            "integrate(1/(2 * (1 - log(cosh(x)))), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "`integrate(1/(1 + sin(x)), x)`  (with appropriate limits chosen for convergence)",
+                "integrate(1/(1 + (2*tan(x/2)/(1 + tan(x/2)**2))), x)",
+                "integrate(1/(1 + (e^(I*x) - e^(-I*x))/(2*I)), x)",
+                "integrate(1/(1 + sqrt(1 - cos(x)**2)), x)",
+                "integrate(1/(2 - (cos(x) - sin(x))), x)",
+                "integrate(1/(1 + sin(2*x)), x)",
+                "integrate(1/(1 + 2*sin(x/2)*cos(x/2)), x)",
+                "integrate(2/(2 + (tan(x/2)*2)), x)",
+                "integrate(1/(1 + (tan(x/2)/(1 + tan(x/2)**2))), x)",
+                "integrate(1/(1 + sin(pi/2 - x)), x)",
+                "integrate(1/(1 + sin(-x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((1-u)/(u-1), u)",
+            "integrate((-1 + x)/(1 - x), x)",
+            "integrate(1/(1 - x) - 1, x)",
+            "integrate((3 - 3*x)/(3*x - 3), x)",
+            "integrate((-1 - sin(pi * x)) / (1 - cos(pi * x)), x)",
+            "integrate((-1 + 4)/(4 - 4*x), x)",
+            "integrate(log(3)/(3-x) - log(3)/3, x)",
+            "integrate((2*x - 3)/(x - 1), x)",
+            "integrate((exp(i*pi)*1)/(1 - exp(i*pi*x)), x)",
+            "integrate(-cosh(x)/(sinh(x) - 1), x)",
+            "integrate((-n + x)/(x - n), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-1, x)",
+                "integrate(2/2, x)",
+                "integrate(lim(n, n/n), x)",
+                "integrate(-(-1), x)",
+                "integrate(-1, x, limits=(x, -1))",
+                "integrate(1, (x+1), x)",
+                "integrate(0*x + 1, x)",
+                "integrate(sin(x)**2 + cos(x)**2, x)",
+                "integrate(exp(0), x)",
+                "integrate(diff((x + 1), x), x)",
+                "integrate(e**log(-1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1 + 1/(x-1), x)",
+                "integrate(1 - 1/(1 - x), x)",
+                "integrate(x - 1 + 1/(x - 1), x)",
+                "integrate(1 + 1/(x - 2 + 1), x)",
+                "integrate((x - 1)/(x - 1) + 1/(x - 1), x)",
+                "integrate(1 + exp(-log(x - 1)), x)",
+                "integrate(1 + 1/y, y)",
+                "integrate(-(1/t**2) + 1/t, t)",
+                "integrate(1 + (1/(x-1) + (1/(x-1))**2/2 + (1/(x-1))**3/3), x)",
+                "integrate(1 + 1/((x-1)*(x-1)), x)",
+                "integrate(1 + (1/(x-1)*0 + 1/(x-1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-(1-1-t)/t, x)",
+                "integrate(2/2, x)",
+                "integrate(sin(x)**2 + cos(x)**2, x)",
+                "integrate(exp(0), x)",
+                "integrate(log(exp(1)), x)",
+                "integrate((integrate(1, (x, 0, 1))), x)",
+                "integrate(x/x, x)",
+                "integrate(1 + 0, x)",
+                "integrate((x - x)**2, x)",
+                "integrate(x**0, x)",
+                "integrate(1 % 1, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/(x-1) - 1, x)",
+                "integrate((2/(x-1) - 2), x)",
+                "integrate(1/(x-1) - (x-1)/(x-1), x)",
+                "integrate(1/(x-1) - ((x-2) + 1)/(x-2 + 1), x)",
+                "integrate(log(x-1) - log(x-1) + log(1), x)",
+                "integrate(1/(x-1) - 3/3, x)",
+                "integrate(1/(x-1) - 1 + (2-2)/(x-1), x)",
+                "integrate((1 - (x-1))/(x-1), x)",
+                "integrate((x/(x-1) - (x/(x-1))), x)",
+                "integrate(1/(x-1) - sqrt((x-1)^2)/(x-1), x)",
+                "integrate(2/(1-x) - 2/2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-1 - 1/(x-1), x)",
+                "integrate(-2 - 1/(x-1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-1 + 1/t, x)",
+                "integrate((t - 1)/t, x)",
+                "integrate(-1 + ln(t), x)",
+                "integrate(-t/t + 1/t, x)",
+                "integrate(-1, x) + integrate(1/t, x)",
+                "integrate(-1 + e^(-u), x)",
+                "integrate(-1 + 1/(1 + (t - 1)), x)",
+                "integrate(-t/t + t^{-1}, x)",
+                "integrate(-(1 - 1/t), x)",
+                "integrate(ln(t), x) + integrate(-1, x)",
+                "integrate(-1 + t**(-1), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((2 * t)/(1 - t**2), t)",
+            "integrate(2*tan(x), x)",
+            "integrate(-2*t/(t**2 - 1), x)",
+            "integrate(1/(1-t) + 1/(1+t), x)",
+            "integrate(-2/u, x)",
+            "integrate(2*(-x)/(1 - (-x)**2), x)",
+            "integrate(2*t/((1+t)*(1-t)), x)",
+            "integrate((2*t*(1+t**2))/(1 - t**2 + t**2), x)",
+            "integrate((2*(v + 1)/2)/(-v), x)",
+            "integrate((2*t + 1 - 1)/(1 - t**2), x)",
+            "integrate(2*t*(1 + t**2)/(1 - t**2), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*t * Sum((t**2)**n, (n, 0, oo)), x)",
+                "integrate(2 * t / (1 - t**2), x)",
+                "integrate(2 * sqrt(u) * Sum(u**n, (n, 0, oo)), x)",
+                "integrate(2 * tan(theta) * (1 / cos(theta)**2), x)",
+                "integrate(2 * t * (1 + t**2 + t**4 + t**6 + t**8), x)",
+                "integrate((4 * t - 2 * t) * Sum((t**2)**n, (n, 0, oo)), x)",
+                "integrate(2 * t * Sum((t**2)**n, (n, 0, 10)), x)  # (finite sum approximation)",
+                "integrate(2 * t * (1 - (t**2)**10) / (1 - t**2), x)  # (reaching approximation at n = 10)",
+                "integrate(2 * (-t) * Sum((-t**2)**n, (n, 0, oo)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-2/(u), x)",
+                "integrate(-1/(u / 2), x)",
+                "integrate(-4/(2 * u), x)",
+                "integrate(-1/(u) - 1/(u), x)",
+                "integrate(-8/(4 * u), x)",
+                "integrate(-2*(u**(-1)), x)",
+                "integrate(-1/(x/2), x)",
+                "integrate(-2 * log(u), x)",
+                "integrate(-2 * exp(-x), x)",
+                "integrate(-2 * u**-1, x)",
+                "integrate(-4/(2*u), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-2*sqrt(1 - v)*(1/v), x)",
+                "integrate(-2*sqrt(1 - v)/(1 - v + 1), x)",
+                "integrate(-2*cos(u)*sec^2(u), x)",
+                "integrate(-2*sqrt(1 - v)/sqrt(v), x)",
+                "integrate(-2*sqrt((1 - sqrt(v))*(1 + sqrt(v)))/v, x)",
+                "integrate(-2*sqrt(1 - v)/(1/v), x)",
+                "integrate(-2*sqrt(1 - 2/v)/v, x)",
+                "integrate(-2*sqrt(t^2)/(1 - t^2), x)",
+                "integrate(-2*(1 - v/2)/v, x)",
+                "integrate(-2*sqrt(1 - epsilon*exp(-t))/epsilon, x)",
+                "integrate(-2*(1 - v)**(1/2)*(v**(-1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/(1 + t), x) - integrate(1/(1 - t), x)",
+                "integrate(-1 * 2 * (-t) / (1 - (-t)^2), x)",
+                "integrate((1 - 1)/(1 + t) + 2t/(1 - t**2), x)",
+                "integrate((-2 * tan(\u03b8))/(1 - tan(\u03b8)**2), x)",
+                "integrate(2*(t/(t**2 - 1)), x)",
+                "integrate((-2t + 2t)/(1 - t**2), x)",
+                "integrate(diff(log(1 - t**2)) * -2, x)",
+                "integrate((-2 * (1 - u)/(1 + u))/((1 + t)/(1 - t)), x)",
+                "integrate((-2 * e^(-t))/(e^(t) - e^(-t)), x)",
+                "integrate(1/(exp(-t) + 1), x) - integrate(1/(exp(t) + 1), x)",
+                "integrate(1/((1+t)(1-t)), x) * (1-t) - integrate(1/((1+t)(1-t)), x) * (1+t)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*tan(theta)/(sec^2(theta)), x)",
+                "integrate(2*tan(theta)*cos(theta)**2, x)",
+                "integrate(2*sin(theta)/(cos(theta)**3), x)",
+                "integrate(2*tan(theta)*cos(theta)**2/cos^2(theta), x)",
+                "integrate(2*sin(theta)/(1 - cos(theta)**2), x)",
+                "integrate(2*tan(theta)/(sec(theta)**4), x)",
+                "integrate(2*sinh(theta)/cosh^2(theta), x)",
+                "integrate(2*(exp(1j*theta) - exp(-1j*theta))/(exp(1j*theta) + exp(-1j*theta)), x)",
+                "integrate(2*tan(theta)/(1 + tan(theta)**2), x)",
+                "integrate(2*tan(theta)/(sec(theta)*tan(theta)*sec(theta)), x)",
+                "integrate((1 - cos(2*theta)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(t*derivative(log(1 - t**2), t), x)",
+                "\\( \\int -\\frac{1 - u}{u} \\cdot \\frac{-1}{2\\sqrt{1-u}} \\, du \\)",
+                "\\( \\int -2 t \\cdot \\frac{1}{(1 - t^2)} \\, dt \\)",
+                "\\( \\int t \\cdot \\left(-\\frac{2t}{1 - t^2}\\right) \\, dt \\)",
+                "\\( \\int \\sin^2(\\theta) \\cdot \\frac{d}{d\\theta} \\log(1 - \\sin^2(\\theta)) \\, d\\theta \\)",
+                "\\( \\int \\lim_{n \\to \\infty} \\frac{t^2/n}{1 - t^2/n^2} dt \\)",
+                "\\( \\int -2 \\sin^2(\\theta) \\, d\\theta \\)",
+                "\\( \\int \\tan(u) \\cdot \\sec^2(u) \\, du \\)",
+                "\\( \\int -t^2 \\sum_{n=1}^{\\infty} t^{2n-2} \\, dt \\)",
+                "\\( \\int \\frac{-2t^3/t^2}{1-t^2} \\, dt \\)",
+                "\\( \\int t \\cdot \\frac{-2e^{\\log(1 - t^2)}}{(1 - t^2)} \\, dt \\)"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
