@@ -2,7 +2,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication-central/CustomTinyZero/data/svg_variants
 BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
-EXPERIMENT_NAME=qwen2.5_7b_svg_gpt4o_mini
+EXPERIMENT_NAME=qwen2.5_7b_svg_gpt4o_mini2
 PROJECT_NAME=svg_judge_experiments
 
 #####################################################

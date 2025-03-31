@@ -8,7 +8,7 @@ Instructions:
 2. Run this file with the command: streamlit run svg_viewer.py
 """
 
-PATH_TO_LOGS = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini/question_logs.json"
+PATH_TO_LOGS = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini2/question_logs.json"
 
 #################################################################################################
 
