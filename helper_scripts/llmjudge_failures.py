@@ -9,6 +9,9 @@ def plot_failure_metrics(file_path):
     num_correct_sympy_formatting = [item['num_correct_sympy_formatting'] for item in data]
     num_correctly_scored = [item['num_correctly_scored'] for item in data]
 
+    num_correctly_scored = [x/y for x, y in zip(num_correctly_scored, num_correct_sympy_formatting)]
+    num_correct_sympy_formatting = [x/160 for x in num_correct_sympy_formatting]
+
     plt.figure(figsize=(10, 5))
     plt.plot(steps, num_correct_sympy_formatting, label='Num Correct Sympy Formatting')
     plt.plot(steps, num_correctly_scored, label='Num Correctly Scored by Judge')
@@ -23,6 +26,6 @@ def plot_failure_metrics(file_path):
     plt.close()
 
 if __name__ == "__main__":
-    failure_metrics_file = '/home/ubuntu/o1-replication-sydney/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore_gpt4o/failure_metrics.json'
+    failure_metrics_file = '/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_nosympy/failure_metrics.json'
 
     plot_failure_metrics(failure_metrics_file)

@@ -22,6 +22,7 @@ def compute_rates(question_logs_file):
             if q_num.startswith('q'):  # Only process question entries
                 question = batch[q_num]
                 if question["gold_score"] == 0.0:
+                if question["gold_score"] == 0.0:
                     continue
                 batch_size += 1
                 if (question['extracted_judge_score'] == 0) and (question['gold_score'] > 0.5):
@@ -35,6 +36,10 @@ def compute_rates(question_logs_file):
         
         # Calculate false negative rate for this batch
         if batch_size > 0:
+            fn_rate = false_negatives / batch_size
+            fp_rate = false_positives / batch_size
+            tp_rate = true_positives / batch_size
+            tn_rate = true_negatives / batch_size
             fn_rate = false_negatives / batch_size
             fp_rate = false_positives / batch_size
             tp_rate = true_positives / batch_size
@@ -67,6 +72,7 @@ def plot_correctness_metrics(correctness_rates, file_path):
     true_negatives = [item['true_negative_rate'] for item in correctness_rates]
 
     plt.figure(figsize=(10, 5))
+    #plt.plot(steps, batch_sizes, label='Batch Size')
     #plt.plot(steps, batch_sizes, label='Batch Size')
     plt.plot(steps, false_negatives, label='False Negatives')
     plt.plot(steps, false_positives, label='False Positives')
@@ -101,8 +107,8 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(os.path.join(os.path.dirname(file_path), 'fn_rates.png'))
 
 if __name__ == "__main__":
-    question_logs_file = "/home/ubuntu/o1-replication-sydney/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore_gpt4o/question_logs.json"
-    plot_file_path = "/home/ubuntu/o1-replication-sydney/CustomTinyZero/checkpoints/llmjudge_experiments/llama3.2_3b_integration_sympyscore_gpt4o/correctness_metrics.png"
+    question_logs_file = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini/question_logs.json"
+    plot_file_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini/correctness_metrics.png"
     
     correctness_rates = compute_rates(question_logs_file)
     plot_correctness_metrics(correctness_rates, plot_file_path)
