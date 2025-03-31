@@ -36,7 +36,7 @@ def get_inference_client(client_service: str):
         print("Please specify a valid client service. The available options are: 'deepinfra', 'openai', 'anthropic'.")
         exit()
 
-async def generate_text(client_service: str, model: str, system_prompt : str, prompt: str, max_tokens: int = 8000, temperature: float = 0) -> str:
+async def generate_text(client_service: str, model: str, system_prompt : str, prompt: str, png_base64_image: str = None, max_tokens: int = 8000, temperature: float = 0) -> str:
     """
     Asynchronously generate text using various AI models.
     
@@ -82,14 +82,32 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
     if client_service == "openai":
      
         # If the client object has been setup
-        response = await client.chat.completions.create(
-            model=model,
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
-            max_tokens=max_tokens,
-            temperature=temperature
-        )
+        if png_base64_image is None:
+            response = await client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+                    max_tokens=max_tokens,
+                    temperature=temperature
+            )
         
-        content = response.choices[0].message.content
+        else:
+            response = await client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": system_prompt}, 
+                        {
+                            "role": "user", 
+                            "content": [
+                                {"type": "text", "text": prompt},
+                                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{png_base64_image}"}}
+                            ]
+                        }
+                    ],
+                    max_tokens=max_tokens,
+                    temperature=temperature
+            )
+        
+        content = response.choices[0].message.content.strip()
         return content
        
 
@@ -129,16 +147,17 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
         
         return await run_anthropic()
 
-async def run_prompts(client_service, model, system_prompt, prompts, max_tokens, temperature):
+async def run_prompts(client_service, model, system_prompt, prompts, max_tokens, temperature, png_base64_images = None):
     tasks = [
         generate_text(
             client_service=client_service,
             model=model, 
             system_prompt=system_prompt,
             prompt=prompt,
+            png_base64_image=png_base64_image,
             max_tokens=max_tokens,
             temperature=temperature
-        ) for prompt in prompts
+        ) for (prompt, png_base64_image) in zip(prompts, png_base64_images)
     ]
     return_texts = await asyncio.gather(*tasks)
     return return_texts

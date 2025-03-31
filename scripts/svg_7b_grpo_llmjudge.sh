@@ -1,9 +1,9 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/o1-replication-central/CustomTinyZero/data/integration_3b_llmjudge
+DATA_DIR=/home/ubuntu/o1-replication-central/CustomTinyZero/data/svg_variants
 BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
-EXPERIMENT_NAME=qwen2.5_7b_integration_nosympy
-PROJECT_NAME=llmjudge_experiments
+EXPERIMENT_NAME=qwen2.5_7b_svg_gpt4o_mini
+PROJECT_NAME=svg_judge_experiments
 
 #####################################################
 
@@ -34,7 +34,7 @@ python3 -m verl.trainer.main_ppo \
     +judge.location=local \
     +judge.gpus=4 \
     data.train_batch_size=32 \
-    data.val_batch_size=100 \
+    data.val_batch_size=32 \
     data.max_prompt_length=512 \
     data.max_response_length=2048 \
     actor_rollout_ref.model.path=$BASE_MODEL \
@@ -52,7 +52,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.actor.fsdp_config.optimizer_offload=False \
     actor_rollout_ref.rollout.tensor_model_parallel_size=2 \
     actor_rollout_ref.rollout.name=vllm \
-    actor_rollout_ref.rollout.gpu_memory_utilization=0.7 \
+    actor_rollout_ref.rollout.gpu_memory_utilization=0.6 \
     actor_rollout_ref.rollout.n=5 \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
     algorithm.kl_ctrl.kl_coef=0.001 \
