@@ -40,7 +40,7 @@ def compute_score(solutions_batch,
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "deepseek-ai/DeepSeek-R1"
+    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
     client_service = "together"
     max_tokens = 1000
     temperature = 0.7
@@ -87,7 +87,7 @@ def compute_score(solutions_batch,
     ################### STEP 5: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_nosympy_r1"
+    extra_logs_path = "/home/ubuntu/test/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_nosympy_3b"
 
     # Logging proportion of correctly formatted solutions for this step
     correctly_formatted = [correct_formatting(sol) for sol in processed_solutions]

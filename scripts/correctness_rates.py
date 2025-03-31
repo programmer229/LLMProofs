@@ -51,10 +51,6 @@ def compute_rates(question_logs_file):
                 'true_negatives': true_negatives,
                 'true_negative_rate': tn_rate
             })
-
-    # Write false negative rates to JSON file
-    with open("correctness_rates.json", "w") as f:
-        json.dump(correctness_rates, f, indent=4)
     
     return correctness_rates
     
@@ -101,8 +97,8 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(os.path.join(os.path.dirname(file_path), 'fn_rates.png'))
 
 if __name__ == "__main__":
-    question_logs_file = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/question_logs.json"
-    plot_file_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/correctness_metrics.png"
+    question_logs_file = "/home/ubuntu/test/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_ladder_sympyscore/question_logs.json"
+    plot_file_path = "/home/ubuntu/test/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_ladder_sympyscore/correctness_metrics.png"
     
     correctness_rates = compute_rates(question_logs_file)
     plot_correctness_metrics(correctness_rates, plot_file_path)
