@@ -19,3 +19,4 @@ def patch_qwen2_eos_token(model_name):
 if __name__ == "__main__":
     patch_qwen2_eos_token("Qwen/Qwen2.5-1.5B-Instruct")
     patch_qwen2_eos_token("Qwen/Qwen2.5-7B-Instruct")
+    patch_qwen2_eos_token("deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B")
