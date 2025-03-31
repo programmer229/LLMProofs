@@ -1,0 +1,1191 @@
+{
+  "base_question": "integrate(cos(x)*cos(2*x)*cos(3*x), (x, 0, 2*pi))",
+  "tree": [
+    {
+      "level": 0,
+      "variants": [
+        "integrate(cos(x)*cos(2*x)*cos(3*x), (x, 0, 2*pi))"
+      ],
+      "children": [
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(x) * cos(2*x), (x, 0, 2*pi)) * integrate(cos(3*x), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/2 * (cos(3*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x), (x, 0, 2*pi)) + integrate(cos(x), (x, 0, 2*pi))",
+                "integrate((1/4) * (e**(3*I*x) + e**(-3*I*x) + e**(I*x) + e**(-I*x)), (x, 0, 2*pi))",
+                "integrate((1/2) * cos(x), (x, 0, 2*pi)) + integrate((1/2) * cos(3*x), (x, 0, 2*pi))",
+                "integrate((1/2) * cos(3*x) + (1/2) * cos(x), (x, 0, 2*pi))",
+                "integrate((1/2) * cos(3*(t/3)) * (1/3), (t, 0, 6*pi))",
+                "integrate((1/2) * sin(3*x + pi/2) + (1/2) * sin(x + pi/2), (x, 0, 2*pi))",
+                "integrate((1/2) * ((1 + 1) * cos(x) + 0), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(3*x) + 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*(x + pi)) + cos(1*(x + pi))), (x, 0, 2*pi))",
+                "integrate((1/2) * (1 - sin(3*x)**2) + (1/2) * (1 - sin(x)**2), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(3*x), (x, 0, 2*pi))",
+                "integrate(sin(3*x + pi), (x, 0, 2*pi))",
+                "integrate(sin(-3*x), (x, 0, 2*pi))",
+                "integrate(sin(3*x) + sin(2*x) - sin(2*x), (x, 0, 2*pi))",
+                "integrate(sin(3*(2*pi - x)), (x, 0, 2*pi))",
+                "integrate(3*sin(x) - 4*sin(x)**3, (x, 0, 2*pi))",
+                "integrate((exp(3*I*x) - exp(-3*I*x))/(2*I), (x, 0, 2*pi))",
+                "integrate((1/(2*I))*(exp(3*I*x) - exp(-3*I*x)), (x, 0, 2*pi))",
+                "integrate(sin(3*(x + 2*pi)), (x, 0, 2*pi))",
+                "integrate(-cos(3*x)/3 , (x, 0, 2*pi))",
+                "integrate(sin(3*x + pi/2), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) * sin(2*x), (x, 0, 2*pi))",
+                "integrate(1/2 * sin(4*x), (x, 0, 2*pi))",
+                "integrate(cos(u) * sin(u) * 1/2, (u, 0, 4*pi))",
+                "integrate(cos(2*x) * sin(2*x), (x, 0, pi)) + integrate(cos(2*x) * sin(2*x), (x, pi, 2*pi))",
+                "integrate(cos(2*x) * sqrt(1 - cos(2*x)**2), (x, 0, 2*pi))",
+                "integrate(k * cos(2*x) * sin(2*x), (x, 0, 2*pi)) where \\( k = 1/2 \\)",
+                "integrate(1/2 * (sin(4*x) + sin(0)), (x, 0, 2*pi))",
+                "integrate(cos(2*x) * sin(2*x), (x, pi, 3*pi))",
+                "integrate(cos(2*(x+pi)) * sin(2*(x+pi)), (x, 0, 2*pi))",
+                "integrate(1/2 * (exp(2*im*x) + exp(-2*im*x)) * sin(2*x), (x, 0, 2*pi))",
+                "integrate(sin(2*x) * (1 - cos(2*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(2*x), (x, 0, pi))",
+                "integrate(1/2 * (cos(-x) + cos(3*x)), (x, 0, pi))",
+                "integrate(cos(pi - x) * cos(2*(pi - x)), (x, 0, pi))",
+                "integrate(1/2 * cos(u) * cos(u/2), (u, 0, 2*pi))",
+                "integrate(sin(pi/2 - x) * cos(2*x), (x, 0, pi))",
+                "integrate(cos(x) * (1 - 2*sin^2(x)), (x, 0, pi))",
+                "integrate((exp(1j*x) + exp(-1j*x)) / 2 * (exp(2j*x) + exp(-2j*x)) / 2, (x, 0, pi))",
+                "integrate(cos(x) * (cos(x)^2 - sin(x)^2), (x, 0, pi))",
+                "integrate(cos(pi/2 - x) * cos(2*(pi/2 - x)), (x, 0, pi))",
+                "integrate(sin(2*x) * (+sin(x)), (x, 0, pi))",
+                "integrate((exp(1j*x) + exp(-1j*x)) * (exp(2j*x) + exp(-2j*x)) / 4, (x, 0, pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((cos(x)^2 + cos(2*x)^2) * (x/2), (x, 0, 2*pi))",
+                "integrate((cos(x)**2 + sin(2*x)**2) * (x/2), (x, 0, 2*pi))",
+                "integrate((1/2 * (e^(2*ix) + e^(-2*ix)) + 1/2 * (e^(4*ix) + e^(-4*ix))) * (x/2), (x, 0, 2*pi))",
+                "integrate((cos(2*pi - x)**2 + cos(2*(2*pi - x))**2) * (2*pi - x)/2, (x, 0, 2*pi))",
+                "integrate((1 - sin(x)**2 + 1 - sin(2*x)**2) * (x/2), (x, 0, 2*pi))",
+                "integrate((cos(x)**2 * (x/2) + cos(2*x)**2 * (x/2)), (x, 0, 2*pi))",
+                "integrate((cos(x)**2 + 1 - sin(2*x)**2) * (x/2), (x, 0, 2*pi))",
+                "integrate((cos(x - pi/2)**2 + cos((2*(x - pi/2)))**2) * (x/2), (x, 0, 2*pi))",
+                "integrate((cos(x + pi)**2 + cos(2*(x + pi))**2) * (x/2), (x, 0, 2*pi))",
+                "integrate((1/2 + (e^(ix) + e^(-ix))/2 + 1/2 + (e^(2*ix) + e^(-2*ix))/2) * (x/2), (x, 0, 2*pi))",
+                "integrate(((cos(x)**2 + cos(2*x)**2) / 1) * (x/2), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(2*x), (x, 0, 2*pi))",
+                "integrate(2*sin(x)*cos(x), (x, 0, 2*pi))",
+                "integrate((e**(2*I*x) - e**(-2*I*x))/(2*I), (x, 0, 2*pi))",
+                "integrate(sin(2*x), (x, -pi, pi))",
+                "integrate(Im(e**(2*I*x)), (x, 0, 2*pi))",
+                "integrate(0.5*sin(u), (u, 0, 4*pi))",
+                "-integrate(diff(cos(2*x)), (x, 0, 2*pi))",
+                "integrate(sin(2*x), (x, 0, pi)) + integrate(sin(2*x), (x, pi, 2*pi))",
+                "integrate(sin(2*(pi + x)), (x, 0, 2*pi))",
+                "integrate(2*sqrt(1 - cos(x)**2)*cos(x), (x, 0, 2*pi))",
+                "integrate(2*sin(2*x), (x, 0, pi)) - integrate(2*sin(2*x), (x, pi, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(2*x) * (cos(x) + cos(3*x)), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * (cos(x) + cos(3*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (cos(2*x) * (2 * cos(2*x)) + 0.5 * (cos(4*x) + cos(0))), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * cos(x), (x, 0, 2*pi)) + integrate(cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * (cos(x) + cos(3*x)), (x, -pi, pi))",
+            "integrate(0.25 * (e**(ix) + e**(-ix)) * (e**(2*ix) + e**(-2*ix)), (x, 0, 2*pi))",
+            "integrate(cos(u) * (cos(u/2) + cos(3u/2)) / 2, (u, 0, 4*pi))",
+            "integrate(cos(2*x) * (cos(x) + (cos(2x) * cos(x) + sin(2x) * sin(x))), (x, 0, 2*pi))",
+            "integrate((2*cos(x)**2 - 1) * (cos(x) + cos(3*x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) + cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * (0.5*cos(x) + 0.5*cos(3*x)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) * cos(x), (x, 0, 2*pi)) + integrate(cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(1/2*(cos(3*x) + cos(x)), (x, 0, 2*pi)) + integrate(1/2*(cos(5*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(2*0.5*x) * cos(x), (x, 0, 2*pi)) + integrate(cos(2*0.5*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(sin(1.5*x) * sin(0.5*x), (x, 0, 2*pi)) + integrate(sin(5*x) * sin(0.5*x), (x, 0, 2*pi))",
+                "integrate(cos(x) * (1/2 + cos(2x)), (x, 0, 2*pi)) + integrate(cos(3x) * (1/2 + cos(2x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos((2-3)x) + cos((2+3)x)), (x, 0, 2*pi)) + integrate(0.5 * (cos((2-1)x) + cos((2+1)x)), (x, 0, 2*pi))",
+                "integrate((exp(1j*2*x) + exp(-1j*2*x)) * (exp(1j*x) + exp(-1j*x)), (x, 0, 2*pi)) + integrate((exp(1j*2*x) + exp(-1j*2*x)) * (exp(3*1j*x) + exp(-3*1j*x)), (x, 0, 2*pi))",
+                "integrate(2*cos(2*x)*cos(x), (x, 0, 2*pi)) + integrate(2*cos(2*x)*cos(3*x), (x, 0, 2*pi))",
+                "integrate((1 - (2*x**2)/2 + (4*x**4)/4 - ...) * (1 - x**2/2 + ...), (x, 0, 2*pi)) + integrate((1 - (2*x**2)/2 + (4*x**4)/4 - ...) * (1 - (3*x)**2/2 + ...), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(3*x) - sin(x)), (x, 0, 2*pi)) + integrate(0.5 * (sin(5*x) - sin(x)), (x, 0, 2*pi))",
+                "integrate(1/2 * (1 + 3*cos(2x)), (x, 0, 2*pi)) + integrate(1/4 * (1 + (2)*(1+3) * cos(2x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (cos(3*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(3*x), (x, 0, 2*pi)) + integrate(0.5 * cos(x), (x, 0, 2*pi))",
+                "integrate(0.5 * (exp(3j*x) + exp(-3j*x) + exp(j*x) + exp(-j*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(3*x), (x, 0, 2*pi)) + integrate(0.5 * (1/3) * (cos(3*x) + 3cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4cos^3(x) - 3cos(x) + cos(x)), (x, 0, 2*pi))",
+                "integrate((1/2) * (cos(3*x) / 2 + cos(x) / 2), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3 * (x + pi/3)) + cos((x + pi/3))), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(-3*x) + cos(-x)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(3*x) + 0.25 * cos(2*x + x) + 0.25 * cos(2*x - x), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(3*x)/3 + sin(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1/2)(e^(3ix) + e^(-3ix) + e^(ix) + e^(-ix)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos(5*x) + cos(-x)), (x, 0, 2*pi))",
+                "integrate(1/2 * (exp(2j*x) + exp(-2j*x)) * 1/2 * (exp(3j*x) + exp(-3j*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin(5*x) + sin(-x)), (x, 0, 2*pi))",
+                "integrate(cos(3.1*x) * cos(1.8*x), (x, 0, 2*pi))",
+                "integrate(sin(2*x + pi/2) * sin(3*x + pi/2), (x, 0, 2*pi))",
+                "integrate(cos(2*(x + pi/6)) * cos(3*(x + pi/6)), (x, 0, 2*pi))",
+                "integrate(cos(2.1*x) * cos(3.1*x), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(5*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(4*x) * cos(5*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) * cos(4*x * (1/2)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x), (x, 0, pi)) + integrate(cos(2*x), (x, pi, 2*pi))",
+                "integrate((1/2) * (exp(I*2*x) + exp(-I*2*x)), (x, 0, 2*pi))",
+                "integrate(cos(u), (u, 0, 4*pi))",
+                "integrate(2*cos(x)**2 - 1, (x, 0, 2*pi))",
+                "integrate(sin(2*x)/2, (x, 0, 2*pi))",
+                "integrate(cos(2*(2*pi - x)), (x, 0, 2*pi))",
+                "integrate(cos(x)**2 - sin(x)**2, (x, 0, 2*pi))",
+                "integrate(imaginary_part(exp(I*2*x)), (x, 0, 2*pi))",
+                "integrate(cos(x + x) - cos(x - x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) - 2*cos(2*x) * sin(3*x)**2, (x, 0, 2*pi))",
+                "integrate(cos(2*x) - cos(2*x) * (1 - cos(6*x)), (x, 0, 2*pi))",
+                "integrate(cos(2*x) * (1 - 2*sin(3*x)**2), (x, 0, 2*pi))",
+                "integrate(cos(2*x) - 2*(1/2)*sin(6*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) - 2*cos(2*x)*(1 - cos^2(3*x)), (x, 0, 2*pi))",
+                "integrate(cos(2*x) + (-2)*cos(2*x + 3x - 3x - 3x), (x, 0, 2*pi))",
+                "integrate((1/2)(e^(2*ix) + e^(-2*ix)) - 2*cos(2*x)*sin^2(3*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) - 2*cos^3(3*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) - 2*(1 - cos(3*x)^2)*cos(2*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) - sin(6*x - 3*x) * 2*cos(2*x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) + cos(4*x), (x, 0, 2*pi))",
+                "integrate(exp(2*I*x) + exp(-2*I*x) + exp(4*I*x) + exp(-4*I*x), (x, 0, 2*pi))",
+                "integrate(2*cos(3*x)*cos(x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) + cos(4*x) + cos(6*x) - cos(6*x), (x, 0, 2*pi))",
+                "integrate(0.5*(exp(2*I*x) + exp(-2*I*x)) + 0.5*(exp(4*I*x) + exp(-4*I*x)), (x, 0, 2*pi))",
+                "integrate(cos(2*x + 2*pi) + cos(4*x - 2*pi), (x, 0, 2*pi))",
+                "integrate(sin(2*x + pi/2) + sin(4*x + pi/2), (x, 0, 2*pi))",
+                "integrate(2*cos(2*x)/2 + 2*cos(4*x)/2, (x, 0, 2*pi))",
+                "integrate(cos(2*x) + cos(4*x) + sin(5*x)*sin(5*x) - sin(5*x)*sin(5*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) + cos(4*x) + 1 - 1, (x, 0, 2*pi))",
+                "integrate(cos(3*x - x) + cos(3*x + x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(x) * cos(2*x) * (4*cos^3(x) - 3*cos(x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (cos(x) + cos(3*x)) * (4*cos(x)**3 - 3*cos(x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * (3 * cos(x) + 0.25 * cos(3*x) - 3 * cos(x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * (1 - 2 * sin^2(x)) * (4*cos^3(x) - 3*cos(x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * (2*cos^2(x) - 1) * (4*cos^3(x) - 3*cos(x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * (4*cos^3(x) - 3*cos(x)) * cos(2*x), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * (4.5*cos^3(x) - 3.5*cos(x)), (x, 0, 2*pi))",
+            "integrate((cos(x) * (4*cos^4(x) - 3 * cos^2(x))) * (cos(2*x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * (2*cos^3(x) - 1) * (8*cos(2*x) - 6), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * (4*(cos(x)**3 + 0.5) - 3.5*cos(x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * (4*cos**3(x) - 3*cos(x)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (cos(x + 2*x) + cos(x - 2*x)) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.25 * (cos(3*x) + cos(3*x)) + 0.25 * (cos(3*x+x) + cos(3*x-x)), (x, 0, 2*pi))",
+                "integrate(cos(x + 2*x) * cos(3*x), (x, 0, 2*pi)) + integrate(cos(x - 2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.5 * (exp(I*(x + 2*x)) + exp(-I*(x + 2*x))) * exp(I*3*x) + exp(I*(x - 2*x)) + exp(-I*(x - 2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(3*x) * (cos(3*x) + cos(-2*x)), (x, 0, 2*pi))",
+                "integrate(differentiate(0.5 * cos(3*x) * sin(2*x), x), (x, 0, 2*pi))",
+                "integrate(0.5 * (0.5 * (cos(3*x - 2*x) + cos(3*x + 2*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(-x + 3*x) - sin(-x - 3*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (2 * cos(3*x) + 0), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 - (2*x^2)/2 + (0)/(factorial(6))) * (1 - 9*x^2/2), (x, 0, 2*pi))",
+                "integrate(0.5 * sum( (1/(2*n + 1))*cos((2*n + 1)*x), (n, 0, \u221e)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(6*x) + cos(4*x) + cos(2*x) + 1), (x, 0, 2*pi))",
+                "integrate((e**(1j*x) + e**(-1j*x))(e**(2j*x) + e**(-2j*x))(e**(3j*x) + e**(-3j*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x) * (cos(x) * cos(2*x) + sin(x) * sin(2*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (1/2 * (1 + cos(4x))) * cos(3x), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(2*x) * (1 + cos(3x)), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos(3x + 2x) + cos(3x - 2x)) * cos(x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) * (cos(x) * cos(3*x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (e**(1j*6*x) + e**(1j*4*x) + e**(1j*2*x) + 1 + e**(-1j*2*x) + e**(-1j*4*x) + e**(-1j*6*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x)/2 * (1 + cos(2*x + x)), (x, 0, 2*pi))",
+                "integrate((cos(3*x) + 0.5 * cos(x) + 0.5 * cos(2*x)) * (cos(3*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (4 * cos(x) * cos(2*x) - 3 * cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * cos(x) * (2 * cos^2(x) - 1) - 3 * cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(x) * (4 * cos(2*x) - 3), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * (e^(1j * x) + e^(-1j * x)) * (e^(2j * x) + e^(-2j * x)) - 3 * (e^(1j * x) + e^(-1j * x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * cos(u/2) * cos(u) - 3 * cos(u/2)), (u, 0, 4*pi))",
+                "integrate(2 * cos(x) * (2 * cos(2*x) - 1.5), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*x) * (4 * cos(x) - 3)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * cos(-x) * cos(2*(-x)) - 3 * cos(-x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * (cos(x) + 0) * cos(2*x) - (3 + 0) * cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * (1 - sin^2(x)) * (1 - 2sin^2(x)) - 3 * (1 - sin^2(x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * cos(-x) * cos(-2*x) - 3 * cos(-x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(2*x) * 4 * cos(2*x) + cos(x) * cos(2*x) * (-3), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x + 2x) + cos(x - 2x)) * (4 * cos(2x) - 3), (x, 0, 2*pi))",
+                "integrate(2 * cos(x) * (1 + cos(4*x)) - 3 * cos(x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(4 * cos(x) * (2 * cos^2(x) - 1)^2 - 3 * cos(x) * (2 * cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate((0.5 * (e^(ix) + e^(-ix))) * (4 * cos(2*x) * cos(2*x) - 3 * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (4 * cos(2*x)**2 - 3 * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (4*(1 - sin^2(2*x)) - 3 * sqrt(1 - sin^2(2*x))), (x, 0, 2*pi))",
+                "integrate(4 * cos(x) * (1 - 2*sin(x)**2)^2 - 3 * cos(x) * (1 - 2*sin(x)**2), (x, 0, 2*pi))",
+                "integrate(4*cos(x)*cos(2*x)*cos(2*x) - 3*cos(x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate((4*cos(2*x)*cos(x) - 3*cos(2*x)*cos(x)), (x, 0, 2*pi))",
+                "integrate(differentiate(4*cos(x) * cos(2*x) * cos(2*x) - 3*cos(x) * cos(2*x), x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (cos(3*x) - 3 * cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (-3 * cos(x) + cos(3*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (0.5 * (e^(3*I*x) + e^(-3*I*x)) - 1.5 * (e^(I*x) + e^(-I*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (4*cos(x)**3 - 4*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*x) - 3*cos(x)), (x, -pi, pi))",
+                "integrate(0.5 * (cos(3*(2*pi - x)) - 3*cos(2*pi - x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4*cos(x)**3 - 3*cos(x) - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5*cos(3*x), (x, 0, 2*pi)) - integrate(1.5*cos(x), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*x) - 3*cos(x) + 3*sin(x)*0), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*x) + 2*cos(x) - 5*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*x) + cos(3*x) - 3*cos(x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * (cos(4*x) - 2 * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x + 4*x) + cos(x - 4*x) - 2 * cos(x + 2*x) - 2 * cos(x - 2*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (1 - 2 * [2cos^2(2x) - 1]), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(4*x), (x, 0, 2*pi)) - integrate(2 * cos(x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(-cos(2*pi - x) * (cos(4*(2*pi - x)) - 2 * cos(2*(2*pi - x))), (x, 0, 2*pi))",
+                "integrate(cos(x) * (cos(4*(x + 2*pi)) - 2 * cos(2*(x + 2*pi))), (x, 0, 2*pi))",
+                "integrate(cos(x) * (1 - 4 * sin^2(2x)), (x, 0, 2*pi))",
+                "integrate((exp(1j*x) + exp(-1j*x)) * (exp(1j*4*x) - 2 * exp(1j*2*x)), (x, 0, 2*pi))",
+                "integrate((cos(x) * cos(4*x)) + (-2 * cos(x) * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(sin(x + \u03c0/2) * (cos(4*x) - 2 * cos(2*x)), (x, 0, 2*pi))",
+                "integrate( (1/2 * (cos(3*x) + cos(5*x))) - (cos(x)(cos(2*x))), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((1/4)*(e^(ix) + e^(-ix)) * (e^(2ix) + e^(-2ix)) * (e^(3ix) + e^(-3ix)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x)*cos(2*x)*cos(3*x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/8 * (e^(ix) + e^(-ix)) * (e^(2ix) + e^(-2ix)) * (e^(3ix) + e^(-3ix)), (x, 0, 2*pi))",
+                "integrate(1/8 * (2*cos(x)) * (2*cos(2*x)) * (2*cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * e^{6ix} + 1/8 * e^{-6ix} + 1/8 * e^{4ix} + 1/8 * e^{-4ix} + 1/8 * e^{2ix} + 1/8 * e^{-2ix} + 1/8, (x, 0, 2*pi))",
+                "integrate(1/8 * sum(e^{ikx} for k in [1, 2, 3]) * sum(e^{-ikx} for k in [1, 2, 3]), (x, 0, 2*pi))",
+                "integrate(1/4 * sin(4*x) + 1/4 * cos(4*x), (x, 0, 2*pi))",
+                "integrate(1/8 * (e^{12ix} + e^{-12ix}) - (e^{6ix} + e^{-6ix}) + 1, (x, 0, 2*pi))",
+                "integrate(1/8 * ((e^{ix})^3 + (e^{ix})^3 + (e^{-ix})^3 - (e^{2ix} + e^{-2ix}) + 1), (x, 0, 2*pi))",
+                "integrate(1/8 * ((d/dx(e^{ix}) + d/dx(e^{-ix})) * (e^{2ix} + e^{-2ix}) * (e^{3ix} + e^{-3ix})), (x, 0, 2*pi))",
+                "integrate(1/8 * sin(2*x) * sin(3*x) * sin(1*x), (x, 0, 2*pi))",
+                "integrate(1/8 * (x^3 - 3x + 1) * (x^2 - 2) * (x - 1), (x, 0, 2*pi))",
+                "integrate(1/2 * (e^{(3/2)ix} + e^{- (3/2)ix}), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((1/8)*(cos(x) + cos(3x) + cos(5x)), (x, 0, 2*pi))",
+                "integrate((1/8)*(sin(x - pi/2) + sin(3x - pi/2) + sin(5x - pi/2)), (x, 0, 2*pi))",
+                "integrate((1/16)*(e^(i*x) + e^(-i*x) + e^(3*i*x) + e^(-3*i*x) + e^(5*i*x) + e^(-5*i*x)), (x, 0, 2*pi))",
+                "integrate((1/16)*(2*cos(2x) + cos(4x) + cos(0)), (x, 0, 2*pi))",
+                "integrate((1/8)*(cos(x) + cos(3*x) + cos(5*x) + 0.5*(x - pi/2)*(x - (3*pi/2))), (x, 0, 2*pi))",
+                "integrate((1/8)*(cos(x + pi) + cos(3x + pi) + cos(5x + pi)), (x, 0, 2*pi))",
+                "integrate((1/4)*(1/2 * (cos(x) + cos(3x) + cos(5x))), (x, 0, 2*pi))",
+                "integrate((1/8)*(2*sin(2x + \u03c0/2) + (1.5*sin(4x + \u03c0/2))), (x, 0, 2*pi))",
+                "integrate((1/8)*(cos(x) + cos(3*x) + 1/2 * cos(2*x) + cos(5*x)), (x, 0, 2*pi))",
+                "integrate((1/8)*(3 * cos(x) + 2 * cos(3x)), (x, 0, 2*pi))",
+                "integrate((1/8)*(tan(0.5*x)^2 * (cos(x) + cos(3*x) + cos(5*x))), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(5*x), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos(4*x) + cos(6*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * sin(5*x + pi/2), (x, 0, 2*pi))",
+                "integrate((exp(I*x) + exp(-I*x)) * (exp(5*I*x) + exp(-5*I*x))/4, (x, 0, 2*pi))",
+                "integrate((1 - x**2/2 + x**4/24) * (1 - (5*x)**2/2 + (5*x)**4/24), (x, 0, 2*pi))",
+                "integrate(cos(x) * (cos(4*x) - sin(0)*sin(4*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(4.9*x), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(5*x), (x, -2*pi, 2*pi))",
+                "integrate(cos((1 + 5)x) + cos((1 - 5)x), (x, 0, 2*pi))",
+                "integrate(1/2 * cos(x) * cos(5*x), (x, 0, 2*pi))",
+                "integrate(cos(2*pi - x) * cos(5*(2*pi - x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((1/4) * 4 * (cos(3*x) + cos(x) + cos(2*x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (4 * cos(x) + 4 * cos(2*x) + 4 * cos(3*x)), (x, 0, 2*pi))",
+                "integrate((4 * cos(2*x) + 4 * cos(3*x) + 4 * cos(x)) / 4, (x, 0, 2*pi))",
+                "integrate((1/4) * (e**(3*I*x) + e**(-3*I*x) + e**(I*x) + e**(-I*x) + e**(2*I*x) + e**(-2*I*x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (2 * sin(3*x) * cos(2*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(2*x + x) + cos(2*x - x) + cos(2x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(3*(2*pi - x)) + cos(2*(2*pi - x)) + cos(2*pi - x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (sin(3*x) + sin(x) + sin(2*x)), (x, 0, 2*pi))",
+                "integrate((1/8) * (2 * (cos(3*x) + cos(x)) + (cos(2*x + 2*x) - cos(2*x - 2*x))), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(3*x) - (1/3)*sin(3*x) + cos(2*x) - (1/2)*sin(2*x) + cos(x) - x), (x, 0, 2*pi))",
+                "integrate((1/4) * (1/2 + cos(2*x) + 1/2 + cos(4*x) + 1/2 + cos(2*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x) * (cos(5*x) + cos(x))) , (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(2*x) * (0.5 * (exp(3*I*x) + exp(-3*I*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(5*x) + cos(x) + cos(-x)) , (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x) - cos(3*x)) * cos(2*x) , (x, 0, 2*pi))",
+                "integrate(cos(2*x) * (integrate(cos(x), (x, 0, 2*pi))), (x, 0, 2*pi))",
+                "integrate((1/2)*(1 + 0.5*(cos(3*x) + cos(5*x))) * cos(2*x) , (x, 0, 2*pi))",
+                "integrate(cos(2*x) * sin(3*x) * sin(x), (x, 0, 2*pi))",
+                "integrate((cos(x) * (2*cos(x)**2 - 1) * cos(3*x)), (x, 0, 2*pi))",
+                "integrate(cos(2*x - x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(sum((-1)**n * (x**(2*n)/(factorial(2*n))) for n in range(0, 4)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((1/8) * (e^(ix) + e^(-ix)) * (e^(-4ix) + e^(4ix)), (x, 0, 2*pi))",
+            "integrate((1/8) * (1/2) * (e^(5*ix) + e^(-3*ix)), (x, 0, 2*pi))",
+            "integrate((1/8) * (e^(5*ix) + e^(-3*ix)), (x, 0, 2*pi))",
+            "integrate((1/8) * (e^(3*ix) + e^(-5*ix)), (x, 0, 2*pi))",
+            "integrate((1/8) * (e^(4*ix) + e^(-4*ix)) * (e^(-ix) + e^(ix)), (x, 0, 2*pi))",
+            "integrate((1/8) * (2 * cos(x) + 2 * i * sin(x)) * (2 * cos(4*x)), (x, 0, 2*pi))",
+            "integrate((1/8) * (sin(5*x) + sin(-3*x)), (x, 0, 2*pi))",
+            "integrate((1/8) * (e^(ix) + e^(-ix)) * (e^(-4*ix) + e^(4*ix)), (x, -2*pi, 0))",
+            "integrate((1/8) * ((e^(ix) + e^(-ix)) * (e^(4*ix) + e^(-4*ix))), (x, 0, 2*pi))",
+            "integrate((1/8) * (e^(-4*ix) + e^{4*ix}) * (e^{ix} + e^{-ix}), (x, 0, 2*pi))",
+            "integrate((1/32) * (e^(5*ix) + e^(-3*ix) + e^(3*ix) + e^(-5*ix)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(4*x), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos(5*x) + cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos((5*x) - (5*x - 4*x)) + cos((3*x) - (3*x - 4*x))), (x, 0, 2*pi))",
+                "integrate(cos(3*x) * cos(x), (x, 0, 2*pi))",
+                "integrate(sin(0.5 * (5*x + 3*x)) * sin(0.5 * (5*x - 3*x)), (x, 0, 2*pi))",
+                "integrate((1/2 * (exp(I*(5*x)) + exp(-I*(5*x))) + 1/2 * (exp(I*(3*x)) + exp(-I*(3*x)))), (x, 0, 2*pi))",
+                "integrate(sin(4*x + pi/2) * sin(x), (x, 0, 2*pi))",
+                "integrate(cos(4*(pi - x)) * cos(x), (x, 0, 2*pi))",
+                "integrate(cos(5*x) + cos(3*x) - 1, (x, 0, 2*pi))",
+                "integrate(sin(3.5*x) * cos(0.5*x), (x, 0, 2*pi))",
+                "integrate(cos(2*x) * cos(2*x + 2*x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/8 * (e^(ix) + e^(-ix)) * (e^(4ix) + e^(-4ix)), (x, 0, 2*pi))",
+                "integrate(1/8 * (z + z**(-1)) * (z**4 + z**(-4)).subs(z, exp(I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (e**(5*I*x) + e**(3*I*x) + e**(-3*I*x) + e**(-5*I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (cos(x) + cos(4*x))**2, (x, 0, 2*pi)) - integrate(1/8 * sin(x)**2 * (sin(4*x)**2), (x, 0, 2*pi))",
+                "integrate(1/4 * (e**(ix) + e**(-ix)) * (e**(4*I*x) + e**(-4*I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (e**(2*I*x) + e**(-2*I*x)) * (e**(4*I*x) + e**(-4*I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (sin(x) + sin(4*x))**2, (x, 0, 2*pi))",
+                "integrate(1/8 * (y + y**(-1)) * (y**4 + y**(-4)).subs(y, exp(I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (1/(1 + e**(3*I*x))) + (1/(1 + e**(-3*I*x))), (x, 0, 2*pi))",
+                "integrate(1/4 * cos(x) * cos(4*x), (x, 0, 2*pi))",
+                "integrate(1/8 * (cos(x) * cos(4*x) + cos(x) * cos(-4*x) + cos(-x) * cos(4*x) + cos(-x) * cos(-4*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/4 * (cos(x) + cos(4x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (2 * cos(2.5*x) * cos(1.5*x)), (x, 0, 2*pi))",
+                "integrate((1/4 * (cos(x) + 2*cos^2(2x) - 1)), (x, 0, 2*pi))",
+                "integrate(1/4 * cos(x), (x, 0, 2*pi)) + integrate(1/4 * cos(4x), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(x) - cos(4x + pi)), (x, 0, 2*pi))",
+                "integrate(0.25 * (cos(x) + cos(4*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(2*pi - x) + cos(4*(2*pi - x))), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(x + pi/2) + cos(4*(x + pi/2))), (x, 0, 2*pi))",
+                "integrate(0, (x, 0, 2*pi), cond=\"cos(x) + cos(4*x) is periodic\")",
+                "integrate(1/4 * (1/2 * (e**(1j*x) + e**(-1j*x) + e**(4*1j*x) + e**(-4*1j*x))), (x, 0, 2*pi))",
+                "integrate(1/4 * (1 - sin^2(2x) + cos(x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/8 * e^(ix) * e^(4ix), (x, 0, 2*pi)) + integrate(1/8 * e^(ix) * e^(-4ix), (x, 0, 2*pi))",
+                "integrate(1/8 * (e^(5*I*x) + e^(-3*I*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (cos(5*x) + cos(-3*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * ((e^(ix) * e^(4*ix)) + (e^(ix) * e^(-4*ix))), (x, 0, 2*pi))",
+                "integrate(1/8 * (e^(5*i*x) + conjugate(e^(5*i*x))), (x, 0, 2*pi))",
+                "integrate(1/8 * (sin(5*x) + sin(-3*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (e^(5*i*x) + e^(3*i*x) + e^(-3*i*x) + e^(-5*i*x)), (x, 0, 2*pi))",
+                "integrate(1/16 * (e^(5*i*x) + e^(-5*i*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (cos(5*x) + cos(-4*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (2 * e^(3*i*x) * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (4 * e^(5*i*x)/5 - 4 * e^(-3*i*x)/3), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/4 * (sin(5*x) - sin(3*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (e**(5*I*x) - e**(-5*I*x) - e**(3*I*x) + e**(-3*I*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(3*x - pi/2) - cos(5*x - pi/2)), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin(5*(2*pi - x)) - sin(3*(2*pi - x))), (x, 0, 2*pi))",
+                "integrate((1/2) * cos(4*x) * sin(x), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin(5*x) - sin(3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (2sin(4x)cos(x) - 2sin(2x)cos(x)), (x, 0, 2*pi))",
+                "integrate(1/8 * ((e**(5*I*x) + e**(-5*I*x)) - (e**(3*I*x) + e**(-3*I*x))), (x, 0, 2*pi))",
+                "integrate((1/4) * (sin(3*x) - sin(5*x)), (x, 0, 2*pi))",
+                "integrate((1/8) * (2sin(5*x) - 2sin(3*x)), (x, 0, 2*pi))",
+                "integrate(integrate(sin(5*x) - sin(3*x), x), (0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/4 * sin(5*x) + 1/4 * sin(3*x), (x, 0, 2*pi))",
+                "integrate(1/2 * sin(4*x) * cos(x), (x, 0, 2*pi))",
+                "integrate(1/4 * cos(5*x - pi/2) + 1/4 * cos(3*x - pi/2), (x, 0, 2*pi))",
+                "integrate(1/8 * (e^{5jx} - e^{-5jx}) + 1/8 * (e^{3jx} - e^{-3jx}), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin(5*x) + sin(3*x)), (x, -pi, pi))",
+                "integrate(1/4 * sin(5*(2*pi - x)) + 1/4 * sin(3*(2*pi - x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (2 * sin(2.5*x) \\* cos(2.5*x)) + 1/4 * (2 * sin(1.5*x) \\* cos(1.5*x)), (x, 0, 2*pi))",
+                "integrate(1/20 * (sin(u) + sin(u*(3/5))), (u, 0, 10*pi))",
+                "integrate(1/4 * sin(5*(-x)) + 1/4 * sin(3*(-x)), (x, 0, 2*pi))",
+                "integrate(1/8 * sin(5*x) + 1/8 * sin(3*x) + 1/8 * (sin(5*x) + sin(3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * sin(5*theta/3) + 1/4 * sin(3*theta/3) * (1/3), (theta, 0, 6*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(0.5 * (cos(4*x) + cos(2*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (2 * cos(3*x) * cos(x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (2*cos^2(2*x) - 1 + cos(2*x)), (x, 0, 2*pi))",
+            "integrate(0.5*cos(4*x), (x, 0, 2*pi)) + integrate(0.5*cos(2*x), (x, 0, 2*pi))",
+            "integrate(0.5 * (e^(4jx) + e^(-4jx) + e^(2jx) + e^(-2jx))/2, (x, 0, 2*pi))",
+            "integrate(0.5 * (-\\sin(4*x + pi/2) + \\sin(2*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (cos(4*x - 0) + cos(2*x + 0)), (x, 0, 2*pi))",
+            "integrate(0.5 * cos(2*x + 2*x), (x, 0, 2*pi))",
+            "integrate(0.5 * (cos(2*x) + cos(4*x)), (x, 0, 2*pi))",
+            "integrate(0.25 * (cos(2*u) + cos(4*u/2)), (u, 0, 4*pi))",
+            "integrate(0.5 * (-cos(4*x) + cos(2*x)), (x, -pi, pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * cos(4*x), (x, 0, 2*pi)) + integrate(0.5 * cos(2*x), (x, 0, 2*pi))",
+                "integrate((1/2) * cos(4*x), (x, 0, 2*pi)) + integrate((1/2) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(4*x), (x, 0, 2*pi)) + integrate(0.5 * (2*cos(x)**2 - 1), (x, 0, 2*pi))",
+                "integrate(1/4 * cos(4*x), (x, 0, 2*pi)) + integrate(1/4 * cos(2*x), (x, 0, 2*pi)) + integrate(1/4 * 2, (x, 0, 2*pi))",
+                "integrate(0.5 * cos(4 * (x + pi/8)), (x, 0, 2*pi)) + integrate(0.5 * cos(2 * (x + pi/8)), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(4*x), (x, 0, 2*pi)) + integrate(0.5 * cos(2*x), (x, 0, 2*pi)) + integrate(0, (x, 0, 2*pi))",
+                "integrate(0.5 * sin(4*x + pi/2), (x, 0, 2*pi)) + integrate(0.5 * sin(2*x + pi/2), (x, 0, 2*pi))",
+                "integrate((1 / 4) * (e^(4j*x) + e^(-4j*x)), (x, 0, 2*pi)) + integrate((1 / 4) * (e^(2j*x) + e^(-2j*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(4*x) + 1), (x, 0, 2*pi)) - integrate(0.5, (x, 0, 2*pi)) + integrate(0.5 * cos(2*x), (x, 0, 2*pi))",
+                "integrate((1 / 2) * (cos(4*x) + cos(2*x)), (x, 0, 2*pi)) + integrate((1/2)*(1+sin^2(2x)), (x, 0, 2*pi))",
+                "integrate(0.25 * 2 * cos(4*x), (x, 0, 2*pi)) + integrate(0.75 * (0.5 * cos(2*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.25 * (cos(2*u) + cos(u)), (u, 0, 4*pi))",
+                "integrate(0.125 * (cos(2*x) + cos(x)) * 2, x)",
+                "integrate(0.25 * (exp(2*I*x) + exp(-2*I*x) + exp(I*x) + exp(-I*x)), x)",
+                "integrate(0.25 * cos(2*x), x) + integrate(0.25 * cos(x), x)",
+                "integrate(0.25 * (sin(2*x + pi/2) + sin(x + pi/2)), x)",
+                "integrate(0.25 * (2*cos^2(x) - 1 + cos(x)), x)",
+                "integrate(0.5 * (0.5 * cos(2*x) + 0.5 * cos(x)), x)",
+                "integrate(0.25 * (cos(2*x + pi/4) + cos(x)), x)",
+                "integrate((1/4) * (cos(2*(x - 2*pi)) + cos((x - 2*pi))), x)",
+                "integrate(0.125 * (2 * cos(u) * cos(u) + cos(u)), x)",
+                "integrate(0.0625 * (cos(2*x) + cos(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (0.5 * (exp(4*I*x) + exp(-4*I*x) + exp(2*I*x) + exp(-2*I*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (2 * (0.5 * (cos(4*x) + cos(2*x)))), (x, 0, 2*pi))",
+                "integrate(0.5 * (0.5 * (e**(2*I*x) + e**(-2*I*x) + e**(4*I*x) + e**(-4*I*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (0.25 * (4*cos(4*x) + 4*cos(2*x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(6*x) + cos(0)*2), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos(4*x) + cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(4*x) + sin(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (e**(I*(4*x + pi/2)) + e**(-I*(4*x + pi/2)) + e**(I*(2*x + pi/2)) + e**(-I*(2*x + pi/2))), (x, 0, 2*pi))",
+                "integrate(0.5 * (3*cos(4*x) + 1*cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (4 * (1 - (x**2)/2) - (x**4)/24), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (1 + cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5, (x, 0, 2*pi)) + integrate(0.5*cos(2*x), (x, 0, 2*pi))",
+                "integrate(0.5 + 0.5*(exp(2*I*x) + exp(-2*I*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 + (2/2) * cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 + sin(pi - 2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 + cos(2*(2*pi - x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 + (1 - 2*sin(x)**2)), (x, 0, 2*pi))",
+                "integrate(0.25 * (1 + 2*cos(2*(x/2))), (x, 0, 4*pi))",
+                "integrate(0.5 * (1 + sqrt(cos(2*x)**2)), (x, 0, 2*pi))",
+                "integrate(2 * 0.25 * (1 + cos(2*x)), (x, 0, pi))",
+                "integrate((1/2) * (1 + (\"1 - d/dx (sin(2*x))\")), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.25 * (cos(2*y) + cos(y)), (y, 0, 4*pi))",
+                "integrate(0.25 * (2 * cos(x)**2 - 1 + cos(x)), x)",
+                "integrate(0.125 * (e**(2 * I * x) + e**(-2 * I * x) + e**(I * x) + e**(-I * x)), x)",
+                "integrate(0.25 * (cos(x)**2 - sin(x)**2 + cos(x)), x)",
+                "integrate(0.25 * cos(2*x), x) + integrate(0.25 * cos(x), x)",
+                "integrate(0.25 * (1 - 2*sin(x)**2) + cos(x), x)",
+                "integrate(0.25 * (cos(x + \u03c0) + cos(2*x)), x)",
+                "integrate(0.25 * (cos(x)cos(0) - sin(x)sin(0) + cos(2*x)), x)",
+                "integrate(0.25 * (sum((-1)**n * x**(2*n) / factorial(2*n) for n in range(0, 100)) + sum((-1)**m * x**(m) / factorial(m) for m in range(0, 100))), x)",
+                "\\(\\int_0^{4\\pi} 0.25 \\cdot \\left( \\cos(2x - \\pi) + \\cos(x - \\pi) \\right) \\, dx\\)",
+                "integrate(0.25 * (0.5 * (exp(2*I*x) + exp(-2*I*x)) + 0.5 * (exp(I*x) + exp(-I*x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (sin(4*x + pi/2) + sin(2*x + pi/2)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(4*x) + cos(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (e^{i*(4*x + pi/2)} + e^{i*(2*x + pi/2)} + e^{-i*(4*x + pi/2)} + e^{-i*(2*x + pi/2)}), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(4*x) + sin(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(4*x) + sin(2*x + 2*pi)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(4*(x + pi/8)) + sin(2*(x + pi/8))), (x, 0, 2*pi))",
+                "integrate(0.5 * (2*sin(2*x)*cos(2*x) + sin(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(4*x + pi) + cos(2*x + pi)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1.5*sin(4*x) + 0.5*sin(2*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1/tan(4*x + pi/2) + 1/tan(2*x + pi/2)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sqrt(1 - (sin(4*x))^2) + sqrt(1 - (sin(2*x))^2)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(2*x) * (1 + cos(3*x)), (x, 0, 2*pi))",
+            "integrate(cos(2*x) + 0.5*(cos(x) + cos(5*x)), (x, 0, 2*pi))",
+            "integrate(cos(2*x), (x, 0, 2*pi)) + integrate(cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * (0.5 + 0.5*(1 + cos(3*x))), (x, 0, 2*pi))",
+            "integrate((e^(2*I*x) + e^(-2*I*x)) * (1 + (e^(3*I*x) + e^(-3*I*x))/2), (x, 0, 2*pi))",
+            "integrate(I * (1 + cos(3*x)), (x, 0, 2*pi)) where \\( I = integrate(cos(2*x), (x, 0, 2*pi)) \\)",
+            "integrate(cos(2*x), (x, 0, 2*pi)) + integrate(cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(2 * cos(2*x) * cos((3*x)/2)**2, (x, 0, 2*pi))",
+            "integrate(((e^(2*I*x) + e^(-2*I*x)) * (1 + (e^(3*I*x) + e^(-3*I*x))/2)), (x, 0, 2*pi))",
+            "integrate((cos(2*x) + 0.5 + 0.5*cos(3*x)), (x, 0, 2*pi))",
+            "integrate(cos(2*x) + (1/2)*(cos((2-3)*x) + cos((2+3)*x)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/2 * (cos(5*x) + cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(1/4 * (e^(5*I*x) + e^(-5*I*x) + e^(I*x) + e^(-I*x)), (x, 0, 2*pi))",
+                "integrate((1/2) * (cos(5*(-x)) + cos((-x))), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(4*x) + cos(6*x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (1 + cos(10*x) + 1 + cos(2*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x) + cos(3*x) - cos(3*x) + cos(5*x), (x, 0, 2*pi))",
+                "integrate((1/4) * (2 * cos(5*x/2) + 2 * cos(x/2)), (x, 0, 2*pi))",
+                "integrate((1/4) * (I*e^(5*I*x) - I*e^(-5*I*x) + I*e^(I*x) - I*e^(-I*x)), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(5*x) + cos(x) + 2 * cos(3*x)), (x, 0, 2*pi))",
+                "integrate((1/2) * (sin(5*x)/(5) + sin(x)/(1)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) + cos(5*x)/2, (x, 0, 2*pi))",
+                "\\(\\text{integrate}(\\cos(2*x), (x, 0, 2*pi)) + \\text{integrate}(\\frac{1}{2} \\cos(5*x), (x, 0, 2*pi))\\)",
+                "\\(\\text{integrate}(\\cos(2*x + 0) + \\cos(5*x - \\frac{\\pi}{2}) \\cdot \\frac{1}{2}, (x, 0, 2*pi))\\)",
+                "\\(\\text{integrate}(\\cos(2*x) + \\frac{\\cos(4*x) + \\cos(6*x)}{4}, (x, 0, 2*pi))\\)",
+                "\\(\\text{integrate}(\\cos(2*(2\\pi - x)) + \\frac{\\cos(5*(2\\pi - x))}{2}, (x, 0, 2*pi))\\)",
+                "\\(\\text{integrate}\\left(\\frac{e^{2*ix} + e^{-2*ix}}{2} + \\frac{e^{5*ix} + e^{-5*ix}}{4}, (x, 0, 2*pi)\\right)\\)",
+                "\\(\\text{integrate}\\left(2 \\cos^2(x) - 1 + \\frac{1}{2}(2 \\cos^2(\\frac{5x}{2}) - 1), (x, 0, 2*pi)\\right)\\)",
+                "\\(\\text{integrate}\\left(-\\frac{1}{2} \\frac{d}{dx} [\\sin(5*x)] + \\frac{d}{dx}[\\sin(2*x)], (x, 0, 2*pi)\\right)\\)",
+                "\\(\\text{integrate}(3 \\cdot \\frac{\\cos(2*x)}{3} + \\frac{3}{2} \\cdot \\frac{\\cos(5*x)}{3}, (x, 0, 2*pi))\\)",
+                "\\(\\text{integrate}\\left(1 - \\frac{(2x)^2}{2!} + \\cdots + \\frac{1/2 (5x)^0}{2}, (x, 0, 2*pi)\\right)\\)",
+                "\\(\\text{integrate}\\left(\\frac{\\cos(2*x) + \\cos(2*x + \\frac{3\\pi}{2})}{2} + \\frac{\\cos(5*x + \\frac{\\pi}{4})}{\\sqrt{2}}, (x, 0, 2*pi)\\right)\\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x), (x, 0, 2*pi)) + integrate(cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(sin(5*x)/2, (x, 0, 2*pi))",
+                "integrate(sin(2*x), (x, 0, 2*pi)) + integrate(sin(3*x) * sin(2*x), (x, 0, 2*pi))",
+                "integrate(1 - 2*sin(x)^2, (x, 0, 2*pi)) + integrate(cos(3*x)*(1 - 2*sin(x)^2), (x, 0, 2*pi))",
+                "integrate(cos(2*x + pi), (x, 0, 2*pi)) + integrate(cos(3*x) * cos(2*x + pi), (x, 0, 2*pi))",
+                "integrate(1 - sin(x)**2, (x, 0, 2*pi)) + integrate(cos(3*x) * (1 - sin(x)**2), (x, 0, 2*pi))",
+                "integrate(cos(2*x), (x, 0, pi)) * 2 + integrate(cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate((sin(2x) + 1)/2, (x, 0, 2*pi)) + integrate(sin(5*x)/4 - 1/4, (x, 0, 2*pi))",
+                "integrate((e^(2*I*x) + e^(-2*I*x))/2, (x, 0, 2*pi)) + integrate((e^(5*I*x) + e^(-5*I*x))/4 * (e^(2*I*x) + e^(-2*I*x))/2, (x, 0, 2*pi))",
+                "integrate(x - x**3/3, (x, 0, 2*pi)) + integrate(cos(3*x) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(cos(2*(x + pi)), (x, 0, 2*pi)) + integrate(cos(3*(x + pi)) * cos(2*(x + pi)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1 + cos(3*x), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 - 2*sin(3*x/2)**2, (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(cos(0) + sin(3*x + pi/2), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 + (1/2 * exp(3*I*x) + 1/2 * exp(-3*I*x)), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 - cos(2x - 2x) + cos(3*x), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 + cos(2x + x) - sin(2x + x), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 + (1/2) * (exp(3*I*x) + exp(-3*I*x)), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate((1/2)*(2 + cos(3x)), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 + (sin(3*(x + pi/6)) + sin(3*(x - pi/6))), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate((1 + cos(3*(pi/2 + x))), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))",
+                "integrate(1 + (sin(3x) + sin(3x - pi)), (x, 0, 2*pi)) * integrate(cos(2*x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(t) * (1 + cos(1.5 * t)), (t, 0, 2*pi))",
+                "integrate(cos(x) * (1 + (e^(1.5j*x) + e^(-1.5j*x)) / 2), x)",
+                "integrate(cos(x) + 0.5 * (cos(2.5*x) + cos(-0.5*x)), x)",
+                "integrate(cos(x) * (1 + cos(1.5*x) + 0), x)",
+                "integrate(cos(x) * (sin^2(pi/2) + cos(1.5*x)), x)",
+                "integrate(cos(x) * (1 + sin^2(1.5*x)), x)",
+                "integrate(cos(x) * (sin^2(x + pi/2) + cos(1.5*x)), x)",
+                "integrate(sin((pi/2 - x)) * (1 + cos(1.5*x)), x)",
+                "integrate(cos(x + 0.1) * (1 + cos(1.5*x)), x)",
+                "integrate(2*cos(x) * (1 + cos(1.5*x)), x)",
+                "integrate(cos(x) * (1 + (1/2)(1 + cos(3*x))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((exp(2*I*x) + exp(-2*I*x)) * (1 + (exp(3*I*x) + exp(-3*I*x))/2), (x, 0, 2*pi))",
+                "integrate((2*cos(2*x) + 0) * (1 + cos(3*x)), (x, 0, 2*pi))",
+                "integrate((2*cos(2*x)) * (1 + cos(3*x)), (x, 0, 2*pi))",
+                "integrate(2*cos(2*x), (x, 0, 2*pi)) + integrate(2*cos(2*x)*cos(3*x), (x, 0, 2*pi))",
+                "integrate(cos(5*x) + cos(x), (x, 0, 2*pi))",
+                "integrate((e^(2*I*x) + e^(-2*I*x)) * (1 + (e^(3*I*x) + e^(-3*I*x))/2), (x, 0, pi))",
+                "integrate((exp(2*I*(x + pi)) + exp(-2*I*(x + pi))) * (1 + (exp(3*I*(x + pi)) + exp(-3*I*(x + pi)))/2), (x, -pi, pi))",
+                "integrate((sum([((2*I)**n) * (x**n) / factorial(n) for n in range(0, 5)]) + sum([((3*I)**n) * (x**n) / factorial(n) for n in range(0, 5)])), (x, 0, 2*pi))",
+                "integrate((exp(2*I*x) + 1/exp(2*I*x)) * (1 + exp(3*I*x)), (x, 0, 2*pi))",
+                "integrate(2*sin(2*x) + sin(3*x), (x, 0, 2*pi))",
+                "integrate((1/2) * ((exp(2*I*x) + exp(-2*I*x)) + (exp(3*I*x) + exp(-3*I*x))), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(0.5 * (sin(2*x) + sin(4*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * sin(2*x), (x, 0, 2*pi)) + integrate(0.5 * sin(4*x), (x, 0, 2*pi))",
+            "integrate(0.5 * 2 * sin(3*x) * cos(x), (x, 0, 2*pi))",
+            "integrate(0.5 * (1/(2i) * (exp(2*I*x) - exp(-2*I*x)) + 1/(2i) * (exp(4*I*x) - exp(-4*I*x))), (x, 0, 2*pi))",
+            "integrate(0.5 * (sin(2*x) + sin(4*x) - sin(6*x) + sin(6*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (sin(2*(-x)) + sin(4*(-x))), (x, -2*pi, 0))",
+            "integrate(0.25 * (sin(u) + sin(2u)), (u, 0, 4*pi))",
+            "integrate(0.5 * (1/(2i) * (exp(2*x*I) - exp(-2*x*I)) + 1/(2i) * (exp(4*x*I) - exp(-4*x*I))), (x, 0, 2*pi))",
+            "integrate(0.25 * (2 * (sin(2*x) + sin(4*x))), (x, 0, 2*pi))",
+            "integrate(-0.25 * (cos(2*x) + cos(4*x)), (x, 0, 2*pi))",
+            "integrate(0.5 * (2 * sin(x) * cos(x) + sin(4*x)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (sin(2*x) + sin(4*x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (e^(2*x*I) - e^(-2*x*I) + e^(4*x*I) - e^(-4*x*I)), (x, 0, 2*pi))",
+                "integrate(0.5 * (2 \\times sin(3*x) \\times cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(2 * (x + pi/2)) + sin(4 * (x + pi/2))), (x, 0, 2*pi))",
+                "integrate(0.25 * (sin(u) + sin(2u)), (u, 0, 4*pi))",
+                "integrate(0.5 * (sin(2*x) + sin(4*x)), (x, 0, pi)) + integrate(0.5 * (sin(2*x) + sin(4*x)), (x, pi, 2*pi))",
+                "integrate(-0.5 * (sin(2*(-x)) + sin(4*(-x))), (x, -2*pi, 0))",
+                "integrate(0.5 * (sin(2*x + pi/2) + sin(4*x + pi/2)), (x, 0, 2*pi))",
+                "integrate(0.5 * sin(2*x) + 0.5 * sin(8*(x/4)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(x) * (2cos^2(x) - 1) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(1/2 * (cos(x + 2x + 3*x) + cos(x - 2x + 3*x)), (x, 0, 2*pi))",
+            "integrate(1/2 * (e^(3*ix) + e^(-3*ix)) * (2*cos^2(x) - 1) * cos(x), (x, 0, 2*pi))",
+            "integrate(cos(x) * (2*cos^2(x) - 1) * -cos(3*x), (x, 0, 2*pi))",
+            "integrate(cos(x) * (1 - 2*sin^2(x)) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(cos(x) * (cos(x) + cos(x)) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(cos(x) * (2*cos^2(x) - 1) * (cos(x)*cos(2x) - sin(x)*sin(2x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * (1.5 * cos^2(x) - 0.5) * cos(3*x), (x, 0, 2*pi))",
+            "integrate(cos(x + \u03c0/3) * (2*cos^2(x) - 1) * cos(3*x + \u03c0/3), (x, 0, 2*pi))",
+            "integrate(cos(x) * 0.5 * (2*cos^2(x) - 1) * cos(3*x), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(1/4 * (exp(I*x) + exp(-I*x)) * (exp(2*I*x) + exp(-2*I*x)) * (exp(3*I*x) + exp(-3*I*x)), (x, 0, 2*pi))",
+                "integrate(sin((pi/2 - x)) * cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(sin(3*x) * sin(2*x) * sin(x), (x, 0, 2*pi))",
+                "integrate(cos(4*x) + cos(5*x) + cos(6*x), (x, 0, 2*pi))",
+                "integrate(T3(x)*T2(x)*T1(x), (x, -1, 1))",
+                "integrate(0.5*(cos(3*x) + cos(x)), (x, 0, 2*pi)) + integrate(0.5*(cos(3*x) + cos(2*x)), (x, 0, 2*pi))",
+                "integrate(sum(cos(n*x) for n in [1,2,3]), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin((1+2+3)x) + sin((1-2+3)x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(x) * (1 - 2sin^2(x)) * sin(3*x), (x, 0, 2*pi))",
+                "\\( \\text{integrate}\\left( \\cos(2x)\\cos(2x) - \\cos(4x)\\cos(2x), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(2\\pi - x)(1 - 2\\sin^2(2\\pi - x)) \\sin(3(2\\pi - x)), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\frac{1}{2}(\\cos(2x) - \\cos(4x))(1 - 2\\sin^2(x)), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(x) \\sin(3x), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(x)(1 - 2\\sin^2(x))\\left(\\frac{3}{4} - \\frac{1}{4}\\cos(6x)\\right), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(x)(1 - 2\\sin^2(x))\\left(\\sin(2x)\\cos(x) - \\cos(2x)\\sin(x)\\right), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( 2\\sin(x)(\\frac{1 - \\cos(2x)}{2})(\\sin(3x)), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(x)(\\frac{3}{4}\\sin(x) - \\frac{1}{4}\\sin(5x)), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\sin(x) \\left(\\frac{1}{2}(1 - \\cos(2x))\\right)\\sin(3x), (x, 0, 2\\pi) \\right) \\)",
+                "\\( \\text{integrate}\\left( \\frac{1}{2}( \\sin(3x) + \\sin(x))(1 - 2\\sin^2(x)), (x, 0, 2\\pi) \\right) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * (cos(2*x) + cos(4*x)) * (2cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*x) + cos(4*x)) * cos(2*x), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*x) + (2*cos(2*x)**2 - 1)) * (2*cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (0.5*cos(2*x + 0) + 0.5*cos(2*x - 0)) * (2*cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate(0.25 * (cos(2*x) * (2*cos^2(x) - 1) + cos(4*x) * (2*cos^2(x) - 1)), (x, 0, 2*pi))",
+                "integrate((1/4) * (cos(2*x) + cos(4*x)) * (2*cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*(2*pi - x)) + cos(4*(2*pi - x))) * (2*cos^2(2*pi - x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*(-x)) + cos(4*(-x))) * (2*cos^2(-x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (e^(2*1j*x) + e^(-2*1j*x) + e^(4*1j*x) + e^(-4*1j*x)) * (2((e^(1j*x) + e^(-1j*x))/2)^2 - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2*(x + pi/2)) + cos(4*(x + pi/2))) * (2*cos^2(x) - 1), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(2*x) + sin(4*x)) * (2*sin^2(x) - 1), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(0.5 * cos(u/2) * (2 cos^2(u/2) - 1) * cos(3u/2), (u, 0, 4*pi))",
+                "integrate(0.25 * cos(u) * cos(3u/2), x)",
+                "integrate(0.5 * cos(u/2) * (2 cos^2(u/2) - 1) * cos(3u/2), x)",
+                "integrate(0.5 * cos(v) * (2 cos^2(v) - 1) * cos(3v), x)",
+                "integrate(0.25 * (sin(5u/2) + sin(2u/2)), x)",
+                "integrate(0.5 * (cos(2u) + cos(4u)), x)",
+                "integrate(0.5 * (e^(iu/2) + e^(-iu/2)) * (e^(3iu/2) + e^(-3iu/2)), x)",
+                "integrate(0.5 * (-cos(u/2) * (2 cos^2(u/2) + 1) * cos(3u/2)), x)",
+                "integrate(0.5 * sin(v) * (2 sin^2(v) - 1) * sin(3v), x)",
+                "integrate(0.5 * cos(u/2) * (3 + cos(2u)), x)",
+                "integrate(0.5 * cos(x/2) * cos(x) * cos(3*x/2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * (2sin^2(x) - 1) * cos(3*x), (x, pi, 2*pi))",
+                "integrate(-cos(x) * cos(3*x), (x, pi, 2*pi))",
+                "integrate(-cos(x) * (2sin(x)**2 - 1) * cos(3*x), (x, 0, pi))",
+                "integrate((1/2)*(cos(4*x) + cos(2*x)) * (2*sin(x)**2 - 1), (x, pi, 2*pi))",
+                "integrate((cos(x)*(2*sin(x)**2 - 1) * cos(3*x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (sin(2*x + x) - sin(2*x - x)), (x, pi, 2*pi))",
+                "integrate(-cos(x)*cos(2*x) * cos(3*x), (x, pi, 2*pi))",
+                "integrate(sin(3*x)*(2*sin^2(x) - 1)*(-sin(x)), (x, pi, 2*pi))",
+                "integrate(cos(x) * (2*sin(x)**2 - 1) * (4*cos(x)**3 - 3*cos(x)), (x, pi, 2*pi))",
+                "integrate(cos(x) * (cos(2x) - 1) * cos(3x), (x, pi, 2*pi))",
+                "integrate(cos(x) * cos(2*x) * cos(3*x), (x, pi, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * (2*cos^2(x) - 1) * (0.5*sin(4*x) - 0.5*sin(2*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(3*x*(x-pi)), (x, 0, 2*pi))",
+            "integrate(cos(3*(2\\pi - x)*((2\\pi - x) - \\pi)), (x, 0, 2*pi))",
+            "integrate(cos(3*((u + \\pi)(u + \\pi - \\pi))), (u, -\\pi, \\pi))",
+            "integrate(cos(3*x^2 - 3\\pi x), (x, 0, 2*pi))",
+            "integrate((1/2)*(exp(1j*3*x*(x - pi)) + exp(-1j*3*x*(x - pi))), (x, 0, 2*pi))",
+            "integrate(cos(-3*pi*x + 3*x**2), (x, 0, 2*pi))",
+            "integrate(sum((-1)**n * (3*x*(x-pi))**(2*n)/(factorial(2*n)), (n, 0, 10)), (x, 0, 2*pi))",
+            "integrate(cos(3*((pi/2)^2 - x^2)), (x, 0, 2*pi))",
+            "integrate(1 - 2*sin((3/2)*sqrt(x(x-pi)))**2, (x, 0, 2*pi))",
+            "integrate(cos(k*x*(x - pi)), (x, 0, 2*pi)).subs(k, 3)",
+            "integrate(cos(3*((x - \\pi/2)^2 - \\pi/4)), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(3*x**2 - 3*pi*x), (x, 0, 2*pi))",
+                "integrate(cos(3*(x**2 - pi*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*((u + pi)**2 - 3*pi*(u + pi))), (u, -pi, pi))",
+                "integrate(cos(3*x**2) * cos(3*pi*x) + sin(3*x**2) * sin(3*pi*x), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2 - 3*pi*x), (x, -pi, pi))",
+                "integrate(cos(3*x**2 - 3*(pi/2)*2), (x, 0, 2*pi))",
+                "integrate(sin(3*pi - (3*x**2 - 3*pi*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*(x*(x - pi))), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2) * (cos(3*pi*x) + sin(3*pi*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2 - 3*(pi*x + pi/2)), (x, 0, 2*pi))",
+                "integrate(cos(3*(x**2/3 - pi*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(3*(2*pi-x)*(x-pi)), (x, 0, 2*pi))",
+                "\\( \\int_0^{2\\pi} \\cos(3(x - \\pi)(x - \\pi)) \\, dx \\)",
+                "integrate(cos(3*(x)*(x-pi)), (x, 0, 2*pi))",
+                "integrate(cos(-3*(2*pi - x)*(x - pi)), (x, 0, 2*pi))",
+                "integrate(cos(3*(x^2 - 3\\pi x + 2\\pi^2)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(3*(x)(x-pi + 1)) + sin(3*(x)(x-pi - 1))), (x, 0, 2*pi))",
+                "integrate(cos(3*(2*pi - (u + pi))*(u)), (u, -pi, pi))",
+                "integrate(cos(3*(x)*(pi - x)), (x, 0, 2*pi))",
+                "integrate(cos(3*(3*2*pi - 6 - (x - pi)^2)), (x, 0, 2*pi))",
+                "integrate((exp(3j*(2*pi - x) * (x - pi)) + exp(-3j*(2*pi - x) * (x - pi))) / 2, (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(3*(2*pi)*(x - pi)) - sin(3*(x)*(x-pi))), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "2*integrate(cos(3*x*(x-pi)), (x, 0, pi))",
+                "integrate(cos(3*((u + pi/2) * (u - pi/2))), (u, -pi/2, pi/2))",
+                "integrate(0.5 * (exp(3*i*x*(x-pi)) + exp(-3*i*x*(x-pi))), (x, 0, pi))",
+                "integrate(cos(3*x**2 - 3*pi*x), (x, 0, pi))",
+                "integrate(cos(3*pi*x - 3x**2), (x, 0, pi))",
+                "integrate(cos(3*(-(x)*(x-pi))), (x, 0, pi))",
+                "integrate(cos(3*(-x**2 + pi*x)), (x, 0, pi))",
+                "integrate(cos(3*((pi - x)(x))), (x, 0, pi))",
+                "integrate(cos(3*(pi*x - x**2)), (x, 0, pi))",
+                "integrate(0.5 * (sin(3*x*(x-pi) + pi/2) + sin(3*x*(x-pi) - pi/2)), (x, 0, pi))",
+                "\\( 2 \\cdot \\int_0^{\\pi} \\sin\\left(3x(x - \\pi) + \\frac{\\pi}{2}\\right) \\, dx \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(3*x**2)*cos(3*pi*x) + sin(3*x**2)*sin(3*pi*x), (x, 0, 2*pi))",
+                "integrate(cos(3*(x**2 - 3.14159*x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2)*cos(3*pi*x) + sin(3*x**2)*sin(3*pi*x), (x, -2*pi, 0)) + integrate(cos(3*x**2)*cos(3*pi*x) + sin(3*x**2)*sin(3*pi*x), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2)*cos(3*pi*(x + 2*pi)) + sin(3*x**2)*sin(3*pi*(x + 2*pi)), (x, 0, 2*pi))",
+                "integrate(0.5*(exp(3j*x**2 - 3j*pi*x) + exp(-3j*x**2 + 3j*pi*x)), (x, 0, 2*pi))",
+                "integrate(cos(u)*cos(3*pi*sqrt(u / 3)) + sin(u)*sin(3*pi*sqrt(u / 3)), (u, 0, 12*pi**2))",
+                "integrate(cos(3 * (x**2 - 3.14159**2)) + sin(3 * (x**2 - 3.14159**2)), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2 - 6.28318*x), (x, 0, 2*pi))",
+                "integrate(cos(3*x**2)*(cos(3*pi*x)) + sin(3*x**2)*(sin(3*pi*x)), (x, -2*pi, 0))",
+                "integrate(cos(1.5*(3*x**2)) * cos(1.5*(3*pi*x)), (x, 0, 2*pi))",
+                "integrate(2*cos(1.5*(3*x**2))*cos(3*pi*x), (x, 0, pi)) + integrate(2*sin(1.5*(3*x**2))*sin(3*pi*x), (x, pi, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((exp(1j*3*x*(x-pi)) + exp(-1j*3*x*(x-pi))) / 2, (x, 0, 2*pi))",
+                "integrate(cos(3 * (x - pi) * x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(3*(x - pi/2)**2 - 3*(pi/2)**2), (x, 0, 2*pi))",
+                "integrate(cos(3*u**2 - 3*(pi/2)**2), (u, -pi/2, 3*pi/2))",
+                "integrate(cos(3((2*pi - x) - pi/2)**2 - 3*(pi/2)**2), (x, 0, 2*pi))",
+                "integrate(sin(3*np.pi + 3*(x - pi/2)**2), (x, 0, 2*pi))",
+                "integrate(sin((-3)*((x - pi/2)**2 - (pi/2)**2)), (x, 0, 2*pi))",
+                "integrate(1/2 * (exp(1j * (3*(x - pi/2)**2 - 3*(pi/2)**2)) + exp(-1j * (3*(x - pi/2)**2 - 3*(pi/2)**2))), (x, 0, 2*pi))",
+                "integrate(cos(3(x - pi/2)**2 - 3*(pi/2)**2), (x, 0, pi)) + integrate(cos(3(x - pi/2)**2 - 3*(pi/2)**2), (x, pi, 2*pi))",
+                "integrate(cos(3*(x**2 - pi*x)), (x, 0, 2*pi))",
+                "integrate(-sin(3*(pi/2 - x)**2), (x, 0, 2*pi))",
+                "integrate(cos(3*((x - pi/2)**2)), (x, 0, 2*pi))",
+                "integrate(cos(-3*(x**2 - pi*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(cos(x)*cos(2*x)*cos(3*x), (x, 0, 2*pi))",
+            "integrate(1/2 * (cos(4*x) + cos(2*x)) * cos(x), (x, 0, 2*pi))",
+            "integrate(1/4 * (e^(ix) + e^(-ix)) * (e^(2ix) + e^(-2ix)) * (e^(3ix) + e^(-3ix)), (x, 0, 2*pi))",
+            "integrate(cos(4*x) * cos(2*x) + cos(2*x), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * cos(-3*x), (x, 0, 2*pi))",
+            "integrate(cos(2*x) * (cos(x)*cos(3*x)), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * cos(3.1*x), (x, 0, 2*pi))",
+            "integrate(1/4 * (cos(6*x) + cos(2*x) + cos(4*x) + cos(0)), (x, 0, 2*pi))",
+            "integrate(cos(x) * cos(2*x) * sin(3*x) * sin(0), (x, 0, 2*pi))",
+            "integrate(cos(2*(x + 1)) * cos(3x) * cos(x), (x, 0, 2*pi))",
+            "integrate(cos(2*(pi - x)) * cos(3*(pi - x)) * cos(x), (x, 0, 2*pi))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/2 * (cos(x - 2x) + cos(x + 2x)) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(-x) + cos(3x)) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.25 * (cos(-x + 3x) + cos(-x - 3x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(2x) + sin(4x)) * sin(3*x), (x, 0, 2*pi))",
+                "integrate(0.5 * ((e**(1j*2x) + e**(-1j*2x)) * (e**(1j*3x) + e**(-1j*3x))), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(2x) + cos(4x)) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(0.5 * cos(x) * (cos(x) + cos(3x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (1 + cos(2x)) * cos(3x), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(-u) + cos(u)) * cos(u/2) * (1/2), (u, 0, 4*pi))",
+                "integrate(0.25 * (cos(x)) * (cos(4x) + cos(2x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x + x) + cos(3x - x)) * cos(3*x), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x)*cos(2*x)*(4*cos(x)**3 - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (cos(x - 2x) + cos(x + 2x)) * (4*cos(x)**3 - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(2*x) * cos(3*x), (x, 0, 2*pi))",
+                "integrate(cos(x) * (2*cos(2*x) * (2*cos^2(x) - 1)), (x, 0, 2*pi))",
+                "integrate(cos(x) * (1 - 2*sin(x)**2) * (4*cos^3(x) - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(0.5 * (sin(x + pi/2) + sin(x - pi/2)) * (4*cos^3(x) - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(cos(3*x) * (4*cos^3(x) - 3*cos(x)/cos(x)), (x, 0, 2*pi))",
+                "integrate(4*cos(x)**4 - 3*cos(x)**2, (x, 0, 2*pi))",
+                "integrate(cos(2*x) * (4*cos(x)**3 - 3*cos(x)) + cos(3*x) * (4*cos(x)**3 - 3*cos(x)), (x, 0, 2*pi))",
+                "integrate(sin(x)*sin(2*x)*(4*cos(x)**3 - 3*cos(x))/(sin(x)**2 + cos(x)**2), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(3*x)/(1 - sin^2(x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(2*x) * (cos(x) + cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/2 * (cos((2-1)*x) + cos((2+1)*x) + cos((2-3)*x) + cos((2+3)*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (e^{2ix} + e^{-2ix}) * (e^{ix} + e^{-ix} + e^{3ix} + e^{-3ix}), (x, 0, 2*pi))",
+                "integrate(cos(x) * cos(2x) + cos(3x) * cos(2x), (x, 0, 2*pi))",
+                "integrate(cos(u) * (cos(u/2) + cos((3u)/2)), (u, 0, 4*pi))",
+                "integrate(cos(2x) * cos(x), (x, 0, 2*pi)) + integrate(cos(2x) * cos(3x), (x, 0, 2*pi))",
+                "integrate(cos(2x) * (2\\cos^2(1.5x) - 1), (x, 0, 2*pi))",
+                "integrate(cos(2x), (x, 0, 2*pi)) * integrate(cos(x) + cos(3x), (x, 0, 2*pi))",
+                "integrate(cos(2x) * (cos(x) + cos(2x + x)), (x, 0, 2*pi))",
+                "integrate(cos(2x) * (cos(x) + cos(2x) + cos(3x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(3*x) * (cos(x) * cos(2*x)), (x, 0, pi))",
+                "\\( \\int_0^\\pi \\cos(3x) \\cdot \\left(\\frac{1}{2} (\\cos(3x) + \\cos(x))\\right) \\, dx \\)",
+                "\\( \\int_0^\\pi \\frac{1}{4} \\cos(3x) \\cdot (e^{3ix} + e^{-3ix}) \\, dx \\)",
+                "\\( \\int_0^{\\pi/2} 2 \\cdot \\cos(6y) \\cdot (\\cos(2y) \\cdot \\cos(4y)) \\, dy \\)",
+                "\\( \\frac{1}{2} \\int_0^{2\\pi} \\cos(3x) \\cos(x) \\cos(2x) \\, dx \\)",
+                "\\( \\int_0^\\pi \\cos(3x + x) \\cdot \\sin(2x) \\, dx \\)",
+                "\\( \\int_0^\\pi \\left( \\cos(2x) \\cdot \\cos(x + 2x) + \\cos(3x - (x + 2x)) \\right) \\, dx \\)",
+                "\\( \\int_0^\\pi \\cos(3(\\pi - x)) \\cdot (\\cos(\\pi - x) \\cdot \\cos(2(\\pi - x))) \\, dx \\)",
+                "\\( \\int_0^\\pi (-\\cos(3(\\pi - x))) \\cdot \\cos(x) \\cos(2x) \\, dx \\)",
+                "\\( \\frac{1}{2} \\int_0^\\pi \\left(\\cos(3x) + \\cos(x)\\right) \\cos(2x) \\, dx \\)",
+                "\\( \\int_0^\\pi \\frac{1}{2} \\left( \\cos(6x) + residual \\transformation \\right) \\, dx \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/4 * (cos((1-2)x) + cos((1+2)x)) * (cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/8 * (cos((1-2+3)x) + cos((1-2-3)x) + cos((1+2+3)x) + cos((1+2-3)x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin((\\pi/2 - (1-2)x)) + sin((\\pi/2 - (1+2)x))) * (sin(\\frac{\\pi}{2} - 3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos((2-1)x) + cos((2+1)x)) * (cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * cos(3*x) * (cos(-x) + cos(5x)), (x, 0, 2*pi))",
+                "integrate(1/4 * ((1/2) * (e^(i*(1-2)*x) + e^(-i*(1-2)*x)) + (1/2) * (e^(i*(1+2)*x) + e^(-i*(1+2)*x))) * (e^(i*3*x) + e^(-i*3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * ((1/5)(cos((1-2)x) + 5*cos((1+2)x))) * (5*cos(3*x)), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos((1-2)x + pi/4) + cos((1+2)x + pi/4)) * (cos(3*x + pi/4)), (x, 0, 2*pi))",
+                "integrate((1/8) * (e^(i(1-2)x) + e^{(-i(1-2)x)} + e^(i(1+2)x) + e^{(-i(1+2)x)} * (e^(i3x) + e^{(-i3x)})), (x, 0, 2*pi))",
+                "integrate(1/4 * (sin(3*x) * (sin((1-2)x) + sin((1+2)x))), (x, 0, 2*pi))",
+                "integrate(1/4 * (cos((1-2)x) + cos((1+2)x - pi/2)) * (cos(3*x)), (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(y/2)*cos(y)*cos(3y/2)*1/2, (y, 0, 4*pi))",
+                "integrate(1/4 * (cos(5*x/2) + cos(x/2) + cos(3*x/2)), x)",
+                "integrate(1/2 * (cos(y) + 1/2 * cos(2y) * cos(2y)), x)",
+                "integrate(cos(2*x) * cos((x/2)), x)",
+                "integrate(1/4 * (sin(x) * sin(2*x)), x)",
+                "integrate(1/2 * cos((y/2 - n * 4*pi) * cos(y)), x)",
+                "integrate(exp(-1j * y/2) * exp(-1j * y) * exp(-3j * y/2) / 2, x)",
+                "integrate(1/2 * (1 - cos(2y) * cos(4y)), x)",
+                "integrate(y * cos((5*y)/2) / 10, x)",
+                "integrate(2 * cos(2x) * sin(3x) * 0.5, x)",
+                "integrate((1/2 - (1/4) * (y**2)/3) * (1/2 * cos(y)), x)"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
