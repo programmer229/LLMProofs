@@ -1,0 +1,1517 @@
+{
+  "base_question": "integrate(floor(2023*sin(x)), x)",
+  "tree": [
+    {
+      "level": 0,
+      "variants": [
+        "integrate(floor(2023*sin(x)), x)",
+        "integrate(floor(2020 * sin(x) + 3 * sin(x)), x)",
+        "integrate(floor(2023 * sin(x) + 0), x)",
+        "integrate(floor(2022.5 * sin(x) + 0.5), x)",
+        "integrate(floor(2024 * sin(x) - 1), x)",
+        "integrate(floor(2023 * cos(x - \u03c0/2)), x)",
+        "integrate(floor(2023 * 2 * sin(x/2) * cos(x/2)), x)",
+        "integrate(floor(2023 * (e^(ix) - e^(-ix)) / (2i)), x)",
+        "integrate(floor(sum([2023 * sin(x)])), x)",
+        "integrate(floor(2023 * (sin(x) + (x - floor(x)))), x)",
+        "integrate(floor(2023 * (-1) * sin(x + \u03c0)), x)"
+      ],
+      "children": [
+        {
+          "level": 1,
+          "variants": [
+            "integrate(piecewise((2023, sin(x) >= 1), (2022, sin(x) >= 1/2023), (0, sin(x) < 0), (-2021, sin(x) < -1/2023)), x)",
+            "integrate(piecewise((2023, sin(x + pi) >= 1), (2022, sin(x + pi) >= 1/2023), (0, sin(x + pi) < 0), (-2021, sin(x + pi) < -1/2023)), x)",
+            "integrate(piecewise((-2021, sin(x) >= 1), (-2022, sin(x) >= 1/2023), (0, sin(x) < 0), (2023, sin(x) < -1/2023)), x)",
+            "integrate(piecewise((2023, sin(2 * pi - x) >= 1), (2022, sin(2 * pi - x) >= 1/2023), (0, sin(2 * pi - x) < 0), (-2021, sin(2 * pi - x) < -1/2023)), x)",
+            "integrate(piecewise((2022, sin(x) >= 1), (2023, sin(x) < 1/2023), (0, sin(x) < 0), (-2021, sin(x) < -1/2023)), x)",
+            "integrate(piecewise((2023, sin(u) >= 1), (2022, sin(u) >= 1/2023), (0, sin(u) < 0), (-2021, sin(u) < -1/2023)), u)",
+            "integrate(piecewise((2023, sin(x - pi) >= 1), (2022, sin(x - pi) >= 1/2023), (0, sin(x - pi) < 0), (-2021, sin(x - pi) < -1/2023)), x)",
+            "integrate(piecewise((2022, sin(x) >= 1), (2023, sin(x) >= 1/2023), (0, sin(x) < 0), (-2021, sin(x) < -1/2023)), x)",
+            "integrate(piecewise((2023, cos(x) <= 0), (2022, cos(x) <= 1/2023), (0, cos(x) > 0), (-2021, cos(x) < 1/2023)), x)",
+            "integrate(piecewise((2023, cos(x) >= 0), (2022, cos(x) >= 1/2023), (0, cos(x) < 0), (-2021, cos(x) < -1/2023)), x)",
+            "integrate(piecewise((-2021, sin(x) <= -1/2023), (2022, sin(x) < 0), (2022, sin(x) >= 0), (2023, sin(x) > 1)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2022 * piecewise((1, sin(x) >= 1/2023), (0, True)), x)",
+                "integrate(2022 * piecewise((1, sin(x + pi) >= 1/2023), (0, True)), x)",
+                "integrate(1011 * piecewise((1, sin(x) >= 1/2023), (0, True)), x)",
+                "integrate(2022 * piecewise((1, cos(x) <= \\sqrt{1 - (1/2023)^2}), (0, True)), x)",
+                "integrate(2022 * (Heaviside(sin(x) - 1/2023)), x)",
+                "integrate(1011 * piecewise((1, (e^(ix) - e^(-ix))/(2i) >= 1/2023), (0, True)), x)",
+                "integrate(2022 * piecewise((1, tan(x) >= 1/2023 * cos(x)), (0, True)), x)",
+                "integrate(2022 * piecewise((1, sin(x) >= min(1/2023)), (0, True)), x)",
+                "integrate(2022 * piecewise((1, sin(-x) >= -1/2023), (0, True)), x)",
+                "integrate(2022 * piecewise((1, sum(sin(n*x) for n in range(1, 2024)) >= 1/2023), (0, True)), x)",
+                "integrate(2022 * piecewise((1, sin(x + \u03c0/4) >= 1/2023), (0, True)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2022 * (sin(x) >= 1/2023) + (-2021) * (sin(x) < 0), x)",
+                "integrate(2021 * (-1 * (sin(x) < 0) + 1) - 2022 * (sin(x) < 1/2023), x)",
+                "integrate(2022 * (cos(x) < sqrt(1 - (1/2023)^2)) + (-2021) * (cos(x) < 0), x)",
+                "integrate(2022 * (sin(x) >= 1/2023) + (-2021) * (-sin(x) >= 0), x)",
+                "integrate(2022 * abs(sin(x)) + (-2021) * (-abs(sin(x))), x)",
+                "integrate((2022 * (sin(x) >= 1/2023) - 2021 * (sin(x) < 0) + 1), x)",
+                "integrate(2022 * (sin(x) >= 1/2023) + (-2021) * (sin(x + pi) > 0), x)",
+                "integrate(2022 * (1 - sin(x) < 1/2023) + (-2021) * (1 + sin(x) < 0), x)",
+                "integrate(2022 * (sin(x) >= 0) + -2021 * (sin(x + k*pi) < 0), x)",
+                "integrate(2022 * sign(sin(x)) + (-2021) * (sin(x) < 0), x)",
+                "integrate(2022 * (1 - cos(x)^2 > (1/2023)^2) + (-2021) * (1 - cos(x) > 0), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(piecewise((2022, sin(x) >= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022, cos(x) <= \\frac{1}{2023}), (-2021, cos(x) > 0)), x)",
+                "integrate(piecewise((2022, \\sin(x - \\frac{\\pi}{2}) \\geq \\frac{1}{2023}), (-2021, \\sin(x - \\frac{\\pi}{2}) < 0)), x)",
+                "integrate(piecewise((2022, sin(x) >= 0), (-2021, sin(x) < -\\frac{1}{2023})), x)",
+                "integrate(piecewise((2122, sin(2x) >= 1/1011.5), (-2011, sin(2x) < 0)), x)",
+                "integrate(piecewise((2022, (exp(1j*x) - exp(-1j*x)) / 2 >= 1/2023), (-2021, (exp(1j*x) - exp(-1j*x)) / 2 < 0)), x)",
+                "integrate(piecewise((2023, sin(x) >= 1/2024), (-2020, sin(x) < 0)), x)",
+                "integrate(piecewise((6066, sin(3x) >= 3/6069), (-6063, sin(3x) < 0)), x)",
+                "integrate(piecewise((2022, abs(sin(x)) >= \\frac{1}{2023}), (-2021, abs(sin(x)) < 0)), x)",
+                "integrate(piecewise((2022, sin(\\frac{\\pi}{2} - x) >= 1/2023), (-2021, sin(\\frac{\\pi}{2} - x) < 0)), x)",
+                "integrate(piecewise((2024, sin(x) >= 1/2022), (-2021, sin(x) < -0)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(piecewise((2022, 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022, 0 <= sin(x + \u03c0) <= 1/2023), (-2021, sin(x + \u03c0) < 0)), x)",
+                "integrate(piecewise((abs(2022), 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022 + 0, 0 <= sin(x) <= 1/2023), (-2021 + 0, sin(x) < 0)), x)",
+                "integrate(piecewise((2022, 0 <= sin(-x) <= 1/2023), (-2021, sin(-x) < 0)), x)",
+                "integrate(piecewise((2022, 0 <= sin(x + 2 * 3.14) <= 1/2023), (-2021, sin(x + 2 * 3.14) < 0)), x)",
+                "integrate(piecewise((2022, 0 <= cos(x) <= 1/2023), (-2021, cos(x) < 0)), x)",
+                "integrate(piecewise((2022 - 2022 + 2022, 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022 * exp(0), 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022 * sin(x)^0, 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)",
+                "integrate(piecewise((2022 + (-2022 + 2022 * 1), 0 <= sin(x) <= 1/2023), (-2021, sin(x) < 0)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(cos(x) * (2023 * (sin(x) >= 1) + 2022 * (sin(x) >= 1/2023) + (-2021) * (sin(x) < 0)), x)",
+                "integrate(cos(x) * (2023 * Heaviside(sin(x) - 1) + 2022 * Heaviside(sin(x) - 1/2023) - 2021 * Heaviside(-sin(x))), x)",
+                "integrate(cos(x) * (2023 * (sin(x) >= 1) + 2022 * (sin(x) >= 1/2023) + (-2021) * (sin(x) < 0)), x) + integrate(cos(x) * (2023 * (sin(x + 2*pi) >= 1) + 2022 * (sin(x + 2*pi) >= 1/2023) + (-2021) * (sin(x + 2*pi) < 0)), x)",
+                "integrate(cos(x) * (2023 * (1 + cos^2(x) == 1) + 2022 * (1 + cos^2(x) >= 2023/2023) + (-2021) * (cos(x) < 0)), x)",
+                "integrate(cos(x) * (2025 - 2 * ((sin(x) < 0) + (sin(x) >= 1/2023) * 1) + -2022 * (sin(x) >= 1)), x)",
+                "integrate(cos(x) * 2023 * Heaviside(sin(x) - 1) + 2022 * Heaviside(sin(x) - 1/2023) - 2021 * Heaviside(-sin(x)), x)",
+                "integrate(cos(x) * (2023 * (1 - Heaviside(sin(x) - 1)) + 2022 * (1 - Heaviside(sin(x) - (1/2023))) + (-2021) * (1 - Heaviside(sin(x))), x)",
+                "integrate(cos(x) * (2023 * (sin(x + \u03c0/2) >= 1) + 2022 * (sin(x + \u03c0/2) >= 1/2023) - 2021 * (sin(x + \u03c0/2) < 0)), x)",
+                "integrate(cos(x) * (2023 * (sin(x) - 1) + 2022 * (sin(x) - 1/2023) + (-2021) * (sin(x) < 0)), x)",
+                "integrate(2023 * (sin(x) >= 1) * cos(x) + cos(x) * 2022 * (sin(x) >= 1/2023) - 2021 * cos(x) * (sin(x) < 0), x)",
+                "integrate(cos(x) * (2023 * ((sin(x) >= 1) + (sin(x) < 0) / 2) + 2022 * ((sin(x) >= 1/2023) + (sin(x) < 0) / 2) - 2021 * (sin(x) < 0)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * piecewise((1, sin(x) >= 1), (2022, sin(x) >= 1/2023), (0, True)), x)",
+                "integrate(2023 * piecewise((0, sin(x) > 1), (2022, sin(x) > 1/2023), (0, True)), x)",
+                "integrate(2023 * piecewise((1, sin(x) >= 1), (2022, sin(x) >= 1/2023), (0, True)) + (2023 * floor((x - 2 * pi)/ (2 * pi))), x)",
+                "integrate(2023 * piecewise((1, abs(sin(x)) >= 1), (2022, abs(sin(x)) >= 1/2023), (0, True)), x)",
+                "integrate(piecewise((2023, sin(x) >= 1), (2022, sin(x) >= 1/2023), (0, True)) + 1, x)",
+                "integrate(2023 * piecewise((1, cos(x - pi/2) >= 1), (2022, cos(x - pi/2) >= 1/2023), (0, True)), x)",
+                "integrate(2023 * piecewise((1, sin(x)**2 >= 1), (2022, sin(x)**2 >= 1/2023**2), (0, True)), x)",
+                "integrate(2023 * piecewise((1, sin(x) - 1 >= 0), (2022, sin(x) - (1/2023) >= 0), (0, True)), x)",
+                "integrate(2023 * piecewise((1, arcsin(1) >= 0), (2022, arcsin(1/2023) >= 0), (0, True)), x)",
+                "integrate(piecewise((2023, x % (2*pi) >= pi/2 and x % (2*pi) < pi), (2022, x % (2*pi) >= (pi/2 + arcsin(1/2023)) and x % (2*pi) < pi), (0, True)), x)",
+                "integrate(2023 * piecewise((1, 2 * abs(sin(x)) - 1 >= 0), (2022, 2 * abs(sin(x)) - (1/2023) >= 0), (0, True)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(floor(2023*sin(x)), x) - integrate(floor(2023*sin(x)), x - 2*pi)",
+            "\\( \\int \\lfloor 2023\\sin(x) \\rfloor \\, dx - \\int \\lfloor 2023\\sin(x - 2\\pi) \\rfloor \\, dx \\)",
+            "\\( \\int \\lfloor 2023\\cos(x - \\frac{\\pi}{2}) \\rfloor \\, dx - \\int \\lfloor 2023\\cos(x - \\frac{\\pi}{2} - 2\\pi) \\rfloor \\, dx \\)",
+            "\\( \\int \\lfloor -2023\\sin(x) \\rfloor \\, dx - \\int \\lfloor -2023\\sin(x - 2\\pi) \\rfloor \\, dx \\)",
+            "\\( \\int \\lfloor 2023\\sin(\\pi - x) \\rfloor \\, dx - \\int \\lfloor 2023\\sin(\\pi - (x - 2\\pi)) \\rfloor \\, dx \\)",
+            "\\( \\int \\lfloor 2023\\sin(x + \\frac{\\pi}{2}) \\rfloor \\, dx - \\int \\lfloor 2023\\sin(x + \\frac{\\pi}{2} - 2\\pi) \\rfloor \\, dx \\)",
+            "\\( \\int \\lfloor 2023\\sin(-x) \\rfloor \\, dx - \\int \\lfloor 2023\\sin(-x + 2\\pi) \\rfloor \\, dx \\)",
+            "\\( 2\\int \\lfloor 2023\\sin(x) \\rfloor \\, dx \\, |_{0}^{\\pi} \\)",
+            "\\( \\int \\frac{d}{dx} \\left( \\lfloor 2023\\sin(x) \\rfloor \\right) \\, dx \\)",
+            "\\( \\int \\lfloor 2023\\sin(-x) \\rfloor - \\int \\lfloor 2023\\sin(-x + 2\\pi) \\rfloor \\, dx \\)",
+            "\\( \\int \\left( \\lfloor 2023\\sin(x) \\rfloor + \\lfloor 2023\\sin(x + \\frac{\\pi}{2}) \\rfloor \\right) \\, dx \\)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (sin(x) - 1) + 1, x)",
+                "integrate(2023 * sin(x) - 2022, x)",
+                "integrate(2023 * (1/2i * (e**(ix) - e**(-ix))) - 2022 + 1, x)",
+                "integrate(2023 * (1 - (1 - sin(x))) + 1, x)",
+                "integrate(2023 * sin(x + pi) - 2022, x)",
+                "integrate(2023 * (cos(pi/2 - x) - 1) + 1, x)",
+                "integrate(2023 * (2 * sin(x/2) * cos(x/2) - 1) + 1, x)",
+                "integrate(2023 * (sin(x) + 1 - 2), x)",
+                "integrate(2023 * (-sin(-x) + 1) + 1, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(2023 * (x - x**3 / 6)), x)",
+                "integrate(floor(2023 * (x * (1 - x**2 / 6))), x)",
+                "integrate(floor(2023 * x * (1 - x**2 / 6)), x)",
+                "integrate(floor(2023 * (x - (1/6 * (x**3 - x**5/30 + x**7/5040)))), x)",
+                "integrate(floor(2023 * (x - (1/2 * (1/3) * x**3))), x)",
+                "integrate(floor(2023 * (sin(t) - (sin(t)**3 / 6))), t)",
+                "integrate(floor(2023 * (x - (x**3)/6 + (x**5)/120)), x)",
+                "integrate(floor(2023 * (x - x**3 / 6)) + floor(2023 * 0), x)",
+                "integrate(floor(2023 * (x - (6*(x/6)**3) / 36)), x)",
+                "integrate(floor(2023 * (x * (1 - (x/(6 * x**2))))), x)",
+                "integrate(floor(2023 * ((6*x - x**3) / 6)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(piecewise((2023, sin(x) >= 1), (-2023, sin(x) < -1)), x)",
+                "integrate(0, x)",
+                "integrate(1011.5 * (1 - cos(2*x)), x)",
+                "integrate((2023 * exp(-|x|)), x)",
+                "integrate(4046 * sinh(x), x)",
+                "integrate(2023*sin(x)**2, x)",
+                "integrate(2023 * abs(sin(x)), x)",
+                "integrate(2023 * (sin(x/2)**2), x)",
+                "integrate(x * (2023 - 2023*(x/10**2)), x)",
+                "integrate(piecewise((2023, (1 - cos(x)^2) >= 0), (-2023, (1 - cos(x)^2) < 0)), x)",
+                "integrate(piecewise((2023, sin(x + \u03c0/2) >= 1), (-2023, sin(x + \u03c0/2) < -1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(2023 * u) / sqrt(1-u**2), u)",
+                "\\(\\int \\frac{2023x - \\lfloor 2023x \\rfloor}{\\sqrt{1-x^2}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023 \\sin(x) \\rfloor}{\\cos(x)} \\, dx\\)",
+                "\\(\\int \\sum_{k=0}^{2022} k \\cdot \\frac{1}{\\sqrt{1 - \\left(\\frac{k}{2023}\\right)^2}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023(1 - x) \\rfloor}{\\sqrt{1-x^2}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023 \\cos(x) \\rfloor}{\\sqrt{1 - \\left(\\sin(x)\\right)^2}} \\, dx\\)",
+                "\\(\\int \\frac{2023 - x^2}{\\sqrt{1 - x^2}} \\, dx - \\int \\frac{\\lfloor 2023x^2 \\rfloor}{\\sqrt{1-x^2}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023 \\cdot 2x \\cdot 0.5 \\rfloor}{\\sqrt{1-x^2}} \\, dx\\)",
+                "\\(\\int \\frac{2023x - \\{2023x \\}}{\\sqrt{1-x^2}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023 \\sqrt{x} \\rfloor}{\\sqrt{1-x}} \\, dx\\)",
+                "\\(\\int \\frac{\\lfloor 2023 e^{2x} \\rfloor}{\\frac{1}{2} \\sqrt{1-e^{2x}}} \\, dx\\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(2023 * sin(x)) + floor(2023 * sin(-x)), x)",
+                "integrate(2 * floor(2023 * sin(x)) + 1, x)",
+                "integrate(floor(2023 * sin(x)) + floor(-2023 * sin(x)), x)",
+                "integrate(floor(2023 * sin(x + \u03c0/2)) + floor(-2023 * sin(x + \u03c0/2)), x)",
+                "integrate(floor(2023 * sin(x)) + floor(2023 * sin(x + 2 * pi)), x)",
+                "integrate(floor(2023 * sin(x)) + floor(2023 * (0)), x)",
+                "integrate(sum(floor(2023 * sin(x + n * \u03c0)), n=0,1), x)",
+                "integrate(2023 * (floor(sin(x)) + floor(sin(-x))), x)",
+                "integrate(floor(2023 * (sin(x) + sin(-x))), x)",
+                "integrate(floor(2023 * sin(x + pi/2)) + floor(2023 * sin(-(x + pi/2))), x)",
+                "integrate(floor(2023 * sin(x - pi)) + floor(2023 * sin(-1 * (x - pi))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(2023 * sin(x + 2 * pi)), x)",
+                "integrate(floor(2023 * sin(x)), x)",
+                "integrate(floor(2023 * sin(x + pi/2)), x)",
+                "integrate(floor(2023 * (e**(ix) - e**(-ix)) / (2*I)), x)",
+                "integrate(floor(2023 * sin(x)), x) + integrate(floor(2023 * sin(x + pi)), x)",
+                "integrate(floor(2023 * cos(x - pi/2)), x)",
+                "integrate(floor(2023 * sin(x) / 1), x)",
+                "integrate(floor(2023 * sin(x)), x) - integrate(floor(2023 * sin(x)), x - pi)",
+                "integrate(floor(2023 * sin(-x)), x)",
+                "integrate(floor(2023 * sin((x % (2 * pi)))), x)",
+                "integrate(floor(2023 * cos(x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023 * (sin(x) - floor(sin(x))), x)",
+            "integrate(2023 * sin(x), x) - integrate(2023 * floor(sin(x)), x)",
+            "integrate(2023 * (sin(x) - sin(pi-x)), x)",
+            "integrate(2023 * (sin(x) + (1 - (sin(x) - 1) * floor(sin(x)/sin(x)))), x)",
+            "integrate(2023 * (sin(x) - 1), x) + integrate(2023 * (1 - floor(sin(x))), x)",
+            "integrate(2023 * (sin(x) - sin(x + 2*pi)), x)",
+            "integrate(2023 * (-sin(-x) + floor(-sin(-x))), x)",
+            "integrate(2023 * (sin(x) - piecewise(sin(x) < 0, -1, sin(x) >= 0, 0)), x)",
+            "integrate(2023 * ((sin(x) + 1) - (floor(sin(x) + 1))), x)",
+            "integrate(2023 * (Im(exp(ix)) - Re(floor(exp(ix)))), x)",
+            "integrate(2023 * sin(x) - 2023 * floor(sin(x)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (sin(x) + 1)/2, x)",
+                "integrate(1011.5 * (sin(x) + 1), x)",
+                "integrate(1011.5 * sin(x), x) + integrate(1011.5, x)",
+                "integrate(1011.5 * (2 * sin(x/2) * cos(x/2) + 1), x)",
+                "integrate(1011.5 * (1 - cos(x)), x)",
+                "integrate((2023/2) + (1011.5 * sin(x)), x)",
+                "integrate((sin(x) + 1)/2, x) * integrate(2023, x)",
+                "integrate(1011.5 * (sin(x) + 2), x) - integrate(1011.5 * 1, x)",
+                "integrate(1011.5 * (e^(ix) - e^(-ix))/2i + 1011.5, x)",
+                "integrate(1011.5 * (-sin(x + \u03c0) + 1), x)",
+                "integrate(2023 * (sin(x + \u03c0) + 1)/2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (sin(x) + 1)/2, x) - integrate(2023 / 2, x)",
+                "integrate(2023 * (1 - cos(x)**2)/2, x)",
+                "integrate(1011.5 * (exp(I*x) - exp(-I*x))/I, x)",
+                "integrate(2023 * (exp(I*x) - exp(-I*x))/(4i), x)",
+                "integrate(2023 * ((sin(x) + 1 + sin(x)**2 - sin(x)**2)/2), x)",
+                "integrate(2023 * ((sin(x) + 1) + (sin(x))/2)/2, x)",
+                "integrate(1011.5 * (sin(x) + sin(x) / 2), x)",
+                "integrate(1011.5 * (sin(x/2) * cos(x/2) + 1), x)",
+                "integrate(1011.5 * (abs(sin(x)) + cos(x))/2, x)",
+                "integrate(2023 * (2*arctan(tan(x/2)) + 1)/2, x)",
+                "integrate(1015.5 * (sin(x/2) * cos(x/2) + 1), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (1/2), x)",
+                "integrate(1011 + 0.5, x)",
+                "integrate((2000 + 23) * (1/2), x)",
+                "integrate(2023 * (1/4 + 1/4), x)",
+                "integrate((2020 + 3) * (1/2), x)",
+                "integrate(2023 * (2/4), x)",
+                "integrate(1000 + 11.5, x)",
+                "integrate((4046/2) * (1/2), x)",
+                "integrate(2023 * (2**-1), x)",
+                "integrate((6069/3) * (1/2), x)",
+                "integrate(7 * 17**2 * (1/2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 / 2, x) + integrate(2023 / 2, -x)",
+                "integrate((1011 * 2) / 2, x)",
+                "integrate(1011 + 505.5, x)",
+                "integrate(2023 / (2 / 1), x)",
+                "integrate(1011.5 + 1011.5, x)",
+                "integrate(1012 * (e^(0) - e^(0)), x)",
+                "integrate(1011 * (1 + 0.5) - 1011 * 0.5, x)",
+                "integrate(1011.5 * 2, x)",
+                "integrate((1011 + 505.5 + 505.5) - 505.5, x)",
+                "integrate((2023 / 4) * 2, x)",
+                "integrate(2023 / 2 + 0, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (1 - cos(x)) / 2, x)",
+                "integrate(1011.5 * 2 * sin(x/2)**2, x)",
+                "integrate((2024 - 1) * (1 - cos(x)) / 2, x)",
+                "integrate(1011.5 * (2/2 - cos(x)), x)",
+                "integrate(1011.5 * (1 + cos(x) - 2cos(x)), x)",
+                "integrate(1011.5 * (1 - (exp(I*x) + exp(-I*x))/2), x)",
+                "integrate(1011.5 * (1 - sum((-1)**n * x**(2*n)/(factorial(2*n)), (n, 0, 10))), x)",
+                "integrate((2023/2) * (1 - (x**2/2 - x**4/24 + x**6/720)), x)",
+                "integrate(1011.5 * (x - sin(x)), x)",
+                "integrate(1011.5 * (2*(1 - cos(x))*(1 + cos(x))), x)",
+                "integrate(2023 * sin(x/2) * cos(x/2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (x - floor(x/pi)), x)",
+                "integrate(2023 * (x - (x/pi - (x/pi - floor(x/pi)))), x)",
+                "integrate(2023 * (x - (pi * floor(x/pi))), x)",
+                "integrate(2023 * x, x) - integrate(2023 * floor(x/pi), x)",
+                "integrate(2023 * (u + pi * floor(x/pi)), u)",
+                "integrate(2023 * (pi*y - floor(y)), pi*differentiate(y, x))",
+                "integrate(2023 * x, x) - sum(integrate(2023 * k, x)) for k in range(0, floor(x/pi))",
+                "integrate(2023 * (z + \\pi*floor(x/pi)), z) where z = x - pi*floor(x/pi)",
+                "integrate(2023 * (x - sum(k for k in range(floor(x/pi)))), x)",
+                "integrate(2023 * u * v - d(tu), u)",
+                "integrate(2023 * sum(ui * (x % (pi*k))) for k in floor_range, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x) - (2023*sin(x) % 1), x)",
+            "integrate(2023*cos(x - \u03c0/2) - (2023*cos(x - \u03c0/2) % 1), x)",
+            "integrate(2023*sin(x + \u03c0) - (2023*sin(x + \u03c0) % 1), x)",
+            "integrate(2023*(x - (x^3)/6 + (x^5)/120) - (2023*(x - (x**3)/6 + (x**5)/120) % 1), x)",
+            "integrate(2023*(e**(ix) - e**(-ix))/(2i) - (2023*(e**(ix) - e**(-ix))/(2i) % 1), x)",
+            "integrate(2023*cos(x + \u03c0/2) - (2023*cos(x + \u03c0/2) % 1), x)",
+            "integrate(4046*sin(0.5*x) - (4046*sin(0.5*x) % 1), x)",
+            "integrate(2023*tan(x)*cos(x) - (2023*tan(x)*cos(x) % 1), x)",
+            "integrate(2023*(x - (x^3)/6) - (2023*(x - (x**3)/6) % 1), x)",
+            "integrate(2023*sqrt(1 - cos(x)**2) - (2023*sqrt(1 - cos(x)**2) % 1), x)",
+            "integrate(-2023*sin(-x) + (2023*sin(-x) % 1), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), x)",
+                "integrate(2000*sin(x), x) + integrate(23*sin(x), x)",
+                "integrate(2023*cos(x - pi/2), x)",
+                "integrate(2023 * (x - (x**3)/6 + (x**5)/120 - (x**7)/5040), x)",
+                "integrate(2023*cos(pi/2 - x), x)",
+                "integrate(-2023*sin(-x), x)",
+                "integrate(2023*sin(x + 2*pi), x)",
+                "integrate(1011.5 * (e**(ix) - e**(-ix)), x)",
+                "integrate(1011.5 * (e**(jx) - e**(-jx)), x)",
+                "integrate(2023 * (sin(x) * 1), x)",
+                "integrate(2023 * sin(x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011.5*sin(x), x)",
+                "integrate(1011.5 * (e**(ix) - e**(-ix)) / (2 * I), x)",
+                "integrate(505.75 * 2 * sin(x), x)",
+                "integrate(1011.5 * -d(cos(x)), x)",
+                "integrate(505.75 * (e**(ix) - e**(-ix))/(i), x)",
+                "integrate((1011.5 * sin(x)) * (1 - 0), x)",
+                "integrate(1011.5 * 2 * sin(x/2) * cos(x/2), x)",
+                "integrate(1011.5 * sin(x + \u03c0/2), x)",
+                "integrate(1011.5 * (sin(x + 2\u03c0) - sin(2\u03c0)), x)",
+                "integrate(1011.5 * (sin(0)cos(x) + cos(0)sin(x)), x)",
+                "integrate(1011.5 * (-1 * sin(x - \u03c0)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x) - integer_part(2023*sin(x)), x)",
+                "integrate(2023*(e**(ix) - e**(-ix))/(2*I) - integer_part(2023*(e**(ix) - e**(-ix))/(2*I)), x)",
+                "integrate(2023*|sin(x)| - integer_part(2023*|sin(x)|), x)",
+                "integrate(2023*cos(pi/2 - x) - integer_part(2023*cos(pi/2 - x)), x)",
+                "integrate(2023*(sin(x) + sin(-x))/2 - integer_part(2023*(sin(x) + sin(-x))/2), x)",
+                "integrate(2023*sin(x) + (2023 - integer_part(2023*sin(x))), x)",
+                "integrate(2023*(x - x**3/6 + x**5/120) - integer_part(2023*(x - x**3/6 + x**5/120)), x)",
+                "integrate(2023*(sin(x) - x + x) - integer_part(2023*(sin(x) - x + x)), x)",
+                "integrate(2023*(sin(x + 2*pi) - 2*pi) - integer_part(2023*(sin(x + 2*pi) - 2*pi)), x)",
+                "integrate(2023*sin(x + 2*pi) - integer_part(2023*sin(x + 2*pi)), x)",
+                "integrate(2023 * sin(x), x) - integrate(floor(2023 * sin(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x) - 1011.5, x)",
+                "integrate(2023*(sin(x) - 0.5), x)",
+                "integrate(2023 * (e^(ix) - e^(-ix))/(2i) - 1011.5, x)",
+                "integrate((2000 * sin(x) + 23 * sin(x)) - 1011.5, x)",
+                "integrate(-2023 * sin(-x) - 1011.5, x)",
+                "integrate(2023 * sin(x) - 1000 - 11.5, x)",
+                "integrate(-(-2023 * sin(x) + 1011.5), x)",
+                "integrate(2023 * (x - (x^3)/6) - 1011.5, x)",
+                "integrate(2023 * (x - x^3/6 + x^5/120 - ...) - 1011.5, x)",
+                "integrate(1011.5 + 1011.5*sin(u/2), (u/2) / 2)",
+                "integrate((2000 * sin(x) + 23 * sin(x) - 1011.5), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011*sin(x), x)",
+                "integrate(1011 * (e**(ix) - e**(-ix)) / (2 * i), x)",
+                "integrate(1011 * sin(x), x)",
+                "integrate(1011 * sum((-1)**n * x**(2*n + 1) / factorial(2*n + 1) for n in range(10)), x)",
+                "integrate(1011 * -sin(-x), x)",
+                "integrate(1011 * cos(x - pi/2), x)",
+                "integrate(1011 * (sin(x) + 0), x)",
+                "integrate(1011 * sin(x) * 1, x)",
+                "integrate(1011 * (1 - (e**(-ix) / e**(ix)))) / 2i, x)",
+                "integrate(1011 * sin(x + 0), x)",
+                "integrate(1000*sin(x) + 11*sin(x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x) + 0 - (2023*sin(x) % 1), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x), x) - integrate(2023, x) - 2023*floor(x/pi)",
+            "`integrate(2023*sin(x) - 2023 - sum(2023, n), x)`, where the sum uses \\( n = \\lfloor x/\\pi \\rfloor \\)",
+            "`integrate(2023*sin(x) - 2023 - 2023*sum(x/n, n), x)`, where \\( n = \\pi \\)",
+            "integrate(2023 * cos(x - 3.14/2), x) - integrate(2023, x) - 2023 * floor(x/3.14)",
+            "integrate(2023 * cos(x - pi/2), x) - integrate(2023, x) - 2023 * floor(x/pi)",
+            "integrate(2023 * (e^(ix) - e^(-ix))/(2*I), x) - integrate(2023, x) - 2023 * floor(x/pi)",
+            "integrate(-2023 * sin(x + pi), x) - integrate(2023, x) - 2023 * floor(x/pi)",
+            "integrate(2023 * sin(pi - x), x) - integrate(2023, x) - 2023 * floor((pi - x)/pi)",
+            "integrate(2023 * (x - x**3/6 + x**5/120), x) - integrate(2023, x) - 2023 * floor(x/pi)",
+            "integrate(2023 * 2 * sin(x/2) * cos(x/2), x) - integrate(2023, x) - 2023 * floor(x/pi)",
+            "integrate(2023 * sin(x - floor(x/pi)*pi), x) - integrate(2023, x) - 2023 * floor(x/pi)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), x) - integrate(2023, x) - 2023*floor(x/pi)",
+                "integrate(2023*sin(x) + 2023*sin(x) - 2023, x)",
+                "integrate(2023*(sin(x) - 1) + 2023*floor(x/pi), x)",
+                "integrate(1011.5*(exp(1j*x) - exp(-1j*x)) - 2023*floor(x/pi), x)",
+                "integrate(2023*cos(x - pi/2) - 2023*floor(x/pi), x)",
+                "integrate(2020*sin(x) + 3*sin(x) - 2023*floor(x/pi), x)",
+                "integrate(2023*sin(x) - 2023*piecewise(x % pi == 0, 1, 0), x)",
+                "integrate(-2023*sin(x - pi) - 2023*floor(x/pi), x)",
+                "integrate(2023*sin(x) - 2023 - 2023*(x // pi), x)",
+                "integrate((2023*x - 2023*x**3 / 6) - 2023*floor(x/pi), x)",
+                "integrate(2023*(exp(I*x) - exp(-I*x))/(2*I), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*(x - x**3/6), x)",
+            "integrate(2023 * x * (1 - x**2/6), x)",
+            "integrate(2023 * (x - sin(x)), x)",
+            "integrate(2023 * (x - (-x**3/6)), x)",
+            "integrate(2023 * (x - (1 - cos(x))), x)",
+            "integrate(2023 * (x**3/6 - x), x)",
+            "integrate(2023 * (x - (6 - x**3))/6, x)",
+            "integrate(2023 * (6 * x/6 - x**3/6), x)",
+            "integrate(2023 * (x - (e**(-x**2/12))), x)",
+            "integrate(2023 * (x - sqrt(x**6 / 36)), x)",
+            "integrate(2023 * (x - (x**6 / (2*3))), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023/6 * (6*x - x**3), x)",
+                "integrate((2023/1)*(x - (x**3)/6), x)",
+                "integrate(2023 * (6*x*(1 - (x**2)/6)), x)",
+                "integrate(2023/6 * (6 * sin(x) - (6 * sin(x))**3), x)",
+                "integrate(2023/6 * (6 * x - x**3 + 0*x**2), x)",
+                "integrate(2023/6 * ((x - sqrt(6))**2), x)",
+                "integrate(2023/6 * (6*x - (x)*((x)**2)), x)",
+                "integrate(2023 * (x) * (6 - x**2), x)",
+                "integrate(2023/6 * (6 * (t-3) - (t-3)**3), t)",
+                "integrate(2023/3 * (3*u - u**1.5), u**0.5)",
+                "integrate(2023 * (2*(3+x)*(3-x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (x - (x**3 / 6)), x)",
+                "integrate(2023 * (x - (1/6) * x**3), x)",
+                "integrate(2023 * ((x**4 / 4) - (x**3 / 6)), x)",
+                "integrate(2023 * (x - (x**3 / 6) + (x**3 / 6)), x)",
+                "integrate(2023 * (sqrt(u) - (u^(3/2) / 6)), u)",
+                "integrate(2023 * ((x**2) * (1 - (x / 6))), x)",
+                "integrate(2023 * (x - (x / 6) * (x**2)), x)",
+                "integrate(2023 * (x * (1 - (x**2 / 6))), x)",
+                "integrate(2023 * ((6x - x**3) / 6), x)",
+                "integrate(2023 * (x * (1 - (x**3 / 6))), x)",
+                "integrate(2023 * (3 * (x/3) - (x**3 / 6)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (x + (-1/6) * x**3), x)",
+                "integrate(2023 * x * (1 - (1/6) * x**2), x)",
+                "integrate(2023 * (x**2 - (1/6) * (x**4 - x**2)), x)",
+                "integrate(2023 * (x + (-1/12) * (2 * x**3)), x)",
+                "integrate(2023 * (3.2 * x + (-0.5) * x**3), x)",
+                "integrate(2023 * (x + (-1/6) * x**3 + (1/3) * (x**2 - x**2)), x)",
+                "integrate(2020 * (x + (-1/6) * (1.007 * x**3) + (3) * 1.007), x)",
+                "integrate(2023 * (1/3 * x**3 - (3/2) * (1/4) * x**3), x)",
+                "integrate(2023 * (sqrt(x**2) - 0.5 * (x**2 - 1.5 * x**2)), x)",
+                "integrate(2023 * (|x| + (-1/6) * |x|**3), x)",
+                "integrate(2023 * (4/4 * x + (-1/6) * (x**3 * (3/3))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (3*sin(t) - (3*sin(t))**3/6), 3*sin(t))",
+                "integrate(2023 * 3 * (sin(t) - (sin(t)**3)/6), x)",
+                "integrate(2023 * (3*sin(t) - (27/6)*sin(t)**3), x)",
+                "integrate(2023 * (3*sin(t) - (1/2)*sin(t)*(3*sin(t))^2), x)",
+                "integrate(2023 * sin(t) * (3 - (1/2)*(9*sin(t)**2)), x)",
+                "integrate(2023 * 3 * sin(t), x) - integrate(2023 * (3**3/6) * sin(t)**3, x)",
+                "integrate(2023 * (3*sin(t) - 4.5*(1 - cos(t)**2)*sin(t)), x)",
+                "integrate(2023 * (3*(e**(1j*t) - e**(-1j*t))/(2j) - (27/6)*((e**(1j*t) - e**(-1j*t))/(2j))**3), x)",
+                "integrate(2023 * (3*sin(t) - (1/2)*9*sin(t)*sin(t)**2), x)",
+                "integrate(2023 * (3*sin(t) - 4.5*sin(t**3)), x)",
+                "integrate(2023 * (3*(e**(it) - e**(-it))/(2i) - 27/6*((e**(it) - e**(-it))/(2i))**3), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (-1/6) * (x**3), x)",
+                "integrate(-337.1666666666667 * x**3, x)",
+                "integrate(337.1666666666667 * (-1) * (x**3), x)",
+                "integrate(2023 * (-(1/6)) * (x**3), x)",
+                "integrate(2023 * (-1/2 * (1/3) * (x**3)), x)",
+                "integrate(4046 * (-1/12) * (x**3), x)",
+                "integrate((-2023 / 6) * (x**3), x)",
+                "integrate(-337.1666666666667 * (1 * x**3), x)",
+                "integrate(2023 * (-1) * (x**3 / 6), x)",
+                "integrate(2023 * ((-1/3) * (1/2) * (x**3)), x)",
+                "integrate(1011.5 * (-2/3) * (x**3), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*x, x) - integrate(2023*(1/6)*x**3, x)",
+                "integrate(2023*(x - (1/6)*x**3), x)",
+                "integrate(2023*x, x) - integrate(338.83333*x**3, x)",
+                "integrate(2023*x*exp(0*0), x)",
+                "integrate(2023*(x**2)/2 - 338.83333*(x**4)/4, x)",
+                "integrate(2023*sin(t), x) - integrate(2023*(1/6)*sin(t)**3, x)",
+                "integrate(2023*((1/6)*x**3 - x), x)",
+                "integrate(2023*x*(1 - (1/6)*x**2), x)",
+                "integrate(2023*((1/12)*x**3 + x), x)",
+                "integrate(2023*((x**3)/3 - (1/2)*x**2 + x), x)",
+                "integrate(2023*(x + (1/6)*x**3 - (1/6)*x**3), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(sin(2023*x), x)",
+            "integrate(sin(2023*(x - 1/2023)), x)",
+            "integrate((e**(2023*I*x) - e**(-2023*I*x)) / (2 * I), x)",
+            "integrate(1 * sin(2023*x), x)",
+            "integrate(cos(2023*x - pi/2), x)",
+            "integrate(sin(u) * (1/2023), u).subs(u, 2023*x)",
+            "integrate(sin(2023*x) * cos(0), x)",
+            "integrate(4 * (1/4 * sin(2023*x)), x)",
+            "integrate(sin(2023*x) + 0*1, x)",
+            "integrate(2*sin(1011.5*x) * cos(1011.5*x), x)",
+            "integrate(sin(2023*x + 2023*pi), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(sin(u) / 2023, u)",
+                "integrate((e**(I*x) - e**(-I*x)) / (2 * 2023 * I), x)",
+                "integrate(sin(x) / 2023, x)",
+                "integrate(cos((\u03c0/2) - x) / 2023, x)",
+                "integrate((e**(I*x) / (2*2023*I)) - (e**(-I*x) / (2*2023*I)), x)",
+                "integrate(2023 * sin(x) / 2023, x)",
+                "integrate(-cos(x) / 2023, x)",
+                "integrate(cos(x + (\u03c0/2)) / 2023, x)",
+                "integrate(sin(x) / (2023 * 1), x)",
+                "integrate(sin(x) / 2023.0, x)",
+                "integrate(sin(x + 0) / 2023, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(floor(2023*(sin(x) / (sin(pi/6)))), x)",
+            "integrate(floor(4046 * sin(x)), x)",
+            "integrate(floor(2023 * 2 * (sin(x) / (sin(pi / 6)))), x)",
+            "integrate(floor(2023 * (cos(x - pi / 2) / (sin(pi / 6)))), x)",
+            "integrate(floor(2023 * (sin(-x) / (sin(pi / 6)))), x)",
+            "integrate(floor(4046 * (1/2) * (2 * sin(x) * cos(x))), x)",
+            "integrate(floor(2023 * ((sin(x) + sin(0))/ (sin(pi/6)))), x)",
+            "integrate(floor(2023 * sin(x + pi/6) / (sin(pi/6))), x)",
+            "integrate(floor(2023 * (sin(x + pi/2)) / (sin(pi/6))), x)",
+            "integrate(floor(2023 * (3 * sin(x) / (sin(pi / 6)))), x)",
+            "integrate(floor(2023 * (sin(x) / (sin(pi / 6) + sin^2(x)/6))), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(4046 * (2 * tan(x / 2) / (1 + tan(x / 2)**2))), x)",
+                "integrate(floor(4046 * cos(pi/2 - x)), x)",
+                "integrate(floor(4046 * sin(pi/2 - x)), x)",
+                "integrate(floor(4046 * (2 * sin(x/2) * cos(x/2))), x)",
+                "integrate(floor(4046 * (2 * tan(x/2) / (1 + tan(x/2)**2))), x)",
+                "integrate(floor(4046 * (e^(ix) - e^(-ix))/(2i)), x)",
+                "integrate(floor(4046 * (x - x**3/6 + x**5/120)), x)",
+                "integrate(floor(4046 * (2 * u / (1 + u**2))), (2 * atan(u), u))",
+                "integrate(floor(4046 * sin(2 * x)), x)",
+                "integrate(floor(4046 * sin(v)), (v, x))",
+                "integrate(floor(4046 * (sin(x + 2 * pi))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(4046 * (1/2 * (exp(1j*x) - exp(-1j*x)))), x)",
+                "\\(\\int \\text{floor}(2023 \\cdot \\sin(x)) \\, dx\\)",
+                "integrate(floor(4046 * (1/2 * (2j * sin(x)))), x)",
+                "integrate(floor(4046 * (1/2 * (e^{1j(\\frac{\\pi}{2} - x)} - e^{-1j(\\frac{\\pi}{2} - x)}))), x)",
+                "integrate(floor(4046 * (1/2 * (e^{1j(x + pi/4)} - e^{-1j(x + pi/4)}))), x)",
+                "integrate(floor(4046 * (1/2 * (1j \\cdot (x - \\frac{x^3}{6} + \\cdots)))), x)",
+                "integrate(floor(4046 * (1/2 * (Im(e^{1jx})))), x)",
+                "integrate(floor(2023 * (e^{1j*x} - e^{-1j*x})), x)",
+                "integrate(floor(4046 * (1/2 * (i * (e^{x} - e^{-x})))), x)",
+                "integrate(floor(4046 * (1/2 * (e^{1j(x + 2*pi)} - e^{-1j(x + 2*pi)}))), x)",
+                "integrate(floor(-4046 * (1/2 * (e^{-1jx} - e^{1jx}))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4046 * (1/2), x)",
+                "integrate(4046/2, x)",
+                "integrate(4046 * 2**-1, x)",
+                "integrate(4046 / 2, x)",
+                "integrate(2023 * 2 * (1/2), x)",
+                "integrate(2023 * 1, x)",
+                "integrate(4046 * sin(45)**2, x)",
+                "integrate(4046 * (3/6), x)",
+                "integrate(4046 * (4/8), x)",
+                "integrate(4046 * 10**log(0.5), x)",
+                "integrate(4046 * e**(log(0.5)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(floor(4046 * sin(x)), x)",
+                "integrate(4046 * sin(x) - (4046 * sin(x) - floor(4046 * sin(x))), x)",
+                "integrate(floor(4046 * sin(x + pi)), x)",
+                "integrate(2 * pi * floor(4046 * sin(x)), x)",
+                "integrate(floor(2023 * (1 - cos(2*x))), x)",
+                "integrate(floor(4046 * (sin(x) + cos(x)) / sqrt(2)), x)",
+                "integrate(floor(4046 * Im(exp(1j*x))), x)",
+                "integrate(floor(u), (asin(u / 4046), u))",
+                "integrate(floor(4046 * sin(3x/4)), x)",
+                "integrate(floor(4046 * tan(x/2) / sqrt(1 + tan(x/2)^2)), x)",
+                "integrate(floor(4046 - 4046*cos(x)^2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4046 * (x - x**3 / 6 + x**5 / 120), x)",
+                "\\( \\int 4046 \\left( \\frac{x^5}{120} - \\frac{x^3}{6} + x \\right) dx \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4046 * (0.5), x)",
+                "integrate(2023, x)",
+                "integrate(4046 * (0.5) * (pi ** 0), x)",
+                "integrate((4046 * 0.5 * e ** 0), x)",
+                "integrate((2023 * sqrt(1)), x)",
+                "integrate((6! / 4! + 2000 + 20), x)",
+                "integrate(2023 + (0 * x), x)",
+                "integrate(4046 * (0.5) * (sin(0) + 1), x)",
+                "integrate((e ** (ln(2023))), x)",
+                "integrate((2000 + 20 + 3), x)",
+                "integrate(((2023 * 1)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023 * u, x).where(u=sin(x)/max(1, sin(x)))",
+            "integrate(2023 * sin(x) * (1 - H(1 - abs(sin(x)))), x)",
+            "integrate(2023 * sin(pi - x) / max(1, sin(pi - x)), x)",
+            "integrate(2023 * sqrt(1 - cos(x)**2) / max(1, sqrt(1 - cos(x)**2)), x)",
+            "integrate(2023 * sin(pi * (x/pi)) / max(1, sin(pi * (x/pi))), x)",
+            "integrate(2023 * (H(1-sin(x)) * sin(x) + H(sin(x)-1)), x)",
+            "integrate(2023 * (e^(ix) - e^(-ix)) / max(1, e^(ix) - e^(-ix)), x)",
+            "integrate(2023 * sin(2 * pi - x) / max(1, sin(2 * pi - x)), x)",
+            "integrate(2023 * sin(x - pi) / max(1, sin(x - pi)), x)",
+            "integrate(2023 * (x if abs(x) < 1 else 1), x)",
+            "integrate(2023 * (sin(x) + (1-sin(x)))/max(2, sin(x)+1), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * sin(x), x)",
+                "integrate(2023 * sum((-1)**n * x**(2*n + 1) / factorial(2*n + 1), (n, 0, oo)), x)",
+                "integrate(2023 * (exp(I*x) - exp(-I*x)) / (2 * I), x)",
+                "integrate(2023 * (-sin(x - pi)), x)",
+                "integrate(2023 * 2 * sin(x / 2) * cos(x / 2), x)",
+                "integrate((2023/2023) * 2023 * sin(x), x)",
+                "integrate(2023 * (d(sin(x))/dx), x)",
+                "integrate(d(2023 * sin(x), x), x)",
+                "integrate(2023 * sin(x), (x, 0, 2 * pi))",
+                "integrate(2023 * sin(x + pi) - 2023 * pi, x)",
+                "integrate(2023 * (e**(1j*x) - e**(-1j*x)) / (2 * 1j), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (1/2) * (1 - cos(2*x)), x)",
+                "integrate(2023 * (1 - (1 - 2*sin(x)**2)), x)",
+                "integrate(1011.5 - (1011.5 * cos(2*x)), x)",
+                "integrate(2023 * sin(x)**2, x)",
+                "integrate(1011.5 + 1011.5 * (1 - cos(2*x)), x)",
+                "integrate(2023 * (1 - (2*cos(x)**2 - 1)), x)",
+                "integrate(2023/2 - 2023/2 * cos(2*x), x)",
+                "integrate(1011.5 * 2 * (1 - cos(2*x)), x)",
+                "integrate((1 - cos(2*x)) * 1011.5, x)",
+                "integrate(2023 * (1 - (exp(2*I*x) + exp(-2*I*x)) / 2), x)",
+                "integrate(2023 * (1/2) * (2 * sin(x)**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (e^(ix) - e^(-ix))/(2i), x)",
+                "integrate(1011.5 * (e^(ix) - e^(-ix)) / (i), x)",
+                "integrate(2023 * sum((-1)^n / factorial(n+1) * x^(2n+1), (n, 0, oo)), x)",
+                "integrate(2023 * (-e^(ix) + e^(-ix)) / (2i), x)",
+                "integrate(2023 * (e^(i*(x + 2*pi)) - e^(-i*(x + 2*pi))) / (2i), x)",
+                "integrate(2023 * cos((pi/2) - x), x)",
+                "integrate((2023/2i) * (e^(u) - e^(-u)), u).subs(u, ix)",
+                "integrate(2023 * (4*sin(x/2)*cos(x/2)), x)",
+                "integrate(2023 * sqrt(1 - cos(x)**2), x)",
+                "integrate(1011.5 * (sin(x/2) * 2 * cos(x/2)), x)",
+                "integrate(2023 * sinh(ix) / i, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023 * arcsin(t), x).where(t=sin(x))",
+            "integrate(2023 * arcsin(sin(x)), x)",
+            "integrate(2023 * (\u03c0/2 - arccos(cos(x))), x)",
+            "integrate(2023 * arcsin(cos(x)), x)",
+            "integrate(1011.5 * (sin(x) + cos(x)), x)",
+            "integrate(2023 * (x - \u03c0), x)",
+            "integrate(2023 * arcsin(-sin(x)), x)",
+            "integrate(2023 * arcsin(sin(2x)), x)",
+            "integrate(1011.5 * (pi - arcsin(sin(x))), x)",
+            "integrate(2023 * (sqrt(1 - sin^2(x))), x)",
+            "integrate(2023 * arcsin(exp(i*x)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3 * arcsin(sin(x)), x)",
+                "integrate(3 * (x - 2 * pi * floor(x / (2 * pi))), x)",
+                "integrate(3 * (x - 2 * pi * floor((x + pi) / (2 * pi))), x)",
+                "integrate(3 * (x - ((x**3)/6) + ((x**5)/120)), x)",
+                "integrate(3 * (pi/2 - arcsin(sin(pi/2 - x))), x)",
+                "integrate(3 * ln(1 + sin(x)), x)",
+                "integrate(3 * arcsin(1 - 2 * (sin(x/2)**2)), x)",
+                "integrate(3 * arcsin(t) * (1/sqrt(1 - t**2)), t)",
+                "integrate(3 * arctan(tan(x)), x)",
+                "integrate(3 * (1/2) * (ln(1 + e^(ix)) - ln(1 - e^(ix))), x)",
+                "integrate(3 * sum((-1)**(n-1) * (x**(2*n-1))/(factorial(n) * (2*n-1)), (n, 1, oo)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(pi * arcsin(sin(x)), x)",
+                "integrate(pi * arcsin(sin(x % (2 * pi))), x)",
+                "integrate(pi * arcsin(sin(x + pi/2)), x)",
+                "integrate(pi/2 + pi * arccos(sin(x)), x)",
+                "integrate(pi * (x - x**3/6 + O(x**5)), x)",
+                "integrate(pi * arcsin(sin(sqrt(x))), x)",
+                "integrate(pi * arcsin(sin(2 * pi - x)), x)",
+                "integrate(pi * arcsin(sin(x + pi)), x)",
+                "integrate(pi * arcsin(u) * cos(x), x)",
+                "integrate(pi * (x - floor(x/(2*pi))*2*pi), x)",
+                "integrate(pi * arcsin(exp(I * x - 1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(15 * arcsin(sin(x)), x)",
+                "\\( \\int 15x \\, dx = integrate(15*x, x) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * sin(x), x)",
+                "integrate(1011.5 * (e**(ix) - e**(-ix)) / (2*i), x)",
+                "integrate(2023 * (exp(I*x) - exp(-I*x)) / (2 * I), x)",
+                "integrate(2023 * cos(x - pi/2), x)",
+                "integrate(2023 * (x - (x**3)/6 + (x**5)/120), x)",
+                "integrate(2023 * Imaginary(exp(I*x)), x)",
+                "integrate(2023 * sin(2 * (x/2)), x)",
+                "integrate(2023 * Im(exp(I*x)), x)",
+                "integrate(2023 * (sin(x) + sin(x + 2*pi) - sin(x + 2*pi)), x)",
+                "integrate(2023 * (sgn(sin(x)) * abs(sin(x))), x)",
+                "integrate(2023 * (1011 * sin(x) + 1012 * sin(x - pi/2)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * arcsin(cos(x)), x)",
+                "integrate(2023 * (pi/2 - x), x)",
+                "integrate(1011.5 * pi - 2023 * x, x)",
+                "integrate(2023 * arcsin((e^(ix) + e^(-ix))/2), x)",
+                "integrate(2023 * (pi/2 - u), du)",
+                "integrate(2023 * arcsin(sqrt(1-sin(x)**2)), x)",
+                "integrate(2023 * arcsin(sqrt(1-sin(x)**2) ), x)",
+                "integrate(2023 * arcsin(tan(x)), x)",
+                "integrate(2023 * arcsin(cos(-x)), x)",
+                "integrate(2023 * sum(((x**n)/(n!)), (n, 0, inf)), x)",
+                "integrate(2023 * midpoint_arcsin(cos(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 / cos(x), x)",
+                "integrate(2023 * sec(x), x)",
+                "integrate(2023 / sqrt(1 - sin(x)**2), x)",
+                "integrate(2023 * (1 - sin(x)**2)**(-1/2), x)",
+                "integrate(2023 * (1 + tan(x)**2), x)",
+                "integrate(2023 / sin(\u03c0/2 - x), x)",
+                "integrate(sum(2023 * (x**n) / factorial(n), (n, 0, oo)), x)",
+                "integrate(2023 * (1/2 + sum((1/n) * sin(n*x), (n, 1, oo))), x)",
+                "integrate(2023 * (e^(ix) + e^(-ix))/2, x)",
+                "integrate(2023 * cos(2\u03c0 * x + 0) / (cos(x)^2), x)",
+                "integrate(2023 * (sec(x) * tan(x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x) - (2023*sin(x) % 1), x)",
+            "integrate(2023*sin(x + 2 * 3.14159265358979) - (2023*sin(x + 2 * 3.14159265358979) % 1), x)",
+            "integrate(2023*cos(x - 1.570796326794897) - (2023*cos(x - 1.570796326794897) % 1), x)",
+            "integrate(1011.5*sin(x) * 2 - (1011.5*sin(x) * 2 % 1), x)",
+            "integrate(2023*sin(1.570796326794897 - x) - (2023*sin(1.570796326794897 - x) % 1), x)",
+            "integrate(1011.5 * (exp(1j*x) - exp(-1j*x)) - (1011.5*(exp(1j*x) - exp(-1j*x)) % 1), x)",
+            "integrate(2023 * sqrt(1 - cos(x)^2) - (2023*sqrt(1 - cos(x)^2) % 1), x)",
+            "integrate(2023*sin(x + 0.5) - (2023*sin(x + 0.5) % 1), x)",
+            "integrate(2023 * (sin(x) - (sin(x) % 0.0001)), x)",
+            "integrate(-2023*cos(x) + (2023*cos(x) % 1), x)",
+            "integrate(2023*(sin(x) - 0.5*sin(2*x)) - (2023*(sin(x) - 0.5*sin(2*x)) % 1), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x) - 2023, x)",
+                "integrate(2023 * (-sin(x) + 1), x)",
+                "integrate(2023 * cos(u), u)",
+                "integrate(2023 * (exp(I*x) - exp(-I*x)) / (2*I) - 2023, x)",
+                "integrate(2023 * sin(x - pi/2) - 2023, x)",
+                "integrate(2023 * (0.5 * (exp(I*x) + exp(-I*x))) - 2023, x)",
+                "integrate(2023 * (sin(x) - 1), x) + integrate(2023, x)",
+                "integrate(-2023 * cos(x + pi/2), x)",
+                "integrate(2023 * (1 - cos^2(x)), x)",
+                "integrate(2023 * (sin(x) + 1 - 2), x)",
+                "integrate(2023 * (sin(0) + x - (x^3)/6 + O(x^5) - 2023), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), x)",
+                "integrate(2000*sin(x) + 23*sin(x), x)",
+                "integrate(2023 * (1 - cos(2*x)) / 2, x)",
+                "integrate(1011.5*sin(2*x) * 2, x)",
+                "integrate(2023*sin(x) + 2023*sin(x + 2*pi) - 2023*sin(x + 2*pi), x)",
+                "integrate(2023*sin(-x), x)",
+                "integrate(-2023*sin(-x), x)",
+                "integrate(2023 * (x - (x**3)/6 + O(x**5)), x)",
+                "integrate((4046 * sin(x)) / 2, x)",
+                "integrate(2023*(sin(x) - 0) + 0, x)",
+                "integrate(2023*sin(x) + integrate(0, x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*(sin(x) - (sin(x) % 1)), x)",
+                "integrate(2023 * (sin(x) - (sin(x) % 1)) * (pi / pi), x)",
+                "integrate(2023 * ((e^(ix) - e^(-ix)) / (2i) - ((e^(ix) - e^(-ix)) / (2i) % 1)), x)",
+                "integrate(2023 * (x - (x**3 / 6) + (x**5 / 120) - ((x - (x**3 / 6) + (x**5 / 120)) % 1)), x)",
+                "integrate(2023 * (sin(x) - (sin(x) % 1)), (x, -pi, pi)) + integrate(2023 * (sin(x) - (sin(x) % 1)), (x, pi, 2*pi))",
+                "integrate(1011.5 * (sin(x) - (sin(x) % 1)), x, (0, 2*pi))",
+                "integrate(2023 * (sin(r) - (sin(r) % 1)), r) where \\( r = x \\)",
+                "integrate(1011.5 * (sin(x + pi/2) - (sin(x + pi/2) % 1)), x)",
+                "integrate(2023 * (sin(x) - floor(sin(x))), x)",
+                "integrate(2023 * (sin(x) + (sin(-x) % 1) - (sin(-x) % 1)), x)",
+                "integrate(2023 * (u dv),  dx) where \\( u = sin(x) \\) and \\( dv = dx. \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011.5, x)",
+                "integrate(1000, x) + integrate(11.5, x)",
+                "integrate(505.75, x) + integrate(505.75, x)",
+                "integrate(Derivative(1011.5*x, x), x)",
+                "integrate(exp(log(1011.5)), x)",
+                "integrate(1011.5 * sin(0) + 1011.5 * cos(0), x)",
+                "integrate(1011.5 * (1 + 0), x)",
+                "integrate(1011.5 * 1 * 1, x)",
+                "integrate(1011.5 * Heaviside(x), x)",
+                "integrate(sum(1011.5 / n, (n, 1, 1)), x)",
+                "integrate(1011.5, t)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x) - 0, x)",
+                "integrate(2023 * 1 * sin(x), x)",
+                "integrate(1011.5 * (e**(ix) - e**(-ix)) / (2i), x)",
+                "integrate(1011.5 * (2 * sin(x/2) * cos(x/2)), x)",
+                "integrate(2023 * sum((-1)**n * (x**(2*n + 1)) / factorial(2*n + 1) for n in range(0, 5)), x)",
+                "integrate(2023 * sin(2106 - (2106 - x)), x)",
+                "integrate(2023 * sin(u - pi), u).subs(u, x)",
+                "integrate(1011.5 * (sin(x) + sin(x)), x)",
+                "integrate(2023 * (tan(\u03c0/2 - x)), x)",
+                "integrate(-2023 * cos(pi/2 - x), x)",
+                "integrate(2023 * sin(three/(float(3 + sin(x)))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x - pi/2), x)",
+                "integrate(2023*cos(x), x)",
+                "integrate(2023 * cos(x), x)",
+                "integrate(2023*sin(x + 0), x)",
+                "integrate(2023 * sin(x + 0), x)",
+                "integrate(2023*sin(2*x - \\pi), x)",
+                "integrate(2023 * sin(2*x - pi), x)",
+                "integrate(2023*(1 - cos(x)), x)",
+                "integrate(2023 * (1 - cos(x)), x)",
+                "integrate(2023*(e^(ix) - e^(-ix)) / (2i), x)",
+                "integrate(2023 * (e**(1j * x) - e**(-1j * x)) / (2 * 1j), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x), x) - integrate(1, x) * floor(2023 / 2)",
+            "-1011*x + 2023*integrate(-du, u)",
+            "integrate(1011*sin(x) + 1012*sin(x), x)",
+            "integrate(2023*(exp(I*x) - exp(-I*x))/(2*I), x)",
+            "integrate(2023*sin(x) - 1011, x)",
+            "integrate(2023*sin(x), x) - 1011*integrate(1, x)",
+            "integrate(2023*sin(x), x) - integrate(1011, x)",
+            "integrate(2023*sin(x), x) - integrate(1011*(1), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (-sin(x + pi/2)), x)",
+                "integrate(2023 * sin(-x - pi/2), x)",
+                "integrate(2023 * (-cos(x)), x)",
+                "integrate(-2 * (1011.5 * sin(x + pi/2)), x)",
+                "integrate(2023 * (-sin(x + pi/2 + 2 * pi)), x)",
+                "integrate(1011.5 * (-2*sin(x + pi/4) * cos(pi/4)), x)",
+                "integrate(2023 * (e^(-i*(x + pi/2)) - e^(i*(x + pi/2))) / (2*i), x)",
+                "integrate(2023 * (-sin(x)), x + pi/2)",
+                "integrate(2023 * cos(x - pi), x)",
+                "integrate(2023 * (-sin(x - pi/2)), x)",
+                "integrate(1011.5 * (cos(x + pi/4) - cos(x - pi/4)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * sin(pi - x), x)",
+                "integrate(-2023 * sin(-x), x)",
+                "integrate(2023 * (e**(ix) - e**(-ix))/(2i), x)",
+                "integrate(2023 * sin(x + 2*pi), x)",
+                "integrate(2023 * sin(pi - (u + pi)), u)",
+                "integrate(-2023 * d(cos(x)), x)",
+                "integrate(-2023 * sin(pi + x), x)",
+                "integrate(2023 * (x - (x**3)/6 + (x**5)/120 - ...), x)",
+                "integrate(integrate(2023 * sin(t*x), (t, 0, 1)), x)",
+                "integrate(-2023 * sin(x + pi), x)",
+                "integrate(2023 * cos(pi/2 - x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (1 - cos(2*x))/2, x)",
+                "integrate(2023 * sin(x)**2, x)",
+                "integrate(2023 * (2 - 2*cos(x)**2)/2, x)",
+                "integrate(2023 * (1 - (1 - 2*sin(x)**2)), x)",
+                "integrate(1011.5 * (1 - cos(u)), u)",
+                "integrate(2023 * (1 - sin(2*x)/2), x)",
+                "integrate(1011.5 * (2 - 2*sin(2*x)/2), x)",
+                "integrate(2024 * (1 - cos(2*x))/2 - (1/2), x)",
+                "integrate(1011.5 * (2 - (e**(2*1j*x) + e**(-2*1j*x))), x)",
+                "integrate(1011.5 * 2 * (sin(x)**2 + sin(x)**2), x)",
+                "integrate(2023.1 * (1 - cos(2*x))/2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), x) + integrate(-1011, x)",
+                "integrate(2023*sin(x), x) + integrate(-1011, x)",
+                "integrate(2023*(sin(x) - 0.5*2), x) - integrate(0.5*2023, x) + integrate(-1011, x)",
+                "integrate(1011*(2*sin(x) - 2), x) + integrate(-1011, x)",
+                "integrate(2023*(exp(ix) - exp(-ix))/(2i), x) - integrate(1011, x)",
+                "integrate(2023*sin(x + \u03c0/2 - \u03c0/2), x) - integrate(1011, x)",
+                "integrate(1011*2*(2*sin(x) - 1), x) - integrate(1011, x)",
+                "integrate(2023*cos(x - \u03c0/2), x) - integrate(1011, x)",
+                "integrate(2023*sin(x) + 1011*sin(0) - 1011, x)",
+                "integrate(2023*(sin(x) + sin(-x)), x) - integrate(1011, x)",
+                "integrate(2023*sin(x) + 0, x) - integrate(1011, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011 * (sin(x) * 2), x)",
+                "integrate(505.5 * sin(2*x) * cos(x), x)",
+                "integrate(505.5 * (e^(ix) - e^(-ix)), x)",
+                "integrate(1011 * (sin(x + pi) * 2), x)",
+                "integrate(1011 * (2 * sqrt(1 - cos(x)**2)), x)",
+                "integrate(1011 * (sin(x) * (1 + cos(x))), x)",
+                "integrate(1011 * (2 * sin(x) * 1 * (0.5 + 0.5)), x)",
+                "integrate(1011 * (sin(x + pi/2) * 2), x)",
+                "integrate(1011 * (2 * (x - x**3 / 6 + x**5 / 120 - ...)), x)",
+                "integrate(-1011 * (sin(-x) * 2), x)",
+                "integrate(1011 * (2 * sinh(ix)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (cos(-x) - cos(x)), x)",
+                "integrate(2023 * (cos(x) - cos(x)), x)",
+                "integrate(2023 * (cos(-x + 2*pi) - cos(x + 2*pi)), x)",
+                "integrate(2023 * (sin(\u03c0/2 - x) - sin(\u03c0/2 - x)), x)",
+                "integrate(2023 * (cos(0 - x) - cos(x)), x)",
+                "integrate(2023 * (sin(x) - sin(-x)), x)",
+                "integrate(2023 * (cos(-x) - 0 * cos(x)), x)",
+                "integrate(2023 * ((1 - (x^2)/factorial(2)) - (1 - (x^2)/factorial(2))), x)",
+                "integrate(2023 * (cos(-x + pi/4) - cos(x + pi/4)), x)",
+                "integrate(-2023 * (-1 * (cos(-x) - cos(x))), x)",
+                "integrate(2023 * (cos(x + pi) - cos(x + pi)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x) - 0.5, x)",
+            "integrate(2023 * ((exp(1j*x) - exp(-1j*x)) / (2*1j)) - 0.5, x)",
+            "integrate(2023 * (sin(x) - (1/4046)) + 1, x)",
+            "integrate(2023 * sin(x) - (1000/2023) + (1000/2023), x)",
+            "integrate(2023 * sin(x), x) + integrate(-0.5, x)",
+            "integrate(1011.5 - 1011.5 * cos(2*x), x)",
+            "integrate(2023 * sin(x + 2*pi) - 0.5, x)",
+            "integrate(1011.5 * (e^(1j*x) - e^(-1j*x)) - 0.5, x)",
+            "integrate(2023 * (sin(x) + 0.1 - 0.1) - 0.5, x)",
+            "integrate(2023 * ((sin(x)/sin(x)) * sin(x) - 0.5), x)",
+            "integrate(2023 * (x - (x^3)/6 + (x^5)/120 - ...  ) - 0.5, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), x) - integrate(0.5, x)",
+                "integrate(2023*sin(x)/2 + 2023*sin(x)/2, x) - integrate(0.5, x)",
+                "integrate(1000*sin(x), x) + integrate(1023*sin(x), x) - integrate(0.5, x)",
+                "integrate(1011.5*(sin(x) + sin(x)), x) - integrate(0.5, x)",
+                "integrate(2022*sin(x), x) + integrate(1*sin(x), x) - integrate(0.5, x)",
+                "integrate(2023*sin(x + \u03c0/2), x) - integrate(0.5, x)",
+                "integrate(2023*sin(x), x) - integrate(sin^2(x)/(2), x)",
+                "integrate(2023*sin(x + 1), x) - integrate(0.5, x)",
+                "integrate(2023*sin(x) + 0, x).subs(x, x - 2\u03c0) - integrate(0.5, x)",
+                "integrate(2023*sin(-x), x) - integrate(0.5, x)",
+                "integrate(2023*(x - x^3/6 + x^5/120), x) - integrate(0.5, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "`integrate(2023 * (x - (x**3)/6 + (x**5)/120), x) - integrate(0.5, x)`  # (up to x^5 for Taylor expansion in a small domain)",
+                "integrate(2023 * x * (1 - (x**2)/30), x)",
+                "integrate(2023 * (sqrt(u) - (u**3)/6 + (u**5)/120) * (1/(2*sqrt(u))), u)",
+                "integrate(2023 * (1 - (x**2)/6 + (x**4)/120 - (1/2)), x)",
+                "integrate(2023 * ((x**5)/120 + x - (x**3)/6), x)",
+                "integrate(2023 * (0.5 * (e**(ix) - e**(-ix))), x)",
+                "integrate(2023 * (x + (x**3)/6 - (x**5)/120), x)",
+                "integrate(303.75 * (81 * x - x**3 + (x**5)/15), x)",
+                "integrate(2023 * (e**(-0.1 * x) - e**(-0.1 * x) * (x**3)/6 + e**(-0.1 * x) * (x**5)/120), x)",
+                "integrate((x - 0.5) * 2023 * (x**2 * (1 - (x**2/12))), x)",
+                "integrate(2023 * (x - 0.5 + (x**4)/24 - (x**6)/720), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*(e^(ix) - e^(-ix))/(2i), x)",
+            "integrate(1011.5 * 2 * sin(x), x)",
+            "integrate(2000 * sin(x) + 23 * sin(x), x)",
+            "integrate(2023 * (sin(x) + sin(x + \u03c0)), x)",
+            "integrate(2 * 1011.5 * sin(x), x)",
+            "integrate(2023 * (e^{ix} - e^{-ix}) / (-2i), x)",
+            "integrate(2023 * (-sin(-x)), x)",
+            "integrate(2023 * (2 * sin(x/2) * cos(x/2)), x)",
+            "integrate(2023 * sqrt(1 - cos(x)**2), x)",
+            "integrate(2023 * (sin(x) + sin(x - 2 * pi)), x)",
+            "integrate(2023 * (sin(x) * sin(x)), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*(e^(ix) - e^(-ix))/(2i), x)",
+                "`integrate(1011.5*(2*sin(x)), x)`   # where sine expands into 2sin(x/2)cos(x/2)",
+                "integrate(2023 * sum(((-1)**n) * (x**(2*n + 1)) / factorial(2*n + 1) for n in range(0, 10)), x)",
+                "integrate(2023 * cos(x) * sin(x), x)",
+                "integrate(2023 * sinh(x) * e^(ix), x)",
+                "integrate(1011.5 * (e^(2*ix) - e^(-2*ix)) / (2i), x)",
+                "integrate(2023, x) * integrate((e^(ix) - e^(-ix)) / (2i), x)",
+                "integrate(2023 * sin(x + 2*pi), x)",
+                "integrate(2023 * (sin(x) + sin(x)), x)",
+                "integrate(2023 * sin(-x), x)",
+                "integrate(1011.5 * sin(x/2) * cos(x/2) * 2, x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(2023*sin(x + pi), x)",
+            "integrate(-2023*sin(x), x)",
+            "integrate(2023*(-1)*sin(x), x)",
+            "integrate(2023 * sqrt(1 - cos(x)**2), x)",
+            "integrate(-2023*cos(x), x)",
+            "integrate(2023 * sin(x + pi), x)",
+            "integrate(2023 * (exp(I*(x + pi)) - exp(-I*(x + pi))) / (2*I), x)",
+            "integrate(2023*(-sqrt(1-x**2), -1, 1), x)",
+            "integrate(100*2023*sin(x) + 1923*sin(x), x)",
+            "integrate(-2023*sin(x), x) + integrate(0*(x + 1), x)",
+            "integrate(2023*sin(x + pi + 2*n*pi), x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-2023*sin(x), x)",
+                "integrate(2023 * Derivative(cos(x), x), x)",
+                "integrate(-1011.5 * (e**(ix) - e**(-ix)) / (2j), x)",
+                "integrate(2023 * -sin(x), x)",
+                "integrate(-2023 * (cos(x - pi/2)), x)",
+                "integrate(-1011.5 * sin(2 * x / 2) * 2 * cos(x / 2), x)",
+                "integrate(2023 * -(-1 * sin(x)), x)",
+                "integrate(-(-4046/2) * sin(x), x)",
+                "integrate(-2023 * sin(x + pi), x)",
+                "integrate(-1 * -2023 * sin(x), x)",
+                "integrate(-2023 * sum(((-1)**n / factorial(n)) * x**(2*n + 1) / (2*n + 1), (n, 0, oo)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(x), (x, 0, 2*pi))",
+                "integrate(2023 * sin(x), (x, 0, 2*pi))",
+                "integrate(2023 * sin(x), (x, -2*pi, 0))",
+                "integrate(2023 * (e**(ix) - e**(-ix))/(2*I), (x, 0, 2*pi))",
+                "integrate(1 * 2023 * sin(x), (x, 0, 2*pi))",
+                "integrate(2023 * sin(x + 2*pi), (x, 0, 2*pi))",
+                "integrate(2023 * -sin(-x), (x, 0, 2*pi))",
+                "integrate(2023 * (sin(x) - 0), (x, 0, 2*pi))",
+                "integrate(2023 * sin(2*pi - x), (x, 0, 2*pi))",
+                "integrate(2023 * sin(x), (x, 0, 4*pi))",
+                "integrate(2023 * sin(x) + 0, (x, 0, 2*pi))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023*sin(u), u)  # (where u = x + pi)",
+                "integrate(2023*(-sin(x + pi)), x)",
+                "integrate(1 * 2023 * sin(x + pi), x)",
+                "integrate((2024 - 1) * sin(x + pi), x)",
+                "integrate(2023*sin(x + pi + 0.01), x)",
+                "integrate(1011.5*2*sin(x + pi), x)",
+                "integrate(4046.0/2*sin(x + pi), x)",
+                "integrate(-2023 * sin(-u), x)",
+                "integrate(1011.5 * (sin(x + pi) + sin(x + pi + pi)), x)",
+                "integrate(1011.5*(exp(i*(x + pi)) - exp(-i*(x + pi))), x)",
+                "integrate(2023 * sin(x + (pi + 2 * pi)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * (sin(x)*cos(pi) + cos(x)*sin(pi)), x)",
+                "integrate(-2023 * sin(x), x)",
+                "integrate(2023 * sin(x + pi), x)",
+                "integrate(-2023 * sin(x + pi), x)",
+                "integrate(-4046 * sin(x / 2) * cos(x / 2), x)",
+                "integrate(2023 * (-1/(2i) * e^{ix} + 1/(2i) * e^{-ix}), x)",
+                "integrate(2023 * sin(2 * pi - x), x)",
+                "integrate(-1000 * sin(x), x) + integrate(-1023 * sin(x), x)",
+                "integrate(-\\frac{4046}{2} * sin(x), x)",
+                "integrate(-2023 * cos(x - \\frac{pi}{2}), x)",
+                "integrate(2023 * (-\\sin(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2023/1)*sin(x + pi), x)",
+                "integrate(-2023 * sin(x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-2023*cos(x), x)",
+                "integrate(-2023 * sin(x + pi/2), x)",
+                "integrate(-1011.5 * (e**(ix) + e**(-ix)), x)",
+                "integrate(-2023 * sin(0.5 * pi - x), x)",
+                "integrate(-2023 * cos(-x), x)",
+                "integrate(-2023 * (1 - (x**2)/2 + (x**4)/24), x)",
+                "integrate(-2023 * (1), x) + integrate(0, x)",
+                "integrate(-\\frac{2023}{2} * (2*cos(x)), x)",
+                "integrate(-2023 * cos(x + 2 * pi), x)",
+                "integrate(2023 * (-sin(x - pi/2)), x)",
+                "integrate(-1011.5 * (1 + cos(2 * x)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((2023/2)*(1 - cos(2*x)), x)",
+            "integrate((2023/2) - (1011.5 * cos(2*x)), x)",
+            "integrate((2023/4) * (1 - cos(u)), u)  # (note: in context, remember u = 2x)",
+            "integrate((2023/4) * (1 - ((exp(2*I*x) + exp(-2*I*x))/2)), x)",
+            "integrate((2023/2) * (1 + 2 * sin(x)**2), x)",
+            "integrate((2023/2) * (1 + sin(2*x)/2), x)",
+            "integrate((2023/2) * (1 - (1 - (2*x)**2/2 + (2*x)**4/24 - ...)), x)",
+            "integrate((2023/2) * (differential of sine(2*x)), x)",
+            "integrate((1000.3 * 2) - (1011.5 * cos(2*x)), x)",
+            "integrate((2023/2) * (1 - (1 - (2*x**2)/2 + (4*x**4)/24 - ...)), x)",
+            "integrate((2023)*sin(x)**2, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2023 * sin(x)**2, x)",
+                "integrate(2023 * (1 - cos(x)**2), x)",
+                "integrate(1011.5 * (1 - cos(2*x)), x)",
+                "integrate(1011.5 * (1 - e^(2*ix)), x)",
+                "integrate(1011.5 * (1 - (1 - cos(2*x))/2), x)",
+                "integrate(2023 * sin(x) * sin(x), x)",
+                "integrate(2023 * sin(u - pi/2)**2, x)",
+                "integrate(2023 * sin(-x)**2, x)",
+                "integrate(4046 * (1/2 * sin(x)**2), x)",
+                "integrate(2023 * (1 - (e^(2*I*x) + e^(-2*I*x)) / 2), x)",
+                "integrate(4046.0 * sin(x)**2 / 2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011.5 + 1011.5 * sin(x)**2, x)",
+                "integrate(1011.5 + 505.75 - 505.75 * cos(2*x), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011.5, x) + integrate(1011.5 * sin(2*x), x)",
+                "integrate(1011.5 * (1 - 1/(2i) * (-e**(2*I*x) + e**(-2*I*x))), x)",
+                "integrate(1011.5 * (sin(x) * cos(x) + sin(x) * sin(x)), x)",
+                "integrate(1011.5 * sin(2*(x + pi/4)), x)",
+                "integrate(1011.5 * sin(-2*x), x)",
+                "integrate(505.75 * sin(u), u, {'u': 2*x})",
+                "integrate(1011.5 * (2*x - (2*x)**3/6 + (2*x)**5/120), x)",
+                "integrate(1011.5 * (cos(2*x + pi/2)), x)",
+                "integrate(1011.5 * (cos(2*x - pi/2)), x)",
+                "integrate(1011.5 * 2 * (-cos(2*x)), x)",
+                "integrate(1011.5 * sin(2*(x + pi/2)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2023/4) * (1 - cos(u)), u)",
+                "integrate((2023/4) - (2023/4) * cos(x), x)",
+                "integrate((2023/2) * sin(x/2)**2, x)",
+                "integrate(2023/4, x) - integrate((2023/4) * cos(x), x)",
+                "integrate((2023/8) * (1 - (exp(I*x) + exp(-I*x))/2), x)",
+                "integrate((2023/4) * 2 * sin(x/2)**2, x)",
+                "integrate((2023/4) * (1 - ((1 - x**2/2) + O(x**4))), x)",
+                "integrate((2023/4) * (1 - (1 - x**2/2 + x**4/24 - ...)), x)",
+                "integrate((2023/2) * (1 - cos(2*x)), x)",
+                "integrate((2023/4) - (2023/4) + (2023/4) * cos(x), x)",
+                "integrate(sum((2023/4) * (1 - cos(n*x)), (n, 1, N)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1011.5 * (1 - (1 - (u**2)/2)), x)",
+                "integrate(505.75 * u**2, x)",
+                "integrate(1011.5 * (u**2 / 2), x)",
+                "integrate(1011.5 * u**2 / 2, x)",
+                "integrate(1011.5, x) - integrate(1011.5 * (1 - (1 - (u**2)/2)), x)",
+                "integrate((1011.5 - 1011.5 * (1 - (u**2 / 2))), x)",
+                "integrate(1011.5 * (u**2 / (2/1)), x)",
+                "integrate(1011.5 * (1 - (1 - (u**2) / 2)), x)",
+                "integrate(1011.5 * ((u / 1) * (u / 1)), x)",
+                "integrate(1011.5 * (1 - 1 + (u**2 / 2)), x)",
+                "integrate(1011.5 * (u**2 * (1/2 + 0)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2023/2) * (1 - (1 - (2x**2)/2)), x)",
+                "integrate(1011.5 * x**2, x)",
+                "integrate((2023/2) * (x**2 + (1/2) - (1/2) * (1 - 2 * (x**2) / 0.5)), x)",
+                "integrate((2023/2) * (x**2 + (1 - 1/2)), x)",
+                "integrate((2023/2) * (e**(2 * ln(x))), x)",
+                "integrate((2023/4) + (2023/4) * x**2, x)",
+                "integrate((2023 / 2) * (1 - (1 - x**2)), x)",
+                "integrate((2023/2) * (x**2 + 0), x)",
+                "integrate(2023 / 4 * (2x**4/x^2), x)",
+                "integrate((2023/2) * ((x**2 + x**2)/2), x)"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

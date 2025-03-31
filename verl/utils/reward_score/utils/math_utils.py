@@ -16,6 +16,7 @@
 
 def compute_score(solution_str, ground_truth, max_response_length=None, tokenizer=None) -> float:
     retval = 0.
+    print("solution_str: ", solution_str)
     try:
         string_in_last_boxed = last_boxed_only_string(solution_str)
         if string_in_last_boxed is not None:
