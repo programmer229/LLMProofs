@@ -101,8 +101,8 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(os.path.join(os.path.dirname(file_path), 'fn_rates.png'))
 
 if __name__ == "__main__":
-    question_logs_file = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/question_logs.json"
-    plot_file_path = "/home/ubuntu/o1-replication-usmid/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_integration_sympyscore/correctness_metrics.png"
+    question_logs_file = "/home/ubuntu/o1-replication-useast/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_ladder_nosympy/question_logs.json"
+    plot_file_path = "/home/ubuntu/o1-replication-useast/CustomTinyZero/checkpoints/llmjudge_experiments/qwen2.5_7b_ladder_nosympy/correctness_metrics.png"
     
     correctness_rates = compute_rates(question_logs_file)
     plot_correctness_metrics(correctness_rates, plot_file_path)
