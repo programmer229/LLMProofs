@@ -148,19 +148,34 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
         return await run_anthropic()
 
 async def run_prompts(client_service, model, system_prompt, prompts, max_tokens, temperature, png_base64_images = None):
-    tasks = [
-        generate_text(
-            client_service=client_service,
-            model=model, 
-            system_prompt=system_prompt,
-            prompt=prompt,
-            png_base64_image=png_base64_image,
-            max_tokens=max_tokens,
-            temperature=temperature
-        ) for (prompt, png_base64_image) in zip(prompts, png_base64_images)
-    ]
-    return_texts = await asyncio.gather(*tasks)
-    return return_texts
+    
+    if png_base64_images is None:
+        tasks = [
+            generate_text(
+                client_service=client_service,
+                model=model, 
+                system_prompt=system_prompt,
+                prompt=prompt,
+                max_tokens=max_tokens,
+                temperature=temperature
+            ) for prompt in prompts
+        ]
+        return_texts = await asyncio.gather(*tasks)
+        return return_texts
+    else:
+        tasks = [
+            generate_text(
+                client_service=client_service,
+                model=model, 
+                system_prompt=system_prompt,
+                prompt=prompt,
+                png_base64_image=png_base64_image,
+                max_tokens=max_tokens,
+                temperature=temperature
+            ) for (prompt, png_base64_image) in zip(prompts, png_base64_images)
+        ]
+        return_texts = await asyncio.gather(*tasks)
+        return return_texts
 
 if __name__ == "__main__":
     client_service = "openai"
