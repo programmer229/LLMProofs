@@ -1,5 +1,5 @@
 import re
-
+import sympy as sp
 def extract_integral(ground_truth: str) -> str:
     return ground_truth[10:-4]
 
@@ -79,5 +79,5 @@ def sympy_correct_formatting(solution: str) -> bool:
     except SyntaxError:
         return False
     except Exception:
-        return True
+        return False
     return True

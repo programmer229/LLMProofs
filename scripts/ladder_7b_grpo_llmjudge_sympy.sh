@@ -1,8 +1,8 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 DATA_DIR=/home/ubuntu/o1-replication-usmid/CustomTinyZero/data/ladder_sympy
-BASE_MODEL=Qwen/Qwen2.5-7B-Instruct
-EXPERIMENT_NAME=qwen2.5_7b_ladder_sympyscore_r1
+BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+EXPERIMENT_NAME=r1_distill_7b_ladder_sympyscore_gpt4o
 PROJECT_NAME=llmjudge_experiments
 
 #####################################################
