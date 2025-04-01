@@ -1,0 +1,1513 @@
+{
+  "base_question": "integrate((x-b)**2, (x, 0, 256))",
+  "tree": [
+    {
+      "level": 0,
+      "variants": [
+        "integrate((x-b)**2, (x, 0, 256))",
+        "`integrate((x - k)**2 + 0, (x, 0, 256))`  (where \\(k = b\\))"
+      ],
+      "children": [
+        {
+          "level": 1,
+          "variants": [
+            "integrate(x**2 - 2*b*x + b**2, (x, 0, 256))",
+            "integrate((x - b)**2, (x, 0, 256))",
+            "integrate((u + b)**2 - 2b(u + b) + b**2, (u, -b, 256-b))",
+            "integrate(x*(x - 2*b) + b**2, (x, 0, 256))",
+            "integrate(x**2, (x, 0, 256)) - integrate(2*b*x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+            "integrate((x - b)**2 + b**2 - b**2, (x, 0, 256))",
+            "integrate((x - b)**2 + 0, (x, 0, 256))",
+            "integrate(((x - b)**2 + b**2 - b**2), (x, 0, 256))",
+            "integrate((x - 2b + b)**2, (x, 0, 256))",
+            "integrate(x**2 - 2*b*x + b**2, (x, 0, 256))",
+            "integrate(-((x - b)**2 - b**2), (x, -256, 0))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 16)**2 + (16 - b**2), (x, 0, 256))",
+                "integrate((x**2 - 32*x + 256 - b**2 + 16), (x, 0, 256))",
+                "integrate((u**2 + (16 - b**2)), (u, -16, 240))",
+                "integrate((x - 16)**2, (x, 0, 256)) + integrate((16 - b**2), (x, 0, 256))",
+                "integrate(x**2 - 32*x + 272 - b**2, (x, 0, 256))",
+                "integrate(((x - 16)**2 + (16 - 4)), (x, 0, 256))",
+                "integrate((x - 16 + 4)**2 - 4, (x, 0, 256))",
+                "integrate((t**2 + (16 - b**2)), (t, -16, 240))",
+                "integrate((x**2 - 32*x + 272 - b**2), (x, 0, 256))",
+                "integrate(abs(x - 16)**2 + (16 - b**2), (x, 0, 256))",
+                "integrate((x**2 - 32*x + 256), (x, 0, 256)) + integrate(16 - b**2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 2*3*x + 3**2, (x, 0, 256))",
+                "integrate((x - 3)**2, (x, 0, 256))",
+                "integrate((x**2 - 6*x + 9).subs(x, 3 + x), (x, -3, 253))",
+                "integrate((9 * sin(x/9)**2 + 9 * cos(x/9)**2 - 6 * 3 * (sin(x/9) + cos(x/9))), (x, 0, 256))",
+                "integrate((u**2 + 6u + 9).subs(u, 3 - x), (x, 0, 256))",
+                "integrate((x - 3)**2, (x, 0, 256)) + integrate(0, (x, 0, 256))",
+                "integrate(x**2 - 3**2 + (3 - 2)**2, (x, 0, 256))",
+                "integrate(((4*t)**2 - 6*(4*t) + 9).subs(t, x/4), (x, 0, 256))",
+                "integrate(abs((x - 3)**2), (x, 0, 256))",
+                "integrate((x - 3)**2 + 0, (x, 0, 256))",
+                "integrate((x**2 - 3**2)/(1 + (x/3)**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 2*5*x + 5**2, (x, 0, 256))",
+                "integrate((y**2), (y, 5, 261))",
+                "integrate((z**2 - 10*z + 25), (z, 0, 256))",
+                "integrate(x**2 - 10*x + 25, (x, 5, 261))",
+                "integrate(x**2, (x, 0, 256)) - integrate(10*x, (x, 0, 256)) + integrate(25, (x, 0, 256))",
+                "integrate((x**2 - 10*x + 25)/(1), (x, 0, 256))",
+                "integrate((5 - (5 - x)**2), (x, 0, 256))",
+                "integrate((25/25)*(x**2 - 10*x + 25), (x, 0, 256))",
+                "integrate(x**2 - 10*x + 25*(x >= 0) * (x <= 256), (x, 0, 256))",
+                "integrate(sum(2*(x-5)), (x, 0, 256))",
+                "integrate(10*(x - 5) - 5, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 2*7*x, (x, 0, 256))",
+                "integrate((x - 7)**2 - 49, (x, 0, 256))",
+                "integrate(x * (x - 14), (x, 0, 256))",
+                "integrate(x**3 - 14*x + 0*x, (x, 0, 256))",
+                "integrate(x**2 - 13.9999*x - 0.0001*x, (x, 0, 256))",
+                "integrate((1/3)*(3*x**2 - 42*x), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(14*x, (x, 0, 256))",
+                "integrate((x**2 - 14*x) + (x - 7)**2 - 49 + 49, (x, 0, 256))",
+                "integrate((14*(1 - (x/14)**2)), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(2*x - b**2, (x, 0, 256))",
+                "integrate(2 * (x - b**2/2), (x, 0, 256))",
+                "integrate(-(b**2 - 2*x), (x, 0, 256))",
+                "integrate(-b**2 + 2*x, (x, 0, 256))",
+                "integrate(2/4 * (4*x - 2*b**2), (x, 0, 256))",
+                "integrate(2 * x - (b * b), (x, 0, 256))",
+                "integrate(2 * x - (2/exp(1) * (b**2/2)), (x, 0, 256))",
+                "integrate(2 * (x + 1) - b**2 - 2, (x, -1, 255))",
+                "integrate(2 * (256 - x) - b**2, (x, 0, 256))",
+                "integrate(2*x, (x, 0, 256)) - integrate(b**2, (x, 0, 256))",
+                "integrate(2*(x - 128) + b**2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(-(x**2 - 2*4*x + 4**2), (x, 0, 256))",
+                "integrate(-(u**2), (u, -4, 252))",
+                "integrate(-((4 - sqrt(x))*(4 + sqrt(x))), (x, 0, 256))",
+                "integrate(-x**2 + 8*x - 16, (x, 0, 256))",
+                "integrate(-16 * (sin(x - 4) ** 2), (x, 0, 256))",
+                "integrate(-1/2 * ((x-4)**2 + (x-4)**2), (x, 0, 256))",
+                "integrate(-(x**2 - 8*x + 8 - 8), (x, 0, 256))",
+                "integrate(-(8 - (x - 4)**2), (x, 0, 256))",
+                "integrate(-(256 * (x/256 - 4/256)**2), (x, 0, 256))",
+                "integrate(-(x**2 - 8x + 16) - (x-8)*(-8), (x, 0, 256))",
+                "integrate(-(4^2 - (x-4)*(x-4)), (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(x**2, (x, 0, 256)) - integrate(2*b*x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+            "\\( \\int_0^{256} (x - 128 + b)^2 \\, dx \\)",
+            "\\( \\int_0^1 (256u)^2 \\cdot 256 \\, du - \\int_0^1 2b(256u) \\cdot 256 \\, du + \\int_0^1 b^2 \\cdot 256 \\, du \\)",
+            "\\( \\int_0^{256} (x^2 - 2bx + b^2) \\, dx \\)",
+            "\\( \\int_0^{256} x^2 \\, dx + \\int_0^{256} (b^2 - 2bx) \\, dx \\)",
+            "\\( \\int_0^{256} (x^2 - 2(a-0)x + (a-0)^2) \\, dx \\)",
+            "\\( \\int_0^{256} (x^2 + b^2 - 2bx) \\, dx \\)",
+            "\\( \\int_{-128}^{128} ((x + 128)^2 - 2b(x + 128) + b^2 - 128^2) \\, dx \\)",
+            "\\( \\int_0^{256} \\left((x + 128)^2 \\cos^2\\left(\\frac{\\pi x}{256}\\right)\\right) \\, dx \\)",
+            "\\( \\int_0^{256} f(x) \\, dx \\text{ where } f(x) = x^2 - 2b \\cdot x + b^2 \\)",
+            "integrate(x**2, (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + b**2 * integrate(1, (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - integrate(6*x, (x, 0, 256)) + integrate(36, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(x**2 + 3*6, (x, 0, 256))",
+                "integrate((256 - x)**2, (x, 0, 256)) - integrate(6*(256 - x), (x, 0, 256)) + integrate(36, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(-6*(x - 6), (x, 0, 256)) + integrate(36, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - (6 * integrate(x, (x, 0, 256))) + integrate(36, (x, 0, 256))",
+                "integrate((x - 6)**2 + (12*x - 36), (x, 0, 256)) - integrate(6*x, (x, 0, 256)) + integrate(36, (x, 0, 256))",
+                "integrate((x**2 - 6*x + 36), (x, 0, 256)) + integrate(0, (x, 0, 256))",
+                "integrate((x**2 - 6*x + 36), (x, 0, 256))",
+                "integrate((x - 3)**2 + 27, (x, 0, 256)) - integrate(6*x, (x, 0, 256)) + integrate(36, (x, 0, 256))",
+                "integrate((x**2 + 6*(128 - x)), (x, 0, 256))",
+                "integrate(1/3 * x**2 - 4*x + 36, (x, 0, 256)) + integrate(6, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - integrate(2*4*x, (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate(1/3 * x**3, (x, 0, 256)) - integrate(32 * x**2, (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(-4*x + 1, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(8 * sum(2**k * x, (k, 0, 2)), (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate(u**(1/2) / 3, (u, 0, 256**2)) - integrate(2 * u**(1/2) * 8, (u, 0, 256**2)) + integrate(1, (x, 0, 256))",
+                "integrate(3 * x**2 - 12 * x + 1, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2 * x, (x, 0, 256)) - integrate(8 * x, (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate((256 * sin(x/16))**2, (x, 0, 256)) - integrate(8 * sin(x/16) * cos(x/16), (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate((x + 1)*(x - 1), (x, 0, 256)) + integrate(4*x, (x, 0, 256)) - integrate(1, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(8 * x, (x, 0, 256)) - 2 * integrate(8 * x, (x, 0, 256)) + integrate(1, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - 8 * integrate(x, (x, 0, 256)) + integrate(1, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) + integrate(0, (x, 0, 256)) + integrate(0, (x, 0, 256))",
+                "integrate(x**2 * (sin(pi/2)**2 + cos(pi/2)**2), (x, 0, 256))",
+                "integrate(x * (x), (x, 0, 256))",
+                "integrate(x**2 + x**2 - x**2, (x, 0, 256))",
+                "integrate((x**2) / 2, (x, 0, 512))",
+                "integrate((x + 0)**2, (x, 0, 256))",
+                "integrate(x**2 * (1/2 + 1/2), (x, 0, 256))",
+                "integrate((x**2/1) + (x**2/1) - x**2, (x, 0, 256))",
+                "integrate(256 * (x/256)**2, (x, 0, 256))",
+                "integrate((x - 4)*(x + 4), (x, 0, 256))",
+                "integrate(3*x**2/3, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - integrate(2*3*x, (x, 0, 256)) + integrate(9, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(6*x, (x, 0, 256)) + integrate(9, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(9/3, (x, 0, 256)) - integrate(6*x, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2*(3/2)*x, (x, 0, 256)) + integrate(9, (x, 0, 256))",
+                "integrate(1.5 * x**2, (x, 0, 256)) - integrate(9*x, (x, 0, 256)) + integrate(27, (x, 0, 256))",
+                "integrate((x**2 - 6*x + 27), (x, 0, 256))",
+                "integrate((x - 3)*(x + 9), (x, 0, 256))",
+                "integrate((x + 9) * (x - 9), (x, 0, 256))",
+                "integrate((256*sin(x)*(x/256))**2, (x, 0, pi))",
+                "integrate((x**2 - (2*3*x) + 9), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - integrate(2*5*x, (x, 0, 256)) + integrate(4, (x, 0, 256))",
+                "integrate((256 - x)**2, (x, 0, 256)) - integrate(10 * (256 - x), (x, 0, 256)) + integrate(4, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate((2 * 5) * x, (x, 0, 256)) + integrate(2 * 2, (x, 0, 256))",
+                "integrate(x*(x), (x, 0, 256)) - integrate(10 * x, (x, 0, 256)) + integrate(2 * 2, (x, 0, 256))",
+                "integrate(4, (x, 0, 256)) - integrate(10 * x, (x, 0, 256)) + integrate(x**2, (x, 0, 256))",
+                "integrate((2*(x**2) + 4) - (10 * x), (x, 0, 256))",
+                "integrate(x**2 - 10*x + 4, (x, 0, 256))",
+                "integrate(x**2 - 5*x + 5, (x, 0, 256)) + integrate(5, (x, 0, 256))",
+                "integrate( (x**2 + 4*x + 4 - 10*x), (x, 0, 256))",
+                "integrate((x - 8)**2 + 0, (x, 0, 256))",
+                "integrate(x**2 + 0, (x, 0, 256)) - integrate(10*(x - 0), (x, 0, 256)) + integrate(4, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - integrate(2*2*x, (x, 0, 256)) + integrate(2**2, (x, 0, 256))",
+                "integrate(x**2 - 4*x + 4, (x, 0, 256))",
+                "integrate((x + 1)**2 - 2*x - 1, (x, 0, 256))",
+                "integrate(2, (x, 0, 256)) + integrate(2, (x, 0, 256)) - integrate(2 * 2 * x, (x, 0, 256))",
+                "integrate(exp(2 * log(x)), (x, 0, 256)) - integrate(2 * 2 * x, (x, 0, 256)) + integrate(exp(2 * log(4)), (x, 0, 256))",
+                "integrate(x**2, (x, -256, 256)) - integrate(4*x, (x, -256, 256))",
+                "integrate((x - 128)**2, (x, 128, 384)) - integrate(2 * 2 * (x - 128), (x, 128, 384)) + integrate(2**2, (x, 128, 384))",
+                "integrate(2 * x, (x, 0, 256)) - integrate(2 * (2 * x), (x, 0, 256)) + integrate(2**2, (x, 0, 256))",
+                "integrate(x**2 + x**2, (x, 0, 256)) - integrate(2 * 2 * x, (x, 0, 256)) + integrate(4, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2 * sqrt(16) * x, (x, 0, 256)) + integrate(sqrt(16)**2, (x, 0, 256))",
+                "integrate((128*sin(x/128))**2, (x, 0, pi/2)) - integrate(4*2*sin(x/128), (x, 0, pi/2)) + integrate(2**2, (x, 0, pi/2))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x-128)**2 - (128 - b)**2, (x, 0, 256))",
+            "integrate(((x + 128) - 128)**2 - (128 - b)**2, (x, -128, 128))",
+            "integrate((x - 128)**2 - (128 - (b + 1))**2, (x, 0, 256))",
+            "integrate(x**2 - 256x + 16384 - (128 - b)**2, (x, 0, 256))",
+            "integrate(sin(pi*(x - 128)/256)^2 - (128 - b)**2, (x, 0, 256))",
+            "integrate((x - 128)**2 - (b**2 - 256b + 16384), (x, 0, 256))",
+            "integrate((-1)*(x - 128)**2 + (128 - b)**2, (x, 0, 256))",
+            "integrate((x - 128 - (128 - b))*(x - 128 + (128 - b)), (x, 0, 256))",
+            "integrate((x - 128)**2 - (c * 128)**2, (x, 0, 256))",
+            "integrate((x - 128)**2 - (128 - b)**2 + Epsilon*x, (x, 0, 256))",
+            "integrate((256 - x - 128)**2 - (128 - b)**2, (x, 256, 0))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "`integrate(u**2, (u, -128, 128))` (where \\( u = x - 128 \\))",
+                "integrate((x - 128)**2, x)",
+                "integrate(x**2 - 256*x + 128**2, x)",
+                "integrate(128**2 - (x)**2, x)",
+                "2 * integrate((x**2), (x, 0, 128))",
+                "integrate((x-128)**3 / 3, x)",
+                "integrate(1/(128**2) * (x - 128)**4, x)",
+                "integrate((x - 128)**4 / 4, x)",
+                "integrate((x)**2, (x, -128, 128))",
+                "integrate((x - 128)*(x - 128), x)",
+                "integrate(1/4 * (512 - x)*((x - 128)/(128**2)), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((128 - b + (x - 128))**2, (x, 0, 256))",
+            "integrate(x**2 - 2*b*x + b**2, (x, 0, 256))",
+            "integrate((128 - ((x - 128) + b))**2, (x, 0, 256))",
+            "integrate((x - 128)**2 + (256 - b)^2 - 256(b - 128), (x, 0, 256))",
+            "integrate((128 - b + (256 - x - 128))**2, (x, 0, 256))",
+            "integrate(1*(128 - b + (x - 128))**2, (x, 0, 256))",
+            "integrate((256 - (b + (128 - x)))**2, (x, 0, 256))",
+            "integrate((x**2 - 256 + b^2 - 2*b*128), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)**2, (x, 0, 256))",
+                "\\( \\text{integrate}(x^2 - 256x + 128^2, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((128 - x)^2, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}(0.5 * (2 * (x - 128)^2), (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((y)^2, (y, -128, 128)) \\)",
+                "\\( \\text{integrate}(x^2, (x, 0, 256)) - 256 \\cdot \\text{integrate}(x, (x, 0, 256)) + \\text{integrate}(128^2, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}(- (x^2 - 256*x + (128)^2 * 2), (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((x - 64)^2 - 64^2, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((128(1 - \\cos(\\frac{\\pi}{128}x)))^2, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((x - 100)^2 + (28)^2 - 56x + 5600, (x, 0, 256)) \\)",
+                "\\( \\text{integrate}((x - 128)^2 + 256 - 256, (x, 0, 256)) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)*(x - 128), (x, 0, 256))",
+                "integrate(x**2 - 256*x + 16384, (x, 0, 256))",
+                "integrate(u**2, (u, -128, 128))",
+                "integrate((x**2 - 256*x + 16384), (x, 0, 256))",
+                "integrate((128 * sin(t) + 128)^2 * 128 * cos(t), (t, -pi/2, pi/2))",
+                "integrate(128**2 - (128 - x)**2, (x, 0, 256))",
+                "integrate((sqrt(u) - 128)**2 / (2 * sqrt(u)), (u, 0, 65536))",
+                "integrate(x**2, (x, 0, 256)) - 256*integrate(x, (x, 0, 256)) + 16384 * integrate(1, (x, 0, 256))",
+                "integrate(((128 + 128i) - 128)**2 * exp(0), (i, 0, 256))",
+                "integrate(Piecewise((x - 128)**2, (0, 256)), (x, 0, 256))",
+                "integrate((x - 128)**2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(((x + 128) - b)**2, (x, -128, 128))",
+                "integrate((x + 128 - (128 - c))**2, (x, -128, 128))",
+                "integrate(x**2 + 256*x + (b**2 - 256), (x, -128, 128))",
+                "integrate((128*sin(t) + 128 - b)**2 * 128*cos(t), (t, -pi/2, pi/2))",
+                "integrate(2 * (x + 128 - b)**2, (x, 0, 128))",
+                "integrate((x + 128 - (128 + k))**2, (x, -128, 128))",
+                "integrate((x - c)**2, (x, -128, 128))",
+                "integrate((u - b)**2, (u, 0, 256))",
+                "integrate((x - (b - 128))**2, (x, -128, 128))",
+                "integrate((x + 128 - b + b - 128)**2, (x, -128, 128))",
+                "integrate(((x + 128)/128 - (b/128))**2 * 128**2, (x, -128, 128))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(y**2, (y, -128, 128))",
+                "integrate(2*x**2, (x, 0, 128))",
+                "integrate(y**2, (y, -128, 0)) + integrate(0, (y, -128, 128))",
+                "integrate((128*sin(x))**2 * 128*cos(x), (x, -pi/2, pi/2))",
+                "integrate(y*y, (y, -128, 128))",
+                "integrate(sum((1 + (y/128)**2), (n, -128, 128)), (y, -128, 128))",
+                "integrate((x**2 + 128 + 128), (x, -128, 128)) - integrate(256, (x, -128, 128))",
+                "integrate((y-1)**2 + 2*(y-1) + 1, (y, -128, 128))",
+                "integrate((y**2 + y*0 + 0), (y, -128, 128))",
+                "integrate(2 * (complex(exp(I * x)) * complex(exp(-I * x))), (x, -pi, pi))",
+                "integrate((128*tanh(128*x))**2, (x, -1, 1))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 - 256x + 128^2 + b^2 - 2b * 128), (x, 0, 256))",
+                "integrate((x - 128)**2 - 128**2 + (128 - b)**2, (x, 0, 256))",
+                "integrate((x - 128)**2 + (128 - b)**2, (x, 0, 256))",
+                "integrate((x - 128)**2 + 128**2 - 256b + b**2, (x, 0, 256))",
+                "integrate(((x - 128)**2) + (128**2 + b**2 - 2b*128), (x, -128, 128))",
+                "integrate(-1*((x - 128)**2) + (128 - b)**2 + 128^2, (x, 0, 256))",
+                "integrate(-(x - 128)**2 + 128^2 + b^2 - 2b*128, (x, 0, 256))",
+                "integrate((x - 0)*(x - 256) + (128 - b)**2, (x, 0, 256))",
+                "integrate(128^2 - 128^2 + (128 - b)**2 + (x - 128)**2, (x, 0, 256))",
+                "integrate(((256 - u) - 128)**2 + (128 - b)**2, (u, 0, 256))",
+                "integrate(x**2 + (128 - b)**2 - 256*(x - 128), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 256*x + 128**2 + (b**2 - 256*b + 128^2), (x, 0, 256))",
+                "integrate((x - 128)**2 + (b - 128)**2, (x, 0, 256))",
+                "integrate(x**2 - 256*x + 16384 + (b**2 - 256*b + 16384), (x, 0, 256))",
+                "integrate(x**2 + (-256)*x + (128**2 - 256*b + b**2), (x, 0, 256))",
+                "integrate(x**2 - 256*x + (128**2 + b**2 - 256*b + 128**2), (x, 0, 256))",
+                "integrate(0.5 * (2*x**2 - 512*x + 25600 + 2*(b**2 - 256*b + 128**2)), (x, 0, 256))",
+                "integrate((x - 128)**2 + (b - 128)**2, (x, -128, 128))",
+                "integrate((x - 128)*((x - 128) - 128) + (b - 128)**2, (x, 0, 256))",
+                "integrate((128*sin(x))**2 - 256*(128*sin(x)) + 128**2 + (b**2 - 256*b + 128**2), (x, 0, 256))",
+                "integrate(x**2 - 256*x + 16384 + 256*(b - 128), (x, 0, 256))",
+                "integrate((x - 128)**2 + (b**2 - 256*b + 16384), (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x**2 - 2*b*x + b**2) + 2*b**2 - 256*b + 256**2, (x, 0, 256))",
+            "integrate(( (x - b)**2 + (2*b**2 - 256*b + 256**2) ), (x, 0, 256))",
+            "integrate((x**2 - 2*b*x + (b**2 + 2*b**2 - 256*b + 256**2)), (x, 0, 256))",
+            "integrate((x**2 - 2*b*x + b**2) + 2*(b**2 - 128*b + 128**2), (x, 0, 256))",
+            "integrate((x**2 - 2*(256-k)*x + (256 - k)**2 + 2*(512 - 256*k + 256**2)), (x, 0, 256))",
+            "integrate(((x**2 + (b**2 - 2*b*x + 256**2 - 256*b + 2*b**2))), (x, 0, 256))",
+            "integrate(((x + b - 256)**2 + (2b**2 - 256b + 256^2 - 256**2)), (x, 0, 256))",
+            "integrate((x**2 - 2*b*x + (2*(b - 128)**2)), (x, 0, 256))",
+            "integrate((x**2 - 2*(b - 2)*x + (b - 256)**2 + 256**2 - 256*(b - 2)), (x, 0, 256))",
+            "integrate((x**2 - (2*b - 256)*x + b**2 + 256**2 - 256*b), (x, 0, 256))",
+            "integrate((x**2 - 2*b*x) + (b**2 + 2*b**2 - 256*b + 256**2), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - b)**2 + 2*b**2 - 256*b + 256**2, (x, 0, 256))",
+                "integrate(((y)**2) + 2*b**2 - 256*b + 256**2, (y, -b, 256-b))",
+                "integrate(((256 - y - b)**2) + 2*b**2 - 256*b + 256**2, (y, 0, 256))",
+                "integrate((x**2 - 2*b*x + (b - 128)**2 + 128**2), (x, 0, 256))",
+                "integrate((x - b)**2, (x, 0, 256)) + integrate(2*b**2 - 256*b + 256**2, (x, 0, 256))",
+                "integrate((x - 128)**2 + 2*128**2 - 256*128 + 256**2, (x, 0, 256))",
+                "integrate(((x-b)**2 + 3b(b - 85.333) + 256**2 - 256*85.333), (x, 0, 256))",
+                "integrate((x - 128)**2 + 3(128**2 - 128*256), (x, 0, 256))",
+                "integrate((x - b)**2 + (256 - b) * b, (x, 0, 256))",
+                "integrate(((x - (b + 128))**2 + 128**2 - 256*128), (x, 0, 256))",
+                "integrate((x - b)**2 + 2*b**2 - 256*b + (16**2 + 240**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) + integrate(-2*b*x, (x, 0, 256)) + integrate(2*b**2 - 256*b + 256**2, (x, 0, 256))",
+                "integrate((256 - x)**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-2*b*x, (x, 0, 256)) + integrate(2*b**2, (x, 0, 256)) - integrate(256*b, (x, 0, 256)) + integrate(256**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-2*b*x, (x, 0, 256)) + 256 * integrate(2*b - 256 + 256, (x, 0, 256))",
+                "integrate(x**2 + (-2*b*x + 2*b**2 - 256*b + 256**2), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-2*b*x + (b**2 + 256^2 - 256*b), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-2*b*x, (x, 0, 256)) + integrate((256 - b)^2, (x, 0, 256))",
+                "integrate((x - 128)**2 + 2*128^2 - 256*128 + 256^2 - 2*b*(x-128), (x, 0, 256))",
+                "integrate((x - b)**2 + b**2 - 2*b*x + 256^2 - 256*b, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2*b*x, (x, 0, 256)) + 256*integrate(2(b - 128), (x, 0, 256))",
+                "integrate((x**2 - 2*b*x + 2*b^2 - 256*b + 256^2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - b)**2, (x, 0, 256)) + integrate(2*b**2 - 256*b + 256**2, (x, 0, 256))",
+                "integrate(((x + b) - b)**2, (x, 0, 256))",
+                "integrate(-(x - b)**2, (x, 0, 256))",
+                "integrate((256 - (y + b))**2, (y, -b, 256-b))",
+                "integrate((x**2 - 2*b*x + b**2), (x, 0, 256))",
+                "integrate((x - b)**2 + 256 * (2*b**2 - 256*b + 256^2), (x, 0, 256))",
+                "integrate((x ** 2 + 2b + b ** 2) - (b**2 + 2b), (x, 0, 256))",
+                "integrate(2*((x-b)**2)/2 + (2b**2 - 256b + 256^2), (x, 0, 256))",
+                "integrate((256+y-b)**2, (y, -256, 0))",
+                "integrate(x**3 - 3*b*x**2 + 3*b**2*x - b**3, (x, 0, 256))",
+                "integrate(((x - b)**4)^(1/2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)**2 + 2*128**2 - 256*128 + 256**2, (x, 0, 256))",
+                "integrate((x - 128)**2 + 256**2 - 128**2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 - 2*b*x + b**2 + 2*(b**2 - 128b + 128**2)), (x, 0, 256))",
+                "integrate((x**2 - 2*b*x + (256^2 - 2*128*b + 128**2)), (x, 0, 256))",
+                "integrate(((x - b)**2 + (b**2 + 2*(b**2 - 128*b + 128**2) - b**2)), (x, 0, 256))",
+                "integrate(((x**2/1) - (2*b*x/1) + (b**2/1 + 2*(b**2 - 128*b + 128**2)/1)), (x, 0, 256))",
+                "integrate(((x + 2)**2 - 2*b*(x + 2) + b**2 + 2*(b**2 - 128b + 128**2)), (x, -2, 254))",
+                "integrate(1/(1/(x**2 - 2*b*x + b**2 + 2*(b**2 - 128b + 128**2))), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2*b*x, (x, 0, 256)) + integrate(b**2, (x, 0, 256)) + integrate(2*(b**2 - 128*b + 128**2), (x, 0, 256))",
+                "integrate((x**2 - 2*128*x + (b**2 + 128**2 - 256*128)), (x, 0, 256))",
+                "integrate(((256-x)**2 - 2*b*(256-x) + b**2 + 2*(b**2 - 128b + 128**2)), (x, 0, 256))",
+                "integrate((256**2 - x**2 + 2*b*(256-x) + (b**2 - 2*(b**2 - 128*b + 128**2))), (x, 0, 256))",
+                "integrate((x**2 - 2*b*x + b**2 + 2*(b**2 - 128*b)), (x, 0, 256)) + integrate(2*(128**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 2*b*x + c, (x, 0, 256))",
+                "integrate((x - b)**2 + (c - b**2), (x, 0, 256))",
+                "integrate(((x - b)**2 - b**2 + c), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - 2*b * integrate(x, (x, 0, 256)) + integrate(c, (x, 0, 256))",
+                "integrate(x**2 - 2*b*x + (c + 0) - 0, (x, 0, 256))",
+                "integrate(x**2 - 2*b*x + c + 4 - 4, (x, 0, 256))",
+                "integrate((x - b)**2 + (c - b^2), (x, 0, 256))",
+                "integrate((z + b)**2 - 2b(z + b) + (c + b^2), (z, -b, 256 - b))",
+                "integrate(x**2 - 2*128*x + (c + (b^2 - 128^2)), (x, 0, 256))",
+                "integrate(((x - 128)**2 - 128^2 + c + 128^2), (x, 0, 256))",
+                "integrate((x - 16)**2 + (c - 256), (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x-64)**2, (x, 0, 256))",
+            "integrate(x**2 - 128*x + 4096, (x, 0, 256))",
+            "integrate((u)**2, (u, -64, 192))",
+            "integrate((256-64 - (x - 64))**2, (x, 0, 256))",
+            "integrate(exp(2 * log(x - 64)), (x, 0, 256))",
+            "integrate((x - 2*64 + 64)**2, (x, 0, 256))",
+            "integrate((x - 128/2)*(x - 128/2) + 4096, (x, 0, 256))",
+            "integrate(4 * ((x - 64)/2)**2, (x, 0, 256))",
+            "integrate((128 - abs(x - 128))**2, (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 128*x + 4096, (x, 0, 256))",
+                "integrate((x - 64)**2 + 0, (x, 0, 256))",
+                "integrate((x - 64)**2 + 64**2, (x, 0, 256))",
+                "integrate((x**2 + 4096) - 128*x, (x, 0, 256))",
+                "integrate((x*(x - 128) + 4096), (x, 0, 256))",
+                "integrate(((x - 64)**2 + 64**2), (x, 0, 256))",
+                "integrate((256^2 - 128*x + 64**2), (x, 0, 256))",
+                "integrate((x**2) + (4096 - 128*x), (x, 0, 256))",
+                "integrate((x**2 - 128*x + 4094), (x, 0, 256))",
+                "integrate((x**2 - 226*x + 4090), (x, 0, 256))",
+                "integrate((0.5*x**2 - 64*x + 2048), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u**2, (u, -64, 192))",
+                "integrate((4*x)**2, x)",
+                "integrate((-x)**2, x)",
+                "integrate((2*x/2)**2, x)",
+                "integrate((x + 0)**2, x)",
+                "integrate(3*x**2, x)",
+                "integrate((2*x)**2/4, x)",
+                "integrate((x - 0)**2, x)",
+                "integrate((1/2)*u**2, x)",
+                "integrate((x)**2, x)",
+                "integrate(exp(2*log(x)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 128*64 + 64**2, (x, 0, 256))",
+                "integrate((x - 64)*(x + 64), (x, 0, 256))",
+                "integrate((u + 64)**2 - 4096, (u, -64, 192))",
+                "integrate(((x - 64)**2 - 64**2), (x, 0, 256))",
+                "integrate(x**2 - (2**14) + (2**6)**2, (x, 0, 256))",
+                "integrate(x**2 - 64**2 + (2**6)**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(4096, (x, 0, 256))",
+                "integrate((x**2 - 8192 + 64**2) + 0, (x, 0, 256))",
+                "integrate(x**2 + (0 - 4096), (x, 0, 256))",
+                "integrate((z + 192)**2 - 4096, (z, -192, 64))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 - 128*x + 4096), (x, 0, 256))",
+                "integrate(((x - 64)**2 + 64**2), (x, 0, 256))",
+                "integrate(((256 - u)**2 - 128*(256 - u) + 4096), (u, 256, 0))",
+                "integrate((x**2 - 128*x + 64**2 + 64^2), (x, 0, 256))",
+                "integrate((x - 64)*(x - 64) + 64*64, (x, 0, 256))",
+                "integrate((256*sin(x/256)**2 - 128*256*sin(x/256) + 4096), (x, 0, 256))",
+                "integrate(((64 + k)**2 - 128*(64 + k) + 4096), (k, -64, 192))",
+                "integrate(2*(x**2/2 - 64*x + 2048), (x, 0, 256))",
+                "integrate((x - 64)**2 + 64**2, (x, 0, 256))",
+                "integrate((exp(log(x**2) - log(128*x) + log(4096))), (x, 0, 256))",
+                "integrate(2*x - 128 + 0, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - 128*integrate(x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate(x**2 + 2*x, (x, 0, 256)) - integrate(2*x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(16 * x, (x, 0, 256)) + 256 * integrate(16, (x, 0, 1))",
+                "integrate(x**2, (x, 0, 256)) - integrate((8**2) * x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 4**4)) - 128 * integrate(x, (x, 0, 4**4)) + integrate(4096, (x, 0, 4**4))",
+                "integrate((x + 1)**2 - 2*x - 1, (x, 0, 256)) - 128 * integrate(x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate((2*x)**2, (x, 0, 128)) - 128 * integrate(x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate((x - 1)**2 + 2*(x - 1), (x, 0, 256)) - 128 * integrate(x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + 128 * integrate(-x, (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate((2*x / 2)**2, (x, 0, 256)) - 128 * integrate((2*x / 2), (x, 0, 256)) + integrate(4096, (x, 0, 256))",
+                "integrate(256*(sin(x/16))**2, (x, 0, 256)) - 128 * integrate(sin(x/16), (x, 0, 256)) + integrate(4096, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 64)(x - 64), (x, 0, 256))",
+                "integrate((x**2 - 128*x + 4096), (x, 0, 256))",
+                "integrate((u**2), (u, -64, 192))",
+                "integrate((x - 64)*(x - 64) + (64 - 64), (x, 0, 256))",
+                "integrate(((x - 64)**2), (x, 0, 256))",
+                "integrate((128*(sin(x/128))**2), (x, 0, 256))",
+                "integrate(((64 - (256 - x))**2), (x, 0, 256))",
+                "integrate(2*(x - 64)*(x - 64/2), (x, 0, 256))",
+                "integrate(32*(x/8 - 8)**2, (x, 0, 256))",
+                "integrate((0.5*(2*x - 128)*(2*x - 128)), (x, 0, 256))",
+                "integrate(((x - 64)**3)/3, (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(x**2, (x, 0, 256))",
+            "integrate((4 + (x - 4))**2, (x, 0, 256))",
+            "integrate((x + 1j)**2, (x, 0, 256))",
+            "integrate((x - 128 + 128)**2, (x, 0, 256))",
+            "integrate(128**2 * (sin(x**(1 / 128)))**2, (x, 0, 256))",
+            "integrate(x * (x), (x, 0, 256))",
+            "integrate((16*u)**2 * 16, (u, 0, 16))",
+            "integrate((0 + x)**2, (x, 0, 256))",
+            "integrate((x * x), (x, 0, 256))",
+            "integrate((256 - x)**2, (x, 0, 256))",
+            "integrate(((1/3) * (x/128)**3), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 - (256 - x)**2, (x, 0, 256))",
+                "integrate(256 - (256 - (256 - x))**2, (x, 0, 256))",
+                "integrate((x**2 - 512*x + 65280), (x, 0, 256))",
+                "integrate(512*(x - 128)**2 - 65280 + 128^2 - 256, (x, 0, 256))",
+                "integrate(256 - (x**2 - 512x + 65536), (x, 0, 256))",
+                "integrate(-x**2 + 512*(256-x), (x, 0, 256))",
+                "integrate((512*x - 65280) + (256 - x**2), (x, 0, 256))",
+                "integrate(256 - ((128 - x)**2 + 128**2 - 256), (x, 0, 256))",
+                "integrate((x**2 - 256) * (-1), (x, 0, 256))",
+                "integrate((256 - (x - 256)**2) + 0*(x - 256), (x, 0, 256))",
+                "integrate(256 * x / 256 - (x**2)/256 + x, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)**2 + 128**2 - 128**2, (x, 0, 256))",
+                "integrate(x**2 - 256*x + 128**2, (x, 0, 256))",
+                "integrate((x - 128)*(x - 128), (x, 0, 256))",
+                "integrate((128 - x)**2, (x, 0, 128)) + integrate((x - 128)**2, (x, 128, 256))",
+                "integrate((x - 64)**2 - 128*64 + 128**2, (x, 0, 256))",
+                "integrate((x**2 + 64**2 - 64**2) - 256*(x - 256/(2)), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - 256*integrate(x, (x, 0, 256)) + (128**2)*(256)",
+                "integrate((x - 128)**2, (x, 0, 256))",
+                "integrate((x - 130)**2 + 4, (x, 0, 256))",
+                "integrate(abs(x - 128)**2, (x, 0, 256))",
+                "integrate((x**3 - 3*128*x**2 + 3*128\u00b2*x)/(256), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1/2 * (x**2 + x**2), (x, 0, 256))",
+                "integrate((1/2) * ((x)**2 + (x/1)**2), (x, 0, 256))",
+                "integrate((1/4) * (4*x**2), (x, 0, 256))",
+                "integrate((1/2) * ((x + 0)**2 + (x + 0)**2), (x, 0, 256))",
+                "integrate((1/2) * ((x**2 + 1)*x - x), (x, 0, 256))",
+                "integrate((1/2) * (2*(x**2)), (x, 0, 256))",
+                "integrate((1/2) * (((x + 1)**2 - 2) + ((x + 1)**2 - 2)), (x, 0, 256))",
+                "integrate(2 * (x**3 / (2*x)), (x, 0, 256))",
+                "integrate((4/2) * (x**2), (x, 0, 256))",
+                "integrate((1/2) * ((x**1)*(x**1) + (x**1)*(x**1)), (x, 0, 256))",
+                "integrate(1/2 * (x**2 + (x + x) * (x - x)), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * (x/16)**2, (x, 0, 256))",
+                "integrate(256 * ((x**2)/16**2), (x, 0, 256))",
+                "integrate(256 * (-x**2 + 2*256*x - 256**2) / (16**2), (x, 0, 256))",
+                "integrate(256 * ((x+16)**2 - 2*16*x - (16)**2), (x, 0, 256))",
+                "integrate(256 * x * (x/16 + 16), (x, 0, 256))",
+                "integrate(256 * ((256 - x) / 16)**2, (x, 0, 256))",
+                "integrate(256 * ((256 * sin(t)) / 16)**2 * 256 * cos(t)**2, (t, 0, \u03c0/2))",
+                "integrate(256 * (((x - 128)**2) + 2*128*x - 128**2) / 256, (x, 0, 256))",
+                "integrate(256 / ((16/x)**2), (x, 0, 256))",
+                "integrate(256 * 16^2 * sin^4(x / 256), (x, 0, 256))",
+                "integrate(256 * ((x - 16)**2 + 16^2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 128)) + integrate((256 - x)**2, (x, 128, 256))",
+                "integrate((256 - (256-x))**2, (x, 128, 256))",
+                "integrate(x**2 + (256 - x)**2, (x, 0, 256))",
+                "integrate((256 - x)**2, (x, 0, 128)) + integrate(x**2, (x, 128, 256))",
+                "integrate((128*y)**2, (y, 0, 1)) + integrate((128*(1 - y))**2, (y, 0, 1))",
+                "integrate(x**2, (x, 0, 128)) + integrate(x'**2, (x', -128, 0))",
+                "integrate(256^2/2 * y, (y, 0, 0.5)) + integrate(256^2/2 * (1 - y), (y, 0.5, 1))",
+                "integrate((z+128)**2, (z, -128, 0)) + integrate((128-z)**2, (z, -128, 0))",
+                "integrate(2**(2 + 2 * log2(x)), (x, 1, 128)) + integrate(2**(2 + 2 * log2(256 - x)), (x, 128, 256))",
+                "integrate((128 - y)**2, (y, 0, 128)) + integrate(y**2, (y, 128, 256))",
+                "integrate((x-128)**2 + 128^2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x * x, (x, 0, 256))",
+                "integrate(x * x, (x, 0, 256))",
+                "integrate((x + 0) * (x + 0), (x, 0, 256))",
+                "integrate((256 * sin(x))^2, (x, 0, \u03c0/2))",
+                "integrate(exp(2 * log(x)), (x, 0, 256))",
+                "integrate(0.5 * (2 * x) * x, (x, 0, 256))",
+                "integrate((x)(x), (x, 0, 256))",
+                "integrate((x^2 - 0 + 0), (x, 0, 256))",
+                "integrate((16*(r*cos(theta)))^2, (theta, 0, \u03c0))",
+                "integrate(x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x + x, (x, 0, 3))",
+                "integrate(sum([(x^(2+i))/factorial(i) for i in range(0, 2)],(x, 0, 256)))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x-128)**2, (x, 0, 256))",
+            "integrate(x**2 - 256*x + 128**2, (x, 0, 256))",
+            "integrate(u**2, (u, -128, 128))",
+            "integrate(x**2, (x, 0, 256)) - integrate(256*x, (x, 0, 256)) + integrate(16384, (x, 0, 256))",
+            "2 * integrate((128 - x)**2, (x, 0, 128))",
+            "integrate((256 - x - 128)**2, (x, 0, 256))",
+            "integrate((128 * sin(\u03c0*x/256) + 128 * cos(\u03c0*x/256))**2, (x, 0, 256))",
+            "integrate((x**2) - 256 * 128 * (x/256), (x, 0, 256))",
+            "integrate((128 + v)**2, (v, 0, 256))",
+            "integrate((x - 256 + 128)**2, (x, 0, 256))",
+            "integrate(sum(comb(2, k) * (-128) ** (2-k) * x ** k for k in range(3)), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)**2, (x, 0, 256))",
+                "integrate(x**2 - 256*x + 16384, (x, 0, 256))",
+                "integrate((128 - x)**2, (x, 0, 256))",
+                "integrate(16384 - (128 - x)*(128 + x), (x, 0, 256))",
+                "integrate(4*(x/2 - 64)**2, (x, 0, 256))",
+                "integrate((128*(1 - sin(t)))**2*128*cos(t), (t, -pi/2, pi/2))",
+                "integrate(4*(x**2 - 128x), (x, 0, 256))",
+                "integrate((x**2 - 256x + 16384) + 0, (x, 0, 256))",
+                "integrate((128 + x - 128)**2, (x, 0, 256))",
+                "integrate((0.5*(x - 128))**2 * 4, (x, 0, 256))",
+                "integrate((x - 128)**2, (x, -128, 128))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((2*x-b)**2, (x, 0, 128))",
+            "integrate(4*x**2 - 4*b*x + b**2, (x, 0, 128))",
+            "integrate((y - b)**2 / 4, (y, 0, 256))",
+            "integrate((r)**2, (r, -b, 128-b))",
+            "integrate(2*(x**2) - b*(2x - b), (x, 0, 128))",
+            "integrate((b - 2*(b - x))**2, (x, 0, 128))",
+            "integrate((2*(x - b/4))**2 + (b/2)**2, (x, 0, 128))",
+            "integrate((2*(x + 1) - b)**2, (x, -1, 127))",
+            "integrate(4*(x - b/2)*(x - b/2), (x, 0, 128))",
+            "integrate((2*x - 126)**2 + (126 - b)**2, (x, 0, 128))",
+            "integrate((2*(128-x) - b)**2, (x, 0, 128))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((u**2), (u, -b, 256-b))",
+                "integrate((x - b)**2, x)",
+                "integrate(u * u, x)",
+                "integrate(((c-x)**2), x, (-b, 256-b))",
+                "integrate((1 * x)**2, x)",
+                "integrate((2/3)*u**3, x)",
+                "integrate((u + 1)**2 - 2*u + 1, x)",
+                "integrate(v**2 + (u**2 - v**2), x)",
+                "integrate((u**2 - 1 + 1), x)",
+                "integrate((1 + (0.5)*u) * (1 + 0.5*u), x)",
+                "integrate((x + b)**2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2*(x + 64) - b)**2, (x, -64, 64))",
+                "integrate((4*x**2 + (256 - 4*b)*x + (128 - b)**2), (x, -64, 64))",
+                "integrate(4*(x + 64)**2 - b**2 + 128b + 256, (x, -64, 64))",
+                "2 * integrate((2*x - (b - 128))**2, (x, 0, 64))",
+                "integrate((2*y - b)**2, (y, 0, 128))",
+                "integrate((2*x)**2 + 256 - b*(4), (x, -64, 64))",
+                "integrate(4*(x + 64)**2 - 256 + b*(4), (x, -64, 64))",
+                "integrate((4*(x + 32)**2 + (256 - b**2)), (x, -64, 64))",
+                "integrate((2*(x - 64) - b)**2, (x, -64, 64))",
+                "integrate((2*((-x) + 64) - b)**2, (x, -64, 64))",
+                "integrate((2*(-x) - b + 128)**2, (x, -64, 64))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((2*128 - b - 2*x)**2, (x, 0, 128))",
+                "integrate((256 - b - 2*x) * (256 - b - 2*x), (x, 0, 128))",
+                "integrate((-(2*x - (256 - b)))**2, (x, 0, 128))",
+                "integrate(2*(128 - (b + 2*x/2))**2, (x, 0, 128))",
+                "integrate(4*(64 - (b/2) - x)**2, (x, 0, 128))",
+                "integrate((2*128 - b - 2*(128 - y))**2, (y, 0, 128))",
+                "integrate((2*(128 - (b/2) - x))**2, (x, 0, 128))",
+                "integrate((-(b/2) + 2*(64 - x))**2, (x, 0, 128))",
+                "integrate((256 - 2*b - z)**2/4, (z, 0, 256))",
+                "integrate(4*(128 - b/2 - x)**2, (x, 0, 128))",
+                "integrate((128 - b/2)**2 + 4*x*(128 - b/2) + 4*x**2, (x, 0, 128))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "2 * integrate((2*x - b)**2, (x, 0, 64))",
+                "\\( 2 \\cdot \\int (4*x**2 - 4*8*b**(0.5)*x + b**2) \\, (x, 0, 64) \\)",
+                "integrate(2*(4*x**2 - 4*b*x + b**2), (x, 0, 64))",
+                "integrate(2*(2*(x - b/2))**2, (x, 0, 64))",
+                "integrate(2*(u**2), (x, b/2, 128 + b/2))",
+                "integrate(2*(4*x**2), (x, 0, 64)) - integrate(2*(4*b*x), (x, 0, 64)) + integrate(2*(b**2), (x, 0, 64))",
+                "integrate(2*((b - 2*x)**2), (x, 0, 64))",
+                "integrate((2*(2*x - b))**2, (x, 0, 64))",
+                "integrate(2*(4*x**2 - 8*b*x + 4*b**2), (x, 0, 64))",
+                "integrate(2*((2*x)**2 - 2*b*(2*x) + b**2), (x, 0, 64))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(4*x**2 - 4*b*x + b**2, (x, 0, 128))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((256 - b)**2, (x, 0, 128))",
+                "integrate((256**2 - 2 * 256 * b + b**2), (x, 0, 128))",
+                "integrate((u)**2, (x, 0, 128)).subs(u, 256 - b)",
+                "integrate((16**2 - (b - 256)**2), (x, 0, 128))",
+                "integrate((256 - b + 0)**2, (x, 0, 128))",
+                "integrate((256 - b)**2, (x, 0, 128)).expand()",
+                "integrate((-b + 256)**2, (x, 0, 128))",
+                "integrate((192*(256 - b) + (b - 64)*(b + 64)), (x, 0, 128))",
+                "integrate((-(b**2 - 2*256*b + 256**2)), (x, 0, 128))",
+                "integrate((b - 256)**2, (x, 0, 128))",
+                "integrate((255 - b + 1)**2 - 1, (x, 0, 128))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(3 * (x-b)**2, (x, 0, 256))",
+            "integrate(3 * ((x**2 - 2*b*x + b**2)), (x, 0, 256))",
+            "integrate(3 * u**2, (u, -b, 256-b))",
+            "integrate(3 * (x**2 - 2bx + b**2), (x, 0, 256))",
+            "integrate(3 * x**2, (x, 0, 256)) - integrate(6 * b * x, (x, 0, 256)) + integrate(3 * b**2, (x, 0, 256))",
+            "integrate(3 * ((x - 128)**2 - (128-b)**2), (x, 0, 256))",
+            "integrate(3 * ((e**(2*(x-b*ln(1))) - e**(0))), (x, 0, 256))",
+            "integrate(3 * (x**2 - 2*b*x + b**2), (x, 0, 256))",
+            "integrate(3 * ((1 - (b/x))*(x)**2), (x, 0, 256))",
+            "integrate(3 * (sqrt((x-b)**2))**2, (x, 0, 256))",
+            "integrate(3 * (x - 128)**2 + 384, (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3 * (x**2 - 2*b*x + b**2), (x, 0, 256))",
+                "`integrate(3 * ((x - b)**2), (x, 0, 256))` (similar to Variant 1)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3*x**2 - 6*b*x + 3*b**2, (x, 0, 256))",
+                "integrate(3*(x - b)**2, (x, 0, 256))",
+                "integrate(3*((x - b)**2), (x, 0, 256))",
+                "integrate(3*((y + 6)^2 - 1 + 1 - 6b + 3b**2), (y, -6, 250))",
+                "integrate(3*x**2, (x, 0, 256)) + integrate(-6*b*x + 3*b**2, (x, 0, 256))",
+                "integrate(3 * x**2, (x, 0, 128)) * 2 + integrate(3 * b**2, (x, 0, 256)) - integrate(6 * b * x, (x, 0, 256))",
+                "integrate(3*x**2 + 6*b*x + 3*b**2, (x, 0, 256)) - integrate(6*b*x, (x, 0, 256))",
+                "integrate(3*(x + 1)**2 - 6b*(x + 1) + 3b**2, (x, -1, 255))",
+                "integrate(3 * (x**2)', (x, 0, 256)) + integrate(-6 * b * (x)', (x, 0, 256)) + integrate(3 * (b**2)', (x, 0, 256))",
+                "integrate(3*(b + b*sin(theta))**2 - 6*b*(b + b*sin(theta)) + 3*b**2, (theta, 0, \u03c0))",
+                "integrate(3*(x**2 - 2*b*x + b**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3*(x-128)**2 + 3*(128-b)**2 - 3*(128-b)**2, (x, 0, 256))",
+                "integrate(3*(x**2 - 256*x + 16384), (x, 0, 256))",
+                "integrate(3*u**2, (u, -128, 128))",
+                "integrate(3*(x - 128)**2 + 0, (x, 0, 256))",
+                "integrate(3*((128 - x)**2), (x, 0, 256))",
+                "integrate(3*(x - 128)**2 + 3*(128 - b)**2 - 3*(128 - b)**2, (x, 0, 256))",
+                "integrate(3*((x - 128) * (x - 128)), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3*(x**2 - 2*b*x + b**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3*((x - 128) + (128-b))**2, (x, 0, 256))",
+                "integrate(3*(x**2 - 2*b*x + b**2), (x, 0, 256))",
+                "integrate(3*((x**2 - (256 - 2*b)*x + (b**2 - 256*b + 128**2 - 128*b))), (x, 0, 256))",
+                "integrate(3*(u**2), (u, -b, 256 - b))",
+                "integrate(3*((x**2 - 256*x + b**2 + 256*b - 128**2)), (x, 0, 256))",
+                "integrate(3*((x - (b + 128))**2 - (b + 128)**2 + (b + 128)**2), (x, 0, 256))",
+                "integrate(3*(((x - 128) + (128 - b))**2), (x, 0, 256))",
+                "integrate(3*((-(x - 128) + (128 - b))**2), (x, 0, 256))",
+                "integrate(3*(y + 128 - b)**2, (y, -128, 128))",
+                "integrate(3*(x**2 - 256*b + 128**2), (x, 0, 256))",
+                "integrate(3*(x**2 - 256*b + b**2 + 256*128 - 128**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(3*(x**2 - 2*b*x + b**2 + constant), (x, 0, 256))",
+                "integrate(3*((u+b)**2 - 2b*(u+b) + b**2 + 0), (u, -b, 256-b))",
+                "integrate(3 * ((x-b)**2 + (C - b**2)), (x, 0, 256))",
+                "integrate(3*((x-b)**2 + b**2 + C), (x, 0, 256))",
+                "integrate(3*(-(x**2 - 2*b*x) + b**2 + C), (x, 0, 256))",
+                "integrate(3*((x - b)**2 + C), (x, 0, 256))",
+                "integrate(3*(log((x**2 - 2*b*x + b**2 + C))), (x, 0, 256))",
+                "integrate(3*((reverse_x - b)**2 + b**2 + C), (reverse_x, 0, 256))",
+                "integrate(3*(x**2 + (C - 2*b*x + b**2)), (x, 0, 256))",
+                "integrate(3*(x**2 - 2*b*x + b**2 + 1), (x, 0, 256))",
+                "integrate(3*((b + sin(theta))**2 - 2b*(b + sin(theta)) + b**2 + constant), (theta, 0, pi/2))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x - 128)**2, (x, 0, 256))",
+            "integrate((x - 128)**2, (x, 0, 256))",
+            "integrate(x**2, (x, 0, 256)) - 256 * integrate(x, (x, 0, 256)) + 16384 * integrate(1, (x, 0, 256))",
+            "integrate((256 - x - 128)**2, (x, 256, 0))",
+            "integrate((128 + x - 256)**2, (x, 0, 256))",
+            "integrate(x**2 - 256 * x + 16384, (x, 0, 256))",
+            "2 * integrate((128 - x)**2, (x, 0, 128))",
+            "integrate((256 - x)**2, (x, 0, 256)) - integrate(128 * (256 - x), (x, 0, 256))",
+            "integrate((x - 128) * (x - 128), (x, 0, 256))",
+            "integrate((x**2 + 256*128 - 256*x), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 256*x + 128**2, (x, 0, 256))",
+                "integrate((x - 128)**2, (x, 0, 256))",
+                "integrate((128**2*y**2 - 256*128*y + 128**2), (y, 0, 2))",
+                "integrate((x**2 - 256*x + 128**2), (x, 0, 256))",
+                "integrate(((128 + 128 * sin(t))**2 - 256 * (128 + 128 * sin(t)) + 128**2), (t, -pi/2, pi/2))",
+                "integrate((((128*t/(t+1))**2 - 256*(128*t/(t+1)) + 128**2)), (t, 0, 1))",
+                "integrate((x - 128 - 128)*(x - 128 + 128), (x, 0, 256))",
+                "integrate(((256 - y)**2 - 256*(256 - y) + 128**2), (y, 0, 256))",
+                "integrate((sqrt(x**2 - 256*x + 128**2)), (x, 0, 256))",
+                "integrate((128**2 + 2*128*(x - 128) + (x - 128)**2), (x, 0, 256))",
+                "integrate((1 if x <= 256 else 0) * (x**2 - 256*x + 128**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "2 * integrate((x - 128)**2, (x, 0, 128))",
+                "integrate((128**2 - 256*x + x**2), (x, 0, 128))",
+                "integrate(-(x - 128) * (x - 128), (x, 0, 128))",
+                "integrate((x - 128) ** 2, (x, 0, 128))",
+                "integrate((128 + 128*sin((x*pi)/128) - 128)**2 * 128*(pi/128)*cos((x*pi)/128), (x, 0, 128))",
+                "integrate((x**2 - 256*x + 128**2), (x, 0, 128))",
+                "integrate((128 - x)**2, (x, 0, 128))",
+                "integrate(y**2, (y, -128, 0))",
+                "integrate((128 - 128 + x)**2, (x, 0, 128))",
+                "integrate(x * (x - 128), (x, 0, 128)) - integrate(128 * (x - 128), (x, 0, 128))",
+                "integrate(2*(x**2 - 256*x + 128**2), (x, 0, 128))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(y**2, (y, -128, 128))",
+                "\\( \\text{integrate}(2 * (x**2), x) \\)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((128*u)^2, (u, -1, 1)).subs(x, 128 + 128*u)",
+                "integrate(128**2 * x**2/128**2, x)",
+                "integrate(2 * (128*x - 128)**2 / (128**2), x)",
+                "integrate((128 * sin(x/128))**2 * (1/128) * cos(x/128), x)",
+                "integrate(128**2 + 2*128*128*(x-128)/128 + (128*(x-128)/128)**2, x)",
+                "integrate((1/2)(x**2 - 256x + 128**2), x)",
+                "integrate((128*u)**2 + 0, x)",
+                "integrate(((128*u) - 64)*((128*u) + 64), x)",
+                "integrate(1 / (1 / ((128 * u)**2) + (1/128)), x)",
+                "integrate(128 * x - x**2, x)",
+                "integrate((128 * (1-u)**2 * (-1)), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "(1/3) * integrate(x**3, (x, 0, 256)) - 256 * integrate(x**2, (x, 0, 256)) + (128**2)*integrate(1, (x, 0, 256))",
+                "integrate((1/3)*(x**3) - (256)*(x**2) + (128**2)*(1), (x, 0, 256))",
+                "integrate(x**3/3, (x, 0, 256)) - integrate(256*x**2, (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate((256*u)**3 / 3 * 256, (u, 0, 1)) - integrate(256 * (256*u)**2 * 256, (u, 0, 1)) + integrate(128**2 * 256, (u, 0, 1))",
+                "integrate(x**3 / 3, (x, 0, 256)) - integrate(256 * x**2, (x, 0, 256)) + integrate(2**14, (x, 0, 256))",
+                "integrate(x**2 * (x/3), (x, 0, 256)) - 256 * integrate(x**2, (x, 0, 256)) + integrate((128**2), (x, 0, 256))",
+                "integrate(x**3 * 0.5 * 2/3, (x, 0, 256)) - integrate(256 * x**2, (x, 0, 256)) + integrate(2*(64**2), (x, 0, 256))",
+                "integrate(x**3/3, (x, 0, 256)) - integrate(256*x**(2), (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate(x**3/3, (x, 0, 256)) - integrate(2**8 * x**2, (x, 0, 256)) + integrate((2**14), (x, 0, 256))",
+                "integrate((1/3)*(x**3) - 256*(x**2) + (128**2), (x, 0, 256))",
+                "integrate((x**3 - 768*x**2 + 16384), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x - 128)*(x - 128), (x, 0, 256))",
+                "integrate(x**2 - 256*x + 16384, (x, 0, 256))",
+                "integrate((y)**2, (y, -128, 128))",
+                "integrate(128**2 * (sin(x/128))**2, (x, 0, 256))",
+                "integrate(((x - 128)**2 + 128**2) - 128**2, (x, 0, 256))",
+                "integrate((x - 128) * (x - 128), (x, 0, 256))",
+                "integrate((256**2 - (x - 128)**2), (x, 0, 256))",
+                "integrate((x - 128)**2, (x, 0, 256))",
+                "integrate(abs(x - 128)**2, (x, 0, 256))",
+                "integrate((128 - (128 - x))**2, (x, 0, 256))",
+                "integrate((x**2 - 256x + 16384), (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(x**2 - 2*b*x + b**2, (x, 0, 256))",
+            "`integrate((u + 5)**2, (u, -5, 256 - 5))` (where \\( b = 5 \\))",
+            "`integrate(x**2 - 2*3*x + 9, (x, 0, 256))` (where \\( b=3 \\))",
+            "integrate(x**2 + 2*b*x + b**2, (x, 0, 256))",
+            "integrate(x**2 - 2*b*x + b**2, (x, -256, 0))",
+            "integrate((y/2)**2 - 2*b*(y/2) + b**2, (y, 0, 512))",
+            "integrate(x**2 - 2*b*x - b**2, (x, 0, 256))",
+            "integrate(x**2 - 6*x + 9, (x, 0, 256))",
+            "integrate((b*sec(theta))**2 - 2*b*(b*sec(theta)) + b**2, (theta, 0, theta_of_256))",
+            "integrate(x**2, (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + b**2*integrate(1, (x, 0, 256))",
+            "integrate(x**2 - 2*sqrt(b**2)*(sqrt(b)*x) + (sqrt(b))**2, (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2 - 2*b*x + b**2, (x, 0, 256))",
+                "integrate((x - 5)**2, (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((x-(256/2))**2, (x, 0, 256))",
+            "integrate(x**2 - 256*x + 16384, (x, 0, 256))",
+            "integrate((x - 128)**2, (x, 0, 256))",
+            "integrate(u**2, (u, -128, 128))",
+            "integrate((x + 128)**2, (x, -128, 128))",
+            "integrate((x - 64)*(x - 192), (x, 0, 256))",
+            "integrate(x**2, (x, 0, 256)) - 256 * integrate(x, (x, 0, 256)) + integrate(16384, (x, 0, 256))",
+            "integrate((x - 128)**2, (x, 0.0, 256.0))",
+            "integrate(128**2 + 2*(x - 128)*128 + (x-128)**2, (x, 0, 256))",
+            "integrate((((128 + a) - 128)**2), (a, -128, 128))",
+            "integrate(((x - 256) - 128)^2, (x, 128, 384))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(u**2, (u, -128, 128))",
+                "integrate((u**3 - u**3 + 2*u**2), x)",
+                "integrate(((128 * cos(x))**2), x)",
+                "integrate((2*x**2), (x, 0, 128))",
+                "integrate((4 * (u/2)**2), (u, -256, 256))",
+                "integrate((u**2 + 2*(u**0.1 - 1)), (u, -128, 128))",
+                "integrate((u**2 + 3), (u, -128, 128)) - integrate(3, (u, -128, 128))",
+                "integrate(average(0, 128)*(u**2), (u, 0, 128))",
+                "integrate((u**2 + (5 * (u - 10))), (u, -128, 128))",
+                "integrate((1/16384) * e**(-(u**2)/(16384)), (u, -128, 128))",
+                "integrate(((x-5)**2 + 5), (x, -128, 128))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - 256 * integrate(x, (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(256 * x, (x, 0, 256)) + integrate((2**7)**2, (x, 0, 256))",
+                "integrate(2 * x**2, (x, 0, 256)) - integrate(2 * 128 * x, (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(256*(0.5*x), (x, 0, 256)) + integrate(integrate(128**2, (x, 0, 256)) * 1, (x, 0, 256))",
+                "integrate(x * x, (x, 0, 256)) - integrate(256 * x, (x, 0, 256)) + integrate(128 * 128, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-256 * x, (x, 0, 256)) + integrate(128 * 128, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(256 * (0.5 * x * 2), (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate(2 * x**2 / 2, (x, 0, 256)) - integrate(256 * x, (x, 0, 256)) + integrate(2 * 128**2 / 2, (x, 0, 256))",
+                "integrate(x**2 + x**2 - 256 * x + 128**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) + integrate(-256 * x, (x, 0, 256)) + integrate(128**2, (x, 0, 256))",
+                "integrate(x**2 - (256 * x) + (128**2), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "256 * integrate(x, (x, 0, 256)) - (256/2) ** 2 * integrate(1, (x, 0, 256))",
+                "integrate(256 * (256 - x), (x, 0, 256))",
+                "integrate(256 * (256 - x) ** 2 / 256, (x, 0, 256))",
+                "integrate(256 * x**2 / 256, (x, 0, 256))",
+                "integrate(256 * (x - (256/2))**2, (x, 0, 256))",
+                "integrate(256 * abs(x - 128), (x, 0, 256))",
+                "integrate(256 * (256 - x)**3 / (256^2), (x, 0, 256))",
+                "integrate(2 * (x ** 2 / 2), (x, 0, 256))",
+                "integrate((256 * 256 / 2 - (128) ** 2), (x, 0, 256))",
+                "integrate(256 * (256 / x), (x, 1, 256))",
+                "integrate(256 * (sin(x * pi / 128)) ** 2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((-(x - 128))**2, (x, 0, 256))",
+                "integrate(-(x - 128)**2, (x, 0, 256))",
+                "integrate(-((x**2 - 256x + 128^2)), (x, 0, 256))",
+                "integrate(-((128 - x)**2), (x, 0, 256))",
+                "integrate(-(256 - x - 128)**2, (x, 0, 256))",
+                "integrate(-((x - 128)*(x - 128)), (x, 0, 256))",
+                "integrate(-((x - 128)**2), (x, 0, 256))",
+                "integrate(-(x - 128)**2, (x, 256, 0))",
+                "integrate(-(x**2 - 256x + 128^2), (x, 0, 256))",
+                "integrate(-(128 - x)**2, (x, 0, 256))",
+                "integrate(-1 * (x - 128)**2, (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2) * (1 - x/256), (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(x**3/256, (x, 0, 256))",
+                "integrate((x - 128)**2 + 128^2 - x * 128, (x, 0, 256))",
+                "integrate((256 - x)**2 * (x/256), (x, 0, 256))",
+                "integrate((256 * u)**2 * (1 - u) * 256, (u, 0, 1))",
+                "integrate((256 * sin(t)**2)**2 * (1 - sin(t)**2), (t, 0, pi/2))",
+                "integrate((x**2) * sum((-1)**n * binomial(1,n) * (x/256)**n, (n, 0, 2)), (x, 0, 256))",
+                "integrate(piecewise((x**2, x <= 128), (x**2 - x**3/256, x > 128)), (x, 0, 256))",
+                "integrate((256 - x)**2 * (1 - (256 - x)/256), (x, 0, 256))",
+                "integrate((x - 128)**2 + (128 - x)**2 * (1 + (x - 128)/256), (x, 0, 256))",
+                "integrate((x - 128)*(x - 128)*((256 - x)/256), (x, 0, 256))"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(128**2 - (128 - x)**2, (x, 0, 256))",
+                "integrate(256 * x - x**2, (x, 0, 256))",
+                "integrate((128 + (128-x)) * (128 - (128-x)), (x, 0, 256))",
+                "integrate(128**2 - (128 - (256 - x))**2, (x, 0, 256))",
+                "integrate((128 - (128-x))**2 - (128-x)**2 + 128^2, (x, 0, 256))",
+                "integrate(256 * (x - 128) + 128^2, (x, 0, 256))",
+                "integrate(128 * (256 - x) - (128 - x)**2, (x, 0, 256))",
+                "integrate((x * (128 - x) + 128^2 - 128 * x), (x, 0, 256))",
+                "integrate((128^2 + 128x - 256x + 128*(256 - x)), (x, 0, 256))",
+                "integrate(128*128 - ((128**2 - (128-x)**2)/2), (x, 0, 256))",
+                "integrate(256*(128 - x/2), (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((u**2) + 2abu + b**2, (u, -b, 256-b))",
+            "integrate((x + a*b)**2, x)",
+            "integrate((x + b)*(x + b), x)",
+            "integrate((x-b)**2 + 2*ab*(x-b), x)",
+            "integrate((b*sin(x))**2 + 2*a*b*sin(x) + (b*cos(x))**2, x)",
+            "integrate((x + b)**2, x)",
+            "integrate(exp(x)**2, x)",
+            "integrate(log(encoding_function(x)**2 + 2*a*encoding_function(x)*b + b**2), x)",
+            "integrate((sin(x) + b*cost(x))**2, x)",
+            "integrate(2*(x + a*b)*(x + b), x)",
+            "integrate((x - b)**2 + b**2 + 2*a*b, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 + 4*x + 1), x)",
+                "integrate((x + 2)**2 - 3, x)",
+                "integrate(((x + 2)**2 - 3), x)",
+                "integrate((x**2 + 4*x + 4 - 3), x)",
+                "integrate(x**2, x) + integrate(4*x, x) + integrate(1, x)",
+                "integrate((1 + 4*x + x**2), x)",
+                "integrate((x**2 + (2**2)*x + 1), x)",
+                "integrate((x**2 + 2*2*x + 2**0), x)",
+                "integrate(2*(0.5*x**2 + 2*x + 0.5), x)",
+                "integrate((x**2 + (3.0 + 1.0)*x + 1.0), x)",
+                "integrate((x**2 + 2*x + 2 + 2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(1, x)",
+                "integrate(exp(0), x)",
+                "integrate(log(x)/log(x), x)",
+                "integrate(cos(theta)^2 + sin(theta)^2, x)",
+                "integrate(sum(1/(n*(n+1)), (n, 1, oo)), x)",
+                "integrate(1, x)  # (this represents the original formulation)",
+                "integrate(sqrt(1)**2, x)",
+                "integrate(x**0, x)",
+                "integrate(-1, x) + integrate(2, x)",
+                "integrate(1/(1/x), x)",
+                "integrate(sin(pi/2)**2 + cos(pi/2)**2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 + 4*x + 4), x)",
+                "integrate((x + 2)**2, x)",
+                "integrate((u - 2)**2, u)",
+                "integrate(x**2 + (2 + 2)**2*x**0, x)",
+                "integrate(x**2 + 3 + 1 + 4*x, x)",
+                "integrate(((x + 2)**2 - 0**2), x)",
+                "integrate((x**2 + 2*2 + 2*2 + 4x), x)",
+                "integrate((-1*x)**2 - 4*(-1*x) + 4, -x)",
+                "integrate((x**2 + 2*2 + 2*2 + 4*x), x)",
+                "integrate((x**2 + 4*x + exp(log(16))), x)",
+                "integrate((x**2 + 2*x + 2*x + 4), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 + 6*x + 9), x)",
+                "integrate((x + 3)**2, x)",
+                "integrate((9 + 6*x + x**2), x)",
+                "integrate((x**2 + 3**2 + 6*x), x)",
+                "integrate((x**2 + (3 + 3)**2), x)",
+                "integrate((x**2 + 3*(2*x) + 9), x)",
+                "integrate((x**2 + 6*((-3) + 3) + 9), x)",
+                "integrate((9 + 6*x + (x**2)), x)",
+                "integrate((x**2 + 6*x + 3*3), x)",
+                "integrate((x**2 + 5.99*x + 9.06), x)",
+                "integrate((x**2 + 2*(3*x) + 3**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 + 0), x)",
+                "integrate((x + 1)**2 - (2*x + 1), x)",
+                "integrate((1/4)*(2*x)**2, x)",
+                "integrate(sum((2)**2/n, (n, 0, oo)) * x**2, x)",
+                "integrate((1/2)*(1 + cos(2*atan(x))), x)",
+                "integrate(diff(x**3/3, x), x)",
+                "integrate(re(x**2), x)",
+                "integrate(e**(2*log(x)), x)",
+                "integrate((1/(1 - (x**2))) * (x**2 - cos(x**2)), x)",
+                "integrate((x**2 + x - x)/(x + 1), x)",
+                "integrate((x**2 + 0*x**0), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate((x**2 + 2*x + 1), x)",
+                "integrate((x + 1)**2, x)",
+                "integrate(x**2, x) + integrate(2*x, x) + integrate(1, x)",
+                "integrate(1 * (x**2 + 2*x + 1), x)",
+                "integrate((x**2 + 2*x + 1 + 3 - 3), x)",
+                "integrate(((x + 0.5) * 2 + 1.5)**2, x)",
+                "integrate(x**2 + (4/2)*x + (2/2)**2, x)",
+                "integrate((x - (-1))*(x - (-1)), x)",
+                "integrate(((x - 1) + 2)**2, x)",
+                "integrate(1 * x**2 + 2 * (x + 1) + 0, x)",
+                "integrate((1 + x**2 + 2*x), x)"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate(x**2, (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+            "integrate((x**(2) + 1 - 1), (x, 0, 256))",
+            "integrate(x*(x + x), (x, 0, 256))",
+            "integrate((x**2), (x, 0, 256)) - integrate((-b)*(2*x), (x, 0, 256)) + integrate(b*b, (x, 0, 256))",
+            "integrate(x**2, (x, 0, 256)) - 6.28 * integrate(x, (x, 0, 256)) + integrate(9.86, (x, 0, 256))",
+            "integrate(x*(x + 1), (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+            "integrate((x + b)*(x - b) + b**2, (x, 0, 256))",
+            "integrate(x**2 + 2 * (b * x) - 2 * (b * x), (x, 0, 256))",
+            "integrate((256 * sin(x/256)**2), (x, 0, 256))",
+            "integrate(x**2 + (-2*b) * (x) + b**2, (x, 0, 256))",
+            "integrate(x**(2)**2 * (1), (x, 0, 256))"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(x**2, (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+                "integrate(x**2, (x, 0, 256)) - integrate(2*b*x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+                "integrate((y + b)**2, (y, -b, 256 - b)) + integrate(b**2, (x, 0, 256))",
+                "integrate(x**2 + b**2, (x, 0, 256)) - integrate(b**2, (x, 0, 256))",
+                "integrate(x**2 + 1, (x, 0, 256)) - 2*(b + 1)*integrate(x, (x, 0, 256)) + integrate((b + 1)**2, (x, 0, 256))",
+                "integrate(2 * (d/dx)*exp(x) * x, (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))",
+                "integrate((x - b)**2 + 2bx, (x, 0, 256))",
+                "integrate(256 * sin(\u03c0/256 * x)**2, (x, 0, 256))",
+                "integrate((x + b)**2 - 2bx, (x, 0, 256))",
+                "integrate(sum(i**2 for i in range(257)), (x, 0, 256)) - 2*b*integrate(x, (x, 0, 256)) + integrate(b**2, (x, 0, 256))"
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 1,
+          "variants": [
+            "integrate((256*y - b)**2 * 256, (y, 0, 1))",
+            "integrate((256**2 * x**2 - 2 * 256 * b * x + b**2) * 256, x)",
+            "integrate(256 * (256 * y - b)**2, x)",
+            "integrate((x)**2 * 256, x)",
+            "integrate(256 * (256*(x + b/256))**2, x)",
+            "integrate(256 * (b - 256*x)**2, x)",
+            "integrate(256 * ((256*x)**2 - 2*b*(256*x) + b**2), x)",
+            "integrate((256*k*(y - b/(256*k)))**2 * 256*k, x)",
+            "integrate((256*cos(0)**2 * x - b)**2 * 256, x)",
+            "integrate(256 * (256/100 * (100*x) - b)**2, x)",
+            "integrate(256 * (256*(0.5 + x) - b)**2, x)"
+          ],
+          "children": [
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * (256*y**2 - 2*b*256*y + b**2), x)",
+                "integrate(256 * (256 * ((y - (b/256))**2 + (b/256)**2)), x)",
+                "integrate(16**2 * (16**2 * y**2 - 2 * 16**2 * (b / 16) * y + (b / 16)**2), x)",
+                "integrate(256 * (256 * (y**2 - (2b/256)y) + (b**2/256)), x)",
+                "integrate(256y*(256y - 2*b) + b**2 * 256, x)",
+                "integrate(256 * 256 * ((y - b/(2*256))**2 - (b/(2*256))**2), x)",
+                "integrate(256 * (256 * y**2 + (-2 * b) * y + b**2), x)",
+                "integrate(256 * (256(y**2 - \\frac{2b}{256}y + \\frac{b^2}{256^2})), x)",
+                "integrate(256 * (256(u^2 + \\frac{b^2}{256^2})), x) where \\( u = y - \\frac{b}{256} \\)",
+                "integrate(16**2 * ((16y)^2 - 32by + b**2), x)",
+                "integrate(256 * ((by/16)^2 + (b^2 - 2b*(by/16))), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * (128*x - b)**2, x)",
+                "integrate(256 * (16384 * x**2 - 2 * 128 * b * x + b**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * (256*(1/2 - x) - b)**2, x)",
+                "integrate(256*(65536*(1/4) - 512*b*x + (256+2*b)*x**2), x)",
+                "integrate(256 * (y - b)**2, y).replace(y, 256*(1/2 - x))",
+                "integrate((1/2)*(256^2 - 512*b + 2*b^2) - (1/2)*(256*x - b)**2, x)",
+                "integrate(256*(256*x - b + 128)^2, x).replace(x, 1/2 - u)",
+                "integrate(256*(u**2), -b, 1/2).replace(u, 256*(1/2 - x) - b)",
+                "integrate(256* ((256/4) - 128*x + 128*(128 - x)), x)",
+                "integrate(256*(-b**2 + 2*b*(1/2 - x)), x) + integrate(256*(1/2 - x)**2, x)",
+                "integrate((256*(256*(1/2) - b) + 256*(256*(1/2) - b - x)**2), x)",
+                "integrate(256*((256/2)*(sin(x)) - b)**2, x)",
+                "integrate(256*((16 - (16 - x))^2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * ((256y - b)(256y - b)), x)",
+                "integrate(256 * (256**2 * (y - 0.00390625)**2), x)",
+                "integrate(260 * ((256y - b + 4)(256y - b + 4)), x)",
+                "integrate(128 * (2*(256y - b))**2, x)",
+                "integrate(256 * ((256y - 3 - b)(256y - 3 - b)), x)",
+                "integrate(512 * ((128y - b/2)(128y - b/2)), x)",
+                "integrate(256 * (16*(16y - (b/16))*(16y - (b/16))), x)",
+                "integrate(256 * ((y - (b/256))*(y - (b/256))), x)",
+                "integrate(256 * (256*y - b)**2, x)",
+                "integrate(256 * ((b - 256y)*(b - 256y)), x)",
+                "integrate(64 * (4*(256y - b))**2, x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256^2 * (x - b/256)^2, x)",
+                "integrate(256**2 * (x**2 - 2*(b/256)*x + (b/256)**2 - (b/256)**2), x)",
+                "integrate(256**2 * u**2, u).subs(u, x - b/256)",
+                "integrate(1 * ((16**2) * (16 * (x - b/256))**2), x)",
+                "integrate(256**2 * ((x - (b/256 + 0))**2), x)",
+                "integrate(256**2 * ((x - b/512)**2 + (b/512)**2 - (b/512)**2), x)",
+                "integrate(256**2 * ((x - b/256) * (x + b/256)), x)",
+                "integrate((16 * (16 * (x - b/256)))**2, x)",
+                "integrate(256**2 * (x**2), x) - integrate(2*b*256*x, x) + integrate(256*b**2/65536, x)",
+                "integrate(256**2 * (x - b/256)**2 * (1/1), x)",
+                "integrate(((256 * (x - b/256))**2), x)"
+              ],
+              "children": []
+            },
+            {
+              "level": 2,
+              "variants": [
+                "integrate(256 * (256 * (1 - x)**2 - b**2), x)",
+                "integrate(256 * (256 - 512 * x + 256 * x**2 - b**2), x)",
+                "integrate(256 * (256 * u**2 - b**2), -u + 1)",
+                "integrate(256 * (256 * ((1 - x)**2 - (b**2/256)), x)",
+                "integrate((256**2 * (1 - x)**2 - 128b**2), x)",
+                "integrate(256 * (256 * (sin(theta)**2) - b**2), theta)",
+                "integrate(256 * (256 * (1 - x)**2 - 256 + 256 - b**2), x)",
+                "integrate(256 * (256 - b**2) + 256 * 256 * x**2 - 512 * 256 * x, x)",
+                "integrate(256 * (256 * ((1 - x) + (1 - x))**2 - b**2), x)",
+                "integrate(256**2 * ((1 - x)**2 - (b**2 / 256^2)), x)",
+                "integrate((256**2 * (1 - 2x + x**2) - b**2), x)"
+              ],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

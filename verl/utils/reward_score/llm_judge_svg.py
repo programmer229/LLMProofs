@@ -37,176 +37,107 @@ def compute_score(solutions_batch,
     print("Using the SVG compute score function.")
     
     system_prompt = "You are an expert at marking SVG image generation."
-    prompt_template = """
+    prompt_template = """Attached is an SVG image. Follow the rubric below to score the SVG image:
 
-    Attached is an SVG image. Follow the following rubric to score the SVG image:
+### Detailed Rubric (0–50 Points)
 
-Detailed Rubric (0–100 Points)
+#### **Category 1: Structural Validity & Syntax (0–10 points)**  
+0–2:  
+- The SVG is broken, with missing or invalid tags.  
+- Does not render properly due to syntax errors.  
 
-Category 1: Structural Validity & Syntax (0–10 points)
-0–2:
-- The SVG is broken, with missing or invalid tags.
-- Does not render properly due to syntax errors.
-3–4:
-- Some minor syntax issues, but the image mostly renders.
-- Some missing closing tags or incorrect attributes.
-5–6:
-- Properly structured, though some redundant or inefficient code is present.
-- The image is mostly functional.
-7–8:
-- Fully valid SVG structure with clean syntax.
-- Well-formed and adheres to SVG specifications.
-9–10:
-- Highly optimized, well-structured, and cleanly formatted.
-- Follows best practices for SVG syntax with no unnecessary elements.
+3–4:  
+- Some minor syntax issues, but the image mostly renders.  
+- Some missing closing tags or incorrect attributes.  
 
-Category 2: Visual Aesthetics & Design Quality (0–10 points)
-0–2:
-- Image is visually unappealing or lacks coherence.
-- Poor use of colors, shapes, and alignment.
-3–4:
-- Basic design elements are present but lack refinement.
-- Poor spacing, alignment, or color choices.
-5–6:
-- Visually acceptable but could use better balance or composition.
-- Colors and elements are somewhat harmonious.
-7–8:
-- Well-designed, with attention to spacing, colors, and composition.
-- Elements are arranged aesthetically and work well together.
-9–10:
-- Exceptional design quality with a strong sense of aesthetics.
-- Colors, balance, and layout create a visually pleasing and professional image.
+5–6:  
+- Properly structured, though some redundant or inefficient code is present.  
+- The image is mostly functional.  
 
-Category 3: Complexity & Detail (0–10 points)
-0–2:
-- Too simple, lacking meaningful detail.
-- Appears unfinished or overly minimal.
-3–4:
-- Some effort at detail, but too basic or lacking refinement.
-5–6:
-- Moderate level of detail; visually interesting but not intricate.
-7–8:
-- Rich in detail with carefully designed elements.
-- Clearly goes beyond basic shapes and adds depth.
-9–10:
-- Highly intricate with exceptional attention to detail.
-- Subtle touches make the image feel polished and sophisticated.
+7–8:  
+- Fully valid SVG structure with clean syntax.  
+- Well-formed and adheres to SVG specifications.  
 
-Category 4: Efficient Use of SVG Features (0–10 points)
-0–2:
-- Inefficient or redundant code (e.g., unnecessary paths, overuse of inline styles).
-- Poorly structured elements, using raster-like techniques instead of vector features.
-3–4:
-- Some optimization but excessive use of unnecessary groups or redundant attributes.
-5–6:
-- Reasonably optimized, though there is room for improvement.
-- Uses some SVG features like `defs`, `use`, or `path` efficiently.
-7–8:
-- Well-optimized, using reusable elements and proper structuring.
-- Avoids unnecessary duplication or excessive markup.
-9–10:
-- Highly efficient and elegant use of SVG features.
-- Uses `defs`, `symbols`, `gradients`, `filters`, or `clipPath` optimally.
+9–10:  
+- Highly optimized, well-structured, and cleanly formatted.  
+- Follows best practices for SVG syntax with no unnecessary elements.  
 
-Category 5: Scalability & Resolution Independence (0–10 points)
-0–2:
-- The image scales poorly and loses quality at different sizes.
-- Elements become unreadable or distorted when resized.
-3–4:
-- Some elements scale well, but parts may break or look awkward.
-5–6:
-- Generally scalable, though some minor issues at extreme sizes.
-7–8:
-- Works well across different sizes without distortion.
-- Proper use of `viewBox` and responsive design elements.
-9–10:
-- Perfectly scalable with no loss of quality.
-- Fully responsive and adapts cleanly at any resolution.
+---
 
-Category 6: Use of Colors & Gradients (0–10 points)
-0–2:
-- Colors are clashing, poorly chosen, or completely absent.
-- No meaningful use of shading or gradients.
-3–4:
-- Basic color selection but lacks refinement or balance.
-5–6:
-- Acceptable color choices with some attention to contrast.
-7–8:
-- Thoughtful and appealing color selection.
-- Smooth gradients or shading add depth.
-9–10:
-- Masterful use of color, creating depth, contrast, and harmony.
-- Subtle gradients, shadows, or highlights enhance the visual appeal.
+#### **Category 2: Visual Aesthetics & Design Quality (0–10 points)**  
+0–2:  
+- Image is visually unappealing or lacks coherence.  
+- Poor use of colors, shapes, and alignment.  
 
-Category 7: Use of Paths & Shapes (0–10 points)
-0–2:
-- Poorly constructed paths and shapes.
-- Over-reliance on basic primitives without refinement.
-3–4:
-- Some structured paths, but lacks smoothness or precision.
-5–6:
-- Good use of paths and curves, though some inefficiencies.
-7–8:
-- Excellent use of vector paths with smooth, clean lines.
-- Shapes are well-formed and purposeful.
-9–10:
-- Masterful use of `path` elements, Bezier curves, and complex vector techniques.
-- Every shape and stroke is intentional and refined.
+3–4:  
+- Basic design elements are present but lack refinement.  
+- Poor spacing, alignment, or color choices.  
 
-Category 8: Animation & Interactivity (0–10 points)
-0–2:
-- No animation or interactivity where expected.
-- If animation is present, it is broken or choppy.
-3–4:
-- Some basic animation, but it is unpolished or inconsistent.
-5–6:
-- Functional animations but could be smoother or more engaging.
-7–8:
-- Well-executed animation with smooth transitions.
-- Meaningful interactivity adds to the design.
-9–10:
-- Outstanding use of animation and interactivity.
-- Uses `animate`, `SMIL`, or CSS animations effectively.
+5–6:  
+- Visually acceptable but could use better balance or composition.  
+- Colors and elements are somewhat harmonious.  
 
-Category 9: Faithfulness to Prompt (0–10 points)
-0–2:
-- Image does not resemble what was requested.
-- Key elements are missing or completely inaccurate.
-3–4:
-- Some aspects match the prompt, but major features are incorrect.
-5–6:
-- Moderately faithful to the prompt; most elements are present but may be misinterpreted.
-7–8:
-- Strong alignment with the prompt, with only minor deviations.
-- Includes most requested details with reasonable accuracy.
-9–10:
-- Perfectly captures the intent and details of the prompt.
-- High accuracy in representing requested elements, style, and composition.
+7–8:  
+- Well-designed, with attention to spacing, colors, and composition.  
+- Elements are arranged aesthetically and work well together.  
 
-Category 10: Overall Creativity & Originality (0–10 points)
-0–2:
-- Generic, unoriginal, or copied design.
-- Lacks uniqueness or creativity.
-3–4:
-- Some originality but relies on common templates or styles.
-5–6:
-- Moderately unique; shows an attempt at creative expression.
-7–8:
-- Strong originality with a distinct artistic voice.
-9–10:
-- Exceptionally creative and original.
-- The SVG stands out as a unique, memorable work.
+9–10:  
+- Exceptional design quality with a strong sense of aesthetics.  
+- Colors, balance, and layout create a visually pleasing and professional image.  
+
+---
+
+#### **Category 3: Complexity & Detail (0–10 points)**  
+0–2:  
+- Too simple, lacking meaningful detail.  
+- Appears unfinished or overly minimal.  
+
+3–4:  
+- Some effort at detail, but too basic or lacking refinement.  
+
+5–6:  
+- Moderate level of detail; visually interesting but not intricate.  
+
+7–8:  
+- Rich in detail with carefully designed elements.  
+- Clearly goes beyond basic shapes and adds depth.  
+
+9–10:  
+- Highly intricate with exceptional attention to detail.  
+- Subtle touches make the image feel polished and sophisticated.  
+
+---
+
+#### **Category 4: Faithfulness to Prompt (0–20 points, weighted 2x)**  
+0–4:  
+- Image does not resemble what was requested.  
+- Key elements are missing or completely inaccurate.  
+
+5–8:  
+- Some aspects match the prompt, but major features are incorrect.  
+
+9–12:  
+- Moderately faithful to the prompt; most elements are present but may be misinterpreted.  
+
+13–16:  
+- Strong alignment with the prompt, with only minor deviations.  
+- Includes most requested details with reasonable accuracy.  
+
+17–20:  
+- Perfectly captures the intent and details of the prompt.  
+- High accuracy in representing requested elements, style, and composition.  
+
+---
 
 Scoring & Guidelines
-Each of the 10 categories is worth up to 10 points, for a total of 0–100 possible points.
-Use the descriptors in each category to choose an appropriate integer score from 0 to 10 (no half points).
-Sum the category scores for a total mark out of 100.
+Each of the 10 categories is worth up to 10 points, for a total of 0–50 possible points.
+Use the descriptors in each category to choose an appropriate integer score from 0 to 10 or 20 (no half points).
+Sum the category scores for a total mark out of 50.
 
-Because this is a high-standard evaluation, scores above 90 should be exceedingly rare, reserved for exceptionally well-crafted, near-professional SVGs.
+Because this is a high-standard evaluation, scores above 40 should be exceedingly rare, reserved for exceptionally well-crafted, near-professional SVGs.
 
-Output your score in this exact format: 
-<JUDGE_SCORE>SCORE</JUDGE_SCORE>
-"""
+Please first reason about your score, and then output your score in this exact format: 
+<JUDGE_SCORE>SCORE</JUDGE_SCORE>"""
 
 
     extracted_solutions = [extract_candidate_solution(sol) for sol in solutions_batch]
@@ -217,8 +148,7 @@ Output your score in this exact format:
     valid_base64_svg_solutions = [sol for sol in base64_svg_solutions if sol != -1]
     valid_svg_indices = [i for i, sol in enumerate(base64_svg_solutions) if sol != -1]
 
-    prompts = [prompt_template]*len(base64_svg_solutions)
-    breakpoint()
+    prompts = [prompt_template]*len(valid_base64_svg_solutions)
     assert len(prompts) == len(valid_base64_svg_solutions), "Prompts and valid_base64_svg_solutions must be the same length."
 
     ############################################################################
@@ -229,7 +159,7 @@ Output your score in this exact format:
     async_reward = False # We want to use the synchronous reward
     api_model = "gpt-4o-mini-2024-07-18"
     client_service = "openai"
-    max_tokens = 2000
+    max_tokens = 1000
     temperature = 0.7
 
     try:
@@ -265,7 +195,7 @@ Output your score in this exact format:
         print(judge_responses[idx])
         print("-" * 80)
 
-    judge_scores = [extract_judge_score(response) for response in judge_responses]
+    judge_scores = [extract_judge_score(response)/50 for response in judge_responses]
     
     # Place the judge scores back in the right indices in total_scores according to the valid_svg_indices, and set the rest to 0
     total_scores = [0]*len(solutions_batch)
@@ -280,17 +210,16 @@ Output your score in this exact format:
     ################### STEP 5: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini"
-
+    extra_logs_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini2"
 
     logged_judge_responses = ["Did not call judge"]*len(solutions_batch)
     for i, idx in enumerate(valid_svg_indices):
         logged_judge_responses[idx] = judge_responses[i]
 
     print(f"Valid SVG indices: {valid_svg_indices}")
+    print(f"len valid svg indices: {len(valid_svg_indices)}")
     print(f"Total scores: {total_scores}")
-    ray.shutdown()
-    sys.exit()
+    print(f"len total scores: {len(total_scores)}")
 
     # Create dictionary mapping question IDs to details
     question_details = {}
