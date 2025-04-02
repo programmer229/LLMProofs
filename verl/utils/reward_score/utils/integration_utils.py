@@ -1,5 +1,5 @@
 import re
-
+import sympy as sp
 def extract_integral(ground_truth: str) -> str:
     return ground_truth[10:-4]
 

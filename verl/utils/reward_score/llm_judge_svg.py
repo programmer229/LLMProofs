@@ -105,7 +105,6 @@ def compute_score(solutions_batch,
 9–10:  
 - Highly intricate with exceptional attention to detail.  
 - Subtle touches make the image feel polished and sophisticated.  
-
 ---
 
 #### **Category 4: Faithfulness to Prompt (0–20 points, weighted 2x)**  
@@ -126,7 +125,6 @@ def compute_score(solutions_batch,
 17–20:  
 - Perfectly captures the intent and details of the prompt.  
 - High accuracy in representing requested elements, style, and composition.  
-
 ---
 
 Scoring & Guidelines
@@ -157,8 +155,8 @@ Please first reason about your score, and then output your score in this exact f
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "gpt-4o-mini-2024-07-18"
-    client_service = "openai"
+    api_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
+    client_service = "together"
     max_tokens = 1000
     temperature = 0.7
 
@@ -210,7 +208,7 @@ Please first reason about your score, and then output your score in this exact f
     ################### STEP 5: LOGGING EXTRA METRICS #######################
     ############################################################################
 
-    extra_logs_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini2"
+    extra_logs_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/llama3.2_3b_svgbasic"
 
     logged_judge_responses = ["Did not call judge"]*len(solutions_batch)
     for i, idx in enumerate(valid_svg_indices):
