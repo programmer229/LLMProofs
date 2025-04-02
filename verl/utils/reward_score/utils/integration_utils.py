@@ -79,5 +79,5 @@ def sympy_correct_formatting(solution: str) -> bool:
     except SyntaxError:
         return False
     except Exception:
-        return True
+        return False
     return True
