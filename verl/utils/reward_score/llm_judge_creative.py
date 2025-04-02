@@ -4,7 +4,7 @@ Keep in mind that this reward function takes in a batch of trajectories and retu
 the standard compute_score functions verl provies which take in a single solution and ground truth and return a single score.
 """
 
-from verl.utils.reward_score.llm_judge_base import judge
+from verl.utils.reward_score.utils.llm_judge_base import judge
 import re, torch, os, json
 import random, sys
 from verl.utils.reward_score.integration_numeric import compute_score as compute_score_numeric
