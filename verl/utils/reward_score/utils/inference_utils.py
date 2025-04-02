@@ -113,17 +113,39 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
 
     if client_service == "together":
         # If the client object has been setup
-        print(f"Generating text with Together model {model}")
-        response = client.chat.completions.create(
-                model=model,
-                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
-                max_tokens=max_tokens,
-                temperature=temperature
-            )
-        print(f"Received response")
-        
-        content = response.choices[0].message.content
-        return content
+        if png_base64_image is None:
+            print(f"Generating text with Together model {model}")
+            response = client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+            print(f"Received response")
+            
+            content = response.choices[0].message.content
+            return content
+        else:
+            print(f"Generating text with image with Together model {model}")
+            response = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": system_prompt}, 
+                        {
+                            "role": "user", 
+                            "content": [
+                                {"type": "text", "text": prompt},
+                                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{png_base64_image}"}}
+                            ]
+                        }
+                    ],
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+            print(f"Received response")
+            
+            content = response.choices[0].message.content
+            return content
 
     # Anthropic
     if client_service == "anthropic":
@@ -148,19 +170,34 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
         return await run_anthropic()
 
 async def run_prompts(client_service, model, system_prompt, prompts, max_tokens, temperature, png_base64_images = None):
-    tasks = [
-        generate_text(
-            client_service=client_service,
-            model=model, 
-            system_prompt=system_prompt,
-            prompt=prompt,
-            png_base64_image=png_base64_image,
-            max_tokens=max_tokens,
-            temperature=temperature
-        ) for (prompt, png_base64_image) in zip(prompts, png_base64_images)
-    ]
-    return_texts = await asyncio.gather(*tasks)
-    return return_texts
+    
+    if png_base64_images is None:
+        tasks = [
+            generate_text(
+                client_service=client_service,
+                model=model, 
+                system_prompt=system_prompt,
+                prompt=prompt,
+                max_tokens=max_tokens,
+                temperature=temperature
+            ) for prompt in prompts
+        ]
+        return_texts = await asyncio.gather(*tasks)
+        return return_texts
+    else:
+        tasks = [
+            generate_text(
+                client_service=client_service,
+                model=model, 
+                system_prompt=system_prompt,
+                prompt=prompt,
+                png_base64_image=png_base64_image,
+                max_tokens=max_tokens,
+                temperature=temperature
+            ) for (prompt, png_base64_image) in zip(prompts, png_base64_images)
+        ]
+        return_texts = await asyncio.gather(*tasks)
+        return return_texts
 
 if __name__ == "__main__":
     client_service = "together"
