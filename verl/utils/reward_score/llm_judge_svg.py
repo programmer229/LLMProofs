@@ -38,9 +38,31 @@ def compute_score(solutions_batch,
     
     system_prompt = "You are an expert at marking SVG image generation."
     prompt_template = """Attached is an SVG image. Follow the rubric below to score the SVG image:
+    prompt_template = """Attached is an SVG image. Follow the rubric below to score the SVG image:
 
 ### Detailed Rubric (0–50 Points)
+### Detailed Rubric (0–50 Points)
 
+#### **Category 1: Structural Validity & Syntax (0–10 points)**  
+0–2:  
+- The SVG is broken, with missing or invalid tags.  
+- Does not render properly due to syntax errors.  
+
+3–4:  
+- Some minor syntax issues, but the image mostly renders.  
+- Some missing closing tags or incorrect attributes.  
+
+5–6:  
+- Properly structured, though some redundant or inefficient code is present.  
+- The image is mostly functional.  
+
+7–8:  
+- Fully valid SVG structure with clean syntax.  
+- Well-formed and adheres to SVG specifications.  
+
+9–10:  
+- Highly optimized, well-structured, and cleanly formatted.  
+- Follows best practices for SVG syntax with no unnecessary elements.  
 #### **Category 1: Structural Validity & Syntax (0–10 points)**  
 0–2:  
 - The SVG is broken, with missing or invalid tags.  
@@ -84,7 +106,49 @@ def compute_score(solutions_batch,
 9–10:  
 - Exceptional design quality with a strong sense of aesthetics.  
 - Colors, balance, and layout create a visually pleasing and professional image.  
+---
 
+#### **Category 2: Visual Aesthetics & Design Quality (0–10 points)**  
+0–2:  
+- Image is visually unappealing or lacks coherence.  
+- Poor use of colors, shapes, and alignment.  
+
+3–4:  
+- Basic design elements are present but lack refinement.  
+- Poor spacing, alignment, or color choices.  
+
+5–6:  
+- Visually acceptable but could use better balance or composition.  
+- Colors and elements are somewhat harmonious.  
+
+7–8:  
+- Well-designed, with attention to spacing, colors, and composition.  
+- Elements are arranged aesthetically and work well together.  
+
+9–10:  
+- Exceptional design quality with a strong sense of aesthetics.  
+- Colors, balance, and layout create a visually pleasing and professional image.  
+
+---
+
+#### **Category 3: Complexity & Detail (0–10 points)**  
+0–2:  
+- Too simple, lacking meaningful detail.  
+- Appears unfinished or overly minimal.  
+
+3–4:  
+- Some effort at detail, but too basic or lacking refinement.  
+
+5–6:  
+- Moderate level of detail; visually interesting but not intricate.  
+
+7–8:  
+- Rich in detail with carefully designed elements.  
+- Clearly goes beyond basic shapes and adds depth.  
+
+9–10:  
+- Highly intricate with exceptional attention to detail.  
+- Subtle touches make the image feel polished and sophisticated.  
 ---
 
 #### **Category 3: Complexity & Detail (0–10 points)**  
@@ -126,16 +190,43 @@ def compute_score(solutions_batch,
 17–20:  
 - Perfectly captures the intent and details of the prompt.  
 - High accuracy in representing requested elements, style, and composition.  
+---
 
+#### **Category 4: Faithfulness to Prompt (0–20 points, weighted 2x)**  
+0–4:  
+- Image does not resemble what was requested.  
+- Key elements are missing or completely inaccurate.  
+
+5–8:  
+- Some aspects match the prompt, but major features are incorrect.  
+
+9–12:  
+- Moderately faithful to the prompt; most elements are present but may be misinterpreted.  
+
+13–16:  
+- Strong alignment with the prompt, with only minor deviations.  
+- Includes most requested details with reasonable accuracy.  
+
+17–20:  
+- Perfectly captures the intent and details of the prompt.  
+- High accuracy in representing requested elements, style, and composition.  
+
+---
 ---
 
 Scoring & Guidelines
 Each of the 10 categories is worth up to 10 points, for a total of 0–50 possible points.
 Use the descriptors in each category to choose an appropriate integer score from 0 to 10 or 20 (no half points).
 Sum the category scores for a total mark out of 50.
+Each of the 10 categories is worth up to 10 points, for a total of 0–50 possible points.
+Use the descriptors in each category to choose an appropriate integer score from 0 to 10 or 20 (no half points).
+Sum the category scores for a total mark out of 50.
 
 Because this is a high-standard evaluation, scores above 40 should be exceedingly rare, reserved for exceptionally well-crafted, near-professional SVGs.
+Because this is a high-standard evaluation, scores above 40 should be exceedingly rare, reserved for exceptionally well-crafted, near-professional SVGs.
 
+Please first reason about your score, and then output your score in this exact format: 
+<JUDGE_SCORE>SCORE</JUDGE_SCORE>"""
 Please first reason about your score, and then output your score in this exact format: 
 <JUDGE_SCORE>SCORE</JUDGE_SCORE>"""
 
@@ -148,6 +239,7 @@ Please first reason about your score, and then output your score in this exact f
     valid_base64_svg_solutions = [sol for sol in base64_svg_solutions if sol != -1]
     valid_svg_indices = [i for i, sol in enumerate(base64_svg_solutions) if sol != -1]
 
+    prompts = [prompt_template]*len(valid_base64_svg_solutions)
     prompts = [prompt_template]*len(valid_base64_svg_solutions)
     assert len(prompts) == len(valid_base64_svg_solutions), "Prompts and valid_base64_svg_solutions must be the same length."
 
@@ -196,6 +288,7 @@ Please first reason about your score, and then output your score in this exact f
         print("-" * 80)
 
     judge_scores = [extract_judge_score(response)/50 for response in judge_responses]
+    judge_scores = [extract_judge_score(response)/50 for response in judge_responses]
     
     # Place the judge scores back in the right indices in total_scores according to the valid_svg_indices, and set the rest to 0
     total_scores = [0]*len(solutions_batch)
@@ -218,7 +311,9 @@ Please first reason about your score, and then output your score in this exact f
 
     print(f"Valid SVG indices: {valid_svg_indices}")
     print(f"len valid svg indices: {len(valid_svg_indices)}")
+    print(f"len valid svg indices: {len(valid_svg_indices)}")
     print(f"Total scores: {total_scores}")
+    print(f"len total scores: {len(total_scores)}")
     print(f"len total scores: {len(total_scores)}")
 
     # Create dictionary mapping question IDs to details
