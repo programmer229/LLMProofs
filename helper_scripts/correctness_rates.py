@@ -22,7 +22,6 @@ def compute_rates(question_logs_file):
             if q_num.startswith('q'):  # Only process question entries
                 question = batch[q_num]
                 if question["gold_score"] == 0.0:
-                if question["gold_score"] == 0.0:
                     continue
                 batch_size += 1
                 if (question['extracted_judge_score'] == 0) and (question['gold_score'] > 0.5):
@@ -107,8 +106,8 @@ def plot_correctness_metrics(correctness_rates, file_path):
     plt.savefig(os.path.join(os.path.dirname(file_path), 'fn_rates.png'))
 
 if __name__ == "__main__":
-    question_logs_file = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini/question_logs.json"
-    plot_file_path = "/home/ubuntu/o1-replication-central/CustomTinyZero/checkpoints/svg_judge_experiments/qwen2.5_7b_svg_gpt4o_mini/correctness_metrics.png"
+    question_logs_file = "/home/ubuntu/o1-replication-sydney/CustomTinyZero/checkpoints/llmjudge_experiments/r1_distill_7b_ladder_nosympy/question_logs.json"
+    plot_file_path = "/home/ubuntu/o1-replication-sydney/CustomTinyZero/checkpoints/llmjudge_experiments/r1_distill_7b_ladder_nosympy/correctness_metrics.png"
     
     correctness_rates = compute_rates(question_logs_file)
     plot_correctness_metrics(correctness_rates, plot_file_path)

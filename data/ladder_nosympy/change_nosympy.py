@@ -36,7 +36,7 @@ def convert_json_to_parquet(input_json_path, output_parquet_path, output_json_pa
 
 # Define paths
 current_dir = os.path.dirname(os.path.abspath(__file__))
-old_dir = "/home/ubuntu/o1-replication-useast/CustomTinyZero/data/ladder_sympy"
+old_dir = "/home/ubuntu/o1-replication-sydney/CustomTinyZero/data/ladder_sympy"
 
 train_json_path = os.path.join(old_dir, 'train.json')
 test_json_path = os.path.join(old_dir, 'test.json')
