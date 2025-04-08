@@ -200,12 +200,12 @@ async def run_prompts(client_service, model, system_prompt, prompts, max_tokens,
         return return_texts
 
 if __name__ == "__main__":
-    client_service = "openai"
-    model = "gpt-4o-2024-11-20"
+    client_service = "together"
+    model = "akiray1/deepseek-ai-DeepSeek-R1-Distill-Qwen-7B"
     system_prompt = "You are a helpful assistant."
     base_prompt = "Please write me a short story"
-    base_prompt_8k = base_prompt*1000
-    prompts = [base_prompt_8k]*200
+    base_prompt_8k = base_prompt
+    prompts = [base_prompt_8k]*2
     
-    return_texts = asyncio.run(run_prompts(client_service=client_service, model=model, system_prompt=system_prompt, prompts=prompts, max_tokens=4000, temperature=0.5))
+    return_texts = asyncio.run(run_prompts(client_service=client_service, model=model, system_prompt=system_prompt, prompts=prompts, max_tokens=100, temperature=0.5))
     print(return_texts)
