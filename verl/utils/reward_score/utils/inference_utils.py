@@ -5,7 +5,7 @@ import aiohttp
 import json
 from together import AsyncTogether
 from typing import Optional, Dict, Any
-from openai import AsyncOpenAI
+from openai import AsyncOpenAI, OpenAI
 import asyncio
 import requests
 from huggingface_hub import InferenceClient
@@ -32,8 +32,15 @@ def get_inference_client(client_service: str):
     if client_service == "anthropic":
         client = anthropic.Anthropic(api_key=anthropic_api_key)
         return client
+    
+    # Check if the client is one of our judge servers
+    if client_service.startswith("simplejudge"):
+        TOKEN = "EMPTY"
+        ip_address = client_service.split("-")[1]
+        client = AsyncOpenAI(base_url=f"http://{ip_address}:8000", api_key=TOKEN, max_retries=0)
+        return client
     else:
-        print("Please specify a valid client service. The available options are: 'deepinfra', 'openai', 'anthropic'.")
+        print("Please specify a valid client service. The available options are: 'deepinfra', 'openai', 'anthropic', 'simplejudge-<ip_address>'.")
         exit()
 
 async def generate_text(client_service: str, model: str, system_prompt : str, prompt: str, png_base64_image: str = None, max_tokens: int = 8000, temperature: float = 0) -> str:
@@ -78,8 +85,17 @@ async def generate_text(client_service: str, model: str, system_prompt : str, pr
 
     # Perform the inference on the returned client object:
 
+    if client_service.startswith("simplejudge"):
+        response = await client.chat.completions.create(
+                model=model,
+                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
+                max_tokens=max_tokens,
+                temperature=temperature
+        )
+        return response.response["choices"][0]["message"]["content"].strip()
+
     # OpenAI or DeepInfra
-    if client_service == "openai":
+    if (client_service == "openai"):
      
         # If the client object has been setup
         if png_base64_image is None:
@@ -200,8 +216,8 @@ async def run_prompts(client_service, model, system_prompt, prompts, max_tokens,
         return return_texts
 
 if __name__ == "__main__":
-    client_service = "together"
-    model = "akiray1/deepseek-ai-DeepSeek-R1-Distill-Qwen-7B"
+    client_service = "simplejudge-150.136.45.212"
+    model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
     system_prompt = "You are a helpful assistant."
     base_prompt = "Please write me a short story"
     base_prompt_8k = base_prompt
