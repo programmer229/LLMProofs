@@ -41,17 +41,17 @@ This project focuses on advancing mathematical reasoning capabilities in large l
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Actor Model   │    │  Reward Model   │    │   Judge Model   │
+│   Actor Model   │    │  Judge Model    │    │   Reward Model  │
 │                 │    │                 │    │                 │
-│ Generates       │───▶│ Computes        │◀───│ Evaluates       │
-│ Mathematical    │    │ Rewards         │    │ Proof Quality   │
+│ Generates       │───▶│ Evaluate        │◀───│ Calculates      │
+│ Mathematical    │    │ Solution        │    │ Loss            │
 │ Proofs          │    │                 │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
-         ▲                       │                       ▲
-         │                       ▼                       │
+         ▲                                               |
+         │                                               │
          │              ┌─────────────────┐              │
          │              │  PPO Trainer    │              │
-         └──────────────│                 │──────────────┘
+         └──────────────│                 │◀─────────────┘
                         │ Optimizes       │
                         │ Generation      │
                         │ Policy          │
