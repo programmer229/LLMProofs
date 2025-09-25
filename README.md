@@ -25,17 +25,6 @@ This project focuses on advancing mathematical reasoning capabilities in large l
 - **Competition Mathematics**: AIME, IMO, and other mathematical olympiad proof problems
 - **Custom Proof Sets**: Extensible framework for adding new mathematical proof domains
 
-### ⚡ High-Performance Training
-- **Distributed Training**: Multi-GPU support with FSDP and Megatron-LM backends
-- **Efficient Inference**: Integration with vLLM and TGI for fast rollout generation
-- **Flexible Architecture**: Supports various model sizes from 3B to 70B+ parameters
-- **Resource Optimization**: Advanced memory management and gradient checkpointing
-
-### 🔧 Advanced Technical Features
-- **LaTeX Parsing**: Improved mathematical notation processing and validation for proofs
-- **Batch Processing**: Efficient batch evaluation of mathematical proof solutions
-- **Multi-Model Support**: Compatible with various transformer architectures for proof generation
-- **Experiment Tracking**: Integration with Weights & Biases and MLflow for proof training metrics
 
 ## 🏗️ System Architecture
 
@@ -43,14 +32,14 @@ This project focuses on advancing mathematical reasoning capabilities in large l
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Actor Model   │    │  Judge Model    │    │   Reward Model  │
 │                 │    │                 │    │                 │
-│ Generates       │───▶│ Evaluate        │◀───│ Calculates      │
+│ Generates       │───▶│ Evaluate        │-──▶│ Calculates      │
 │ Mathematical    │    │ Solution        │    │ Loss            │
 │ Proofs          │    │                 │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          ▲                                               |
          │                                               │
          │              ┌─────────────────┐              │
-         │              │  PPO Trainer    │              │
+         │              │  GRPO Trainer   │              │
          └──────────────│                 │◀─────────────┘
                         │ Optimizes       │
                         │ Generation      │
@@ -71,7 +60,7 @@ This project focuses on advancing mathematical reasoning capabilities in large l
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd LLMProofs
+   cd LLMProofs/train
    ```
 
 2. **Install dependencies**:
@@ -84,23 +73,6 @@ This project focuses on advancing mathematical reasoning capabilities in large l
    export OPENAI_API_KEY="your-api-key"
    export OPENROUTER_API_KEY="your-openrouter-key"
    ```
-
-### Basic Usage
-
-#### 1. Prepare Mathematical Datasets
-
-Generate training data for integration problems:
-```bash
-python data/create_ladder_sympy.py
-```
-
-Create competition math datasets:
-```bash
-python data/create_competition_math.py
-```
-
-#### 2. Train a Mathematical Proof Model
-
 Run GRPO training on proof datasets:
 ```bash
 bash scripts/proofs_7b_grpo.sh

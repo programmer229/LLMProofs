@@ -3,7 +3,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 DATA_DIR=/home/ubuntu/CustomTinyZero/data/proofs
 BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=Qwen-qwen-9-qwen.2.5-7b.1-olympiad-grpo
+EXPERIMENT_NAME=Qwen7b
 PROJECT_NAME=llmjudge_proofs
 
 #####################################################
@@ -19,11 +19,11 @@ if [ -d "/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_
     # fi
 fi
 
-mkdir -p /home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
+mkdir -p /home/ubuntu/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
 LOG_FILE=/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "/home/ubuntu/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
 
 set -x
 
@@ -34,10 +34,10 @@ python3 -m verl.trainer.main_ppo \
     +judge.model=$BASE_MODEL \
     +judge.location=local \
     +judge.gpus=4 \
-    data.train_batch_size=32 \
+    data.train_batch_size=64 \
     data.val_batch_size=64 \
     data.max_prompt_length=2048 \
-    data.max_response_length=8192 \
+    data.max_response_length=10368 \
     actor_rollout_ref.model.path=$BASE_MODEL \
     actor_rollout_ref.actor.optim.lr=5e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
