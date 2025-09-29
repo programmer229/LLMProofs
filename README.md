@@ -2,7 +2,7 @@
 
 **A specialized RL training framework for teaching language models to generate and self-evaluate mathematical proofs**
 
-LLMProofs is a customized version of the [veRL framework](https://github.com/volcengine/verl) specifically designed for training language models on mathematical proof generation tasks. The system implements a sophisticated agent-judge paradigm where an AI agent generates mathematical proofs and specialized judge models assess their correctness.
+LLMProofs is a customized version of the [veRL framework](https://github.com/volcengine/verl) specifically designed for training language models on mathematical proof generation tasks. The system implements an agent-judge paradigm where an AI agent generates mathematical proofs and a judge models assess their correctness.
 
 ## 🎯 Overview
 
