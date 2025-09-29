@@ -8,22 +8,14 @@ LLMProofs is a customized version of the [veRL framework](https://github.com/vol
 
 This project focuses on advancing mathematical reasoning capabilities in large language models through:
 
-- **Self-Marking Proofs**: An agent produces mathematical proofs and a judge assesses their correctness automatically
-- **LLM-based Evaluation**: Advanced LLM judges that can evaluate mathematical rigor and correctness at IMO (International Mathematical Olympiad) level
-- **Reinforcement Learning Training**: Uses PPO (Proximal Policy Optimization) and GRPO to improve proof generation through reward feedback
-- **Mathematical Proof Focus**: Specializes in formal mathematical proofs across integration, algebra, geometry, and olympiad-level problems
+- **LLM-based Evaluation**: LLM judges that can evaluate mathematical rigor and correctness at IMO (International Mathematical Olympiad) level
+- **Reinforcement Learning Training**: Using GRPO to improve proof generation through reward feedback
 
 ## ✨ Key Features
 
 ### 🤖 Intelligent Mathematical Evaluation
 - **LLM Judge System**: Sophisticated judges that evaluate mathematical proofs for correctness, rigor, and completeness
-- **Multi-Criteria Scoring**: Evaluates proofs based on logical flow, mathematical accuracy, and step-by-step reasoning
 - **Rubric-Based Assessment**: Follows structured marking criteria similar to mathematical olympiad grading
-
-### 📊 Mathematical Proof Datasets
-- **Integration Problems**: Symbolic integration proofs with SymPy validation
-- **Competition Mathematics**: AIME, IMO, and other mathematical olympiad proof problems
-- **Custom Proof Sets**: Extensible framework for adding new mathematical proof domains
 
 
 ## 🏗️ System Architecture
@@ -84,13 +76,6 @@ This script will:
 - Evaluate using LLM judges
 - Save checkpoints and logs
 
-#### 3. Monitor Training
-
-Training metrics are automatically logged to Weights & Biases:
-- Mathematical proof generation quality
-- Judge scores and distributions for proof correctness
-- Training loss and convergence
-- Sample proofs and mathematical evaluations
 
 
 ## 🔬 Advanced Configuration
