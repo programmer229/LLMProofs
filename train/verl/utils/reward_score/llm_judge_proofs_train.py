@@ -70,7 +70,7 @@ def extract_candidate_solution(text):
         return match.group(1).strip()
     
     # If neither tag found, return error message
-    return "NO solution provided mark 0"
+    return text
 
 def compute_score(solutions_batch, 
                   ground_truth_batch, 
@@ -117,6 +117,8 @@ with gaps in its arguments should be penalised
 **JUDGE_SCORE Output:**
 - <JUDGE_SCORE>score</JUDGE_SCORE> if CORRECT
 Example: <JUDGE_SCORE>4</JUDGE_SCORE>
+
+You should show your full working out before giving final mark. Walk through each criteria giving reasoning for each before giving mark for each criteria. Then finally give total score
 """
 
     processed_solutions = [extract_candidate_solution(sol) for sol in solutions_batch]
@@ -134,8 +136,8 @@ Example: <JUDGE_SCORE>4</JUDGE_SCORE>
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "deepseek/deepseek-r1-distill-qwen-14b"
-    client_service = "openrouter"
+    api_model = "gpt-4.1-nano"
+    client_service = "openai"
     max_tokens = 32000
     temperature = 0.7
 

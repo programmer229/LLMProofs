@@ -52,25 +52,17 @@ def judge(model: str,  # Either model name or path to model
 def extract_candidate_solution(text):
     """
     Extract everything after </think> tag as the solution.
-    If no </think> tag is found, look for <proof> tag instead.
-    If neither tag is found, return error message.
+    If no </think> tag is found, return the original text.
     """
-    # First look for </think> tag (case insensitive)
+    # Look for </think> tag (case insensitive)
     think_pattern = r'</think>(.*)'
     match = re.search(think_pattern, text, re.DOTALL | re.IGNORECASE)
     
     if match:
         return match.group(1).strip()
-    
-    # If no </think> tag, look for <proof> tag
-    proof_pattern = r'<proof>(.*)'
-    match = re.search(proof_pattern, text, re.DOTALL | re.IGNORECASE)
-    
-    if match:
-        return match.group(1).strip()
-    
-    # If neither tag found, return error message
-    return text
+    else:
+        # If no </think> tag found, return the original text
+        return text.strip()
 
 def compute_score(solutions_batch, 
                   ground_truth_batch, 
@@ -83,7 +75,7 @@ def compute_score(solutions_batch,
     ################### STEP 1: CREATE YOUR PROMPTS ############################
     ############################################################################
     
-    system_prompt = """You are an expert mathematician and a meticulous grader for an International Mathematical Olympiad (IMO) level exam. Your primary task is to mark and assess the provided mathematical solution. You will be given ground truth sample solutions as reference and a marking rubric. You should follow the marking rubric closely marking at a level of rigor. Refer to the ground truth solution to see the level or rigor required for each stage
+    system_prompt = """Think Low. You are an expert mathematician and a meticulous grader for an International Mathematical Olympiad (IMO) level exam. Your primary task is to mark and assess the provided mathematical solution. You will be given ground truth sample solutions as reference and a marking rubric. You should follow the marking rubric closely marking at a level of rigor. Refer to the ground truth solution to see the level or rigor required for each stage
 """
 
     prompt_template = """
@@ -125,9 +117,9 @@ Example: <JUDGE_SCORE>4</JUDGE_SCORE>
     
     local_model = False # We want to use the API model
     async_reward = False # We want to use the synchronous reward
-    api_model = "gpt-5-mini"
+    api_model = "gpt5-nano"
     client_service = "openai"
-    max_tokens = 32000
+    max_tokens = 16000
     temperature = 0.7
 
     print("THIS IS THE MODEL", async_reward)
@@ -144,7 +136,7 @@ Example: <JUDGE_SCORE>4</JUDGE_SCORE>
                         max_tokens=max_tokens,         # consider something smaller than 16000 unless your model supports it
                         temperature=temperature,
                         # png_base64_images=...,        # only if you actually use images
-                        max_workers=64,                  # tune for throughput
+                        max_workers=8,                  # tune for throughput
                         timeout=60,                     # per-request
                     )
     

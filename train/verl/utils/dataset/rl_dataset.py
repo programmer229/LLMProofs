@@ -123,8 +123,11 @@ class RLHFDataset(Dataset):
         """
         row_dict = self.dataframe.iloc[item].to_dict()
 
+            
         chat = row_dict.pop(self.prompt_key)
 
+        
+        # print("THIS IS THE CHAT", chat)
         prompt_with_chat_template = chat[0]['content']
         # prompt_with_chat_template = chat
 
