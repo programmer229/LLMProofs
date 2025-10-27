@@ -15,6 +15,7 @@
 Note that we don't combine the main with ray_trainer as ray_trainer is used by other main.
 """
 
+import inspect
 from verl import DataProto
 import torch
 from verl.utils.reward_score import gsm8k, multiply, countdown, chess, arc, dial_length, integration, conf, integration_numeric, llm_judge_integration, llm_judge_integration_sympy, llm_judge_svg, llm_judge_creative
@@ -133,6 +134,8 @@ class RewardManager():
             solutions_batch = []
             ground_truth_batch = []
             valid_response_lengths = []
+            extra_info_batch = []
+            reward_model_batch = []
 
             for i in range(len(data)):
                 data_item = data[i]  # DataProtoItem
@@ -156,6 +159,8 @@ class RewardManager():
                 solutions_batch.append(sequences_str)
                 ground_truth_batch.append(ground_truth)
                 valid_response_lengths.append(valid_response_length)
+                extra_info_batch.append(data_item.non_tensor_batch.get('extra_info', {}))
+                reward_model_batch.append(data_item.non_tensor_batch.get('reward_model', {}))
 
                 if data_source not in already_print_data_sources:
                     already_print_data_sources[data_source] = 0
@@ -166,7 +171,20 @@ class RewardManager():
                 
             compute_score_fn = _select_rm_score_fn(data_source)
 
-            reward_tensor = compute_score_fn(solutions_batch=solutions_batch, ground_truth_batch=ground_truth_batch, valid_response_lengths=valid_response_lengths, max_response_length=self.max_response_length, tokenizer=self.tokenizer, reward_tensor=reward_tensor)
+            compute_kwargs = dict(
+                solutions_batch=solutions_batch,
+                ground_truth_batch=ground_truth_batch,
+                valid_response_lengths=valid_response_lengths,
+                max_response_length=self.max_response_length,
+                tokenizer=self.tokenizer,
+                reward_tensor=reward_tensor,
+            )
+            if 'extra_info_batch' in inspect.signature(compute_score_fn).parameters:
+                compute_kwargs['extra_info_batch'] = extra_info_batch
+            if 'reward_model_batch' in inspect.signature(compute_score_fn).parameters:
+                compute_kwargs['reward_model_batch'] = reward_model_batch
+
+            reward_tensor = compute_score_fn(**compute_kwargs)
 
             return reward_tensor
 
