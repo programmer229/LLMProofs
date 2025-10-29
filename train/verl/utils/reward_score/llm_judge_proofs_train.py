@@ -302,6 +302,8 @@ Return only a JSON object with this structure:
             max_workers=64,
             timeout=60,
         )
+        for debug_idx, response in enumerate(judge_responses[:3]):
+            print(f"[llm_judge_proofs_train] sample judge response {debug_idx}:\n{response}\n{'-' * 40}")
 
     fallback_groups = 0
 
