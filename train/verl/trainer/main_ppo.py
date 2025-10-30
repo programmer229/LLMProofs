@@ -72,10 +72,11 @@ class RewardManager():
     """The reward manager.
     """
 
-    def __init__(self, tokenizer, num_examine, max_response_length) -> None:
+    def __init__(self, tokenizer, num_examine, max_response_length, reward_conversion_mode: str = "group_points") -> None:
         self.tokenizer = tokenizer
         self.num_examine = num_examine  # the number of batches of decoded responses to print to the console
         self.max_response_length = max_response_length
+        self.reward_conversion_mode = reward_conversion_mode
 
     def __call__(self, data: DataProto):
         """We will expand this function gradually based on the available datasets"""
@@ -183,6 +184,8 @@ class RewardManager():
                 compute_kwargs['extra_info_batch'] = extra_info_batch
             if 'reward_model_batch' in inspect.signature(compute_score_fn).parameters:
                 compute_kwargs['reward_model_batch'] = reward_model_batch
+            if 'reward_conversion_mode' in inspect.signature(compute_score_fn).parameters:
+                compute_kwargs['reward_conversion_mode'] = self.reward_conversion_mode
 
             reward_tensor = compute_score_fn(**compute_kwargs)
 
@@ -274,10 +277,20 @@ def main_task(config):
     #     model = AutoModelForCausalLM.from_pretrained(config.judge.model)
     #     tokenizer = AutoTokenizer.from_pretrained(config.judge.model)
 
-    reward_fn = RewardManager(tokenizer=tokenizer, num_examine=0, max_response_length=config.data.max_response_length)
+    train_reward_conversion_mode = getattr(config, "train_reward_conversion_mode", "group_points")
+    reward_fn = RewardManager(
+        tokenizer=tokenizer,
+        num_examine=0,
+        max_response_length=config.data.max_response_length,
+        reward_conversion_mode=train_reward_conversion_mode,
+    )
 
     # Note that we always use function-based RM for validation
-    val_reward_fn = RewardManager(tokenizer=tokenizer, num_examine=1, max_response_length=config.data.max_response_length)
+    val_reward_fn = RewardManager(
+        tokenizer=tokenizer,
+        num_examine=1,
+        max_response_length=config.data.max_response_length,
+    )
 
     resource_pool_manager = ResourcePoolManager(resource_pool_spec=resource_pool_spec, mapping=mapping)
 

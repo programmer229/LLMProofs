@@ -163,6 +163,7 @@ def compute_score(
     tokenizer=None,
     extra_info_batch=None,
     reward_model_batch=None,
+    reward_conversion_mode: str = "group_points",
 ):
     """Compute GRPO rewards via repeated group rankings."""
 
@@ -360,6 +361,7 @@ Return only a JSON object with this structure:
 
     total_reward_sum = 0.0
     num_samples = len(processed_solutions)
+    final_rewards = [0.0 for _ in range(num_samples)]
 
     for idx in range(num_samples):
         reward_history = rewards_by_idx.get(idx, [])
@@ -367,18 +369,32 @@ Return only a JSON object with this structure:
             avg_reward = float(sum(reward_history) / len(reward_history))
         else:
             avg_reward = 0.0
-        reward_tensor[idx, valid_response_lengths[idx] - 1] = avg_reward
-        total_reward_sum += avg_reward
+        final_rewards[idx] = avg_reward
+
+    if reward_conversion_mode == "harmonic_rank":
+        for question_id, indices in grouped_indices.items():
+            if not indices:
+                continue
+            ordered = sorted(
+                indices,
+                key=lambda sample_idx: (-final_rewards[sample_idx], sample_idx),
+            )
+            for rank_position, sample_idx in enumerate(ordered):
+                final_rewards[sample_idx] = 1.0 / float(rank_position + 1)
+
+    for idx in range(num_samples):
+        reward_tensor[idx, valid_response_lengths[idx] - 1] = final_rewards[idx]
+        total_reward_sum += final_rewards[idx]
 
     mean_reward = total_reward_sum / num_samples if num_samples else 0.0
 
     if group_prompts:
         print(
             f"Group reward: prompts={len(group_prompts)}, questions={len(grouped_indices)}, "
-            f"fallback_groups={fallback_groups}, mean_reward={mean_reward:.3f}"
+            f"fallback_groups={fallback_groups}, conversion={reward_conversion_mode}, mean_reward={mean_reward:.3f}"
         )
     else:
-        print(f"Group reward: all solo completions, mean_reward={mean_reward:.3f}")
+        print(f"Group reward: all solo completions, conversion={reward_conversion_mode}, mean_reward={mean_reward:.3f}")
 
     return reward_tensor
 

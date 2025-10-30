@@ -5,6 +5,8 @@ BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
 EXPERIMENT_NAME=Qwen7b
 PROJECT_NAME=llmjudge_proofs
+# Reward conversion: set TRAIN_REWARD_CONVERSION_MODE=harmonic_rank before running for 1, 1/2, 1/3 … scoring.
+TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-group_points}
 
 #####################################################
 
@@ -67,4 +69,6 @@ python3 -m verl.trainer.main_ppo \
     trainer.test_freq=10 \
     trainer.default_hdfs_dir="/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
     trainer.default_local_dir="/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.total_epochs=200 $@ 2>&1 | tee -a $LOG_FILE
+    trainer.total_epochs=200 \
+    train_reward_conversion_mode=$TRAIN_REWARD_CONVERSION_MODE \
+    $@ 2>&1 | tee -a $LOG_FILE
