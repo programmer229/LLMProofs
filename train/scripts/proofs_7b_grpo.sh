@@ -6,7 +6,7 @@ BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 EXPERIMENT_NAME=Qwen7b-disc-rank
 PROJECT_NAME=llmjudge_proofs
 # Reward conversion: set TRAIN_REWARD_CONVERSION_MODE=harmonic_rank before running for 1, 1/2, 1/3 … scoring.
-TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-group_points}
+TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-harmonic_rank}
 
 #####################################################
 

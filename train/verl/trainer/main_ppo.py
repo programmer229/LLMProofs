@@ -278,6 +278,7 @@ def main_task(config):
     #     tokenizer = AutoTokenizer.from_pretrained(config.judge.model)
 
     train_reward_conversion_mode = getattr(config, "train_reward_conversion_mode", "group_points")
+    print(f"[RewardManager] train reward conversion mode: {train_reward_conversion_mode}")
     reward_fn = RewardManager(
         tokenizer=tokenizer,
         num_examine=0,
