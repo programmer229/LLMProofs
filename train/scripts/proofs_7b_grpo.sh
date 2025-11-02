@@ -3,7 +3,7 @@ export VLLM_ATTENTION_BACKEND=XFORMERS
 DATA_DIR=/home/ubuntu/CustomTinyZero/data/proofs
 BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=Qwen7b-disc-rank
+EXPERIMENT_NAME=Qwen7b-squared-rank
 PROJECT_NAME=llmjudge_proofs
 # Reward conversion options:
 #   group_points (default) - average group point schedule
