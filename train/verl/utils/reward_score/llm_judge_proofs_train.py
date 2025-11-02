@@ -381,6 +381,10 @@ Return only a JSON object with this structure:
             )
             for rank_position, sample_idx in enumerate(ordered):
                 final_rewards[sample_idx] = 1.0 / float(rank_position + 1)
+    elif reward_conversion_mode == "squared":
+        for idx in range(num_samples):
+            value = final_rewards[idx]
+            final_rewards[idx] = value * value
 
     for idx in range(num_samples):
         reward_tensor[idx, valid_response_lengths[idx] - 1] = final_rewards[idx]
