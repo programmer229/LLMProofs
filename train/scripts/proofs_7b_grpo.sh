@@ -18,10 +18,6 @@ TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-squared}
 case "$DATASET" in
     creative_writing)
         DATA_DIR=${DATA_DIR:-${DEFAULT_DATA_ROOT}/creative_writing}
-        # fall back to repo-generated dataset if external path not present
-        if [ ! -d "$DATA_DIR" ] && [ -d "${TRAIN_DIR}/data/creative_writing" ]; then
-            DATA_DIR="${TRAIN_DIR}/data/creative_writing"
-        fi
         PROJECT_NAME=${PROJECT_NAME:-llmjudge_creative}
         EXPERIMENT_NAME=${EXPERIMENT_NAME:-CreativeWriting7b-${TRAIN_REWARD_CONVERSION_MODE}}
         TRAIN_SPLIT_FILE=${TRAIN_SPLIT_FILE:-train.parquet}
@@ -40,22 +36,23 @@ case "$DATASET" in
         ;;
 esac
 
-# Auto-generate creative writing data when missing
+# Always (re)generate the creative writing dataset so schema updates propagate
 if [ "$DATASET" = "creative_writing" ]; then
     TRAIN_PATH="$DATA_DIR/$TRAIN_SPLIT_FILE"
     VAL_PATH="$DATA_DIR/$VAL_SPLIT_FILE"
-    if [ ! -f "$TRAIN_PATH" ] || [ ! -f "$VAL_PATH" ]; then
-        STORIES_CSV_CANDIDATE="${TRAIN_DIR}/../stories.csv"
-        if [ -f "$STORIES_CSV_CANDIDATE" ]; then
-            echo "Creative-writing parquet files not found at ${DATA_DIR}; generating from ${STORIES_CSV_CANDIDATE}."
-            mkdir -p "$DATA_DIR"
-            python3 "${TRAIN_DIR}/data/create_creative_writing.py" \
-                --input "$STORIES_CSV_CANDIDATE" \
-                --output "$DATA_DIR"
-        else
-            echo "Missing creative writing dataset at ${DATA_DIR} and no stories.csv found at ${STORIES_CSV_CANDIDATE}."
-        fi
+
+    STORIES_CSV_CANDIDATE="${TRAIN_DIR}/../stories.csv"
+    if [ ! -f "$STORIES_CSV_CANDIDATE" ]; then
+        echo "stories.csv not found at ${STORIES_CSV_CANDIDATE}. Cannot generate creative writing data."
+        exit 1
     fi
+
+    echo "Regenerating creative-writing dataset at ${DATA_DIR} from ${STORIES_CSV_CANDIDATE}."
+    mkdir -p "$DATA_DIR"
+    python3 "${TRAIN_DIR}/data/create_creative_writing.py" \
+        --input "$STORIES_CSV_CANDIDATE" \
+        --output "$DATA_DIR"
+
     if [ ! -f "$TRAIN_PATH" ] || [ ! -f "$VAL_PATH" ]; then
         echo "Expected parquet files not found after generation attempt:"
         echo "  $TRAIN_PATH"
@@ -136,4 +133,4 @@ python3 -m verl.trainer.main_ppo \
     trainer.default_local_dir="$CHECKPOINT_DIR" \
     trainer.total_epochs=200 \
     train_reward_conversion_mode=$TRAIN_REWARD_CONVERSION_MODE \
-    $@ 2>&1 | tee -a $LOG_FILE
+    "$@" 2>&1 | tee -a $LOG_FILE

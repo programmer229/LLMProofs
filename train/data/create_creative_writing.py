@@ -51,8 +51,14 @@ class Sample:
         if self.assignment_genre:
             extra_info["genre"] = self.assignment_genre
 
+        split_key = self.split.lower()
+        if split_key.startswith("train"):
+            data_source = "llm_judge_creative_train"
+        else:
+            data_source = "llm_judge_creative_test"
+
         record = {
-            "data_source": f"llm_judge_creative_{self.split}",
+            "data_source": data_source,
             "prompt": [
                 {
                     "role": "user",
