@@ -40,6 +40,31 @@ case "$DATASET" in
         ;;
 esac
 
+# Auto-generate creative writing data when missing
+if [ "$DATASET" = "creative_writing" ]; then
+    TRAIN_PATH="$DATA_DIR/$TRAIN_SPLIT_FILE"
+    VAL_PATH="$DATA_DIR/$VAL_SPLIT_FILE"
+    if [ ! -f "$TRAIN_PATH" ] || [ ! -f "$VAL_PATH" ]; then
+        STORIES_CSV_CANDIDATE="${TRAIN_DIR}/../stories.csv"
+        if [ -f "$STORIES_CSV_CANDIDATE" ]; then
+            echo "Creative-writing parquet files not found at ${DATA_DIR}; generating from ${STORIES_CSV_CANDIDATE}."
+            mkdir -p "$DATA_DIR"
+            python3 "${TRAIN_DIR}/data/create_creative_writing.py" \
+                --input "$STORIES_CSV_CANDIDATE" \
+                --output "$DATA_DIR"
+        else
+            echo "Missing creative writing dataset at ${DATA_DIR} and no stories.csv found at ${STORIES_CSV_CANDIDATE}."
+        fi
+    fi
+    if [ ! -f "$TRAIN_PATH" ] || [ ! -f "$VAL_PATH" ]; then
+        echo "Expected parquet files not found after generation attempt:"
+        echo "  $TRAIN_PATH"
+        echo "  $VAL_PATH"
+        echo "Set DATA_DIR to an existing dataset or ensure stories.csv is available."
+        exit 1
+    fi
+fi
+
 # Announce configuration
 echo "Running dataset: ${DATASET}"
 echo "Using data directory: ${DATA_DIR}"
