@@ -1,19 +1,56 @@
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
-DATA_DIR=/home/ubuntu/CustomTinyZero/data/proofs
-BASE_MODEL=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TRAIN_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+DEFAULT_DATA_ROOT="/home/ubuntu/CustomTinyZero/data"
+DEFAULT_CHECKPOINT_ROOT="/home/ubuntu/test/CustomTinyZero/checkpoints"
+
+BASE_MODEL=${BASE_MODEL:-deepseek-ai/DeepSeek-R1-Distill-Qwen-7B}
 #BASE_MODEL=/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/verl_intergration/llama3.2_3b_integration/actor/global_step_80
-EXPERIMENT_NAME=Qwen7b-squared-rank
-PROJECT_NAME=llmjudge_proofs
+DATASET=${DATASET:-creative_writing}
+
 # Reward conversion options:
 #   group_points (default) - average group point schedule
 #   harmonic_rank          - apply 1, 1/2, 1/3, ... by global rank per problem
 #   squared                - square the averaged group points
 TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-squared}
 
+case "$DATASET" in
+    creative_writing)
+        DATA_DIR=${DATA_DIR:-${DEFAULT_DATA_ROOT}/creative_writing}
+        # fall back to repo-generated dataset if external path not present
+        if [ ! -d "$DATA_DIR" ] && [ -d "${TRAIN_DIR}/data/creative_writing" ]; then
+            DATA_DIR="${TRAIN_DIR}/data/creative_writing"
+        fi
+        PROJECT_NAME=${PROJECT_NAME:-llmjudge_creative}
+        EXPERIMENT_NAME=${EXPERIMENT_NAME:-CreativeWriting7b-${TRAIN_REWARD_CONVERSION_MODE}}
+        TRAIN_SPLIT_FILE=${TRAIN_SPLIT_FILE:-train.parquet}
+        VAL_SPLIT_FILE=${VAL_SPLIT_FILE:-val.parquet}
+        ;;
+    proofs)
+        DATA_DIR=${DATA_DIR:-${DEFAULT_DATA_ROOT}/proofs}
+        PROJECT_NAME=${PROJECT_NAME:-llmjudge_proofs}
+        EXPERIMENT_NAME=${EXPERIMENT_NAME:-Proofs7b-${TRAIN_REWARD_CONVERSION_MODE}}
+        TRAIN_SPLIT_FILE=${TRAIN_SPLIT_FILE:-train.parquet}
+        VAL_SPLIT_FILE=${VAL_SPLIT_FILE:-test.parquet}
+        ;;
+    *)
+        echo "Unsupported DATASET '${DATASET}'. Supported values: creative_writing, proofs."
+        exit 1
+        ;;
+esac
+
+# Announce configuration
+echo "Running dataset: ${DATASET}"
+echo "Using data directory: ${DATA_DIR}"
+
+# Reward conversion options:
+
 #####################################################
 
-if [ -d "/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" ]; then
+CHECKPOINT_DIR="${DEFAULT_CHECKPOINT_ROOT}/${PROJECT_NAME}/${EXPERIMENT_NAME}"
+
+if [ -d "$CHECKPOINT_DIR" ]; then
     echo "Directory already exists. You might overwrite existing saved models and logs!!!"
     echo "It is recommended to use a different experiment name, unless you are sure this experiment can be overwritten."
     echo "Are you sure you want to run with the current experiment name? (Y/n)"
@@ -24,18 +61,18 @@ if [ -d "/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_
     # fi
 fi
 
-mkdir -p /home/ubuntu/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME
-LOG_FILE=/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/logfile.txt
+mkdir -p "$CHECKPOINT_DIR"
+LOG_FILE="${CHECKPOINT_DIR}/logfile.txt"
 
 # Save a copy of this script to the experiment directory
-cp "$0" "/home/ubuntu/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME/$(basename $0)"
+cp "$0" "${CHECKPOINT_DIR}/$(basename "$0")"
 
 set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$DATA_DIR/train.parquet \
-    data.val_files=$DATA_DIR/test.parquet \
+    data.train_files=$DATA_DIR/$TRAIN_SPLIT_FILE \
+    data.val_files=$DATA_DIR/$VAL_SPLIT_FILE \
     +judge.model=$BASE_MODEL \
     +judge.location=local \
     +judge.gpus=4 \
@@ -70,8 +107,8 @@ python3 -m verl.trainer.main_ppo \
     trainer.nnodes=1 \
     trainer.save_freq=10 \
     trainer.test_freq=10 \
-    trainer.default_hdfs_dir="/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
-    trainer.default_local_dir="/home/ubuntu/test/CustomTinyZero/checkpoints/$PROJECT_NAME/$EXPERIMENT_NAME" \
+    trainer.default_hdfs_dir="$CHECKPOINT_DIR" \
+    trainer.default_local_dir="$CHECKPOINT_DIR" \
     trainer.total_epochs=200 \
     train_reward_conversion_mode=$TRAIN_REWARD_CONVERSION_MODE \
     $@ 2>&1 | tee -a $LOG_FILE

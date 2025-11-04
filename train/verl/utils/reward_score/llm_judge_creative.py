@@ -1,477 +1,408 @@
 """
-Make a copy of this file and modify it for your custom reward function.
-Keep in mind that this reward function takes in a batch of trajectories and returns a tensor of scores, unlike
-the standard compute_score functions verl provies which take in a single solution and ground truth and return a single score.
+Creative-writing reward function backed by an LLM judge.
+
+Compared to the math proof variant, this version:
+  * Uses human-written exemplar stories as the reference "ground truth".
+  * Generates a grading rubric dynamically with an LLM the first time each prompt appears.
+  * Performs group-based ranking (GRPO-style) to obtain relative rewards.
 """
 
-from verl.utils.reward_score.utils.llm_judge_base import judge
-import re, torch, os, json
-import random, sys
-from verl.utils.reward_score.integration_numeric import compute_score as compute_score_numeric
-import sympy as sp
-import logging
+from __future__ import annotations
 
-logger = logging.getLogger(__name__)
+from collections import defaultdict
+import random
+import re
+from typing import Dict, List, Sequence, Tuple
 
-def log_unique(message):
-    if not hasattr(log_unique, 'last_message'):
-        log_unique.last_message = None
-    if message != log_unique.last_message:
-        logger.info(message)
-        log_unique.last_message = message
+from verl.utils.reward_score.utils.judge_sync import run_prompts_sync_pool
 
-def compute_score(solutions_batch, 
-                  ground_truth_batch, 
-                  valid_response_lengths, 
-                  reward_tensor,
-                  max_response_length=None,
-                  tokenizer=None):
 
-    ############################################################################
-    ################### STEP 1: CREATE YOUR PROMPTS ############################
-    ############################################################################
+DEFAULT_GROUP_POINTS: List[float] = [1.0, 0.6, 0.2]
+DEFAULT_GROUP_SIZE: int = 3
+DEFAULT_GROUP_ROUNDS: int = 5
+MAX_REFERENCE_CHARS: int = 2500
+MAX_STORY_PREVIEW_CHARS: int = 2500
 
-    print("Using the right compute score function.")
-    
-    system_prompt = "You are an expert at marking creative writing."
-    prompt_template = """
+_RUBRIC_CACHE: Dict[str, str] = {}
 
-    Please check if the following is a valid creative writing piece:
-    ---
-    {}
-    ---
 
-If it is not valid creative writing (e.g., it is blank, nonsensical, plagiarized verbatim, etc.), output:
-<JUDGE_SCORE>0</JUDGE_SCORE>
+def _points_for_position(position: int, schedule: Sequence[float]) -> float:
+    if 0 <= position < len(schedule):
+        return float(schedule[position])
+    return 0.0
 
-Follow the following rubric to score the creative writing piece:
 
-Detailed Rubric (0–100 Points)
-Category 1: Originality & Inventiveness (0–10 points)
-0–2:
-The work is heavily derivative or cliché.
-Very little new or surprising in the concept, style, or approach.
-Feels like rehashed ideas with minimal personal stamp.
-3–4:
-Some attempts at originality, but the piece relies on common tropes or predictable plot elements.
-Minor sparks of unique imagery or perspective.
-Overall effect still feels quite familiar.
-5–6:
-Moderately original, with clear attempts to develop unique ideas or scenarios.
-Some interesting twists or creative flourishes.
-Certain sections stand out as inventive, though not consistently.
-7–8:
-Strongly inventive and often surprising; the writer's personal vision is evident.
-Elements of the story or poem break new ground or subvert expectations.
-The overall voice, style, or concept is distinct.
-9–10:
-Remarkably original, challenging conventional boundaries.
-The piece stands out as highly creative and distinctive from most contemporary writing.
-A consistent sense of innovation throughout.
-Achieving a 10 here is exceptionally rare.
-Category 2: Depth & Complexity of Themes (0–10 points)
-0–2:
-Themes are absent, trivial, or muddled.
-Writing may be purely surface-level or lack coherence in its core message.
-3–4:
-Themes are present but simplistic or underdeveloped.
-An attempt at deeper issues, but execution is perfunctory or shallow.
-5–6:
-Themes are reasonably clear and somewhat explored.
-Offers more than a surface reading, though insights may remain basic.
-7–8:
-Themes are well-defined and approached with complexity.
-The work encourages readers to consider multiple layers or perspectives.
-Evidence of thoughtful engagement with philosophical, social, or emotional issues.
-9–10:
-Rich thematic tapestry woven with subtlety and nuance.
-Themes resonate profoundly, inviting extended reflection or discussion.
-Writer demonstrates deep insight and sophistication in handling big ideas.
-Category 3: Character Development (0–10 points)
-(For non-narrative forms such as certain types of poetry, "character" can be interpreted broadly as the persona or speaker's voice.)
+def _normalize_extra_info(extra_info: object) -> dict:
+    if hasattr(extra_info, "item"):
+        try:
+            extra_info = extra_info.item()
+        except Exception:
+            pass
+    if isinstance(extra_info, dict):
+        return extra_info
+    return {}
 
-0–2:
-Characters (or persona) feel flat, generic, or inconsistent.
-No meaningful growth, motivation, or backstory.
-3–4:
-Some basic definition of characters, but they remain mostly one-dimensional.
-Partial or inconsistent development that fails to engage the reader deeply.
-5–6:
-Characters have identifiable traits or conflicts.
-The writer attempts to give them arcs or emotional journeys, though not fully realized.
-7–8:
-Characters are significantly developed, with consistent motivations, backgrounds, and internal conflicts.
-They exhibit believable growth or change throughout the piece.
-9–10:
-Characters feel fully alive, with nuanced psychology and layered motivations.
-Their voices or perspectives profoundly shape the narrative or poem.
-Readers can strongly empathize and see genuine transformation or revelation.
-Category 4: Plot / Narrative Arc (0–10 points)
-(For poetry or experimental writing, interpret this as the structural movement or "journey" the piece takes the reader on.)
 
-0–2:
-Little sense of progression; events or ideas are scattered, incoherent, or incomplete.
-3–4:
-A basic beginning, middle, and end exist, but transitions may be choppy or underdeveloped.
-The structure might be muddled or rely on contrivances.
-5–6:
-A coherent arc is present, though it may be somewhat predictable or lack dramatic tension.
-The work demonstrates some structural planning.
-7–8:
-A well-crafted arc, whether linear or experimental, that engages and guides the reader effectively.
-Pacing and transitions generally feel smooth and purposeful.
-9–10:
-Exceptionally cohesive and compelling structure, whether traditional or avant-garde.
-Each segment builds or resonates with the next, maintaining tension or thematic unity.
-The journey feels masterfully orchestrated.
-Category 5: Language & Prose Style (0–10 points)
-0–2:
-Language is frequently awkward, ungrammatical, or unpolished.
-Style is inconsistent or jarring in a way that hinders comprehension.
-3–4:
-Writing is mostly functional but lacks elegance or intentionality in word choice.
-Occasional awkward phrasing or tonal shifts.
-5–6:
-Generally clear and coherent prose; some evidence of stylistic flair.
-Vocabulary and syntax are competent but may not consistently shine.
-7–8:
-Skillful prose that demonstrates strong control of tone, diction, and rhythm.
-Word choice often enhances the work's impact; language is precise and evocative.
-9–10:
-Lush, captivating language with near-professional or professional-level craftsmanship.
-Consistent mastery of voice, style, and rhetorical effect.
-Each sentence or line feels intentional and compelling.
-Category 6: Literary Devices & Techniques (0–10 points)
-0–2:
-Rare or misapplied use of imagery, metaphor, symbolism, or other devices.
-If present, they feel forced or clichéd.
-3–4:
-Some attempts at devices like simile, metaphor, alliteration, etc., but usage is sporadic.
-Devices occasionally enrich the text but often lack refinement.
-5–6:
-Solid use of literary techniques that generally support the narrative or theme.
-Examples of effective imagery or symbolism may appear, though not always consistently.
-7–8:
-Literary devices are well-chosen and enhance depth, creating vivid or meaningful layers.
-Symbols, motifs, or figurative language add complexity without overshadowing clarity.
-9–10:
-Sophisticated, seamless integration of various literary techniques.
-The text is enriched by memorable imagery, resonant symbolism, or subtle figurative language.
-Every device feels purposefully placed, contributing to an immersive or profound experience.
-Category 7: Clarity, Coherence & Flow (0–10 points)
-0–2:
-Disjointed writing that is hard to follow.
-Paragraphs or stanzas show no logical sequence; numerous confusing transitions.
-3–4:
-Basic coherence, but sections may jump abruptly or meander.
-Readers can follow the main idea with effort, but the text feels uneven or messy.
-5–6:
-Generally coherent structure at sentence and paragraph/stanza level.
-Flow is acceptable, though some transitions may be abrupt or repetitive.
-7–8:
-Smooth and logical flow that guides the reader well.
-Paragraphs or stanzas connect effectively, creating a sense of unity.
-9–10:
-Incredibly fluid, polished flow; each sentence or stanza transitions naturally to the next.
-Readers remain continuously engaged, with minimal friction.
-Category 8: Emotional & Intellectual Impact (0–10 points)
-0–2:
-Writing evokes little to no emotional or intellectual response.
-Feels rote or hollow, with minimal resonance.
-3–4:
-Some emotional moments or ideas spark mild interest, but they are fleeting or underexplored.
-The piece tries to engage readers, but the effect is inconsistent.
-5–6:
-Moderately engaging; readers feel something or think critically at certain points.
-With more refinement, it could be deeply affecting.
-7–8:
-Strongly moves or provokes the reader—whether through emotion, thought, or reflection.
-The piece creates a memorable experience.
-9–10:
-Profoundly stirring on an emotional or intellectual level.
-Lingers with the reader after finishing, prompting ongoing reflection or discussion.
-Masterfully crafted to connect with deeper human experiences or big questions.
-Category 9: Integration of Setting & Atmosphere (0–10 points)
-(Even if the setting is minimal or abstract, how well does the writing situate readers in its world/space/mood?)
+def _extract_question_id(extra_info: object, fallback_idx: int) -> str:
+    info_dict = _normalize_extra_info(extra_info)
+    for key in ("question_id", "prompt_id", "id", "assignment_id"):
+        value = info_dict.get(key)
+        if value not in (None, ""):
+            return str(value)
+    split = info_dict.get("split")
+    index = info_dict.get("index")
+    if split not in (None, "") and index not in (None, ""):
+        return f"{split}::{index}"
+    return f"creative_{fallback_idx}"
 
-0–2:
-Setting is absent, confused, or contradictory.
-Atmosphere is flat or unintentional.
-3–4:
-There is a sense of place or environment but it's vague or clichéd.
-Limited sensory details that do not significantly enhance the piece.
-5–6:
-Setting and atmosphere are adequately conveyed and somewhat immersive.
-Basic sensory descriptions are used to ground the reader.
-7–8:
-A well-realized environment or mood that meaningfully supports the narrative or theme.
-Vivid descriptions engage multiple senses.
-9–10:
-The setting or atmosphere feels integral, with meticulous or evocative details.
-The work's mood or sense of place actively shapes readers' emotional and intellectual experience.
-Category 10: Professional Presentation & Polish (0–10 points)
-0–2:
-Numerous distracting errors in grammar, punctuation, or formatting that impede reading.
-Manuscript is unrefined, clearly lacking basic editing.
-3–4:
-Frequent but not overwhelming mechanical issues.
-Writing is understandable but sloppy, suggesting insufficient revision.
-5–6:
-Some minor errors appear, but they do not severely disrupt comprehension.
-The piece could benefit from further proofreading or formatting consistency.
-7–8:
-Well-edited and generally polished; only a few mistakes here and there.
-Formatting is professional and consistent.
-9–10:
-Impeccably proofread; errors are nearly non-existent.
-Professional-level attention to detail in formatting, citations (if needed), and layout.
-Demonstrates high standards typical of a graduate or professional setting.
-Scoring & Guidelines
-Each of the 10 categories is worth up to 10 points, for a total of 0–100 possible points.
-Use the descriptors in each category to choose an appropriate integer score from 0 to 10 (no half points).
-Sum the category scores for a total mark out of 100.
-Because this is a tough graduate-level rubric, achieving scores above 90 should be exceedingly rare, reserved for near-publishable or professional-quality work.
 
-Output your score in this exact format: 
-<JUDGE_SCORE>SCORE</JUDGE_SCORE>
+def _normalize_reward_model(info: object) -> Dict:
+    if hasattr(info, "item"):
+        try:
+            info = info.item()
+        except Exception:
+            pass
+    if isinstance(info, dict):
+        return info
+    return {}
+
+
+def extract_candidate_story(text: str) -> str:
+    """
+    Extract the candidate's story.
+    Preference order:
+      1. Content after a </think> tag.
+      2. Content inside <writing>...</writing>.
+      3. The raw text.
+    """
+    if not isinstance(text, str):
+        return ""
+
+    think_match = re.search(r"</think>(.*)", text, re.DOTALL | re.IGNORECASE)
+    if think_match:
+        return think_match.group(1).strip()
+
+    writing_match = re.search(r"<writing>(.*?)</writing>", text, re.DOTALL | re.IGNORECASE)
+    if writing_match:
+        return writing_match.group(1).strip()
+
+    return text.strip()
+
+
+def _truncate(text: str, max_chars: int) -> str:
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars] + "\n[TRUNCATED]"
+
+
+def _build_rubric_prompt(assignment: str, exemplar_story: str) -> str:
+    exemplar_excerpt = _truncate(exemplar_story, MAX_REFERENCE_CHARS)
+    return (
+        "You are a creative-writing professor asked to produce a concise scoring rubric.\n"
+        "Create clear evaluation criteria (3-5 bullet points) tailored to the assignment below. "
+        "Cap each criterion with guidance for awarding high, medium, and low scores on a 0-10 scale. "
+        "Avoid generic advice; tie the rubric to the assignment's goals.\n\n"
+        f"Assignment:\n{assignment.strip()}\n\n"
+        "Reference exemplar (do not copy; use only to understand expectations):\n"
+        f"{exemplar_excerpt}\n\n"
+        "Return the rubric as bullet points (e.g., '- Criterion: guidance...')."
+    )
+
+
+def _ensure_rubric(question_id: str, assignment: str, exemplar_story: str) -> str:
+    """
+    Ensure a rubric is cached for the question_id. Generates one if necessary.
+    """
+    if question_id in _RUBRIC_CACHE:
+        return _RUBRIC_CACHE[question_id]
+
+    prompt = _build_rubric_prompt(assignment=assignment, exemplar_story=exemplar_story)
+    responses = run_prompts_sync_pool(
+        client_service="openai",
+        model="gpt-4.1-mini",
+        system_prompt="You design grading rubrics for creative writing MFA workshops.",
+        prompts=[prompt],
+        max_tokens=1024,
+        temperature=0.4,
+        timeout=60,
+        max_workers=1,
+    )
+    rubric = responses[0].strip() if responses else ""
+    if not rubric:
+        rubric = (
+            "- Concept & originality: Reward distinctive ideas that fulfill the brief. Penalise clichés or drift.\n"
+            "- Narrative craft: Assess structure, pacing, and clarity of storytelling.\n"
+            "- Voice & language: Evaluate prose quality, imagery, and emotional resonance.\n"
+            "- Alignment to assignment: Ensure the response delivers the requested tone, genre, and focus."
+        )
+    _RUBRIC_CACHE[question_id] = rubric
+    return rubric
+
+
+def _parse_group_response(response_text: str, labels: Sequence[str]) -> Tuple[List[int], bool]:
+    json_text = (response_text or "").strip()
+    start = json_text.find("{")
+    end = json_text.rfind("}")
+    if start != -1 and end != -1 and end >= start:
+        json_text = json_text[start : end + 1]
+
+    ranks_by_label: dict[str, int] = {}
+    parsed = False
+
+    if json_text:
+        try:
+            import json
+
+            data = json.loads(json_text)
+            placements = data.get("placements", [])
+            if isinstance(placements, list):
+                for entry in placements:
+                    if not isinstance(entry, dict):
+                        continue
+                    raw_label = entry.get("label")
+                    raw_rank = entry.get("rank")
+                    if isinstance(raw_label, str) and isinstance(raw_rank, (int, float)):
+                        label = raw_label.strip().upper()
+                        rank_value = max(1, int(raw_rank))
+                        ranks_by_label[label] = rank_value
+                        parsed = True
+        except Exception:
+            parsed = False
+
+    default_rank = len(labels)
+    ranks = [
+        max(1, ranks_by_label.get(label.upper(), default_rank))
+        for label in labels
+    ]
+    return ranks, parsed
+
+
+def compute_score(
+    solutions_batch,
+    ground_truth_batch,
+    valid_response_lengths,
+    reward_tensor,
+    max_response_length=None,
+    tokenizer=None,
+    extra_info_batch=None,
+    reward_model_batch=None,
+    reward_conversion_mode: str = "group_points",
+):
+    """
+    Compute rewards by repeatedly ranking groups of creative-writing responses.
+    """
+
+    processed_stories = [extract_candidate_story(sol) for sol in solutions_batch]
+
+    if extra_info_batch is None:
+        extra_info_batch = [{} for _ in processed_stories]
+    if reward_model_batch is None:
+        reward_model_batch = [{} for _ in processed_stories]
+
+    question_ids = []
+    assignments = []
+    reference_stories = []
+
+    for idx in range(len(processed_stories)):
+        extra = _normalize_extra_info(extra_info_batch[idx])
+        reward_model_info = _normalize_reward_model(reward_model_batch[idx])
+
+        question_ids.append(_extract_question_id(extra, idx))
+
+        assignment = reward_model_info.get("assignment") or extra.get("assignment") or extra.get("title")
+        if not assignment:
+            assignment = "Write a polished, original creative piece that fulfills the given brief."
+        assignments.append(assignment)
+
+        reference_story = reward_model_info.get("reference_story") or reward_model_info.get("ground_truth") or ground_truth_batch[idx]
+        reference_stories.append(str(reference_story))
+
+    grouped_indices: defaultdict[str, List[int]] = defaultdict(list)
+    for idx, question_id in enumerate(question_ids):
+        grouped_indices[question_id].append(idx)
+
+    rng = random.Random()
+    points_schedule = list(DEFAULT_GROUP_POINTS)
+
+    group_prompts: List[str] = []
+    group_contexts: List[dict] = []
+    rewards_by_idx: defaultdict[int, List[float]] = defaultdict(list)
+
+    for question_id, indices in grouped_indices.items():
+        if not indices:
+            continue
+
+        assignment = assignments[indices[0]]
+        reference_story = reference_stories[indices[0]]
+        rubric_text = _ensure_rubric(question_id=question_id, assignment=assignment, exemplar_story=reference_story)
+
+        if len(indices) == 1:
+            for _ in range(DEFAULT_GROUP_ROUNDS):
+                rewards_by_idx[indices[0]].append(points_schedule[0])
+            continue
+
+        reference_excerpt = _truncate(reference_story, MAX_REFERENCE_CHARS)
+
+        for round_idx in range(DEFAULT_GROUP_ROUNDS):
+            shuffled = list(indices)
+            rng.shuffle(shuffled)
+
+            for start in range(0, len(shuffled), DEFAULT_GROUP_SIZE):
+                chunk = shuffled[start : start + DEFAULT_GROUP_SIZE]
+
+                if len(chunk) == 1:
+                    rewards_by_idx[chunk[0]].append(points_schedule[0])
+                    continue
+
+                labels = [chr(ord("A") + i) for i in range(len(chunk))]
+                stories_block = "\n\n".join(
+                    f"### Story {label} ###\n{_truncate(processed_stories[idx], MAX_STORY_PREVIEW_CHARS)}"
+                    for label, idx in zip(labels, chunk)
+                )
+                points_lines = "\n".join(
+                    f"Rank {pos + 1}: {_points_for_position(pos, points_schedule)}"
+                    for pos in range(len(points_schedule))
+                )
+                json_example_lines = ",\n    ".join(
+                    f'{{"label": "{label}", "rank": {pos + 1}, "reason": "short justification"}}'
+                    for pos, label in enumerate(labels)
+                )
+                json_example = "{\n  \"placements\": [\n    " + json_example_lines + "\n  ]\n}"
+
+                prompt = f"""You are adjudicating responses for a graduate creative-writing workshop.
+
+Assignment:
+{assignment}
+
+Exemplar human story (for calibration, not to copy):
+{reference_excerpt}
+
+Rubric:
+{rubric_text}
+
+Candidate stories to evaluate:
+{stories_block}
+
+Guidelines:
+1. Judge originality, emotional depth, structure, voice, and alignment with the assignment.
+2. Do not reward plagiarism or close paraphrases of the exemplar.
+3. Ties are allowed by assigning the same rank.
+4. Use this reward schedule when ordering:
+{points_lines}
+
+Return ONLY a JSON object following this schema:
+{json_example}
 """
+                group_prompts.append(prompt)
+                group_contexts.append({"indices": chunk, "labels": labels})
 
-    processed_solutions = [extract_candidate_solution(sol) for sol in solutions_batch]
+    judge_responses: List[str] = []
+    if group_prompts:
+        judge_responses = run_prompts_sync_pool(
+            client_service="openai",
+            model="gpt-4.1-nano",
+            system_prompt="You are an expert creative-writing judge delivering meticulous rankings.",
+            prompts=group_prompts,
+            max_tokens=2048,
+            temperature=0.5,
+            timeout=60,
+            max_workers=64,
+        )
+        for debug_idx, response in enumerate(judge_responses[:3]):
+            print(f"[llm_judge_creative] sample judge response {debug_idx}:\n{response}\n{'-' * 40}")
 
-    prompts = []
-    for sol in processed_solutions:
-        # If solution is None or empty, use a placeholder
-        if sol is None or sol.strip() == "":
-            prompt = prompt_template.format("[Invalid or empty creative writing piece]")
+    fallback_groups = 0
+
+    for response, context in zip(judge_responses, group_contexts):
+        ranks, parsed_ok = _parse_group_response(response, context["labels"])
+        if not parsed_ok:
+            fallback_groups += 1
+
+        ordered = sorted(
+            zip(context["indices"], ranks),
+            key=lambda pair: (pair[1], pair[0]),
+        )
+        rank_position = 0
+        processed = 0
+        while processed < len(ordered):
+            current_rank = ordered[processed][1]
+            tie_group = [ordered[processed][0]]
+            processed += 1
+            while processed < len(ordered) and ordered[processed][1] == current_rank:
+                tie_group.append(ordered[processed][0])
+                processed += 1
+
+            span_positions = list(range(rank_position, rank_position + len(tie_group)))
+            total_points = sum(_points_for_position(pos, points_schedule) for pos in span_positions)
+            shared_points = total_points / len(tie_group) if tie_group else 0.0
+
+            for sample_idx in tie_group:
+                rewards_by_idx[sample_idx].append(shared_points)
+
+            rank_position += len(tie_group)
+
+    if len(judge_responses) < len(group_contexts):
+        fallback_groups += len(group_contexts) - len(judge_responses)
+        for context in group_contexts[len(judge_responses) :]:
+            ordered = sorted(
+                zip(context["indices"], range(1, len(context["indices"]) + 1)),
+                key=lambda pair: (pair[1], pair[0]),
+            )
+            rank_position = 0
+            processed = 0
+            while processed < len(ordered):
+                current_rank = ordered[processed][1]
+                tie_group = [ordered[processed][0]]
+                processed += 1
+                while processed < len(ordered) and ordered[processed][1] == current_rank:
+                    tie_group.append(ordered[processed][0])
+                    processed += 1
+                span_positions = list(range(rank_position, rank_position + len(tie_group)))
+                total_points = sum(_points_for_position(pos, points_schedule) for pos in span_positions)
+                shared_points = total_points / len(tie_group) if tie_group else 0.0
+                for sample_idx in tie_group:
+                    rewards_by_idx[sample_idx].append(shared_points)
+                rank_position += len(tie_group)
+
+    total_reward_sum = 0.0
+    num_samples = len(processed_stories)
+    final_rewards = [0.0 for _ in range(num_samples)]
+
+    for idx in range(num_samples):
+        reward_history = rewards_by_idx.get(idx, [])
+        if reward_history:
+            avg_reward = float(sum(reward_history) / len(reward_history))
         else:
-            prompt = prompt_template.format(sol)
-        prompts.append(prompt)
+            avg_reward = 0.0
+        final_rewards[idx] = avg_reward
 
-    ############################################################################
-    ################### STEP 2: PASS TO THE LLM JUDGE ##########################
-    ############################################################################
-    
-    local_model = False # We want to use the API model
-    async_reward = False # We want to use the synchronous reward
-    api_model = "gpt-4o"
-    client_service = "openai"
-    max_tokens = 4000
-    temperature = 0.7
+    if reward_conversion_mode == "harmonic_rank":
+        for question_id, indices in grouped_indices.items():
+            if not indices:
+                continue
+            ordered = sorted(
+                indices,
+                key=lambda sample_idx: (-final_rewards[sample_idx], sample_idx),
+            )
+            for rank_position, sample_idx in enumerate(ordered):
+                final_rewards[sample_idx] = 1.0 / float(rank_position + 1)
+    elif reward_conversion_mode == "squared":
+        for idx in range(num_samples):
+            value = final_rewards[idx]
+            final_rewards[idx] = value * value
 
-    try:
-        judge_responses = judge(model=api_model,  # Either model name or path to model 
-                                client_service=client_service,
-                                system_prompt=system_prompt,
-                                prompts=prompts,
-                                max_tokens=max_tokens,
-                                temperature=temperature,
-                                local_model=local_model,
-                                async_reward=async_reward)
-    except Exception as e:
-        print(f"Error: {e}")
-        print(f"Judge responses: {judge_responses}")
-        sys.exit()
-            
-    ############################################################################
-    ################### STEP 3: PARSE JUDGE RESPONSE #########################
-    ############################################################################
+    for idx in range(num_samples):
+        reward_tensor[idx, valid_response_lengths[idx] - 1] = final_rewards[idx]
+        total_reward_sum += final_rewards[idx]
 
-    # Print 10 random responses for debugging
-    num_samples = min(10, len(judge_responses))
-    sample_indices = random.sample(range(len(judge_responses)), num_samples)
-    print("\nSample of judge responses:")
-    for idx in sample_indices:            
-        print(f"\nSolution {idx}:")
-        print("-" * 80)
-        print(solutions_batch[idx])
-        print("-" * 80)
-        print(f"\nJudge Response {idx}:")
-        print(judge_responses[idx])
-        print("-" * 80)
+    mean_reward = total_reward_sum / num_samples if num_samples else 0.0
 
-    total_scores = []
-    format_scores = [0.05 if (sol != None) and (sol != "") else 0 for sol in solutions_batch]
-    correct_scores = [extract_judge_score(response) if format_score > 0 else 0 for response, format_score in zip(judge_responses, format_scores)]
-    
-    # Only add the correct_score from the LLM judge if the output response is formatted correctly.
-    # This way, we don't reward the model for outputting the wrong format.
-    total_scores = [format_score + correct_score for format_score, correct_score in zip(format_scores, correct_scores)]
-
-    # Step 4: Convert the scores to a reward tensor
-    for i, score in enumerate(total_scores):
-        reward_tensor[i, valid_response_lengths[i] - 1] = score
-    
-    ############################################################################
-    ################### STEP 5: LOGGING EXTRA METRICS #######################
-    ############################################################################
-
-    extra_logs_path = "/home/ubuntu/o1-replication/CustomTinyZero/checkpoints/llmjudge_experiments/creative_writting_7b_1"
-
-    # Logging proportion of correctly formatted solutions for this step
-    correctly_formatted = [correct_formatting(sol) for sol in solutions_batch]
-    num_correctly_formatted = sum(correctly_formatted)
-
-    # Integration numeric scores (golden scoring metric)
-    gold_scores = [compute_score_numeric(solution_str=sol, ground_truth=gt) for sol, gt in zip(solutions_batch, ground_truth_batch)]
-    
-    # Calculate misclassification error by comparing total_scores and gold_scores
-    num_correctly_scored = sum(1 for ts, gs in zip(total_scores, gold_scores) if ts == gs)
-    
-    custom_metrics = {
-        "batch_size": len(solutions_batch),
-        "num_correct_sympy_formatting": num_correctly_formatted,
-        "num_correctly_scored": num_correctly_scored
-    }
-    
-    metrics_file = os.path.join(extra_logs_path, "failure_metrics.json")
-    if not os.path.exists(metrics_file):
-        os.makedirs(os.path.dirname(metrics_file), exist_ok=True)
-        with open(metrics_file, "w") as f:
-            f.write("[]")
-    metrics = json.load(open(metrics_file))
-    metrics.append(custom_metrics) if isinstance(metrics, list) else json.dump([custom_metrics], open(metrics_file, "w"))
-    json.dump(metrics, open(metrics_file, "w"), indent=4)
-
-    # Create dictionary mapping question IDs to details
-    question_details = {}
-    for idx in range(len(solutions_batch)):
-        question_id = f"q{idx+1}"
-        question_dict = {
-            "model_solution": solutions_batch[idx],
-            "ground_truth": ground_truth_batch[idx],
-            "processed_solution": solutions_batch[idx],
-            "processed_ground_truth": ground_truth_batch[idx],
-            "judge_response": judge_responses[idx],
-            "extracted_judge_score": correct_scores[idx],
-            "format_score": format_scores[idx], 
-            "total_score": total_scores[idx],
-            "gold_score": gold_scores[idx]
-        }
-        question_details[question_id] = question_dict
-
-    # Load existing details or create new list
-    details_file = os.path.join(extra_logs_path, "question_logs.json")
-    if not os.path.exists(details_file):
-        existing_details = []
+    if group_prompts:
+        print(
+            f"Creative reward: prompts={len(group_prompts)}, questions={len(grouped_indices)}, "
+            f"fallback_groups={fallback_groups}, conversion={reward_conversion_mode}, mean_reward={mean_reward:.3f}"
+        )
     else:
-        with open(details_file, 'r') as f:
-            existing_details = json.load(f)
-
-    # Append new details and save
-    existing_details.append(question_details)
-    with open(details_file, 'w') as f:
-        json.dump(existing_details, f, indent=4)
+        print(f"Creative reward: all solo completions, conversion={reward_conversion_mode}, mean_reward={mean_reward:.3f}")
 
     return reward_tensor
-
-################################################################################
-# Extraction functions
-################################################################################
-
-def extract_integral(ground_truth: str) -> str:
-    return ground_truth[10:-4]
-
-def extract_candidate_solution(solution_str: str, method: str = 'strict') -> str:
-    """
-    Extracts the candidate integration solution from the provided solution string.
-    Also filters out any candidate that directly contains an integration command.
-    """
-
-    solution_str = solution_str.split("</instruction>")[-1] if "</instruction>" in solution_str else solution_str
-    if not solution_str or not isinstance(solution_str, str):
-        return None
-        
-    assert method in ['strict', 'flexible'], "Method must be 'strict' or 'flexible'"
-    candidate = None
-    if method == 'strict':
-        try:
-            matches = re.findall(r"<writing>(.*?)</writing>", solution_str, re.IGNORECASE | re.DOTALL)
-            candidate = matches[-1].strip() if matches else None
-        except Exception:
-            return None
-    else:
-        candidate = solution_str.strip()
-
-    # Filter out candidates that contain the word 'integrate' (in any case)
-    if candidate and re.search(r'\bintegrate\b', candidate, re.IGNORECASE):
-        return None
-
-    return candidate
-
-def preprocess_candidate_solution(solution: str) -> str:
-    solution = re.sub(r'\*\s*\.\.\.', '', solution)
-    solution = solution.replace("...", "")
-    solution = solution.replace(r"\(", "").replace(r"\)", "")
-    solution = solution.replace("$", "")
-    solution = solution.replace("\\arctan", "atan")
-    solution = solution.replace("\\arcsin", "asin")
-    solution = solution.replace("\\arccos", "acos")
-    solution = solution.replace("arccos", "acos")
-    solution = solution.replace("arcsin", "asin")
-    solution = solution.replace("arctan", "atan")
-    solution = solution.replace("e^", "2.718**")
-    solution = solution.replace("^", "**")
-    solution = solution.replace("\\ln", "log")
-    solution = re.sub(r'e\*\*([^*]+)', r'exp(\1)', solution)
-    solution = re.sub(r"\+?\s*C\b", "", solution)
-    return solution.strip() or "0"
-
-def extract_judge_score(response_str: str, method: str = 'strict') -> str:
-    """
-    Extracts the candidate integration solution from the provided solution string.
-    Also filters out any candidate that directly contains an integration command.
-    """
-    if not response_str or not isinstance(response_str, str):
-        return 0
-        
-    assert method in ['strict', 'flexible'], "Method must be 'strict' or 'flexible'"
-    return_score = None
-    if method == 'strict':
-        try:
-            matches = re.findall(r"<JUDGE_SCORE>(.*?)</JUDGE_SCORE>", response_str, re.IGNORECASE | re.DOTALL)
-            return_score = matches[-1].strip() if matches else None
-        except Exception:
-            return 0
-    else:
-        return_score = response_str.strip()
-    
-    try:
-        return_score = int(return_score)
-    except Exception:
-        return 0
-
-    return return_score
-
-def correct_formatting(solution: str) -> bool:
-    x, k = sp.symbols('x k')
-    locals_dict = {
-        'x': x,
-        'k': k,
-        'C': 0,
-        'integrate': sp.integrate,
-        'Sum': sp.Sum,   # Use Sum for symbolic summation.
-        'sum': sp.Sum,   # Allow 'sum' to be an alias.
-        'pi': sp.pi,
-        'sin': sp.sin,
-        'cos': sp.cos,
-        'tan': sp.tan,
-        'log': sp.log,
-        'exp': sp.exp,
-        'sqrt': sp.sqrt,
-        'atan': sp.atan,
-        'asin': sp.asin,
-        'acos': sp.acos
-    }
-    
-    try:
-        candidate = preprocess_candidate_solution(solution)
-        candidate_expr = sp.parse_expr(candidate, local_dict=locals_dict)
-        candidate_func = sp.lambdify(x, candidate_expr, "mpmath")
-        test_result = candidate_func(10)
-    except NameError:
-        return False
-    except SyntaxError:
-        return False
-    except Exception:
-        return True
-    return True
