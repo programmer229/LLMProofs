@@ -15,6 +15,7 @@ from verl.utils.reward_score.utils.judge_sync import run_prompts_sync_pool
 
 from verl.utils.reward_score.inference_utils import run_prompts
 import asyncio
+from verl.utils.reward_score.utils.llm_judge_utils import extract_judge_score
 
 """
 Assumptions:
@@ -76,6 +77,118 @@ def extract_candidate_solution(text):
 DEFAULT_GROUP_POINTS: List[float] = [1.0, 0.6, 0.2]
 DEFAULT_GROUP_SIZE: int = 3
 DEFAULT_GROUP_ROUNDS: int = 5
+DEFAULT_MAX_JUDGE_SCORE: float = 6.0
+
+
+def _safe_float(value: object, fallback: float) -> float:
+    try:
+        if value is None:
+            return float(fallback)
+        return float(value)
+    except (TypeError, ValueError):
+        return float(fallback)
+
+
+def _compute_direct_judge_scores(
+    processed_solutions: Sequence[str],
+    ground_truth_batch,
+    valid_response_lengths,
+    reward_tensor,
+    question_ids: Sequence[str],
+    rubric_texts: Sequence[str],
+    extra_info_batch,
+    reward_model_batch,
+) -> object:
+    system_prompt = (
+        "You are an expert mathematician and meticulous IMO grader. "
+        "Evaluate each candidate solution independently, applying the rubric "
+        "and reference solution when provided. Conclude with the final integer "
+        "mark wrapped in <JUDGE_SCORE> tags."
+    )
+
+    prompts: List[str] = []
+    score_caps: List[float] = []
+
+    for idx, solution in enumerate(processed_solutions):
+        extra_info = _normalize_extra_info(extra_info_batch[idx])
+        reward_info = _normalize_reward_model(reward_model_batch[idx])
+
+        problem_statement = (
+            reward_info.get("problem_statement")
+            or extra_info.get("problem_statement")
+            or extra_info.get("problem")
+            or "Solve the given mathematical problem and provide a complete proof."
+        )
+
+        reference_solution = (
+            reward_info.get("reference_solution")
+            or reward_info.get("ground_truth")
+            or ground_truth_batch[idx]
+        )
+
+        solution_text = str(solution)
+        problem_statement = str(problem_statement)
+        reference_solution = str(reference_solution)
+
+        max_score = _safe_float(
+            reward_info.get("max_score")
+            or reward_info.get("max_points")
+            or extra_info.get("max_score")
+            or extra_info.get("max_points"),
+            DEFAULT_MAX_JUDGE_SCORE,
+        )
+        if max_score <= 0:
+            max_score = DEFAULT_MAX_JUDGE_SCORE
+        score_caps.append(max_score)
+        integer_cap = max(1, int(round(max_score)))
+
+        rubric_section = ""
+        rubric_text = rubric_texts[idx]
+        if rubric_text:
+            rubric_section = (
+                "### Rubric ###\n"
+                f"{rubric_text}\n"
+                "======================================================================\n"
+            )
+
+        prompt = f"""Instructions\n1) Read the candidate proof carefully.\n2) Apply the rubric (if provided) and the ground truth solution to judge mathematical correctness and completeness.\n3) Provide concise feedback referencing specific steps.\n4) Finish by outputting only one final integer score from 0 to {integer_cap} wrapped in <JUDGE_SCORE> tags.\n\n======================================================================\n### Question Metadata ###\nQuestion ID: {question_ids[idx]}\n======================================================================\n### Problem ###\n{problem_statement}\n======================================================================\n### Ground Truth Solution ###\n{reference_solution}\n======================================================================\n{rubric_section if rubric_section else ""}### Candidate Solution ###\n{solution_text}\n======================================================================\nReminder: respond with explanatory feedback followed by <JUDGE_SCORE>score</JUDGE_SCORE> where score is an integer between 0 and {integer_cap}."""
+
+        prompts.append(prompt)
+
+    judge_responses = run_prompts_sync_pool(
+        client_service="openai",
+        model="gpt-4.1-mini",
+        system_prompt=system_prompt,
+        prompts=prompts,
+        max_tokens=4096,
+        temperature=0.4,
+        max_workers=64,
+        timeout=60,
+    )
+
+    sample_count = len(processed_solutions)
+    preview = min(3, sample_count)
+    if sample_count:
+        for idx in random.sample(range(sample_count), preview):
+            print(f"[llm_judge_proofs_train] judge_score sample {idx} solution snippet:\n{processed_solutions[idx][:500]}\n---")
+            print(f"[llm_judge_proofs_train] judge_score response {idx}:\n{judge_responses[idx]}\n{'-' * 40}")
+
+    total_normalized = 0.0
+    for idx, response in enumerate(judge_responses):
+        raw_score = extract_judge_score(response)
+        cap = score_caps[idx] if idx < len(score_caps) else DEFAULT_MAX_JUDGE_SCORE
+        if cap <= 0:
+            normalized = float(raw_score)
+        else:
+            clipped = max(0.0, min(float(raw_score), cap))
+            normalized = clipped / cap
+        reward_tensor[idx, valid_response_lengths[idx] - 1] = normalized
+        total_normalized += normalized
+
+    mean_reward = total_normalized / sample_count if sample_count else 0.0
+    print(f"[llm_judge_proofs_train] judge_score mean normalized score: {mean_reward:.3f}")
+
+    return reward_tensor
 
 
 def _points_for_position(position: int, schedule: Sequence[float]) -> float:
@@ -165,14 +278,7 @@ def compute_score(
     reward_model_batch=None,
     reward_conversion_mode: str = "group_points",
 ):
-    """Compute GRPO rewards via repeated group rankings."""
-
-    system_prompt = (
-        "You are an expert mathematician and meticulous IMO grader. You will receive reference "
-        "solutions and, when available, an explicit grading rubric. Evaluate each candidate with "
-        "rigorous step-by-step verification, citing rubric criteria whenever provided. Base all "
-        "comparisons solely on correctness, completeness, and adherence to the rubric."
-    )
+    """Compute proofs rewards via GRPO rankings or direct judge scores."""
 
     processed_solutions = [extract_candidate_solution(sol) for sol in solutions_batch]
 
@@ -194,6 +300,25 @@ def compute_score(
             extra_info = _normalize_extra_info(extra_info_batch[idx])
             rubric_text = extra_info.get("rubric") or extra_info.get("rubric_text")
         rubric_texts.append(str(rubric_text).strip() if rubric_text else "")
+
+    if reward_conversion_mode == "judge_score":
+        return _compute_direct_judge_scores(
+            processed_solutions=processed_solutions,
+            ground_truth_batch=ground_truth_batch,
+            valid_response_lengths=valid_response_lengths,
+            reward_tensor=reward_tensor,
+            question_ids=question_ids,
+            rubric_texts=rubric_texts,
+            extra_info_batch=extra_info_batch,
+            reward_model_batch=reward_model_batch,
+        )
+
+    system_prompt = (
+        "You are an expert mathematician and meticulous IMO grader. You will receive reference "
+        "solutions and, when available, an explicit grading rubric. Evaluate each candidate with "
+        "rigorous step-by-step verification, citing rubric criteria whenever provided. Base all "
+        "comparisons solely on correctness, completeness, and adherence to the rubric."
+    )
 
     grouped_indices: defaultdict[str, List[int]] = defaultdict(list)
     for idx, question_id in enumerate(question_ids):

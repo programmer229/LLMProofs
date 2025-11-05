@@ -15,6 +15,7 @@ import re
 from typing import Dict, List, Sequence, Tuple
 
 from verl.utils.reward_score.utils.judge_sync import run_prompts_sync_pool
+from verl.utils.reward_score.utils.llm_judge_utils import extract_judge_score
 
 
 DEFAULT_GROUP_POINTS: List[float] = [1.0, 0.6, 0.2]
@@ -22,8 +23,18 @@ DEFAULT_GROUP_SIZE: int = 3
 DEFAULT_GROUP_ROUNDS: int = 5
 MAX_REFERENCE_CHARS: int = 2500
 MAX_STORY_PREVIEW_CHARS: int = 2500
+DEFAULT_MAX_JUDGE_SCORE: float = 100.0
 
 _RUBRIC_CACHE: Dict[str, str] = {}
+
+
+def _safe_float(value: object, fallback: float) -> float:
+    try:
+        if value is None:
+            return float(fallback)
+        return float(value)
+    except (TypeError, ValueError):
+        return float(fallback)
 
 
 def _points_for_position(position: int, schedule: Sequence[float]) -> float:
@@ -139,6 +150,115 @@ def _ensure_rubric(question_id: str, assignment: str, exemplar_story: str) -> st
     return rubric
 
 
+def _compute_direct_judge_scores(
+    processed_stories: Sequence[str],
+    assignments: Sequence[str],
+    reference_stories: Sequence[str],
+    ground_truth_batch,
+    valid_response_lengths,
+    reward_tensor,
+    question_ids: Sequence[str],
+    extra_info_batch,
+    reward_model_batch,
+) -> object:
+    system_prompt = (
+        "You are an MFA-level creative writing instructor asked to holistically grade student submissions. "
+        "Apply the rubric faithfully, reward originality and craft, and output both feedback and a final score."
+    )
+
+    prompts: List[str] = []
+    score_caps: List[float] = []
+
+    for idx, story in enumerate(processed_stories):
+        extra = _normalize_extra_info(extra_info_batch[idx])
+        reward_info = _normalize_reward_model(reward_model_batch[idx])
+
+        assignment = str(assignments[idx]) if idx < len(assignments) else "Write a polished, original creative piece that fulfills the given brief."
+        reference_story = reference_stories[idx] if idx < len(reference_stories) else ""
+        if not reference_story:
+            reference_story = (
+                reward_info.get("reference_story")
+                or reward_info.get("ground_truth")
+                or extra.get("reference_story")
+                or extra.get("ground_truth")
+                or ground_truth_batch[idx]
+            )
+        reference_story = str(reference_story)
+
+        rubric_text = _ensure_rubric(
+            question_id=question_ids[idx],
+            assignment=assignment,
+            exemplar_story=reference_story,
+        )
+
+        max_score = _safe_float(
+            reward_info.get("max_score")
+            or reward_info.get("max_points")
+            or extra.get("max_score")
+            or extra.get("max_points"),
+            DEFAULT_MAX_JUDGE_SCORE,
+        )
+        if max_score <= 0:
+            max_score = DEFAULT_MAX_JUDGE_SCORE
+        score_caps.append(max_score)
+        integer_cap = max(1, int(round(max_score)))
+
+        reference_excerpt = _truncate(reference_story, MAX_REFERENCE_CHARS)
+        story_text = str(story)
+
+        prompt = f"""Assignment:
+{assignment}
+
+Exemplar human story (for calibration, not to copy):
+{reference_excerpt}
+
+Rubric:
+{rubric_text}
+
+Student story to evaluate:
+{story_text}
+
+Instructions:
+1. Assess how well the student story fulfills each rubric criterion.
+2. Provide concise feedback that references specific strengths or issues.
+3. Output the final mark as an integer from 0 to {integer_cap} wrapped in <JUDGE_SCORE> tags.
+"""
+
+        prompts.append(prompt)
+
+    judge_responses = run_prompts_sync_pool(
+        client_service="openai",
+        model="gpt-4.1-mini",
+        system_prompt=system_prompt,
+        prompts=prompts,
+        max_tokens=2048,
+        temperature=0.4,
+        timeout=60,
+        max_workers=64,
+    )
+
+    sample_count = len(processed_stories)
+    preview = min(3, sample_count)
+    if sample_count:
+        for idx in random.sample(range(sample_count), preview):
+            print(f"[llm_judge_creative] judge_score sample {idx} story snippet:\n{processed_stories[idx][:500]}\n---")
+            print(f"[llm_judge_creative] judge_score response {idx}:\n{judge_responses[idx]}\n{'-' * 40}")
+
+    total_normalized = 0.0
+    for idx, response in enumerate(judge_responses):
+        raw_score = extract_judge_score(response)
+        cap = score_caps[idx] if idx < len(score_caps) else DEFAULT_MAX_JUDGE_SCORE
+        clipped = max(0.0, min(float(raw_score), cap)) if cap > 0 else float(raw_score)
+        normalized = clipped / cap if cap > 0 else clipped
+        reward_tensor[idx, valid_response_lengths[idx] - 1] = normalized
+        total_normalized += normalized
+
+    mean_reward = total_normalized / sample_count if sample_count else 0.0
+    print(f"[llm_judge_creative] judge_score mean normalized score: {mean_reward:.3f}")
+
+    return reward_tensor
+
+
 def _parse_group_response(response_text: str, labels: Sequence[str]) -> Tuple[List[int], bool]:
     json_text = (response_text or "").strip()
     start = json_text.find("{")
@@ -188,9 +308,7 @@ def compute_score(
     reward_model_batch=None,
     reward_conversion_mode: str = "group_points",
 ):
-    """
-    Compute rewards by repeatedly ranking groups of creative-writing responses.
-    """
+    """Compute creative-writing rewards via group rankings or judge scores."""
 
     processed_stories = [extract_candidate_story(sol) for sol in solutions_batch]
 
@@ -216,6 +334,19 @@ def compute_score(
 
         reference_story = reward_model_info.get("reference_story") or reward_model_info.get("ground_truth") or ground_truth_batch[idx]
         reference_stories.append(str(reference_story))
+
+    if reward_conversion_mode == "judge_score":
+        return _compute_direct_judge_scores(
+            processed_stories=processed_stories,
+            assignments=assignments,
+            reference_stories=reference_stories,
+            ground_truth_batch=ground_truth_batch,
+            valid_response_lengths=valid_response_lengths,
+            reward_tensor=reward_tensor,
+            question_ids=question_ids,
+            extra_info_batch=extra_info_batch,
+            reward_model_batch=reward_model_batch,
+        )
 
     grouped_indices: defaultdict[str, List[int]] = defaultdict(list)
     for idx, question_id in enumerate(question_ids):
