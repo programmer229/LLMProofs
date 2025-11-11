@@ -14,7 +14,7 @@ DATASET=${DATASET:-creative_writing}
 #   harmonic_rank          - apply 1, 1/2, 1/3, ... by global rank per problem
 #   squared                - square the averaged group points
 #   judge_score            - per-sample judge scoring (normalized from <JUDGE_SCORE> outputs)
-TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-judge_score}
+TRAIN_REWARD_CONVERSION_MODE=${TRAIN_REWARD_CONVERSION_MODE:-harmonic_rank}
 
 case "$DATASET" in
     creative_writing)
